@@ -56,25 +56,25 @@ class HelperTest extends \PHPUnit_Framework_TestCase {
   public function testParseArguments() {
     $model=new HelperStub();
 
-    $expected=[ 'foo'=>'FooBar' ];
+    $expected=['foo'=>'FooBar'];
     $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo'));
 
-    $expected=[ 'foo'=>'FooBar', 'bar'=>[ 'baz'=>false ] ];
-    $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo', [ 'bar'=>[ 'baz'=>false ] ]));
+    $expected=['foo'=>'FooBar', 'bar'=>['baz'=>false]];
+    $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo', ['bar'=>['baz'=>false]]));
 
     $data='{
       "foo": "FooBar",
-      "bar": { "baz": true }
+      "bar": {"baz": true}
     }';
 
-    $expected=[ 'foo'=>'FooBar', 'bar'=>[ 'baz'=>true ], 'BarFoo'=>[ 123, 456 ] ];
-    $this->assertEquals($expected, $model->parseArguments($data, 'foo', [ 'BarFoo'=>[ 123, 456 ] ]));
+    $expected=['foo'=>'FooBar', 'bar'=>['baz'=>true], 'BarFoo'=>[123, 456]];
+    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['BarFoo'=>[123, 456]]));
 
     $data='{
-      "foo": [ 123, 456 ]
+      "foo": [123, 456]
     }';
 
-    $expected=[ 'foo'=>[ 123, 456 ], 'bar'=>[ 'baz'=>false ] ];
-    $this->assertEquals($expected, $model->parseArguments($data, 'foo', [ 'bar'=>[ 'baz'=>false ] ]));
+    $expected=['foo'=>[123, 456], 'bar'=>['baz'=>false]];
+    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['bar'=>['baz'=>false]]));
   }
 }

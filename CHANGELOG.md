@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache.yii](https://github.com/cedx/mustache.yii) library.
 
+#### Version 0.4.3
+- Added support for a default message category in I18N helper.
+
 #### Version 0.4.2
 - Added code coverage.
 - Added new unit tests.

@@ -36,7 +36,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   public function testGetCurrency() {
     $closure=(new Format())->getCurrency();
     $this->assertEquals('$100.00', $closure('100', $this->helper));
-    $this->assertEquals('€1,234.56', $closure('{ "value": 1234.56, "currency": "EUR" }', $this->helper));
+    $this->assertEquals('€1,234.56', $closure('{"value": 1234.56, "currency": "EUR"}', $this->helper));
   }
 
   /**

@@ -45,7 +45,7 @@ class Format extends Helper {
    */
   public function getDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      $args=$this->parseArguments($helper->render($value), 'value', ['format'=>null]);
       return HtmlHelper::encode(\Yii::$app->formatter->asDate($args['value'], $args['format']));
     };
   }
@@ -56,7 +56,7 @@ class Format extends Helper {
    */
   public function getDateTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      $args=$this->parseArguments($helper->render($value), 'value', ['format'=>null]);
       return HtmlHelper::encode(\Yii::$app->formatter->asDatetime($args['value'], $args['format']));
     };
   }
@@ -125,7 +125,7 @@ class Format extends Helper {
    */
   public function getTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      $args=$this->parseArguments($helper->render($value), 'value', ['format'=>null]);
       return HtmlHelper::encode(\Yii::$app->formatter->asTime($args['value'], $args['format']));
     };
   }

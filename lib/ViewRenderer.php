@@ -90,7 +90,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'cache'=>new Cache($this),
       'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES | ENT_SUBSTITUTE,
-      'escape'=>[ 'yii\helpers\Html', 'encode' ],
+      'escape'=>['yii\helpers\Html', 'encode'],
       'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
       'partials_loader'=>new Loader($this),
       'strict_callables'=>true
@@ -119,13 +119,13 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     if($cache && $cache->exists($key)) $output=$cache[$key];
     else {
       $path=FileHelper::localize($file);
-      if(!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$file ]));
+      if(!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', ['file'=>$file]));
 
       $output=@file_get_contents($path);
       if($cache) $cache->set($key, $output, $this->cachingDuration);
     }
 
-    $values=ArrayHelper::merge([ 'this'=>$view ], is_array($params) ? $params : []);
+    $values=ArrayHelper::merge(['this'=>$view], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
   }
 

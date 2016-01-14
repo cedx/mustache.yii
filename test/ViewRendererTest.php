@@ -41,7 +41,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals('<test></test>', $output[2]);
     $this->assertEquals('<test>hidden</test>', $output[3]);
 
-    $data=[ 'label'=>'"Mustache"', 'show'=>true ];
+    $data=['label'=>'"Mustache"', 'show'=>true];
     $output=preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
     $this->assertEquals('<test>&quot;Mustache&quot;</test>', $output[0]);
     $this->assertEquals('<test>"Mustache"</test>', $output[1]);
@@ -53,7 +53,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `setHelpers` method.
    */
   public function testSetHelpers() {
-    $this->model->setHelpers([ 'var'=>'value' ]);
+    $this->model->setHelpers(['var'=>'value']);
 
     $helpers=$this->model->getHelpers();
     $this->assertTrue($helpers->has('var'));

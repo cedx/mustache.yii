@@ -59,7 +59,7 @@ class Html extends Helper {
    */
   public function getMarkdown() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'markdown', [ 'flavor'=>Markdown::$defaultFlavor ]);
+      $args=$this->parseArguments($helper->render($value), 'markdown', ['flavor'=>Markdown::$defaultFlavor]);
       return Markdown::process($args['markdown'], $args['flavor']);
     };
   }
@@ -70,7 +70,7 @@ class Html extends Helper {
    */
   public function getMarkdownParagraph() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'markdown', [ 'flavor'=>Markdown::$defaultFlavor ]);
+      $args=$this->parseArguments($helper->render($value), 'markdown', ['flavor'=>Markdown::$defaultFlavor]);
       return Markdown::processParagraph($args['markdown'], $args['flavor']);
     };
   }

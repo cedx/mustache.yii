@@ -37,7 +37,7 @@ class Url extends Helper {
    */
   public function getCurrent() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'params', [ 'scheme'=>false ]);
+      $args=$this->parseArguments($helper->render($value), 'params', ['scheme'=>false]);
       return UrlHelper::current($args['params'], $args['scheme']);
     };
   }
@@ -68,7 +68,7 @@ class Url extends Helper {
    */
   public function getTo() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'url', [ 'scheme'=>false ]);
+      $args=$this->parseArguments($helper->render($value), 'url', ['scheme'=>false]);
       return UrlHelper::to($args['url'], $args['scheme']);
     };
   }
@@ -79,7 +79,7 @@ class Url extends Helper {
    */
   public function getToRoute() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'route', [ 'scheme'=>false ]);
+      $args=$this->parseArguments($helper->render($value), 'route', ['scheme'=>false]);
       return UrlHelper::toRoute($args['route'], $args['scheme']);
     };
   }
