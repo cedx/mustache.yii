@@ -15,6 +15,12 @@ use yii\helpers\ArrayHelper;
 class I18N extends Helper {
 
   /**
+   * @var string $defaultCategory
+   * The default message category when no one is supplied.
+   */
+  public $defaultCategory='app';
+
+  /**
    * Returns a function translating a message.
    * @return Closure A function translating a message.
    */
@@ -30,7 +36,7 @@ class I18N extends Helper {
   public function getTranslate() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $defaultArgs=[
-        'category'=>'app',
+        'category'=>$this->defaultCategory,
         'language'=>null,
         'params'=>[]
       ];
@@ -41,10 +47,13 @@ class I18N extends Helper {
       if($isJson) $args=$this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
         $parts=explode($this->argumentSeparator, $output, 2);
-        if(count($parts)!=2) throw new InvalidCallException(\Yii::t('yii', 'Invalid translation format.'));
+
+        $length=count($parts);
+        if(!$length) throw new InvalidCallException(\Yii::t('yii', 'Invalid translation format.'));
+
         $args=ArrayHelper::merge($defaultArgs, [
-          'category'=>$parts[0],
-          'message'=>$parts[1]
+          'category'=>$length==1 ? $this->defaultCategory : $parts[0],
+          'message'=>$parts[$length-1]
         ]);
       }
 
