@@ -24,7 +24,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `getHelpers` method.
    */
   public function testGetHelpers() {
-    $helpers=$this->model->getHelpers();
+    $helpers = $this->model->getHelpers();
     $this->assertInstanceOf('Mustache_HelperCollection', $helpers);
   }
 
@@ -32,17 +32,17 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `render` method.
    */
   public function testRender() {
-    $file=__DIR__.'/data.mustache';
+    $file = __DIR__.'/data.mustache';
 
-    $data=null;
-    $output=preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+    $data = null;
+    $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
     $this->assertEquals('<test></test>', $output[0]);
     $this->assertEquals('<test></test>', $output[1]);
     $this->assertEquals('<test></test>', $output[2]);
     $this->assertEquals('<test>hidden</test>', $output[3]);
 
-    $data=['label'=>'"Mustache"', 'show'=>true];
-    $output=preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+    $data = ['label' => '"Mustache"', 'show' => true];
+    $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
     $this->assertEquals('<test>&quot;Mustache&quot;</test>', $output[0]);
     $this->assertEquals('<test>"Mustache"</test>', $output[1]);
     $this->assertEquals('<test>visible</test>', $output[2]);
@@ -53,9 +53,9 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `setHelpers` method.
    */
   public function testSetHelpers() {
-    $this->model->setHelpers(['var'=>'value']);
+    $this->model->setHelpers(['var' => 'value']);
 
-    $helpers=$this->model->getHelpers();
+    $helpers = $this->model->getHelpers();
     $this->assertTrue($helpers->has('var'));
     $this->assertEquals('value', $helpers->get('var'));
   }
@@ -64,6 +64,6 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model=new ViewRenderer();
+    $this->model = new ViewRenderer();
   }
 }

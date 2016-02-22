@@ -48,7 +48,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    * Tests the `getMarkdown` method.
    */
   public function testGetMarkdown() {
-    $closure=(new Html())->getMarkdown();
+    $closure = (new Html())->getMarkdown();
     $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
 
@@ -56,7 +56,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    * Tests the `getSpaceless` method.
    */
   public function testGetSpaceless() {
-    $closure=(new Html())->getSpaceless();
+    $closure = (new Html())->getSpaceless();
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
     $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));
   }
@@ -68,7 +68,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
     \Yii::$app->set('view', new View());
     $this->assertNull(\Yii::$app->view->title);
 
-    $closure=(new Html())->getViewTitle();
+    $closure = (new Html())->getViewTitle();
     $closure('Foo Bar', $this->helper);
     $this->assertEquals('Foo Bar', \Yii::$app->view->title);
   }
@@ -77,6 +77,6 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper=new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
+    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
   }
 }

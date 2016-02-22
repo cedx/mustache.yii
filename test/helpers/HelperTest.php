@@ -30,7 +30,7 @@ class HelperStub extends Helper {
    * @param array $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
    * @return array The parsed arguments as an associative array.
    */
-  public function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
+  public function parseArguments($text, $defaultArgument, array $defaultValues = []) {
     return parent::parseArguments($text, $defaultArgument, $defaultValues);
   }
 }
@@ -44,7 +44,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase {
    * Tests the `captureOutput` method.
    */
   public function testCaptureOutput() {
-    $model=new HelperStub();
+    $model = new HelperStub();
     $this->assertEquals('Hello World!', $model->captureOutput(function() {
       echo 'Hello World!';
     }));
@@ -54,27 +54,27 @@ class HelperTest extends \PHPUnit_Framework_TestCase {
    * Tests the `parseArguments` method.
    */
   public function testParseArguments() {
-    $model=new HelperStub();
+    $model = new HelperStub();
 
-    $expected=['foo'=>'FooBar'];
+    $expected = ['foo' => 'FooBar'];
     $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo'));
 
-    $expected=['foo'=>'FooBar', 'bar'=>['baz'=>false]];
-    $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo', ['bar'=>['baz'=>false]]));
+    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
+    $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo', ['bar' => ['baz' => false]]));
 
-    $data='{
+    $data = '{
       "foo": "FooBar",
       "bar": {"baz": true}
     }';
 
-    $expected=['foo'=>'FooBar', 'bar'=>['baz'=>true], 'BarFoo'=>[123, 456]];
-    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['BarFoo'=>[123, 456]]));
+    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
+    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['BarFoo' => [123, 456]]));
 
-    $data='{
+    $data = '{
       "foo": [123, 456]
     }';
 
-    $expected=['foo'=>[123, 456], 'bar'=>['baz'=>false]];
-    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['bar'=>['baz'=>false]]));
+    $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
+    $this->assertEquals($expected, $model->parseArguments($data, 'foo', ['bar' => ['baz' => false]]));
   }
 }

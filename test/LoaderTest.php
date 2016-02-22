@@ -39,7 +39,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
    * Tests the `findViewFile` method.
    */
   public function testFindViewFile() {
-    $expected=str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
+    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
     $this->assertEquals($expected, $this->model->findViewFile('//view'));
 
     $this->setExpectedException('yii\base\InvalidCallException');
@@ -58,6 +58,6 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model=new LoaderStub(new ViewRenderer());
+    $this->model = new LoaderStub(new ViewRenderer());
   }
 }

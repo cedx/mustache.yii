@@ -29,7 +29,7 @@ class Format extends Helper {
    */
   public function getCurrency() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'value', [
+      $args = $this->parseArguments($helper->render($value), 'value', [
         'currency'=>null,
         'options'=>[],
         'textOptions'=>[]
