@@ -7,8 +7,7 @@ namespace yii\mustache;
 
 // Dependencies.
 use yii\base\InvalidCallException;
-use yii\helpers\ArrayHelper;
-use yii\helpers\FileHelper;
+use yii\helpers\{ArrayHelper, FileHelper};
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -61,9 +60,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
-   * @return Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
+   * @return The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
-  public function getHelpers() {
+  public function getHelpers(): \Mustache_HelperCollection {
     return $this->isInitialized ? $this->engine->getHelpers() : null;
   }
 
@@ -106,17 +105,18 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Renders a view file.
-   * @param yii::base::View $view The view object used for rendering the file.
-   * @param string $file The view file.
-   * @param array $params The parameters to be passed to the view file.
-   * @return string The rendering result.
+   * @param $view The view object used for rendering the file.
+   * @param $file The view file.
+   * @param $params The parameters to be passed to the view file.
+   * @return The rendering result.
    * @throws yii::base::InvalidCallException The specified view file is not found.
    */
-  public function render($view, $file, $params) {
+  public function render($view, $file, $params): string {
     $cache = ($this->cacheId ? \Yii::$app->get($this->cacheId) : null);
     $key = static::CACHE_KEY_PREFIX.$file;
 
-    if($cache && $cache->exists($key)) $output = $cache[$key];
+    if($cache && $cache->exists($key))
+      $output = $cache[$key];
     else {
       $path = FileHelper::localize($file);
       if(!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', ['file' => $file]));

@@ -18,42 +18,42 @@ class I18N extends Helper {
    * @var string $defaultCategory
    * The default message category when no one is supplied.
    */
-  public $defaultCategory='app';
+  public $defaultCategory = 'app';
 
   /**
    * Returns a function translating a message.
-   * @return Closure A function translating a message.
+   * @return A function translating a message.
    */
-  public function getT() {
+  public function getT(): \Closure {
     return static::getTranslate();
   }
 
   /**
    * Returns a function translating a message.
-   * @return Closure A function translating a message.
+   * @return A function translating a message.
    * @throws yii::base::InvalidCallException The specified message has an invalid format.
    */
-  public function getTranslate() {
+  public function getTranslate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $defaultArgs=[
-        'category'=>$this->defaultCategory,
-        'language'=>null,
-        'params'=>[]
+      $defaultArgs = [
+        'category' => $this->defaultCategory,
+        'language' => null,
+        'params' => []
       ];
 
-      $output=trim($value);
-      $isJson=(mb_substr($output, 0, 1)=='{' && mb_substr($output, mb_strlen($output)-1)=='}');
+      $output = trim($value);
+      $isJson = (mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output)-1) == '}');
 
-      if($isJson) $args=$this->parseArguments($helper->render($value), 'message', $defaultArgs);
+      if($isJson) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        $parts=explode($this->argumentSeparator, $output, 2);
+        $parts = explode($this->argumentSeparator, $output, 2);
 
-        $length=count($parts);
+        $length = count($parts);
         if(!$length) throw new InvalidCallException(\Yii::t('yii', 'Invalid translation format.'));
 
-        $args=ArrayHelper::merge($defaultArgs, [
-          'category'=>$length==1 ? $this->defaultCategory : $parts[0],
-          'message'=>$parts[$length-1]
+        $args = ArrayHelper::merge($defaultArgs, [
+          'category' => $length == 1 ? $this->defaultCategory : $parts[0],
+          'message' => $parts[$length-1]
         ]);
       }
 

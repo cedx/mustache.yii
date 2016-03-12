@@ -16,10 +16,10 @@ class Html extends Helper {
 
   /**
    * Returns the tag marking the beginning of an HTML body section.
-   * @return string The tag marking the beginning of an HTML body section.
+   * @return The tag marking the beginning of an HTML body section.
    */
-  public function getBeginBody() {
-    $view=\Yii::$app->view;
+  public function getBeginBody(): string {
+    $view = \Yii::$app->view;
     if(!$view || !$view->hasMethod('beginBody')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -29,10 +29,10 @@ class Html extends Helper {
 
   /**
    * Returns the tag marking the ending of an HTML body section.
-   * @return string The tag marking the ending of an HTML body section.
+   * @return The tag marking the ending of an HTML body section.
    */
-  public function getEndBody() {
-    $view=\Yii::$app->view;
+  public function getEndBody(): string {
+    $view = \Yii::$app->view;
     if(!$view || !$view->hasMethod('endBody')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -42,10 +42,10 @@ class Html extends Helper {
 
   /**
    * Returns the tag marking the position of an HTML head section.
-   * @return string The tag marking the position of an HTML head section.
+   * @return The tag marking the position of an HTML head section.
    */
-  public function getHead() {
-    $view=\Yii::$app->view;
+  public function getHead(): string {
+    $view = \Yii::$app->view;
     if(!$view || !$view->hasMethod('head')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -55,31 +55,31 @@ class Html extends Helper {
 
   /**
    * Returns a function converting Markdown into HTML.
-   * @return Closure A function converting Markdown into HTML.
+   * @return A function converting Markdown into HTML.
    */
-  public function getMarkdown() {
+  public function getMarkdown(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'markdown', ['flavor'=>Markdown::$defaultFlavor]);
+      $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::process($args['markdown'], $args['flavor']);
     };
   }
 
   /**
    * Returns a function converting Markdown into HTML but only parsing inline elements.
-   * @return Closure A function converting Markdown into HTML but only parsing inline elements.
+   * @return A function converting Markdown into HTML but only parsing inline elements.
    */
-  public function getMarkdownParagraph() {
+  public function getMarkdownParagraph(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'markdown', ['flavor'=>Markdown::$defaultFlavor]);
+      $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::processParagraph($args['markdown'], $args['flavor']);
     };
   }
 
   /**
    * Returns a function removing whitespace characters between HTML tags.
-   * @return Closure A function removing whitespaces between HTML tags.
+   * @return A function removing whitespaces between HTML tags.
    */
-  public function getSpaceless() {
+  public function getSpaceless(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       return $this->captureOutput(function() use($helper, $value) {
         Spaceless::begin();
@@ -91,12 +91,12 @@ class Html extends Helper {
 
   /**
    * Returns a function setting the view title.
-   * @return Closure A function setting the view title.
+   * @return A function setting the view title.
    */
-  public function getViewTitle() {
+  public function getViewTitle(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $view=\Yii::$app->view;
-      if($view && $view->canSetProperty('title')) $view->title=trim($helper->render($value));
+      $view = \Yii::$app->view;
+      if($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };
   }
 }

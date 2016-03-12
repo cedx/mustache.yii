@@ -15,22 +15,22 @@ class HelperStub extends Helper {
 
   /**
    * Returns the output sent by the call of the specified function.
-   * @param callable $callback The function to invoke.
-   * @return string The captured output.
+   * @param $callback The function to invoke.
+   * @return The captured output.
    */
-  public function captureOutput($callback) {
+  public function captureOutput(callable $callback): string {
     return parent::captureOutput($callback);
   }
 
   /**
    * Parses the arguments of a parametrized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
-   * @param string $text The section content specifying the helper arguments.
-   * @param string $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
-   * @param array $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
-   * @return array The parsed arguments as an associative array.
+   * @param $text The section content specifying the helper arguments.
+   * @param $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
+   * @param $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
+   * @return The parsed arguments as an associative array.
    */
-  public function parseArguments($text, $defaultArgument, array $defaultValues = []) {
+  public function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
     return parent::parseArguments($text, $defaultArgument, $defaultValues);
   }
 }

@@ -12,17 +12,17 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * Initializes a new instance of the class.
-   * @param yii::mustache::ViewRenderer $renderer The instance used to render the views.
+   * @param $renderer The instance used to render the views.
    */
   public function __construct(ViewRenderer $renderer) {
-    $this->renderer=$renderer;
+    $this->renderer = $renderer;
   }
 
   /**
    * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
    */
-  const CACHE_KEY_PREFIX=__CLASS__;
+  const CACHE_KEY_PREFIX = __CLASS__;
 
   /**
    * @var yii::mustache::ViewRenderer $renderer
@@ -32,12 +32,13 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * Caches and loads a compiled view.
-   * @param string $key The key identifying the view to be cached.
-   * @param string $value The view to be cached.
+   * @param $key The key identifying the view to be cached.
+   * @param $value The view to be cached.
    */
   public function cache($key, $value) {
-    $cache=($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
-    if(!$cache) eval('?>'.$value);
+    $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    if(!$cache)
+      eval('?>'.$value);
     else {
       $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->renderer->cachingDuration);
       $this->load($key);
@@ -46,12 +47,12 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * Loads a compiled view from cache.
-   * @param string $key The key identifying the view to be loaded.
-   * @return bool `true` if the view was successfully loaded, otherwise `false`.
+   * @param $key The key identifying the view to be loaded.
+   * @return `true` if the view was successfully loaded, otherwise `false`.
    */
-  public function load($key) {
-    $cache=($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
-    $key=static::CACHE_KEY_PREFIX.$key;
+  public function load($key): bool {
+    $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    $key = static::CACHE_KEY_PREFIX.$key;
     if(!$cache || !$cache->exists($key)) return false;
 
     eval('?>'.$cache[$key]);

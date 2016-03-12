@@ -6,8 +6,8 @@
 namespace yii\test\mustache;
 
 // Dependencies.
+use yii\base\InvalidParamException;
 use yii\mustache\Logger;
-use yii\mustache\ViewRenderer;
 
 /**
  * Tests the features of the `yii\mustache\Logger` class.
@@ -24,7 +24,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase {
    * Tests the `log` method.
    */
   public function testLog() {
-    $this->setExpectedException('yii\base\InvalidParamException');
+    $this->expectException(InvalidParamException::class);
     $this->model->log('dummy', 'Hello World!');
   }
 

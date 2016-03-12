@@ -6,8 +6,8 @@
 namespace yii\test\mustache;
 
 // Dependencies.
-use yii\mustache\Loader;
-use yii\mustache\ViewRenderer;
+use yii\base\InvalidCallException;
+use yii\mustache\{Loader, ViewRenderer};
 
 /**
  * Publicly exposes the features of the `yii\mustache\Loader class.
@@ -16,10 +16,10 @@ class LoaderStub extends Loader {
 
   /**
    * Finds the view file based on the given view name.
-   * @param string $name The view name.
-   * @return string The view file path.
+   * @param $name The view name.
+   * @return The view file path.
    */
-  public function findViewFile($name) {
+  public function findViewFile(string $name): string {
     return parent::findViewFile($name);
   }
 }
@@ -42,7 +42,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
     $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
     $this->assertEquals($expected, $this->model->findViewFile('//view'));
 
-    $this->setExpectedException('yii\base\InvalidCallException');
+    $this->expectException(InvalidCallException::class);
     $this->model->findViewFile('/view');
   }
 
@@ -50,7 +50,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
    * Tests the `load` method.
    */
   public function testLoad() {
-    $this->setExpectedException('yii\base\InvalidCallException');
+    $this->expectException(InvalidCallException::class);
     $this->model->load('view');
   }
 

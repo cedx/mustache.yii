@@ -6,8 +6,7 @@
 namespace yii\test\mustache;
 
 // Dependencies.
-use yii\mustache\Cache;
-use yii\mustache\ViewRenderer;
+use yii\mustache\{Cache, ViewRenderer};
 
 /**
  * Tests the features of the `yii\mustache\Cache` class.

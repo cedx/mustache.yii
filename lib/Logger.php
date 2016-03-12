@@ -31,9 +31,9 @@ class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
    * Logs a message.
-   * @param string $level The logging level.
-   * @param string $message The message to be logged.
-   * @param array $context The log context.
+   * @param $level The logging level.
+   * @param $message The message to be logged.
+   * @param $context The log context.
    * @throws yii::base::InvalidParamException The specified logging level is unknown.
    */
   public function log($level, $message, array $context = array()) {
