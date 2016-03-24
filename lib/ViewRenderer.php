@@ -7,7 +7,7 @@ namespace yii\mustache;
 
 // Dependencies.
 use yii\base\InvalidCallException;
-use yii\helpers\{ArrayHelper, FileHelper};
+use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -89,7 +89,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'cache' => new Cache($this),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
-      'escape' => ['yii\helpers\Html', 'encode'],
+      'escape' => [Html::class, 'encode'],
       'helpers' => ArrayHelper::merge($helpers, $this->helpers),
       'partials_loader' => new Loader($this),
       'strict_callables' => true
