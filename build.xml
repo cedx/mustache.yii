@@ -26,7 +26,7 @@
   </target>
 
   <target name="lint" description="Performs static analysis of source code.">
-    <phpmd pharlocation="/usr/share/php/phpmd.phar" rulesets="codesize,controversial,design,naming,unusedcode">
+    <phpmd pharlocation="/usr/local/share/php/phpmd.phar" rulesets="codesize,controversial,design,naming,unusedcode">
       <fileset dir="." includes="lib/**/*.php"/>
       <fileset dir="." includes="test/**/*.php"/>
       <formatter type="text" usefile="false"/>
