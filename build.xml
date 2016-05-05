@@ -26,14 +26,14 @@
   </target>
 
   <target name="lint" description="Performs static analysis of source code.">
-    <phpmd pharlocation="/usr/local/share/php/phpmd.phar" rulesets="codesize,controversial,design,naming,unusedcode">
-      <fileset dir="." includes="lib/**/*.php"/>
-      <fileset dir="." includes="test/**/*.php"/>
-      <formatter type="text" usefile="false"/>
-    </phpmd>
+    <exec executable="bin/phpmd" passthru="true">
+      <arg value="lib,test"/>
+      <arg value="text"/>
+      <arg value="codesize,controversial,design,naming,unusedcode"/>
+    </exec>
   </target>
 
   <target name="test" description="Runs the unit tests.">
-    <exec executable="phpunit" passthru="true"/>
+    <exec executable="bin/phpunit" passthru="true"/>
   </target>
 </project>

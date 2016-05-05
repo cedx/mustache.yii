@@ -30,6 +30,7 @@
     "yiisoft/yii2": "^2.0.8"
   },
   "require-dev": {
+    "phpmd/phpmd": "^2.4.3",
     "phpunit/phpunit": "^5.3.2"
   },
   "support": {
