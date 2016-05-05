@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache.yii](https://github.com/cedx/mustache.yii) library.
 
+#### Version 0.5.1
+- Removed dependency on external [PHP Mess Detector](https://phpmd.org) and [PHPUnit](https://phpunit.de) interfaces.
+- Upgraded the package dependencies.
+
 #### Version 0.5.0
 - Breaking change: using [PHP 7](http://php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
 
