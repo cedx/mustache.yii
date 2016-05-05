@@ -26,7 +26,7 @@
   </target>
 
   <target name="lint" description="Performs static analysis of source code.">
-    <exec executable="bin/phpmd" passthru="true">
+    <exec executable="vendor/bin/phpmd" passthru="true">
       <arg value="lib,test"/>
       <arg value="text"/>
       <arg value="codesize,controversial,design,naming,unusedcode"/>
@@ -34,6 +34,6 @@
   </target>
 
   <target name="test" description="Runs the unit tests.">
-    <exec executable="bin/phpunit" passthru="true"/>
+    <exec executable="vendor/bin/phpunit" passthru="true"/>
   </target>
 </project>

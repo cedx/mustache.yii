@@ -2,7 +2,6 @@
 /.sonar/
 /*.iml
 /**/.DS_Store
-/bin/
 /composer.lock
 /doc/api/
 /var/
