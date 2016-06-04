@@ -17,11 +17,7 @@
 
   <target name="doc" description="Builds the documentation.">
     <delete dir="doc/api" quiet="true"/>
-
-    <exec executable="doxygen" passthru="true">
-      <arg file="doc/api.doxyfile"/>
-    </exec>
-
+    <exec command="doxygen doc/api.doxyfile" passthru="true"/>
     <copy file="web/favicon.ico" todir="doc/api"/>
   </target>
 
