@@ -1,5 +1,5 @@
-# Mustache.yii
-![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Build](http://img.shields.io/travis/cedx/mustache.yii.svg)
+# Mustache for Yii
+![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Code quality](https://img.shields.io/codacy/grade/dcadb4f053ca41e0bfae8670fb898018.svg) ![Build](http://img.shields.io/travis/cedx/yii2-mustache.svg)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
@@ -76,9 +76,9 @@ that means these will be searched in the same directory as the currently rendere
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
 
 ## See Also
-- [API Reference](http://www.belin.io/mustache.yii/api)
-- [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
-- [Continuous Integration](https://travis-ci.org/cedx/mustache.yii)
+- [API Reference](http://dev.belin.io/yii2-mustache)
+- [Code Quality](https://www.codacy.com/app/cedx/yii2-mustache)
+- [Continuous Integration](https://travis-ci.org/cedx/yii2-mustache)
 
 ## License
-[Mustache.yii](https://github.com/cedx/mustache.yii) is distributed under the Apache License, version 2.0.
+[Mustache for Yii](https://github.com/cedx/yii2-mustache) is distributed under the Apache License, version 2.0.

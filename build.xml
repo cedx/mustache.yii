@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
-<project default="dist" name="mustache.yii">
+<project default="dist" name="yii2-mustache">
   <property name="version" value="0.5.1"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
       <fileset dir="var" includes="*.xml,*.zip"/>
     </delete>
+  </target>
+
+  <target name="cover" description="Generates the code coverage.">
+    <exec command="vendor/bin/codacy-coverage < var/phpunit.coverage.xml" passthru="true"/>
   </target>
 
   <target name="dist" depends="clean" description="Creates a distribution file for this program.">
@@ -30,6 +34,6 @@
   </target>
 
   <target name="test" description="Runs the unit tests.">
-    <exec executable="vendor/bin/phpunit" passthru="true"/>
+    <exec command="vendor/bin/phpunit" passthru="true"/>
   </target>
 </project>

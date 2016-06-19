@@ -1,5 +1,10 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Mustache.yii](https://github.com/cedx/mustache.yii) library.
+This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
+
+#### Version 0.5.1
+- Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
+- Renamed the project according to its [Composer](https://getcomposer.org) package name.
+- Upgraded the package dependencies.
 
 #### Version 0.5.1
 - Removed dependency on external [PHP Mess Detector](https://phpmd.org) and [PHPUnit](https://phpunit.de) interfaces.
@@ -29,7 +34,6 @@ This file contains highlights of what changes on each version of the [Mustache.y
 
 #### Version 0.3.0
 - Breaking change: ported the library API to [Yii](http://www.yiiframework.com) version 2.
-- Fixed [Bitbucket issue #1](https://bitbucket.org/cedx/mustache.yii/issue/1)
 - Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 #### Version 0.2.0
@@ -38,7 +42,7 @@ This file contains highlights of what changes on each version of the [Mustache.y
 #### Version 0.1.1
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
-- Fixed [GitHub issue #1](https://github.com/cedx/mustache.yii/issues/1)
+- Fixed [GitHub issue #1](https://github.com/cedx/yii2-mustache/issues/1)
 - Lowered the required [PHP](http://php.net) version.
 - Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 
