@@ -8,8 +8,11 @@
     </delete>
   </target>
 
-  <target name="cover" description="Generates the code coverage.">
-    <exec command="vendor/bin/codacy-coverage < var/phpunit.coverage.xml" passthru="true"/>
+  <target name="coverage" depends="test" description="Sends the results of the code coverage.">
+    <exec executable="vendor/bin/codacycoverage" passthru="true">
+      <arg value="clover"/>
+      <arg value="var/coverage.xml"/>
+    </exec>
   </target>
 
   <target name="dist" depends="clean" description="Creates a distribution file for this program.">
@@ -34,6 +37,6 @@
   </target>
 
   <target name="test" description="Runs the unit tests.">
-    <exec command="vendor/bin/phpunit" passthru="true"/>
+    <exec executable="vendor/bin/phpunit" passthru="true"/>
   </target>
 </project>
