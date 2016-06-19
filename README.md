@@ -12,8 +12,6 @@ If you plan to play with the sources, you will also need the latest versions of 
 
 - [Doxygen](http://www.doxygen.org)
 - [Phing](https://www.phing.info)
-- [PHP Mess Detector](http://phpmd.org)
-- [PHPUnit](https://phpunit.de)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
