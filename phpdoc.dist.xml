@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpdoc>
-  <title>My project</title>
+  <title>Mustache for Yii</title>
 
   <parser>
     <target>doc/api</target>
