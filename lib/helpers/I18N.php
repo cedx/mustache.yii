@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\mustache\helpers\I18N` class.
  */
 namespace yii\mustache\helpers;
 
-// Dependencies.
+// Module dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 
@@ -15,14 +14,13 @@ use yii\helpers\ArrayHelper;
 class I18N extends Helper {
 
   /**
-   * @var string $defaultCategory
-   * The default message category when no one is supplied.
+   * @var string The default message category when no one is supplied.
    */
   public $defaultCategory = 'app';
 
   /**
    * Returns a function translating a message.
-   * @return A function translating a message.
+   * @return \Closure A function translating a message.
    */
   public function getT(): \Closure {
     return static::getTranslate();
@@ -30,8 +28,8 @@ class I18N extends Helper {
 
   /**
    * Returns a function translating a message.
-   * @return A function translating a message.
-   * @throws yii::base::InvalidCallException The specified message has an invalid format.
+   * @return \Closure A function translating a message.
+   * @throws InvalidCallException The specified message has an invalid format.
    */
   public function getTranslate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {

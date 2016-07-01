@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\ViewRendererTest` class.
  */
 namespace yii\test\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\mustache\ViewRenderer;
 use yii\web\View;
 
@@ -15,7 +14,7 @@ use yii\web\View;
 class ViewRendererTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::mustache::ViewRenderer $model
+   * @var yii\mustache\ViewRenderer $model
    * The data context of the tests.
    */
   private $model;

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<phpdoc>
+  <title>My project</title>
+
+  <parser>
+    <target>doc/api</target>
+  </parser>
+
+  <transformer>
+    <target>doc/api</target>
+  </transformer>
+
+  <transformations>
+    <template name="clean"/>
+  </transformations>
+
+  <files>
+    <directory>lib</directory>
+  </files>
+</phpdoc>

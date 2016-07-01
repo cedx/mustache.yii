@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="dist" name="yii2-mustache">
-  <property name="version" value="0.5.1"/>
+  <property name="version" value="0.5.2"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
@@ -24,7 +24,8 @@
 
   <target name="doc" description="Builds the documentation.">
     <delete dir="doc/api" quiet="true"/>
-    <exec command="doxygen doc/api.doxyfile" passthru="true"/>
+    <exec executable="vendor/bin/phpdoc" passthru="true"/>
+    <copy file="web/apple-touch-icon.png" todir="doc/api"/>
     <copy file="web/favicon.ico" todir="doc/api"/>
   </target>
 

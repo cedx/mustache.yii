@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+#### Version 0.5.2
+- Replaced [Doxygen](http://www.doxygen.org) documentation generator by [phpDocumentor](https://www.phpdoc.org).
+
 #### Version 0.5.1
 - Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 - Renamed the project according to its [Composer](https://getcomposer.org) package name.

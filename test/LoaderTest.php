@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\LoaderTest` class.
  */
 namespace yii\test\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\base\InvalidCallException;
 use yii\mustache\{Loader, ViewRenderer};
 
@@ -30,7 +29,7 @@ class LoaderStub extends Loader {
 class LoaderTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::test::mustache::LoaderStub $model
+   * @var yii\test::mustache::LoaderStub $model
    * The data context of the tests.
    */
   private $model;

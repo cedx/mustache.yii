@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\LoggerTest` class.
  */
 namespace yii\test\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\base\InvalidParamException;
 use yii\mustache\Logger;
 
@@ -15,7 +14,7 @@ use yii\mustache\Logger;
 class LoggerTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::mustache::Logger $model
+   * @var yii\mustache\Logger $model
    * The data context of the tests.
    */
   private $model;

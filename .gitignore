@@ -4,5 +4,7 @@
 /**/.DS_Store
 /composer.lock
 /doc/api/
+/phpdoc.xml
+/phpunit.xml
 /var/
 /vendor/

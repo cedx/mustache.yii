@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\mustache\helpers\Format` class.
  */
 namespace yii\mustache\helpers;
 
-// Dependencies.
+// Module dependencies.
 use yii\helpers\Html as HtmlHelper;
 
 /**
@@ -15,7 +14,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as boolean.
-   * @return A function formatting a value as boolean.
+   * @return \Closure A function formatting a value as boolean.
    */
   public function getBoolean(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -25,7 +24,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as currency number.
-   * @return A function formatting a value as currency number.
+   * @return \Closure A function formatting a value as currency number.
    */
   public function getCurrency(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -41,7 +40,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as date.
-   * @return A function formatting a value as date.
+   * @return \Closure A function formatting a value as date.
    */
   public function getDate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -52,7 +51,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as datetime.
-   * @return A function formatting a value as datetime.
+   * @return \Closure A function formatting a value as datetime.
    */
   public function getDateTime(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -63,7 +62,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as decimal number.
-   * @return A function formatting a value as decimal number.
+   * @return \Closure A function formatting a value as decimal number.
    */
   public function getDecimal(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -79,7 +78,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as integer number by removing any decimal digits without rounding.
-   * @return A function formatting a value as integer number without rounding.
+   * @return \Closure A function formatting a value as integer number without rounding.
    */
   public function getInteger(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -94,7 +93,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as HTML-encoded plain text with newlines converted into breaks.
-   * @return A function formatting a value as HTML-encoded text with newlines converted into breaks.
+   * @return \Closure A function formatting a value as HTML-encoded text with newlines converted into breaks.
    */
   public function getNtext(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -105,7 +104,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as percent number with `%` sign.
-   * @return A function formatting a value as percent number.
+   * @return \Closure A function formatting a value as percent number.
    */
   public function getPercent(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -121,7 +120,7 @@ class Format extends Helper {
 
   /**
    * Returns a helper function formatting a value as time.
-   * @return A function formatting a value as time.
+   * @return \Closure A function formatting a value as time.
    */
   public function getTime(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {

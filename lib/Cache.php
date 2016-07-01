@@ -1,6 +1,5 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\mustache\Cache` class.
  */
 namespace yii\mustache;
@@ -11,29 +10,27 @@ namespace yii\mustache;
 class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
+   * @var string The string prefixed to every cache key in order to avoid name collisions.
+   */
+  const CACHE_KEY_PREFIX = __CLASS__;
+
+  /**
+   * @var ViewRenderer The instance used to render the views.
+   */
+  private $renderer;
+
+  /**
    * Initializes a new instance of the class.
-   * @param $renderer The instance used to render the views.
+   * @param ViewRenderer $renderer The instance used to render the views.
    */
   public function __construct(ViewRenderer $renderer) {
     $this->renderer = $renderer;
   }
 
   /**
-   * @var string CACHE_KEY_PREFIX
-   * The string prefixed to every cache key in order to avoid name collisions.
-   */
-  const CACHE_KEY_PREFIX = __CLASS__;
-
-  /**
-   * @var yii::mustache::ViewRenderer $renderer
-   * The instance used to render the views.
-   */
-  private $renderer;
-
-  /**
    * Caches and loads a compiled view.
-   * @param $key The key identifying the view to be cached.
-   * @param $value The view to be cached.
+   * @param string $key The key identifying the view to be cached.
+   * @param string $value The view to be cached.
    */
   public function cache($key, $value) {
     $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
@@ -47,8 +44,8 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * Loads a compiled view from cache.
-   * @param $key The key identifying the view to be loaded.
-   * @return `true` if the view was successfully loaded, otherwise `false`.
+   * @param string $key The key identifying the view to be loaded.
+   * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key): bool {
     $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);

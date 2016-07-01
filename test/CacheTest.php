@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\CacheTest` class.
  */
 namespace yii\test\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\mustache\{Cache, ViewRenderer};
 
 /**
@@ -14,7 +13,7 @@ use yii\mustache\{Cache, ViewRenderer};
 class CacheTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::mustache::Cache $model
+   * @var yii\mustache\Cache $model
    * The data context of the tests.
    */
   private $model;

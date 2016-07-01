@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\mustache\Loader` class.
  */
 namespace yii\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\base\{InvalidCallException, InvalidParamException, Object};
 use yii\helpers\FileHelper;
 
@@ -15,42 +14,38 @@ use yii\helpers\FileHelper;
 class Loader extends Object implements \Mustache_Loader {
 
   /**
+   * @var string The string prefixed to every cache key in order to avoid name collisions.
+   */
+  const CACHE_KEY_PREFIX = __CLASS__;
+
+  /**
+   * @var string The default extension of template files.
+   */
+  const DEFAULT_EXTENSION = 'mustache';
+
+  /**
+   * @var ViewRenderer The instance used to render the views.
+   */
+  private $renderer;
+
+  /**
+   * @var string[] The loaded views.
+   */
+  private $views = [];
+
+  /**
    * Initializes a new instance of the class.
-   * @param $renderer The instance used to render the views.
+   * @param ViewRenderer $renderer The instance used to render the views.
    */
   public function __construct(ViewRenderer $renderer) {
     $this->renderer = $renderer;
   }
 
   /**
-   * @var string CACHE_KEY_PREFIX
-   * The string prefixed to every cache key in order to avoid name collisions.
-   */
-  const CACHE_KEY_PREFIX = __CLASS__;
-
-  /**
-   * @var string DEFAULT_EXTENSION
-   * The default extension of template files.
-   */
-  const DEFAULT_EXTENSION = 'mustache';
-
-  /**
-   * @var yii::mustache::ViewRenderer $renderer
-   * The instance used to render the views.
-   */
-  private $renderer;
-
-  /**
-   * @var array $views
-   * The loaded views.
-   */
-  private $views = [];
-
-  /**
    * Loads the view with the specified name.
-   * @param $name The view name.
-   * @return The view contents.
-   * @throws yii::base::InvalidCallException Unable to locate the view file.
+   * @param string $name The view name.
+   * @return string The view contents.
+   * @throws InvalidCallException Unable to locate the view file.
    */
   public function load($name): string {
     if(!isset($this->views[$name])) {
@@ -74,10 +69,9 @@ class Loader extends Object implements \Mustache_Loader {
 
   /**
    * Finds the view file based on the given view name.
-   * @param $name The view name.
-   * @return The view file path.
-   * @throws yii::base::InvalidCallException Unable to locate the view file.
-   * @throws yii::base::InvalidParamException The view name is empty.
+   * @param string $name The view name.
+   * @return string The view file path.
+   * @throws \BadMethodCallException Unable to locate the view file.
    */
   protected function findViewFile(string $name): string {
     if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');

@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\FormatTest` class.
  */
 namespace yii\test\mustache\helpers;
 
-// Dependencies.
+// Module dependencies.
 use yii\mustache\helpers\Format;
 
 /**

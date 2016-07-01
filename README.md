@@ -8,10 +8,7 @@ This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache
 
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
-If you plan to play with the sources, you will also need the latest versions of the following products:
-
-- [Doxygen](http://www.doxygen.org)
-- [Phing](https://www.phing.info)
+If you plan to play with the sources, you will also need the [Phing](https://www.phing.info) latest version.
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
@@ -74,7 +71,6 @@ that means these will be searched in the same directory as the currently rendere
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
 
 ## See Also
-- [API Reference](http://dev.belin.io/yii2-mustache)
 - [Code Quality](https://www.codacy.com/app/cedx/yii2-mustache)
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-mustache)
 

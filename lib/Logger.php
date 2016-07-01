@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\mustache\Logger` class.
  */
 namespace yii\mustache;
 
-// Dependencies.
+// Module dependencies.
 use yii\base\InvalidParamException;
 use yii\log\Logger as YiiLogger;
 
@@ -15,8 +14,7 @@ use yii\log\Logger as YiiLogger;
 class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
-   * @var array $levels
-   * Mappings between Mustache levels and Yii ones.
+   * @var int[] Mappings between Mustache levels and Yii ones.
    */
   private static $levels = [
     \Mustache_Logger::ALERT => YiiLogger::LEVEL_ERROR,
@@ -31,12 +29,12 @@ class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
    * Logs a message.
-   * @param $level The logging level.
-   * @param $message The message to be logged.
-   * @param $context The log context.
-   * @throws yii::base::InvalidParamException The specified logging level is unknown.
+   * @param int $level The logging level.
+   * @param string $message The message to be logged.
+   * @param mixed[] $context The log context.
+   * @throws InvalidParamException The specified logging level is unknown.
    */
-  public function log($level, $message, array $context = array()) {
+  public function log($level, $message, array $context = []) {
     if(!isset(static::$levels[$level])) throw new InvalidParamException(\Yii::t(
       'yii',
       'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',

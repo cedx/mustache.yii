@@ -32,6 +32,7 @@
   },
   "require-dev": {
     "codacy/coverage": "^1.0.4",
+    "phpdocumentor/phpdocumentor": "^2.9.0",
     "phpmd/phpmd": "^2.4.3",
     "phpunit/phpunit": "^5.4.6"
   },

@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\HtmlTest` class.
  */
 namespace yii\test\mustache\helpers;
 
-// Dependencies.
+// Module dependencies.
 use yii\mustache\helpers\Html;
 use yii\web\View;
 

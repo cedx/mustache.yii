@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\mustache\helpers\HelperTest` class.
  */
 namespace yii\test\mustache\helpers;
 
-// Dependencies.
+// Module dependencies.
 use yii\mustache\helpers\Helper;
 
 /**
@@ -15,7 +14,7 @@ class HelperStub extends Helper {
 
   /**
    * Returns the output sent by the call of the specified function.
-   * @param $callback The function to invoke.
+   * @param callable $callback The function to invoke.
    * @return The captured output.
    */
   public function captureOutput(callable $callback): string {

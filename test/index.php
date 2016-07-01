@@ -1,6 +1,5 @@
 <?php
 /**
- * @file
  * Entry point of the unit tests.
  */
 use yii\console\Application;
