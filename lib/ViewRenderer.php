@@ -39,7 +39,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   private $engine;
 
   /**
-   * @var mixed[] The values prepended to the context stack.
+   * @var array The values prepended to the context stack.
    */
   private $helpers = [];
 
@@ -97,7 +97,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * Renders a view file.
    * @param \yii\base\View $view The view object used for rendering the file.
    * @param string $file The view file.
-   * @param mixed[] $params The parameters to be passed to the view file.
+   * @param array $params The parameters to be passed to the view file.
    * @return string The rendering result.
    * @throws InvalidCallException The specified view file is not found.
    */
@@ -121,7 +121,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Sets the values to prepend to the context stack, so they will be available in any view loaded by this instance.
-   * @param mixed[] $value The list of the values to prepend to the context stack.
+   * @param array $value The list of the values to prepend to the context stack.
    */
   public function setHelpers(array $value) {
     if($this->isInitialized) $this->engine->setHelpers($value);
