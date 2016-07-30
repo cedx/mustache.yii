@@ -3,11 +3,11 @@
   <title>Mustache for Yii</title>
 
   <parser>
-    <target>doc/api</target>
+    <target>api</target>
   </parser>
 
   <transformer>
-    <target>doc/api</target>
+    <target>api</target>
   </transformer>
 
   <transformations>
@@ -15,6 +15,6 @@
   </transformations>
 
   <files>
-    <directory>lib</directory>
+    <directory>../lib</directory>
   </files>
 </phpdoc>
