@@ -10,7 +10,6 @@
 *.json text
 *.md text
 *.php text diff=php
-*.properties text
 *.txt text
 *.xml text
 
