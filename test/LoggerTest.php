@@ -4,7 +4,6 @@
  */
 namespace yii\test\mustache;
 
-// Module dependencies.
 use yii\base\InvalidParamException;
 use yii\mustache\Logger;
 

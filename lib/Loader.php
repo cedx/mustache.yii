@@ -4,7 +4,6 @@
  */
 namespace yii\mustache;
 
-// Module dependencies.
 use yii\base\{InvalidCallException, InvalidParamException, Object};
 use yii\helpers\FileHelper;
 

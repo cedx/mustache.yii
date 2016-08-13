@@ -3,8 +3,6 @@
  * Implementation of the `yii\test\mustache\FormatTest` class.
  */
 namespace yii\test\mustache\helpers;
-
-// Module dependencies.
 use yii\mustache\helpers\Format;
 
 /**

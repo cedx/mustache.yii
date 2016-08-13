@@ -3,8 +3,6 @@
  * Implementation of the `yii\test\mustache\CacheTest` class.
  */
 namespace yii\test\mustache;
-
-// Module dependencies.
 use yii\mustache\{Cache, ViewRenderer};
 
 /**

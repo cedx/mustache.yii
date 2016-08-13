@@ -4,7 +4,6 @@
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 

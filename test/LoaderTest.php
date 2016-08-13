@@ -4,7 +4,6 @@
  */
 namespace yii\test\mustache;
 
-// Module dependencies.
 use yii\base\InvalidCallException;
 use yii\mustache\{Loader, ViewRenderer};
 

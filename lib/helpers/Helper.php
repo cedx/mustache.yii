@@ -4,7 +4,6 @@
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
 use yii\base\{InvalidParamException, Object};
 use yii\helpers\{ArrayHelper, Json};
 

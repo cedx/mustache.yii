@@ -4,7 +4,6 @@
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
 use yii\helpers\Markdown;
 use yii\widgets\Spaceless;
 

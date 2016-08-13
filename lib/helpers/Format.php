@@ -3,8 +3,6 @@
  * Implementation of the `yii\mustache\helpers\Format` class.
  */
 namespace yii\mustache\helpers;
-
-// Module dependencies.
 use yii\helpers\Html as HtmlHelper;
 
 /**

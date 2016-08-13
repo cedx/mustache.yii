@@ -4,7 +4,6 @@
  */
 namespace yii\test\mustache\helpers;
 
-// Module dependencies.
 use yii\mustache\helpers\Html;
 use yii\web\View;
 

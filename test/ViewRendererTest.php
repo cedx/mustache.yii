@@ -4,7 +4,6 @@
  */
 namespace yii\test\mustache;
 
-// Module dependencies.
 use yii\mustache\ViewRenderer;
 use yii\web\View;
 
