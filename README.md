@@ -75,4 +75,4 @@ In the second case we're using path aliases. All the Yii aliases such as `@app` 
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-mustache)
 
 ## License
-[Mustache for Yii](https://github.com/cedx/yii2-mustache) is distributed under the Apache License, version 2.0.
+[Mustache for Yii](https://packagist.org/packages/cedx/yii2-mustache) is distributed under the Apache License, version 2.0.

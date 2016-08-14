@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
+This file contains highlights of what changes on each version of the [Mustache for Yii](https://packagist.org/packages/cedx/yii2-mustache) library.
 
 #### Version 0.5.2
 - Replaced [Doxygen](http://www.doxygen.org) documentation generator by [phpDocumentor](https://www.phpdoc.org).
