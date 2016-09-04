@@ -49,7 +49,7 @@ class Loader extends Object implements \Mustache_Loader {
   public function load($name): string {
     if(!isset($this->views[$name])) {
       $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
-      $key = static::CACHE_KEY_PREFIX.$name;
+      $key = static::CACHE_KEY_PREFIX . $name;
 
       if($cache && $cache->exists($key)) $output = $cache[$key];
       else {

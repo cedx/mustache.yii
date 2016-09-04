@@ -35,9 +35,9 @@ class Cache extends \Mustache_Cache_AbstractCache {
   public function cache($key, $value) {
     $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
     if(!$cache)
-      eval('?>'.$value);
+      eval('?>' . $value);
     else {
-      $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->renderer->cachingDuration);
+      $cache->set(static::CACHE_KEY_PREFIX . $key, $value, $this->renderer->cachingDuration);
       $this->load($key);
     }
   }
@@ -49,10 +49,10 @@ class Cache extends \Mustache_Cache_AbstractCache {
    */
   public function load($key): bool {
     $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
-    $key = static::CACHE_KEY_PREFIX.$key;
+    $key = static::CACHE_KEY_PREFIX . $key;
     if(!$cache || !$cache->exists($key)) return false;
 
-    eval('?>'.$cache[$key]);
+    eval('?>' . $cache[$key]);
     return true;
   }
 }

@@ -39,7 +39,7 @@ class I18N extends Helper {
       ];
 
       $output = trim($value);
-      $isJson = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output)-1) == '}';
+      $isJson = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output) - 1) == '}';
 
       if($isJson) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
@@ -50,7 +50,7 @@ class I18N extends Helper {
 
         $args = ArrayHelper::merge($defaultArgs, [
           'category' => $length == 1 ? $this->defaultCategory : $parts[0],
-          'message' => $parts[$length-1]
+          'message' => $parts[$length - 1]
         ]);
       }
 

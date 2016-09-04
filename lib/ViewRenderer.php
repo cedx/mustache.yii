@@ -51,7 +51,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
    * @return \Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
-  public function getHelpers(): \Mustache_HelperCollection {
+  public function getHelpers() {
     return $this->isInitialized ? $this->engine->getHelpers() : null;
   }
 
@@ -102,7 +102,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    */
   public function render($view, $file, $params): string {
     $cache = $this->cacheId ? \Yii::$app->get($this->cacheId) : null;
-    $key = static::CACHE_KEY_PREFIX.$file;
+    $key = static::CACHE_KEY_PREFIX . $file;
 
     if($cache && $cache->exists($key))
       $output = $cache[$key];
