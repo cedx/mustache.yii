@@ -1,5 +1,5 @@
 # Mustache for Yii
-![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Code quality](https://img.shields.io/codacy/grade/9f270f99bdd4420e9ca90d5d8d5dd33f.svg) ![Build](http://img.shields.io/travis/cedx/yii2-mustache.svg)
+![Release](https://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Code quality](https://img.shields.io/codacy/grade/9f270f99bdd4420e9ca90d5d8d5dd33f.svg) ![Build](https://img.shields.io/travis/cedx/yii2-mustache.svg)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
