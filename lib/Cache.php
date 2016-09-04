@@ -33,7 +33,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param string $value The view to be cached.
    */
   public function cache($key, $value) {
-    $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
     if(!$cache)
       eval('?>'.$value);
     else {
@@ -48,7 +48,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key): bool {
-    $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
     $key = static::CACHE_KEY_PREFIX.$key;
     if(!$cache || !$cache->exists($key)) return false;
 

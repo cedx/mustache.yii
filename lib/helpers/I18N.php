@@ -39,7 +39,7 @@ class I18N extends Helper {
       ];
 
       $output = trim($value);
-      $isJson = (mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output)-1) == '}');
+      $isJson = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output)-1) == '}';
 
       if($isJson) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {

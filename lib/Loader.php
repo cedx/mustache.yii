@@ -48,7 +48,7 @@ class Loader extends Object implements \Mustache_Loader {
    */
   public function load($name): string {
     if(!isset($this->views[$name])) {
-      $cache = ($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+      $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
       $key = static::CACHE_KEY_PREFIX.$name;
 
       if($cache && $cache->exists($key)) $output = $cache[$key];
@@ -74,21 +74,23 @@ class Loader extends Object implements \Mustache_Loader {
    */
   protected function findViewFile(string $name): string {
     if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
+
+    $appViewPath = \Yii::$app->getViewPath();
     $controller = \Yii::$app->controller;
 
-    if(mb_substr($name, 0, 2) == '//') $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
+    if(mb_substr($name, 0, 2) == '//') $file = $appViewPath . DIRECTORY_SEPARATOR . ltrim($name, '/');
     else if($name[0] == '/') {
       if(!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
-      $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
+      $file = $controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($name, '/');
     }
     else {
-      $viewPath = ($controller ? $controller->viewPath : \Yii::$app->viewPath);
+      $viewPath = $controller ? $controller->getViewPath() : $appViewPath;
       $file = \Yii::getAlias("$viewPath/$name");
     }
 
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if($view && $view->theme) $file = $view->theme->applyTo($file);
-    if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+    if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.' . ($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
     return $file;
   }
 }

@@ -17,7 +17,7 @@ class Html extends Helper {
    * @return string The tag marking the beginning of an HTML body section.
    */
   public function getBeginBody(): string {
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if(!$view || !$view->hasMethod('beginBody')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -30,7 +30,7 @@ class Html extends Helper {
    * @return string The tag marking the ending of an HTML body section.
    */
   public function getEndBody(): string {
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if(!$view || !$view->hasMethod('endBody')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -43,7 +43,7 @@ class Html extends Helper {
    * @return string The tag marking the position of an HTML head section.
    */
   public function getHead(): string {
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if(!$view || !$view->hasMethod('head')) return '';
 
     return $this->captureOutput(function() use($view) {
@@ -93,7 +93,7 @@ class Html extends Helper {
    */
   public function getViewTitle(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $view = \Yii::$app->view;
+      $view = \Yii::$app->getView();
       if($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };
   }

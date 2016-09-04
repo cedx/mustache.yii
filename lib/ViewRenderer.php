@@ -101,7 +101,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @throws InvalidCallException The specified view file is not found.
    */
   public function render($view, $file, $params): string {
-    $cache = ($this->cacheId ? \Yii::$app->get($this->cacheId) : null);
+    $cache = $this->cacheId ? \Yii::$app->get($this->cacheId) : null;
     $key = static::CACHE_KEY_PREFIX.$file;
 
     if($cache && $cache->exists($key))
