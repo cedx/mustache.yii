@@ -27,14 +27,14 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "mustache/mustache": "^2.10.0",
+    "mustache/mustache": "^2.11.1",
     "yiisoft/yii2": "^2.0.9"
   },
   "require-dev": {
     "codacy/coverage": "^1.0.5",
     "phpdocumentor/phpdocumentor": "^2.9.0",
     "phpmd/phpmd": "^2.4.3",
-    "phpunit/phpunit": "^5.5.0"
+    "phpunit/phpunit": "^5.5.4"
   },
   "support": {
     "issues": "https://github.com/cedx/yii2-mustache/issues"
