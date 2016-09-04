@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="dist" name="yii2-mustache">
-  <property name="version" value="0.5.2"/>
+  <property name="version" value="0.5.3"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>

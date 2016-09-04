@@ -1,17 +1,21 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://packagist.org/packages/cedx/yii2-mustache) library.
 
+#### Version 0.5.3
+- Code optimization.
+- Updated the package dependencies.
+
 #### Version 0.5.2
 - Replaced [Doxygen](http://www.doxygen.org) documentation generator by [phpDocumentor](https://www.phpdoc.org).
 
 #### Version 0.5.1
 - Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 - Renamed the project according to its [Composer](https://getcomposer.org) package name.
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.5.1
 - Removed dependency on external [PHP Mess Detector](https://phpmd.org) and [PHPUnit](https://phpunit.de) interfaces.
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.5.0
 - Breaking change: using [PHP 7](http://php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
@@ -24,7 +28,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Added new unit tests.
 - Added support for [Travis CI](https://travis-ci.org) continuous integration.
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.4.1
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
