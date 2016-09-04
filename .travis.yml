@@ -4,11 +4,9 @@ sudo: false
 env: YII_ENV="test"
 php: '7.0'
 
-install:
-- composer self-update
+before_install:
 - composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
 - composer global require "fxp/composer-asset-plugin"
-- composer install --no-interaction
 
-script: ./vendor/bin/phpunit
-after_script: ./vendor/bin/codacycoverage clover var/coverage.xml
+script: vendor/bin/phpunit
+after_script: vendor/bin/codacycoverage clover var/coverage.xml
