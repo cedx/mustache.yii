@@ -1,16 +1,16 @@
 <?php
 /**
- * Implementation of the `yii\test\mustache\HtmlTest` class.
+ * Implementation of the `yii\test\mustache\helpers\HTMLTest` class.
  */
 namespace yii\test\mustache\helpers;
 
-use yii\mustache\helpers\Html;
+use yii\mustache\helpers\HTML;
 use yii\web\View;
 
 /**
- * Tests the features of the `yii\mustache\helpers\Html` class.
+ * Tests the features of the `yii\mustache\helpers\HTML` class.
  */
-class HtmlTest extends \PHPUnit_Framework_TestCase {
+class HTMLTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @var Mustache_LambdaHelper $helper
@@ -23,7 +23,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetBeginBody() {
     \Yii::$app->set('view', new View());
-    $this->assertEquals(View::PH_BODY_BEGIN, (new Html())->getBeginBody());
+    $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->getBeginBody());
   }
 
   /**
@@ -31,7 +31,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetEndBody() {
     \Yii::$app->set('view', new View());
-    $this->assertEquals(View::PH_BODY_END, (new Html())->getEndBody());
+    $this->assertEquals(View::PH_BODY_END, (new HTML())->getEndBody());
   }
 
   /**
@@ -39,14 +39,14 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    */
   public function testHead() {
     \Yii::$app->set('view', new View());
-    $this->assertEquals(View::PH_HEAD, (new Html())->getHead());
+    $this->assertEquals(View::PH_HEAD, (new HTML())->getHead());
   }
 
   /**
    * Tests the `getMarkdown` method.
    */
   public function testGetMarkdown() {
-    $closure = (new Html())->getMarkdown();
+    $closure = (new HTML())->getMarkdown();
     $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
 
@@ -54,7 +54,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    * Tests the `getSpaceless` method.
    */
   public function testGetSpaceless() {
-    $closure = (new Html())->getSpaceless();
+    $closure = (new HTML())->getSpaceless();
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
     $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));
   }
@@ -66,7 +66,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
     \Yii::$app->set('view', new View());
     $this->assertNull(\Yii::$app->view->title);
 
-    $closure = (new Html())->getViewTitle();
+    $closure = (new HTML())->getViewTitle();
     $closure('Foo Bar', $this->helper);
     $this->assertEquals('Foo Bar', \Yii::$app->view->title);
   }

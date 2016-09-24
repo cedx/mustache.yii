@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `yii\mustache\helpers\Html` class.
+ * Implementation of the `yii\mustache\helpers\HTML` class.
  */
 namespace yii\mustache\helpers;
 
@@ -10,7 +10,7 @@ use yii\widgets\Spaceless;
 /**
  * Provides a set of methods for generating commonly used HTML tags.
  */
-class Html extends Helper {
+class HTML extends Helper {
 
   /**
    * Returns the tag marking the beginning of an HTML body section.

@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `yii\test\mustache\FormatTest` class.
+ * Implementation of the `yii\test\mustache\helpers\FormatTest` class.
  */
 namespace yii\test\mustache\helpers;
 use yii\mustache\helpers\Format;

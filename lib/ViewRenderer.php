@@ -62,15 +62,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     $helpers = [
       'app' => \Yii::$app,
       'format' => new helpers\Format(),
-      'html' => new helpers\Html(),
+      'html' => new helpers\HTML(),
       'i18n' => new helpers\I18N(),
-      'url' => new helpers\Url(),
+      'url' => new helpers\URL(),
       'yii' => [
         'debug' => YII_DEBUG,
-        'env' => YII_ENV,
-        'env_dev' => YII_ENV_DEV,
-        'env_prod' => YII_ENV_PROD,
-        'env_test' => YII_ENV_TEST
+        'devEnv' => YII_ENV_DEV,
+        'prodEnv' => YII_ENV_PROD,
+        'testEnv' => YII_ENV_TEST
       ]
     ];
 
