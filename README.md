@@ -56,6 +56,7 @@ Within Mustache templates the following variables are always defined:
 - `format`: provides a set of commonly used data formatting methods.
 - `html`: provides a set of methods for generating commonly used HTML tags.
 - `i18n`: provides features related with internationalization (I18N) and localization (L10N).
+- `url`: provides a set of methods for managing URLs.
 
 #### Partials
 There are two ways of referencing partials:

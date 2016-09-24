@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://packagist.org/packages/cedx/yii2-mustache) library.
 
+#### Version 1.0.0
+- First stable release.
+
 #### Version 0.5.3
 - Code optimization.
 - Updated the package dependencies.
