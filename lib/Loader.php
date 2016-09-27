@@ -35,8 +35,10 @@ class Loader extends Object implements \Mustache_Loader {
   /**
    * Initializes a new instance of the class.
    * @param ViewRenderer $renderer The instance used to render the views.
+   * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public function __construct(ViewRenderer $renderer) {
+  public function __construct(ViewRenderer $renderer, $config = []) {
+    parent::__construct($config);
     $this->renderer = $renderer;
   }
 

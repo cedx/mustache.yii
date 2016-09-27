@@ -13,8 +13,7 @@ use yii\helpers\{ArrayHelper, Json};
 abstract class Helper extends Object {
 
   /**
-   * @var string $argumentSeparator
-   * String used to separate the arguments for helpers supporting the "two arguments" syntax.
+   * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.
    */
   public $argumentSeparator = ':';
 
