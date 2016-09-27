@@ -4,7 +4,7 @@
  */
 namespace yii\mustache;
 
-use yii\base\InvalidCallException;
+use yii\base\{InvalidCallException};
 use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**

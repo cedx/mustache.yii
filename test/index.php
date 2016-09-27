@@ -2,7 +2,7 @@
 /**
  * Entry point of the unit tests.
  */
-use yii\console\Application;
+use yii\console\{Application};
 
 // Set the environment.
 define('YII_DEBUG', true);

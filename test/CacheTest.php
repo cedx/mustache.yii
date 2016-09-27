@@ -11,8 +11,7 @@ use yii\mustache\{Cache, ViewRenderer};
 class CacheTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii\mustache\Cache $model
-   * The data context of the tests.
+   * @var Cache The data context of the tests.
    */
   private $model;
 

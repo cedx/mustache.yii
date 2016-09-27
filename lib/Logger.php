@@ -4,8 +4,8 @@
  */
 namespace yii\mustache;
 
-use yii\base\InvalidParamException;
-use yii\log\Logger as YiiLogger;
+use yii\base\{InvalidParamException};
+use yii\log\{Logger as YiiLogger};
 
 /**
  * Component used to log messages from the view engine to the application logger.

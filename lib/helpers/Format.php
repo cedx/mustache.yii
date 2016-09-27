@@ -3,7 +3,7 @@
  * Implementation of the `yii\mustache\helpers\Format` class.
  */
 namespace yii\mustache\helpers;
-use yii\helpers\Html as HtmlHelper;
+use yii\helpers\{Html as HtmlHelper};
 
 /**
  * Provides a set of commonly used data formatting methods.

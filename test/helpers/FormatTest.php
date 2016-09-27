@@ -3,7 +3,7 @@
  * Implementation of the `yii\test\mustache\helpers\FormatTest` class.
  */
 namespace yii\test\mustache\helpers;
-use yii\mustache\helpers\Format;
+use yii\mustache\helpers\{Format};
 
 /**
  * Tests the features of the `yii\mustache\helpers\Format` class.
@@ -11,7 +11,7 @@ use yii\mustache\helpers\Format;
 class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var Mustache_LambdaHelper $helper
+   * @var \Mustache_LambdaHelper $helper
    * The engine used to render strings.
    */
   private $helper;

@@ -4,7 +4,7 @@
  */
 namespace yii\test\mustache;
 
-use yii\base\InvalidCallException;
+use yii\base\{InvalidCallException};
 use yii\mustache\{Loader, ViewRenderer};
 
 /**
@@ -14,8 +14,8 @@ class LoaderStub extends Loader {
 
   /**
    * Finds the view file based on the given view name.
-   * @param $name The view name.
-   * @return The view file path.
+   * @param string $name The view name.
+   * @return string The view file path.
    */
   public function findViewFile(string $name): string {
     return parent::findViewFile($name);
@@ -28,8 +28,7 @@ class LoaderStub extends Loader {
 class LoaderTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii\test::mustache::LoaderStub $model
-   * The data context of the tests.
+   * @var LoaderStub The data context of the tests.
    */
   private $model;
 

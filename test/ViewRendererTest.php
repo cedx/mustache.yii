@@ -4,8 +4,8 @@
  */
 namespace yii\test\mustache;
 
-use yii\mustache\ViewRenderer;
-use yii\web\View;
+use yii\mustache\{ViewRenderer};
+use yii\web\{View};
 
 /**
  * Tests the features of the `yii\mustache\ViewRenderer` class.
@@ -13,8 +13,7 @@ use yii\web\View;
 class ViewRendererTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii\mustache\ViewRenderer $model
-   * The data context of the tests.
+   * @var ViewRenderer The data context of the tests.
    */
   private $model;
 

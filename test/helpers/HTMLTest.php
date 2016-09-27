@@ -4,8 +4,8 @@
  */
 namespace yii\test\mustache\helpers;
 
-use yii\mustache\helpers\HTML;
-use yii\web\View;
+use yii\mustache\helpers\{HTML};
+use yii\web\{View};
 
 /**
  * Tests the features of the `yii\mustache\helpers\HTML` class.
@@ -13,7 +13,7 @@ use yii\web\View;
 class HTMLTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var Mustache_LambdaHelper $helper
+   * @var \Mustache_LambdaHelper $helper
    * The engine used to render strings.
    */
   private $helper;

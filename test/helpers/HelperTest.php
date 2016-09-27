@@ -3,7 +3,7 @@
  * Implementation of the `yii\test\mustache\helpers\HelperTest` class.
  */
 namespace yii\test\mustache\helpers;
-use yii\mustache\helpers\Helper;
+use yii\mustache\helpers\{Helper};
 
 /**
  * Publicly exposes the features of the `yii\mustache\helpers\Helper` class.
