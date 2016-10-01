@@ -4,7 +4,7 @@
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
-      <fileset dir="var" includes="*.xml,*.zip"/>
+      <fileset dir="var" includes="**/*" excludes=".gitkeep"/>
     </delete>
   </target>
 
