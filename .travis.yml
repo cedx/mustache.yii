@@ -1,5 +1,5 @@
-php: '7.0'
 language: php
+php: '7.0'
 
 env: YII_ENV="test"
 sudo: false
