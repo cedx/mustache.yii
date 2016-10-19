@@ -95,7 +95,7 @@ class Format extends Helper {
    */
   public function getNtext(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      if(!isset($value)) return \Yii::$app->getFormatter()->nullDisplay;
+      if (!isset($value)) return \Yii::$app->getFormatter()->nullDisplay;
       return preg_replace('/\r?\n/', '<br>', HtmlHelper::encode($helper->render($value)));
     };
   }

@@ -34,7 +34,7 @@ class Logger extends \Mustache_Logger_AbstractLogger {
    * @throws InvalidParamException The specified logging level is unknown.
    */
   public function log($level, $message, array $context = []) {
-    if(!isset(static::$levels[$level])) throw new InvalidParamException(\Yii::t(
+    if (!isset(static::$levels[$level])) throw new InvalidParamException(\Yii::t(
       'yii',
       'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
       ['enum' => implode(', ', (new \ReflectionClass('\Mustache_Logger'))->getConstants()), 'value' => $level]

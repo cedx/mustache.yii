@@ -49,17 +49,17 @@ class Loader extends Object implements \Mustache_Loader {
    * @throws InvalidCallException Unable to locate the view file.
    */
   public function load($name): string {
-    if(!isset($this->views[$name])) {
+    if (!isset($this->views[$name])) {
       $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
       $key = static::CACHE_KEY_PREFIX . $name;
 
-      if($cache && $cache->exists($key)) $output = $cache[$key];
+      if ($cache && $cache->exists($key)) $output = $cache[$key];
       else {
         $path = FileHelper::localize($this->findViewFile($name));
-        if(!is_file($path)) throw new InvalidCallException(sprintf('The view file "%s" does not exist.', $path));
+        if (!is_file($path)) throw new InvalidCallException(sprintf('The view file "%s" does not exist.', $path));
 
         $output = @file_get_contents($path);
-        if($cache) $cache->set($key, $output, $this->renderer->cachingDuration);
+        if ($cache) $cache->set($key, $output, $this->renderer->cachingDuration);
       }
 
       $this->views[$name] = $output;
@@ -75,14 +75,14 @@ class Loader extends Object implements \Mustache_Loader {
    * @throws \BadMethodCallException Unable to locate the view file.
    */
   protected function findViewFile(string $name): string {
-    if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
+    if (!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
 
     $appViewPath = \Yii::$app->getViewPath();
     $controller = \Yii::$app->controller;
 
-    if(mb_substr($name, 0, 2) == '//') $file = $appViewPath . DIRECTORY_SEPARATOR . ltrim($name, '/');
-    else if($name[0] == '/') {
-      if(!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
+    if (mb_substr($name, 0, 2) == '//') $file = $appViewPath . DIRECTORY_SEPARATOR . ltrim($name, '/');
+    else if ($name[0] == '/') {
+      if (!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
       $file = $controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($name, '/');
     }
     else {
@@ -91,8 +91,8 @@ class Loader extends Object implements \Mustache_Loader {
     }
 
     $view = \Yii::$app->getView();
-    if($view && $view->theme) $file = $view->theme->applyTo($file);
-    if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.' . ($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+    if ($view && $view->theme) $file = $view->theme->applyTo($file);
+    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.' . ($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
     return $file;
   }
 }

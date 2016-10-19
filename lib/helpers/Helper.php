@@ -38,7 +38,7 @@ abstract class Helper extends Object {
    */
   protected function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
     try {
-      if(is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
+      if (is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
       throw new InvalidParamException();
     }
 

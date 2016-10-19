@@ -83,7 +83,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'strict_callables' => true
     ];
 
-    if($this->enableLogging) $options['logger'] = new Logger();
+    if ($this->enableLogging) $options['logger'] = new Logger();
     $this->engine = new \Mustache_Engine($options);
     $this->isInitialized = true;
 
@@ -103,14 +103,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     $cache = $this->cacheId ? \Yii::$app->get($this->cacheId) : null;
     $key = static::CACHE_KEY_PREFIX . $file;
 
-    if($cache && $cache->exists($key))
+    if ($cache && $cache->exists($key))
       $output = $cache[$key];
     else {
       $path = FileHelper::localize($file);
-      if(!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', ['file' => $file]));
+      if (!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', ['file' => $file]));
 
       $output = @file_get_contents($path);
-      if($cache) $cache->set($key, $output, $this->cachingDuration);
+      if ($cache) $cache->set($key, $output, $this->cachingDuration);
     }
 
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);
@@ -122,7 +122,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @param array $value The list of the values to prepend to the context stack.
    */
   public function setHelpers(array $value) {
-    if($this->isInitialized) $this->engine->setHelpers($value);
+    if ($this->isInitialized) $this->engine->setHelpers($value);
     else $this->helpers = $value;
   }
 }

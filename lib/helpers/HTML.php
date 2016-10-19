@@ -18,7 +18,7 @@ class HTML extends Helper {
    */
   public function getBeginBody(): string {
     $view = \Yii::$app->getView();
-    if(!$view || !$view->hasMethod('beginBody')) return '';
+    if (!$view || !$view->hasMethod('beginBody')) return '';
 
     return $this->captureOutput(function() use($view) {
       $view->beginBody();
@@ -31,7 +31,7 @@ class HTML extends Helper {
    */
   public function getEndBody(): string {
     $view = \Yii::$app->getView();
-    if(!$view || !$view->hasMethod('endBody')) return '';
+    if (!$view || !$view->hasMethod('endBody')) return '';
 
     return $this->captureOutput(function() use($view) {
       $view->endBody();
@@ -44,7 +44,7 @@ class HTML extends Helper {
    */
   public function getHead(): string {
     $view = \Yii::$app->getView();
-    if(!$view || !$view->hasMethod('head')) return '';
+    if (!$view || !$view->hasMethod('head')) return '';
 
     return $this->captureOutput(function() use($view) {
       $view->head();
@@ -94,7 +94,7 @@ class HTML extends Helper {
   public function getViewTitle(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $view = \Yii::$app->getView();
-      if($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
+      if ($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };
   }
 }
