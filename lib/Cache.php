@@ -34,8 +34,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    */
   public function cache($key, $value) {
     $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
-    if (!$cache)
-      eval('?>' . $value);
+    if (!$cache) eval('?>' . $value);
     else {
       $cache->set(static::CACHE_KEY_PREFIX . $key, $value, $this->renderer->cachingDuration);
       $this->load($key);

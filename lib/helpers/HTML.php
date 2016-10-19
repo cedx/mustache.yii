@@ -20,7 +20,7 @@ class HTML extends Helper {
     $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('beginBody')) return '';
 
-    return $this->captureOutput(function() use($view) {
+    return $this->captureOutput(function() use ($view) {
       $view->beginBody();
     });
   }
@@ -33,7 +33,7 @@ class HTML extends Helper {
     $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('endBody')) return '';
 
-    return $this->captureOutput(function() use($view) {
+    return $this->captureOutput(function() use ($view) {
       $view->endBody();
     });
   }
@@ -46,7 +46,7 @@ class HTML extends Helper {
     $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('head')) return '';
 
-    return $this->captureOutput(function() use($view) {
+    return $this->captureOutput(function() use ($view) {
       $view->head();
     });
   }
@@ -79,7 +79,7 @@ class HTML extends Helper {
    */
   public function getSpaceless(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return $this->captureOutput(function() use($helper, $value) {
+      return $this->captureOutput(function() use ($helper, $value) {
         Spaceless::begin();
         echo $helper->render($value);
         Spaceless::end();
