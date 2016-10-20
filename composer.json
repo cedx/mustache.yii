@@ -28,7 +28,7 @@
   "require": {
     "php": ">=7.0.0",
     "mustache/mustache": "^2.11.1",
-    "yiisoft/yii2": "^2.0.9"
+    "yiisoft/yii2": "^2.0.10"
   },
   "require-dev": {
     "codacy/coverage": "^1.0.5",
