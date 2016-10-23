@@ -44,7 +44,7 @@ return $this->render('template.mustache', [ 'model' => 'The view model' ]);
 ## Template Syntax
 The best resource to learn Mustache basics is its official documentation you can find at [mustache.github.io](http://mustache.github.io). Additionally there are Yii-specific syntax extensions described below.
 
-#### Variables
+### Variables
 Within Mustache templates the following variables are always defined:
 
 - `app`: the [`Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
@@ -54,13 +54,13 @@ Within Mustache templates the following variables are always defined:
 - `yii.prodEnv`: the `YII_ENV_PROD` constant.
 - `yii.testEnv`: the `YII_ENV_TEST` constant.
 
-#### Lambdas
+### Lambdas
 - `format`: provides a set of commonly used data formatting methods.
 - `html`: provides a set of methods for generating commonly used HTML tags.
 - `i18n`: provides features related with internationalization (I18N) and localization (L10N).
 - `url`: provides a set of methods for managing URLs.
 
-#### Partials
+### Partials
 There are two ways of referencing partials:
 
 ```
