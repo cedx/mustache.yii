@@ -7,7 +7,7 @@ This package provides a view renderer, the `yii\mustache\ViewRenderer` class.
 This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
 
 ## Requirements
-The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
+The latest [PHP](https://secure.php.net) and [Composer](https://getcomposer.org) versions.
 If you plan to play with the sources, you will also need the [Phing](https://www.phing.info) latest version.
 
 ## Installing via [Composer](https://getcomposer.org)

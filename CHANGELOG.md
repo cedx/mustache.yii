@@ -21,7 +21,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Updated the package dependencies.
 
 ## Version 0.5.0
-- Breaking change: using [PHP 7](http://php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
+- Breaking change: using [PHP 7](https://secure.php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
 
 ## Version 0.4.3
 - Added support for a default message category in I18N helper.
@@ -47,13 +47,13 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 ## Version 0.2.0
-- Breaking change: ported the library API to [namespaces](http://php.net/manual/en/language.namespaces.php).
+- Breaking change: ported the library API to [namespaces](https://secure.php.net/manual/en/language.namespaces.php).
 
 ## Version 0.1.1
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
 - Fixed [GitHub issue #1](https://github.com/cedx/yii2-mustache/issues/1)
-- Lowered the required [PHP](http://php.net) version.
+- Lowered the required [PHP](https://secure.php.net) version.
 - Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 
 ## Version 0.1.0
