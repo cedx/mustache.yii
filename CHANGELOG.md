@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 1.0.1
+- Updated the package dependencies.
+
 ## Version 1.0.0
 - First stable release.
 
@@ -44,7 +47,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 
 ## Version 0.3.0
 - Breaking change: ported the library API to [Yii](http://www.yiiframework.com) version 2.
-- Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
+- Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 ## Version 0.2.0
 - Breaking change: ported the library API to [namespaces](https://secure.php.net/manual/en/language.namespaces.php).
@@ -54,7 +57,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
 - Fixed [GitHub issue #1](https://github.com/cedx/yii2-mustache/issues/1)
 - Lowered the required [PHP](https://secure.php.net) version.
-- Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
+- Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 
 ## Version 0.1.0
 - Initial release.
