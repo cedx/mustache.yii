@@ -18,7 +18,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `getHelpers` method.
+   * Tests the `ViewRenderer::getHelpers()` method.
    */
   public function testGetHelpers() {
     $helpers = $this->model->getHelpers();
@@ -26,7 +26,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `render` method.
+   * Tests the `ViewRenderer::render()` method.
    */
   public function testRender() {
     $file = __DIR__.'/data.mustache';
@@ -47,7 +47,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `setHelpers` method.
+   * Tests the `ViewRenderer::setHelpers()` method.
    */
   public function testSetHelpers() {
     $this->model->setHelpers(['var' => 'value']);

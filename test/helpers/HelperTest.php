@@ -38,7 +38,7 @@ class HelperStub extends Helper {
 class HelperTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * Tests the `captureOutput` method.
+   * Tests the `Helper::captureOutput()` method.
    */
   public function testCaptureOutput() {
     $model = new HelperStub();
@@ -48,7 +48,7 @@ class HelperTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `parseArguments` method.
+   * Tests the `Helper::parseArguments()` method.
    */
   public function testParseArguments() {
     $model = new HelperStub();

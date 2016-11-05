@@ -33,7 +33,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `findViewFile` method.
+   * Tests the `Cache::findViewFile()` method.
    */
   public function testFindViewFile() {
     $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->getViewPath() . '/view.php');
@@ -44,7 +44,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `load` method.
+   * Tests the `Cache::load()` method.
    */
   public function testLoad() {
     $this->expectException(InvalidCallException::class);

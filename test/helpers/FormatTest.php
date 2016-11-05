@@ -17,7 +17,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `getBoolean` method.
+   * Tests the `Format::getBoolean()` method.
    */
   public function testGetBoolean() {
     $closure = (new Format())->getBoolean();
@@ -28,7 +28,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getCurrency` method.
+   * Tests the `Format::getCurrency()` method.
    */
   public function testGetCurrency() {
     $closure = (new Format())->getCurrency();
@@ -37,7 +37,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getDate` method.
+   * Tests the `Format::getDate()` method.
    */
   public function testGetDate() {
     $closure = (new Format())->getDate();
@@ -45,7 +45,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getDecimal` method.
+   * Tests the `Format::getDecimal()` method.
    */
   public function testGetDecimal() {
     $closure = (new Format())->getDecimal();
@@ -54,7 +54,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getInteger` method.
+   * Tests the `Format::getInteger()` method.
    */
   public function testGetInteger() {
     $closure = (new Format())->getInteger();
@@ -63,7 +63,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getNtext` method.
+   * Tests the `Format::getNtext()` method.
    */
   public function testGetNtext() {
     $closure = (new Format())->getNtext();
@@ -72,7 +72,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getPercent` method.
+   * Tests the `Format::getPercent()` method.
    */
   public function testGetPercent() {
     $closure = (new Format())->getPercent();

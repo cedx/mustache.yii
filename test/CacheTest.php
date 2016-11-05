@@ -16,7 +16,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `cache` method.
+   * Tests the `Cache::cache()` method.
    */
   public function testCache() {
     $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
@@ -24,7 +24,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `load` method.
+   * Tests the `Cache::load()` method.
    */
   public function testLoad() {
     $this->assertFalse($this->model->load('key'));

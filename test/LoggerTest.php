@@ -18,7 +18,7 @@ class LoggerTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `log` method.
+   * Tests the `Logger::log()` method.
    */
   public function testLog() {
     $this->expectException(InvalidParamException::class);

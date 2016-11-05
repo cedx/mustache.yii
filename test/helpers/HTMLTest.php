@@ -19,7 +19,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `getBeginBody` method.
+   * Tests the `HTML::getBeginBody()` method.
    */
   public function testGetBeginBody() {
     \Yii::$app->set('view', new View());
@@ -27,7 +27,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getEndBody` method.
+   * Tests the `HTML::getEndBody()` method.
    */
   public function testGetEndBody() {
     \Yii::$app->set('view', new View());
@@ -35,7 +35,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getHead` method.
+   * Tests the `HTML::getHead()` method.
    */
   public function testHead() {
     \Yii::$app->set('view', new View());
@@ -43,7 +43,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getMarkdown` method.
+   * Tests the `HTML::getMarkdown()` method.
    */
   public function testGetMarkdown() {
     $closure = (new HTML())->getMarkdown();
@@ -51,7 +51,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getSpaceless` method.
+   * Tests the `HTML::getSpaceless()` method.
    */
   public function testGetSpaceless() {
     $closure = (new HTML())->getSpaceless();
@@ -60,7 +60,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getViewTitle` method.
+   * Tests the `HTML::getViewTitle()` method.
    */
   public function testViewTitle() {
     \Yii::$app->set('view', new View());
