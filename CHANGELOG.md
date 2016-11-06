@@ -4,6 +4,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 ## Version 2.0.0
 - Breaking change: moved the `Helper` class to the `yii\mustache` namespace.
 - Optimized the unit tests.
+- Removed dependency on framework messages.
 
 ## Version 1.0.1
 - Updated the package dependencies.
