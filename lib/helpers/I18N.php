@@ -6,6 +6,7 @@ namespace yii\mustache\helpers;
 
 use yii\base\{InvalidCallException};
 use yii\helpers\{ArrayHelper};
+use yii\mustache\{Helper};
 
 /**
  * Provides features related with internationalization (I18N) and localization (L10N).

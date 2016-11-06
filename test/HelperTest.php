@@ -1,9 +1,9 @@
 <?php
 /**
- * Implementation of the `yii\test\mustache\helpers\HelperTest` class.
+ * Implementation of the `yii\test\mustache\HelperTest` class.
  */
-namespace yii\test\mustache\helpers;
-use yii\mustache\helpers\{Helper};
+namespace yii\test\mustache;
+use yii\mustache\{Helper};
 
 /**
  * Tests the features of the `yii\mustache\helpers\Helper` class.

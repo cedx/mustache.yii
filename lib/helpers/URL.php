@@ -3,7 +3,9 @@
  * Implementation of the `yii\mustache\helpers\URL` class.
  */
 namespace yii\mustache\helpers;
+
 use yii\helpers\{Url as UrlHelper};
+use yii\mustache\{Helper};
 
 /**
  * Provides a set of methods for managing URLs.

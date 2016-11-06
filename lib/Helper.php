@@ -1,8 +1,8 @@
 <?php
 /**
- * Implementation of the `yii\mustache\helpers\Helper` class.
+ * Implementation of the `yii\mustache\Helper` class.
  */
-namespace yii\mustache\helpers;
+namespace yii\mustache;
 
 use yii\base\{InvalidParamException, Object};
 use yii\helpers\{ArrayHelper, Json};
