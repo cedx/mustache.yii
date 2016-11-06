@@ -47,7 +47,7 @@ class I18N extends Helper {
         $parts = explode($this->argumentSeparator, $output, 2);
 
         $length = count($parts);
-        if (!$length) throw new InvalidCallException(\Yii::t('yii', 'Invalid translation format.'));
+        if (!$length) throw new InvalidCallException('Invalid translation format.');
 
         $args = ArrayHelper::merge($defaultArgs, [
           'category' => $length == 1 ? $this->defaultCategory : $parts[0],

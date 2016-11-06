@@ -56,7 +56,7 @@ class Loader extends Object implements \Mustache_Loader {
       if ($cache && $cache->exists($key)) $output = $cache[$key];
       else {
         $path = FileHelper::localize($this->findViewFile($name));
-        if (!is_file($path)) throw new InvalidCallException(sprintf('The view file "%s" does not exist.', $path));
+        if (!is_file($path)) throw new InvalidCallException("The view file \"$path\" does not exist.");
 
         $output = @file_get_contents($path);
         if ($cache) $cache->set($key, $output, $this->renderer->cachingDuration);
@@ -82,7 +82,7 @@ class Loader extends Object implements \Mustache_Loader {
 
     if (mb_substr($name, 0, 2) == '//') $file = $appViewPath . DIRECTORY_SEPARATOR . ltrim($name, '/');
     else if ($name[0] == '/') {
-      if (!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
+      if (!$controller) throw new InvalidCallException("Unable to locale the view \"$name\": no active controller.");
       $file = $controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($name, '/');
     }
     else {

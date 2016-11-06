@@ -107,7 +107,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       $output = $cache[$key];
     else {
       $path = FileHelper::localize($file);
-      if (!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', ['file' => $file]));
+      if (!is_file($path)) throw new InvalidCallException("View file \"$file\" does not exist.");
 
       $output = @file_get_contents($path);
       if ($cache) $cache->set($key, $output, $this->cachingDuration);
