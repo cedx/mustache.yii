@@ -29,7 +29,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `ViewRenderer::render()` method.
    */
   public function testRender() {
-    $file = __DIR__.'/data.mustache';
+    $file = __DIR__ . '/data.mustache';
 
     $data = null;
     $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
