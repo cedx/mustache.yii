@@ -42,7 +42,7 @@ abstract class Helper extends Object {
       throw new InvalidParamException();
     }
 
-    catch(InvalidParamException $e) {
+    catch (InvalidParamException $e) {
       $defaultValues[$defaultArgument] = $text;
       return $defaultValues;
     }
