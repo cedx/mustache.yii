@@ -22,7 +22,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetHelpers() {
     $helpers = $this->model->getHelpers();
-    $this->assertInstanceOf('Mustache_HelperCollection', $helpers);
+    $this->assertInstanceOf(\Mustache_HelperCollection::class, $helpers);
   }
 
   /**

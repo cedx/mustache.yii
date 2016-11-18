@@ -56,16 +56,18 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
    */
   public function load($name): string {
     if (!isset($this->views[$name])) {
-      $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
-      $key = static::CACHE_KEY_PREFIX.$name;
+      $viewRenderer = $this->getViewRenderer();
+      $cacheId = $viewRenderer->getCacheId();
 
-      if ($cache && $cache->exists($key)) $output = $cache[$key];
+      $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
+      $cacheKey = static::CACHE_KEY_PREFIX.":$name";
+      if ($cache && $cache->exists($cacheKey)) $output = $cache[$cacheKey];
       else {
         $path = FileHelper::localize($this->findViewFile($name));
         if (!is_file($path)) throw new InvalidCallException("The view file \"{$path}\" does not exist.");
 
         $output = @file_get_contents($path);
-        if ($cache) $cache->set($key, $output, $this->renderer->cachingDuration);
+        if ($cache) $cache->set($cacheKey, $output, $viewRenderer->getCachingDuration());
       }
 
       $this->views[$name] = $output;
@@ -90,7 +92,6 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
    */
   public function toJSON(): \stdClass {
     return (object) [
-      'password' => $this->getPassword(),
       'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
     ];
   }
@@ -118,7 +119,7 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
 
     if (mb_substr($name, 0, 2) == '//') $file = $appViewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
-      if (!$controller) throw new InvalidCallException("Unable to locale the view \"{$name}\": no active controller.");
+      if (!$controller) throw new InvalidCallException("Unable to locate the view \"{$name}\": no active controller.");
       $file = $controller->module->getViewPath().DIRECTORY_SEPARATOR.ltrim($name, '/');
     }
     else {

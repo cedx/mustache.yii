@@ -37,10 +37,12 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function cache($key, $value) {
     $viewRenderer = $this->getViewRenderer();
-    $cache = $viewRenderer->cacheId ? \Yii::$app->get($viewRenderer->cacheId) : null;
+    $cacheId = $viewRenderer->getCacheId();
+
+    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
     if (!$cache) eval("?>{$value}");
     else {
-      $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $viewRenderer->cachingDuration);
+      $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $viewRenderer->getCachingDuration());
       $this->load($key);
     }
   }
@@ -68,12 +70,13 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function load($key): bool {
     $viewRenderer = $this->getViewRenderer();
-    $cache = $viewRenderer->cacheId ? \Yii::$app->get($viewRenderer->cacheId) : null;
+    $cacheId = $viewRenderer->getCacheId();
 
-    $key = static::CACHE_KEY_PREFIX.$key;
-    if (!$cache || !$cache->exists($key)) return false;
+    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
+    $cacheKey = static::CACHE_KEY_PREFIX.":$key";
+    if (!$cache || !$cache->exists($cacheKey)) return false;
 
-    eval("?>{$cache[$key]}");
+    eval("?>{$cache[$cacheKey]}");
     return true;
   }
 

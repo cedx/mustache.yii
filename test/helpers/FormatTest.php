@@ -11,8 +11,7 @@ use yii\mustache\helpers\{Format};
 class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var \Mustache_LambdaHelper $helper
-   * The engine used to render strings.
+   * @var \Mustache_LambdaHelper The engine used to render strings.
    */
   private $helper;
 

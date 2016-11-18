@@ -66,10 +66,7 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
    * @return \stdClass The map in JSON format corresponding to this object.
    */
   public function toJSON(): \stdClass {
-    return (object) [
-      'password' => $this->getPassword(),
-      'username' => $this->getUsername()
-    ];
+    return (object) [];
   }
 
   /**

@@ -18,19 +18,19 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
   const CACHE_KEY_PREFIX = __CLASS__;
 
   /**
-   * @var string The identifier of the cache application component that is used to cache the compiled views. If set to `null`, caching is disabled.
+   * @var string The identifier of the cache application component that is used to cache the compiled views. If empty, the caching is disabled.
    */
-  public $cacheId = null;
+  private $cacheId = '';
 
   /**
    * @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
    */
-  public $cachingDuration = 0;
+  private $cachingDuration = 0;
 
   /**
    * @var bool Value indicating whether to enable the logging of engine messages.
    */
-  public $enableLogging = false;
+  private $enableLogging = false;
 
   /**
    * @var \Mustache_Engine The underlying Mustache template engine.
@@ -43,16 +43,35 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
   private $helpers = [];
 
   /**
-   * @var bool Value indicating whether the instance is initialized.
+   * Gets a value indicating whether to enable the logging of engine messages.
+   * @return bool `true` to enable the logging of engine messages, otherwise `false`.
    */
-  private $isInitialized = false;
+  public function enableLogging(): bool {
+    return $this->enableLogging;
+  }
+
+  /**
+   * Gets the identifier of the cache application component that is used to cache the compiled views.
+   * @return string The identifier of the cache application component.
+   */
+  public function getCacheId(): string {
+    return $this->cacheId;
+  }
+
+  /**
+   * Gets the time in seconds that the compiled views can remain valid in cache.
+   * @return int The time in seconds that the compiled views can remain valid in cache.
+   */
+  public function getCachingDuration(): int {
+    return $this->cachingDuration;
+  }
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
    * @return \Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
   public function getHelpers() {
-    return $this->isInitialized ? $this->engine->getHelpers() : null;
+    return $this->engine ? $this->engine->getHelpers() : null;
   }
 
   /**
@@ -82,18 +101,17 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
     ];
 
     $options = [
-      'cache' => new Cache($this),
+      'cache' => new Cache(['viewRenderer' => $this]),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
       'helpers' => ArrayHelper::merge($helpers, $this->helpers),
-      'partials_loader' => new Loader($this),
+      'partials_loader' => new Loader(['viewRenderer' => $this]),
       'strict_callables' => true
     ];
 
-    if ($this->enableLogging) $options['logger'] = new Logger();
+    if ($this->enableLogging()) $options['logger'] = new Logger();
     $this->engine = new \Mustache_Engine($options);
-    $this->isInitialized = true;
 
     parent::init();
     $this->helpers = [];
@@ -108,21 +126,52 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    * @throws InvalidCallException The specified view file is not found.
    */
   public function render($view, $file, $params): string {
-    $cache = $this->cacheId ? \Yii::$app->get($this->cacheId) : null;
-    $key = static::CACHE_KEY_PREFIX.$file;
+    $cacheId = $this->getCacheId();
+    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
 
-    if ($cache && $cache->exists($key))
-      $output = $cache[$key];
+    $cacheKey = static::CACHE_KEY_PREFIX.":$file";
+    if ($cache && $cache->exists($cacheKey))
+      $output = $cache[$cacheKey];
     else {
       $path = FileHelper::localize($file);
       if (!is_file($path)) throw new InvalidCallException("View file \"{$file}\" does not exist.");
 
       $output = @file_get_contents($path);
-      if ($cache) $cache->set($key, $output, $this->cachingDuration);
+      if ($cache) $cache->set($cacheKey, $output, $this->getCachingDuration());
     }
 
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
+  }
+
+  /**
+   * Sets the identifier of the cache application component that is used to cache the compiled views.
+   * @param string $value The identifier of the cache application component. If empty, the caching is disabled.
+   * @return ViewRenderer This instance.
+   */
+  public function setCacheId(string $value): self {
+    $this->cacheId = $value;
+    return $this;
+  }
+
+  /**
+   * Sets the time in seconds that the compiled views can remain valid in cache.
+   * @param int $value The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
+   * @return ViewRenderer This instance.
+   */
+  public function setCachingDuration(int $value): self {
+    $this->cachingDuration = $value;
+    return $this;
+  }
+
+  /**
+   * Sets a value indicating whether to enable the logging of engine messages.
+   * @param bool $value `true` to enable the logging of engine messages, otherwise `false`.
+   * @return ViewRenderer This instance.
+   */
+  public function setEnableLogging(bool $value): self {
+    $this->enableLogging = $value;
+    return $this;
   }
 
   /**
@@ -131,7 +180,7 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    * @return ViewRenderer This instance.
    */
   public function setHelpers(array $value): self {
-    if ($this->isInitialized) $this->engine->setHelpers($value);
+    if ($this->engine) $this->engine->setHelpers($value);
     else $this->helpers = $value;
     return $this;
   }
@@ -142,8 +191,9 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    */
   public function toJSON(): \stdClass {
     return (object) [
-      'password' => $this->getPassword(),
-      'username' => $this->getUsername()
+      'cacheId' => $this->getCacheId(),
+      'cachingDuration' => $this->getCachingDuration(),
+      'enableLogging' => $this->enableLogging()
     ];
   }
 
