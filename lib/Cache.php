@@ -7,7 +7,7 @@ namespace yii\mustache;
 /**
  * Component used to store compiled views to a cache application component.
  */
-class Cache extends \Mustache_Cache_AbstractCache {
+class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -21,10 +21,13 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * Initializes a new instance of the class.
-   * @param ViewRenderer $renderer The instance used to render the views.
+   * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public function __construct(ViewRenderer $renderer) {
-    $this->renderer = $renderer;
+  public function __construct(array $config = []) {
+    foreach ($config as $property => $value) {
+      $setter = "set{$property}";
+      if (method_exists($this, $setter)) $this->$setter($value);
+    }
   }
 
   /**
@@ -84,4 +87,23 @@ class Cache extends \Mustache_Cache_AbstractCache {
     return $this;
   }
 
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  public function toJSON(): \stdClass {
+    return (object) [
+      'logger' => ($logger = $this->getLogger()) ? get_class($logger) : null,
+      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
+    ];
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
 }

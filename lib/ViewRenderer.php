@@ -10,7 +10,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
  */
-class ViewRenderer extends \yii\base\ViewRenderer {
+class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -53,6 +53,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    */
   public function getHelpers() {
     return $this->isInitialized ? $this->engine->getHelpers() : null;
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  final public function jsonSerialize(): \stdClass {
+    return $this->toJSON();
   }
 
   /**
@@ -126,5 +134,25 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     if ($this->isInitialized) $this->engine->setHelpers($value);
     else $this->helpers = $value;
     return $this;
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  public function toJSON(): \stdClass {
+    return (object) [
+      'password' => $this->getPassword(),
+      'username' => $this->getUsername()
+    ];
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
   }
 }

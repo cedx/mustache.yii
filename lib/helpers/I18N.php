@@ -77,4 +77,14 @@ class I18N extends Helper {
     $this->defaultCategory = $value;
     return $this;
   }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  public function toJSON(): \stdClass {
+    $map = parent::toJSON();
+    $map->defaultCategory = $this->getDefaultCategory();
+    return $map;
+  }
 }
