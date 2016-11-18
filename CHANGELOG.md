@@ -1,6 +1,13 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 3.0.0
+- Breaking change: modified the signature of some class constructors.
+- Added public getters/setters to some private properties.
+- Added a fluent interface to the setters.
+- Added the `jsonSerialize()` and `toJSON()` methods.
+- Updated the package dependencies.
+
 ## Version 2.0.0
 - Breaking change: moved the `Helper` class to the `yii\mustache` namespace.
 - Optimized the unit tests.
