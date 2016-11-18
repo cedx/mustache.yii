@@ -25,7 +25,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
       return $this->findViewFile($name);
     };
 
-    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->getViewPath() . '/view.php');
+    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->getViewPath().'/view.php');
     $this->assertEquals($expected, $findViewFile->call($this->model, '//view'));
 
     $this->expectException(InvalidCallException::class);

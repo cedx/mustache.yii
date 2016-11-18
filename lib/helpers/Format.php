@@ -34,7 +34,12 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asCurrency($args['value'], $args['currency'], $args['options'], $args['textOptions']));
+      return HtmlHelper::encode(\Yii::$app->getFormatter()->asCurrency(
+        $args['value'],
+        $args['currency'],
+        $args['options'],
+        $args['textOptions']
+      ));
     };
   }
 
@@ -72,7 +77,12 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asDecimal($args['value'], $args['decimals'], $args['options'], $args['textOptions']));
+      return HtmlHelper::encode(\Yii::$app->getFormatter()->asDecimal(
+        $args['value'],
+        $args['decimals'],
+        $args['options'],
+        $args['textOptions']
+      ));
     };
   }
 
@@ -87,7 +97,11 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asInteger($args['value'], $args['options'], $args['textOptions']));
+      return HtmlHelper::encode(\Yii::$app->getFormatter()->asInteger(
+        $args['value'],
+        $args['options'],
+        $args['textOptions']
+      ));
     };
   }
 
@@ -114,7 +128,12 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asPercent($args['value'], $args['decimals'], $args['options'], $args['textOptions']));
+      return HtmlHelper::encode(\Yii::$app->getFormatter()->asPercent(
+        $args['value'],
+        $args['decimals'],
+        $args['options'],
+        $args['textOptions']
+      ));
     };
   }
 

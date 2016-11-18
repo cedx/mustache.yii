@@ -101,7 +101,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    */
   public function render($view, $file, $params): string {
     $cache = $this->cacheId ? \Yii::$app->get($this->cacheId) : null;
-    $key = static::CACHE_KEY_PREFIX . $file;
+    $key = static::CACHE_KEY_PREFIX.$file;
 
     if ($cache && $cache->exists($key))
       $output = $cache[$key];

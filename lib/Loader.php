@@ -51,7 +51,7 @@ class Loader extends Object implements \Mustache_Loader {
   public function load($name): string {
     if (!isset($this->views[$name])) {
       $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
-      $key = static::CACHE_KEY_PREFIX . $name;
+      $key = static::CACHE_KEY_PREFIX.$name;
 
       if ($cache && $cache->exists($key)) $output = $cache[$key];
       else {
@@ -80,10 +80,10 @@ class Loader extends Object implements \Mustache_Loader {
     $appViewPath = \Yii::$app->getViewPath();
     $controller = \Yii::$app->controller;
 
-    if (mb_substr($name, 0, 2) == '//') $file = $appViewPath . DIRECTORY_SEPARATOR . ltrim($name, '/');
+    if (mb_substr($name, 0, 2) == '//') $file = $appViewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
       if (!$controller) throw new InvalidCallException("Unable to locale the view \"{$name}\": no active controller.");
-      $file = $controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($name, '/');
+      $file = $controller->module->getViewPath().DIRECTORY_SEPARATOR.ltrim($name, '/');
     }
     else {
       $viewPath = $controller ? $controller->getViewPath() : $appViewPath;
@@ -92,7 +92,7 @@ class Loader extends Object implements \Mustache_Loader {
 
     $view = \Yii::$app->getView();
     if ($view && $view->theme) $file = $view->theme->applyTo($file);
-    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.' . ($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
     return $file;
   }
 }
