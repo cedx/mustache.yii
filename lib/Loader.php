@@ -25,7 +25,7 @@ class Loader extends Object implements \Mustache_Loader {
   /**
    * @var ViewRenderer The instance used to render the views.
    */
-  private $renderer;
+  private $viewRenderer;
 
   /**
    * @var string[] The loaded views.
@@ -33,13 +33,12 @@ class Loader extends Object implements \Mustache_Loader {
   private $views = [];
 
   /**
-   * Initializes a new instance of the class.
-   * @param ViewRenderer $renderer The instance used to render the views.
-   * @param array $config Name-value pairs that will be used to initialize the object properties.
+   * Gets the instance used to render the views.
+   * @return ViewRenderer The instance used to render the views.
    */
-  public function __construct(ViewRenderer $renderer, $config = []) {
-    parent::__construct($config);
-    $this->renderer = $renderer;
+  public function getViewRenderer() {
+    return $this->viewRenderer;
+  }
   }
 
   /**
@@ -69,6 +68,15 @@ class Loader extends Object implements \Mustache_Loader {
   }
 
   /**
+   * Sets the instance used to render the views.
+   * @param ViewRenderer $value The instance used to render the views.
+   * @return Loader This instance.
+   */
+  public function setViewRenderer(ViewRenderer $value = null): self {
+    $this->viewRenderer = $value;
+    return $this;
+  }
+
    * Finds the view file based on the given view name.
    * @param string $name The view name.
    * @return string The view file path.

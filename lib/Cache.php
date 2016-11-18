@@ -17,7 +17,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
   /**
    * @var ViewRenderer The instance used to render the views.
    */
-  private $renderer;
+  private $viewRenderer;
 
   /**
    * Initializes a new instance of the class.
@@ -33,12 +33,29 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param string $value The view to be cached.
    */
   public function cache($key, $value) {
-    $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
+    $viewRenderer = $this->getViewRenderer();
+    $cache = $viewRenderer->cacheId ? \Yii::$app->get($viewRenderer->cacheId) : null;
     if (!$cache) eval("?>{$value}");
     else {
-      $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->renderer->cachingDuration);
+      $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $viewRenderer->cachingDuration);
       $this->load($key);
     }
+  }
+
+  /**
+   * Gets the instance used to render the views.
+   * @return ViewRenderer The instance used to render the views.
+   */
+  public function getViewRenderer() {
+    return $this->viewRenderer;
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  final public function jsonSerialize(): \stdClass {
+    return $this->toJSON();
   }
 
   /**
@@ -47,11 +64,24 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key): bool {
-    $cache = $this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null;
+    $viewRenderer = $this->getViewRenderer();
+    $cache = $viewRenderer->cacheId ? \Yii::$app->get($viewRenderer->cacheId) : null;
+
     $key = static::CACHE_KEY_PREFIX.$key;
     if (!$cache || !$cache->exists($key)) return false;
 
     eval("?>{$cache[$key]}");
     return true;
   }
+
+  /**
+   * Sets the instance used to render the views.
+   * @param ViewRenderer $value The instance used to render the views.
+   * @return Cache This instance.
+   */
+  public function setViewRenderer(ViewRenderer $value = null): self {
+    $this->viewRenderer = $value;
+    return $this;
+  }
+
 }

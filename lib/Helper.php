@@ -15,8 +15,26 @@ abstract class Helper extends Object {
   /**
    * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.
    */
-  public $argumentSeparator = ':';
+  private $argumentSeparator = ':';
 
+  /**
+   * Gets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
+   * @return string The string used to separate helper arguments.
+   */
+  public function getArgumentSeparator(): string {
+    return $this->argumentSeparator;
+  }
+
+  /**
+   * Sets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
+   * @param string $value The new string to use to separate the helper arguments.
+   * @return Helper This instance.
+   */
+  public function setArgumentSeparator(string $value): self {
+    $this->argumentSeparator = $value;
+    return $this;
+  }
+  /**
   /**
    * Returns the output sent by the call of the specified function.
    * @param callable $callback The function to invoke.

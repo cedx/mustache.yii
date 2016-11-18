@@ -16,7 +16,15 @@ class I18N extends Helper {
   /**
    * @var string The default message category when no one is supplied.
    */
-  public $defaultCategory = 'app';
+  private $defaultCategory = 'app';
+
+  /**
+   * Gets the default message category when no one is supplied.
+   * @return string The default message category.
+   */
+  public function getDefaultCategory(): string {
+    return $this->defaultCategory;
+  }
 
   /**
    * Returns a function translating a message.
@@ -33,29 +41,40 @@ class I18N extends Helper {
    */
   public function getTranslate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
+      $defaultCategory = $this->getDefaultCategory();
+
       $defaultArgs = [
-        'category' => $this->defaultCategory,
+        'category' => $defaultCategory,
         'language' => null,
         'params' => []
       ];
 
       $output = trim($value);
-      $isJson = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output) - 1) == '}';
+      $isJSON = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output) - 1) == '}';
 
-      if ($isJson) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
+      if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        $parts = explode($this->argumentSeparator, $output, 2);
-
+        $parts = explode($this->getArgumentSeparator(), $output, 2);
         $length = count($parts);
         if (!$length) throw new InvalidCallException('Invalid translation format.');
 
         $args = ArrayHelper::merge($defaultArgs, [
-          'category' => $length == 1 ? $this->defaultCategory : $parts[0],
+          'category' => $length == 1 ? $defaultCategory : $parts[0],
           'message' => $parts[$length - 1]
         ]);
       }
 
       return \Yii::t($args['category'], $args['message'], $args['params'], $args['language']);
     };
+  }
+
+  /**
+   * Sets the default message category when no one is supplied.
+   * @param string $value The new default message category.
+   * @return I18N This instance.
+   */
+  public function setDefaultCategory(string $value): self {
+    $this->defaultCategory = $value;
+    return $this;
   }
 }
