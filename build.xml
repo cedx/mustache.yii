@@ -24,11 +24,7 @@
 
   <target name="doc" description="Builds the documentation.">
     <delete dir="doc/api" quiet="true"/>
-    <exec executable="vendor/bin/phpdoc" passthru="true">
-      <arg value="--config=doc/phpdoc.xml"/>
-    </exec>
-    <copy file="web/apple-touch-icon.png" todir="doc/api"/>
-    <copy file="web/favicon.ico" todir="doc/api"/>
+    <exec executable="vendor/bin/phpdoc" passthru="true"/>
   </target>
 
   <target name="lint" description="Performs static analysis of source code.">
