@@ -43,6 +43,15 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
   private $helpers = [];
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * Gets a value indicating whether to enable the logging of engine messages.
    * @return bool `true` to enable the logging of engine messages, otherwise `false`.
    */
@@ -78,8 +87,12 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [
+      'cacheId' => $this->getCacheId(),
+      'cachingDuration' => $this->getCachingDuration(),
+      'enableLogging' => $this->enableLogging()
+    ];
   }
 
   /**
@@ -183,26 +196,5 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
     if ($this->engine) $this->engine->setHelpers($value);
     else $this->helpers = $value;
     return $this;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [
-      'cacheId' => $this->getCacheId(),
-      'cachingDuration' => $this->getCachingDuration(),
-      'enableLogging' => $this->enableLogging()
-    ];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 }

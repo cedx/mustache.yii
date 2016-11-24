@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 4.0.0
+- Breaking change: removed the `toJSON()` methods.
+- Removed the `final` modifier from the `jsonSerialize()` methods.
+
 ## Version 3.0.0
 - Breaking change: modified the signature of some class constructors.
 - Added public getters/setters to some private properties.

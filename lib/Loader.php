@@ -33,6 +33,15 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
   private $views = [];
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * Gets the instance used to render the views.
    * @return ViewRenderer The instance used to render the views.
    */
@@ -44,8 +53,10 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [
+      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
+    ];
   }
 
   /**
@@ -84,25 +95,6 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
   public function setViewRenderer(ViewRenderer $value = null): self {
     $this->viewRenderer = $value;
     return $this;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [
-      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
-    ];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 
   /**

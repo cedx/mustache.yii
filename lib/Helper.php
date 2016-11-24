@@ -18,6 +18,15 @@ abstract class Helper extends Object implements \JsonSerializable {
   private $argumentSeparator = ':';
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * Gets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
    * @return string The string used to separate helper arguments.
    */
@@ -29,8 +38,10 @@ abstract class Helper extends Object implements \JsonSerializable {
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [
+      'argumentSeparator' => $this->getArgumentSeparator()
+    ];
   }
 
   /**
@@ -41,25 +52,6 @@ abstract class Helper extends Object implements \JsonSerializable {
   public function setArgumentSeparator(string $value): self {
     $this->argumentSeparator = $value;
     return $this;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [
-      'argumentSeparator' => $this->getArgumentSeparator()
-    ];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 
   /**

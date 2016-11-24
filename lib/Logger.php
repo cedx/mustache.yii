@@ -24,6 +24,15 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
   }
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * @var int[] Mappings between Mustache levels and Yii ones.
    */
   private static $levels = [
@@ -41,8 +50,8 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [];
   }
 
   /**
@@ -59,22 +68,5 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
     }
 
     \Yii::getLogger()->log($message, static::$levels[$level], __METHOD__);
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 }

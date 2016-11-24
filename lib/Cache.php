@@ -31,6 +31,15 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
   }
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * Caches and loads a compiled view.
    * @param string $key The key identifying the view to be cached.
    * @param string $value The view to be cached.
@@ -59,8 +68,11 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [
+      'logger' => ($logger = $this->getLogger()) ? get_class($logger) : null,
+      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
+    ];
   }
 
   /**
@@ -88,25 +100,5 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
   public function setViewRenderer(ViewRenderer $value = null): self {
     $this->viewRenderer = $value;
     return $this;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [
-      'logger' => ($logger = $this->getLogger()) ? get_class($logger) : null,
-      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
-    ];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 }
