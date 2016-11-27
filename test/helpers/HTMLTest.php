@@ -21,7 +21,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
    * Tests the `HTML::getBeginBody()` method.
    */
   public function testGetBeginBody() {
-    \Yii::$app->set('view', new View());
+    \Yii::$app->set('view', \Yii::createObject(View::class));
     $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->getBeginBody());
   }
 
@@ -29,7 +29,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
    * Tests the `HTML::getEndBody()` method.
    */
   public function testGetEndBody() {
-    \Yii::$app->set('view', new View());
+    \Yii::$app->set('view', \Yii::createObject(View::class));
     $this->assertEquals(View::PH_BODY_END, (new HTML())->getEndBody());
   }
 
@@ -37,7 +37,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
    * Tests the `HTML::getHead()` method.
    */
   public function testHead() {
-    \Yii::$app->set('view', new View());
+    \Yii::$app->set('view', \Yii::createObject(View::class));
     $this->assertEquals(View::PH_HEAD, (new HTML())->getHead());
   }
 
@@ -62,7 +62,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
    * Tests the `HTML::getViewTitle()` method.
    */
   public function testViewTitle() {
-    \Yii::$app->set('view', new View());
+    \Yii::$app->set('view', \Yii::createObject(View::class));
     $this->assertNull(\Yii::$app->view->title);
 
     $closure = (new HTML())->getViewTitle();

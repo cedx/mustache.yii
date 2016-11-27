@@ -101,10 +101,10 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
   public function init() {
     $helpers = [
       'app' => \Yii::$app,
-      'format' => new helpers\Format(),
-      'html' => new helpers\HTML(),
-      'i18n' => new helpers\I18N(),
-      'url' => new helpers\URL(),
+      'format' => \Yii::createObject(helpers\Format::class),
+      'html' => \Yii::createObject(helpers\HTML::class),
+      'i18n' => \Yii::createObject(helpers\I18N::class),
+      'url' => \Yii::createObject(helpers\URL::class),
       'yii' => [
         'debug' => YII_DEBUG,
         'devEnv' => YII_ENV_DEV,
@@ -114,16 +114,16 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
     ];
 
     $options = [
-      'cache' => new Cache(['viewRenderer' => $this]),
+      'cache' => \Yii::createObject(['class' => Cache::class, 'viewRenderer' => $this]),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
       'helpers' => ArrayHelper::merge($helpers, $this->helpers),
-      'partials_loader' => new Loader(['viewRenderer' => $this]),
+      'partials_loader' => \Yii::createObject(['class' => Loader::class, 'viewRenderer' => $this]),
       'strict_callables' => true
     ];
 
-    if ($this->enableLogging()) $options['logger'] = new Logger();
+    if ($this->enableLogging()) $options['logger'] = \Yii::createObject(Logger::class);
     $this->engine = new \Mustache_Engine($options);
 
     parent::init();
