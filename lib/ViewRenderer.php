@@ -114,7 +114,7 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
     ];
 
     $options = [
-      'cache' => \Yii::createObject(['class' => Cache::class, 'viewRenderer' => $this]),
+      'cache' => new Cache(['viewRenderer' => $this]),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
@@ -123,7 +123,7 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
       'strict_callables' => true
     ];
 
-    if ($this->enableLogging()) $options['logger'] = \Yii::createObject(Logger::class);
+    if ($this->enableLogging()) $options['logger'] = new Logger();
     $this->engine = new \Mustache_Engine($options);
 
     parent::init();
