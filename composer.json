@@ -33,8 +33,8 @@
   "require-dev": {
     "codacy/coverage": "^1.0.5",
     "phpdocumentor/phpdocumentor": "^2.9.0",
-    "phpmd/phpmd": "^2.4.3",
-    "phpunit/phpunit": "^5.7.1"
+    "phpmd/phpmd": "^2.5.0",
+    "phpunit/phpunit": "^5.7.2"
   },
   "support": {
     "issues": "https://github.com/cedx/yii2-mustache/issues"
