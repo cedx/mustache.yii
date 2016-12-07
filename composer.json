@@ -32,9 +32,14 @@
   },
   "require-dev": {
     "codacy/coverage": "^1.0.5",
+    "phing/phing": "^2.15.2",
     "phpdocumentor/phpdocumentor": "^2.9.0",
     "phpmd/phpmd": "^2.5.0",
     "phpunit/phpunit": "^5.7.2"
+  },
+  "scripts": {
+    "coverage": "codacycoverage clover var/coverage.xml",
+    "test": "phpunit"
   },
   "support": {
     "issues": "https://github.com/cedx/yii2-mustache/issues"

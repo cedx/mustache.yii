@@ -11,5 +11,5 @@ install:
 - composer global require "fxp/composer-asset-plugin"
 - composer install --no-interaction
 
-script: vendor/bin/phpunit
-after_script: vendor/bin/codacycoverage clover var/coverage.xml
+script: composer test
+after_script: composer coverage
