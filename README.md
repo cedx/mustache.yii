@@ -1,14 +1,14 @@
 # Mustache for Yii
-![Release](https://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Code quality](https://img.shields.io/codacy/grade/9f270f99bdd4420e9ca90d5d8d5dd33f.svg) ![Build](https://img.shields.io/travis/cedx/yii2-mustache.svg)
+![Release](https://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Coverage](https://coveralls.io/repos/github/cedx/yii2-mustache/badge.svg) ![Build](https://travis-ci.org/cedx/yii2-mustache.svg)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
 
 This package provides a view renderer, the `yii\mustache\ViewRenderer` class.
-This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
+This renderer allows to use [Mustache syntax](https://mustache.github.io/mustache.5.html) in view templates.
 
 ## Requirements
 The latest [PHP](https://secure.php.net) and [Composer](https://getcomposer.org) versions.
-If you plan to play with the sources, you will also need the [Phing](https://www.phing.info) latest version.
+If you plan to play with the sources, you will also need the latest [Phing](https://www.phing.info) version.
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
@@ -17,7 +17,7 @@ From a command prompt, run:
 $ composer require cedx/yii2-mustache
 ```
 
-## Configuring Application
+## Configuring application
 In order to start using Mustache you need to configure the `view` application component, like the following:
 
 ```php
@@ -73,9 +73,9 @@ that means these will be searched in the same directory as the currently rendere
 
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
 
-## See Also
-- [Code Quality](https://www.codacy.com/app/cedx/yii2-mustache)
-- [Continuous Integration](https://travis-ci.org/cedx/yii2-mustache)
+## See also
+- [Code coverage](https://coveralls.io/github/cedx/yii2-mustache)
+- [Continuous integration](https://travis-ci.org/cedx/yii2-mustache)
 
 ## License
 [Mustache for Yii](https://github.com/cedx/yii2-mustache) is distributed under the Apache License, version 2.0.
