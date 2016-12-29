@@ -10,8 +10,8 @@ define('YII_ENV', getenv('YII_ENV') ?: 'test');
 
 // Load the class library.
 $rootPath = dirname(__DIR__);
-require_once "{$rootPath}/vendor/autoload.php";
-require_once "{$rootPath}/vendor/yiisoft/yii2/Yii.php";
+require_once "$rootPath/vendor/autoload.php";
+require_once "$rootPath/vendor/yiisoft/yii2/Yii.php";
 
 // Initialize the application.
 Yii::setAlias('@root', $rootPath);

@@ -18,7 +18,7 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
    */
   public function __construct(array $config = []) {
     foreach ($config as $property => $value) {
-      $setter = "set{$property}";
+      $setter = "set$property";
       if (method_exists($this, $setter)) $this->$setter($value);
     }
   }
@@ -29,7 +29,7 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
    */
   public function __toString(): string {
     $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
+    return static::class." $json";
   }
 
   /**
@@ -64,7 +64,7 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
   public function log($level, $message, array $context = []) {
     if (!isset(static::$levels[$level])) {
       $values = implode(', ', (new \ReflectionClass('\Mustache_Logger'))->getConstants());
-      throw new InvalidParamException("Invalid enumerable value \"{$level}\". Please make sure it is among ({$values}).");
+      throw new InvalidParamException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
     }
 
     \Yii::getLogger()->log($message, static::$levels[$level], __METHOD__);

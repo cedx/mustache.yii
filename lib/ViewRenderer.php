@@ -48,7 +48,7 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    */
   public function __toString(): string {
     $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
+    return static::class." $json";
   }
 
   /**
@@ -147,7 +147,7 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
       $output = $cache[$cacheKey];
     else {
       $path = FileHelper::localize($file);
-      if (!is_file($path)) throw new InvalidCallException("View file \"{$file}\" does not exist.");
+      if (!is_file($path)) throw new InvalidCallException("View file \"$file\" does not exist.");
 
       $output = @file_get_contents($path);
       if ($cache) $cache->set($cacheKey, $output, $this->getCachingDuration());

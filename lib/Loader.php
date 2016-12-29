@@ -38,7 +38,7 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
    */
   public function __toString(): string {
     $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
+    return static::class." $json";
   }
 
   /**
@@ -75,7 +75,7 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
       if ($cache && $cache->exists($cacheKey)) $output = $cache[$cacheKey];
       else {
         $path = FileHelper::localize($this->findViewFile($name));
-        if (!is_file($path)) throw new InvalidCallException("The view file \"{$path}\" does not exist.");
+        if (!is_file($path)) throw new InvalidCallException("The view file \"$path\" does not exist.");
 
         $output = @file_get_contents($path);
         if ($cache) $cache->set($cacheKey, $output, $viewRenderer->getCachingDuration());
@@ -111,12 +111,12 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
 
     if (mb_substr($name, 0, 2) == '//') $file = $appViewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
-      if (!$controller) throw new InvalidCallException("Unable to locate the view \"{$name}\": no active controller.");
+      if (!$controller) throw new InvalidCallException("Unable to locate the view \"$name\": no active controller.");
       $file = $controller->module->getViewPath().DIRECTORY_SEPARATOR.ltrim($name, '/');
     }
     else {
       $viewPath = $controller ? $controller->getViewPath() : $appViewPath;
-      $file = \Yii::getAlias("{$viewPath}/{$name}");
+      $file = \Yii::getAlias("$viewPath/$name");
     }
 
     $view = \Yii::$app->getView();

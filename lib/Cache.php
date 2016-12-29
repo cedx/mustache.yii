@@ -25,7 +25,7 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function __construct(array $config = []) {
     foreach ($config as $property => $value) {
-      $setter = "set{$property}";
+      $setter = "set$property";
       if (method_exists($this, $setter)) $this->$setter($value);
     }
   }
@@ -36,7 +36,7 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function __toString(): string {
     $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
+    return static::class." $json";
   }
 
   /**
@@ -49,7 +49,7 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
     $cacheId = $viewRenderer->getCacheId();
 
     $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
-    if (!$cache) eval("?>{$value}");
+    if (!$cache) eval("?>$value");
     else {
       $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $viewRenderer->getCachingDuration());
       $this->load($key);
