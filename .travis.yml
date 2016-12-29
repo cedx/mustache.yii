@@ -11,5 +11,6 @@ install:
 - composer global require "fxp/composer-asset-plugin"
 - composer install --no-interaction
 
+before_script: mkdir --parents build/logs
 script: composer test
 after_script: composer coverage

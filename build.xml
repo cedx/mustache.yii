@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="dist" name="yii2-mustache">
-  <property name="version" value="4.0.0"/>
+  <property name="version" value="4.1.0"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
@@ -9,9 +9,8 @@
   </target>
 
   <target name="coverage" depends="test" description="Sends the results of the code coverage.">
-    <exec executable="vendor/bin/codacycoverage" passthru="true">
-      <arg value="clover"/>
-      <arg value="var/coverage.xml"/>
+    <exec executable="vendor/bin/coveralls" passthru="true">
+      <arg value="--coverage_clover=var/coverage.xml"/>
     </exec>
   </target>
 

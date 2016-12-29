@@ -31,14 +31,14 @@
     "yiisoft/yii2": "^2.0.10"
   },
   "require-dev": {
-    "codacy/coverage": "^1.0.5",
-    "phing/phing": "^2.15.2",
+    "phing/phing": "^2.16.0",
     "phpdocumentor/phpdocumentor": "^2.9.0",
     "phpmd/phpmd": "^2.5.0",
-    "phpunit/phpunit": "^5.7.4"
+    "phpunit/phpunit": "^5.7.5",
+    "satooshi/php-coveralls": "^1.0.1"
   },
   "scripts": {
-    "coverage": "codacycoverage clover var/coverage.xml",
+    "coverage": "coveralls --coverage_clover=var/coverage.xml",
     "test": "phpunit"
   },
   "support": {
