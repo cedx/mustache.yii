@@ -14,6 +14,7 @@ If you plan to play with the sources, you will also need the latest [Phing](http
 From a command prompt, run:
 
 ```shell
+$ composer global require fxp/composer-asset-plugin
 $ composer require cedx/yii2-mustache
 ```
 
