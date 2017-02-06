@@ -28,13 +28,13 @@
   "require": {
     "php": ">=7.0.0",
     "mustache/mustache": "^2.11.1",
-    "yiisoft/yii2": "^2.0.10"
+    "yiisoft/yii2": "^2.0.11"
   },
   "require-dev": {
     "phing/phing": "^2.16.0",
     "phpdocumentor/phpdocumentor": "^2.9.0",
-    "phpmd/phpmd": "^2.5.0",
-    "phpunit/phpunit": "^5.7.5",
+    "phpmd/phpmd": "^2.6.0",
+    "phpunit/phpunit": "^5.7.11",
     "satooshi/php-coveralls": "^1.0.1"
   },
   "scripts": {
