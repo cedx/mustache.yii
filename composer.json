@@ -34,7 +34,7 @@
     "phing/phing": "^2.16.0",
     "phpdocumentor/phpdocumentor": "^2.9.0",
     "phpmd/phpmd": "^2.6.0",
-    "phpunit/phpunit": "^5.7.11",
+    "phpunit/phpunit": "^5.7.12",
     "satooshi/php-coveralls": "^1.0.1"
   },
   "scripts": {
