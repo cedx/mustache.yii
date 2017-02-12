@@ -4,13 +4,14 @@
  */
 namespace yii\test\mustache\helpers;
 
+use PHPUnit\Framework\{TestCase};
 use yii\mustache\helpers\{HTML};
 use yii\web\{View};
 
 /**
- * Tests the features of the `yii\mustache\helpers\HTML` class.
+ * @coversDefaultClass \yii\mustache\helpers\HTML
  */
-class HTMLTest extends \PHPUnit_Framework_TestCase {
+class HTMLTest extends TestCase {
 
   /**
    * @var \Mustache_LambdaHelper The engine used to render strings.
@@ -18,7 +19,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `HTML::getBeginBody()` method.
+   * @test ::getBeginBody
    */
   public function testGetBeginBody() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -26,7 +27,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `HTML::getEndBody()` method.
+   * @test ::getEndBody
    */
   public function testGetEndBody() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -34,7 +35,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `HTML::getHead()` method.
+   * @test ::getHead
    */
   public function testHead() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -42,7 +43,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `HTML::getMarkdown()` method.
+   * @test ::getMarkdown
    */
   public function testGetMarkdown() {
     $closure = (new HTML())->getMarkdown();
@@ -50,7 +51,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `HTML::getSpaceless()` method.
+   * @test ::getSpaceless
    */
   public function testGetSpaceless() {
     $closure = (new HTML())->getSpaceless();
@@ -59,7 +60,7 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `HTML::getViewTitle()` method.
+   * @test ::getViewTitle
    */
   public function testViewTitle() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -74,6 +75,9 @@ class HTMLTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
+    $this->helper = \Yii::createObject(
+      \Mustache_LambdaHelper::class,
+      [\Yii::createObject(\Mustache_Engine::class), \Yii::createObject(\Mustache_Context::class)]
+    );
   }
 }

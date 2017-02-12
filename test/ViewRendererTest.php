@@ -4,13 +4,14 @@
  */
 namespace yii\test\mustache;
 
+use PHPUnit\Framework\{TestCase};
 use yii\mustache\{ViewRenderer};
 use yii\web\{View};
 
 /**
- * Tests the features of the `yii\mustache\ViewRenderer` class.
+ * @coversDefaultClass \yii\mustache\ViewRenderer
  */
-class ViewRendererTest extends \PHPUnit_Framework_TestCase {
+class ViewRendererTest extends TestCase {
 
   /**
    * @var ViewRenderer The data context of the tests.
@@ -18,7 +19,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `ViewRenderer::getHelpers()` method.
+   * @test ::getHelpers
    */
   public function testGetHelpers() {
     $helpers = $this->model->getHelpers();
@@ -26,10 +27,10 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `ViewRenderer::render()` method.
+   * @test ::render
    */
   public function testRender() {
-    $file = __DIR__.'/data.mustache';
+    $file = __DIR__.'/fixtures/data.mustache';
 
     $data = null;
     $output = preg_split('/\r?\n/', $this->model->render(\Yii::createObject(View::class), $file, $data));
@@ -47,7 +48,7 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `ViewRenderer::setHelpers()` method.
+   * @test ::setHelpers
    */
   public function testSetHelpers() {
     $this->model->setHelpers(['var' => 'value']);

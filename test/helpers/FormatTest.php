@@ -3,12 +3,14 @@
  * Implementation of the `yii\test\mustache\helpers\FormatTest` class.
  */
 namespace yii\test\mustache\helpers;
+
+use PHPUnit\Framework\{TestCase};
 use yii\mustache\helpers\{Format};
 
 /**
- * Tests the features of the `yii\mustache\helpers\Format` class.
+ * @coversDefaultClass \yii\mustache\helpers\Format
  */
-class FormatTest extends \PHPUnit_Framework_TestCase {
+class FormatTest extends TestCase {
 
   /**
    * @var \Mustache_LambdaHelper The engine used to render strings.
@@ -16,7 +18,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `Format::getBoolean()` method.
+   * @test ::getBoolean
    */
   public function testGetBoolean() {
     $closure = (new Format())->getBoolean();
@@ -27,7 +29,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getCurrency()` method.
+   * @test ::getCurrency
    */
   public function testGetCurrency() {
     $closure = (new Format())->getCurrency();
@@ -36,7 +38,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getDate()` method.
+   * @test ::getDate
    */
   public function testGetDate() {
     $closure = (new Format())->getDate();
@@ -44,7 +46,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getDecimal()` method.
+   * @test ::getDecimal
    */
   public function testGetDecimal() {
     $closure = (new Format())->getDecimal();
@@ -53,7 +55,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getInteger()` method.
+   * @test ::getInteger
    */
   public function testGetInteger() {
     $closure = (new Format())->getInteger();
@@ -62,7 +64,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getNtext()` method.
+   * @test ::getNtext
    */
   public function testGetNtext() {
     $closure = (new Format())->getNtext();
@@ -71,7 +73,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Format::getPercent()` method.
+   * @test ::getPercent
    */
   public function testGetPercent() {
     $closure = (new Format())->getPercent();
@@ -83,6 +85,9 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
+    $this->helper = \Yii::createObject(
+      \Mustache_LambdaHelper::class,
+      [\Yii::createObject(\Mustache_Engine::class), \Yii::createObject(\Mustache_Context::class)]
+    );
   }
 }

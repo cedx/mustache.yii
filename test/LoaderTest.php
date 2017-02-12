@@ -4,13 +4,14 @@
  */
 namespace yii\test\mustache;
 
+use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidCallException};
 use yii\mustache\{Loader, ViewRenderer};
 
 /**
- * Tests the features of the `yii\mustache\Loader` class.
+ * @coversDefaultClass \yii\mustache\Loader
  */
-class LoaderTest extends \PHPUnit_Framework_TestCase {
+class LoaderTest extends TestCase {
 
   /**
    * @var Loader The data context of the tests.
@@ -18,7 +19,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `Cache::findViewFile()` method.
+   * @test ::findViewFile
    */
   public function testFindViewFile() {
     $findViewFile = function(string $name) {
@@ -33,7 +34,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Cache::load()` method.
+   * @test ::load
    */
   public function testLoad() {
     $this->expectException(InvalidCallException::class);
