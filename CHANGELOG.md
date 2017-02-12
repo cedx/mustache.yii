@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 5.0.0
+- Breaking change: changed the signature of the constructors of the `Cache` and `Logger` classes.
+- Breaking change: removed the `jsonSerialize()` and `__toString()` methods.
+- Updated the package dependencies.
+
 ## Version 4.1.0
 - Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
 - Updated the package dependencies.
