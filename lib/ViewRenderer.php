@@ -10,7 +10,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
  */
-class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
+class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -43,15 +43,6 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
   private $helpers = [];
 
   /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." $json";
-  }
-
-  /**
    * Gets a value indicating whether to enable the logging of engine messages.
    * @return bool `true` to enable the logging of engine messages, otherwise `false`.
    */
@@ -81,18 +72,6 @@ class ViewRenderer extends \yii\base\ViewRenderer implements \JsonSerializable {
    */
   public function getHelpers() {
     return $this->engine ? $this->engine->getHelpers() : null;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [
-      'cacheId' => $this->getCacheId(),
-      'cachingDuration' => $this->getCachingDuration(),
-      'enableLogging' => $this->enableLogging()
-    ];
   }
 
   /**

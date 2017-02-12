@@ -10,7 +10,7 @@ use yii\helpers\{ArrayHelper, Json};
 /**
  * Provides the abstract base class for a view helper.
  */
-abstract class Helper extends Object implements \JsonSerializable {
+abstract class Helper extends Object {
 
   /**
    * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.
@@ -18,30 +18,11 @@ abstract class Helper extends Object implements \JsonSerializable {
   private $argumentSeparator = ':';
 
   /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." $json";
-  }
-
-  /**
    * Gets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
    * @return string The string used to separate helper arguments.
    */
   public function getArgumentSeparator(): string {
     return $this->argumentSeparator;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [
-      'argumentSeparator' => $this->getArgumentSeparator()
-    ];
   }
 
   /**

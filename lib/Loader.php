@@ -10,7 +10,7 @@ use yii\helpers\{FileHelper};
 /**
  * Loads views from the file system.
  */
-class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
+class Loader extends Object implements \Mustache_Loader {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -33,30 +33,11 @@ class Loader extends Object implements \JsonSerializable, \Mustache_Loader {
   private $views = [];
 
   /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." $json";
-  }
-
-  /**
    * Gets the instance used to render the views.
    * @return ViewRenderer The instance used to render the views.
    */
   public function getViewRenderer() {
     return $this->viewRenderer;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [
-      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
-    ];
   }
 
   /**

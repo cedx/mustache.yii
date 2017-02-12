@@ -69,16 +69,6 @@ class I18N extends Helper {
   }
 
   /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    $map = parent::jsonSerialize();
-    $map->defaultCategory = $this->getDefaultCategory();
-    return $map;
-  }
-
-  /**
    * Sets the default message category when no one is supplied.
    * @param string $value The new default message category.
    * @return I18N This instance.

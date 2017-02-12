@@ -7,7 +7,7 @@ namespace yii\mustache;
 /**
  * Component used to store compiled views to a cache application component.
  */
-class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
+class Cache extends \Mustache_Cache_AbstractCache {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -25,15 +25,6 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function __construct(ViewRenderer $viewRenderer = null) {
     $this->setViewRenderer($viewRenderer);
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." $json";
   }
 
   /**
@@ -59,17 +50,6 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
    */
   public function getViewRenderer() {
     return $this->viewRenderer;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [
-      'logger' => ($logger = $this->getLogger()) ? get_class($logger) : null,
-      'viewRenderer' => ($viewRenderer = $this->getViewRenderer()) ? get_class($viewRenderer) : null
-    ];
   }
 
   /**

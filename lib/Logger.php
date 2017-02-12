@@ -10,16 +10,7 @@ use yii\log\{Logger as YiiLogger};
 /**
  * Component used to log messages from the view engine to the application logger.
  */
-class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializable {
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." $json";
-  }
+class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
    * @var int[] Mappings between Mustache levels and Yii ones.
@@ -34,14 +25,6 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
     \Mustache_Logger::NOTICE => YiiLogger::LEVEL_INFO,
     \Mustache_Logger::WARNING => YiiLogger::LEVEL_WARNING
   ];
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [];
-  }
 
   /**
    * Logs a message.
