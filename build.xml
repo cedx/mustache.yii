@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="test" name="yii2-mustache">
-  <property name="version" value="4.1.0"/>
+  <autoloader autoloaderpath="vendor/autoload.php"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
@@ -10,7 +10,7 @@
 
   <target name="coverage" depends="test" description="Sends the results of the code coverage.">
     <exec executable="vendor/bin/coveralls" passthru="true">
-      <arg value="--coverage_clover=var/coverage.xml"/>
+      <arg value="--file=var/coverage.xml"/>
     </exec>
   </target>
 
@@ -20,11 +20,10 @@
   </target>
 
   <target name="lint" description="Performs static analysis of source code.">
-    <exec executable="vendor/bin/phpmd" passthru="true">
-      <arg value="lib,test"/>
-      <arg value="text"/>
-      <arg value="codesize,controversial,design,naming,unusedcode"/>
-    </exec>
+    <phplint>
+      <fileset dir="lib" includes="**/*.php"/>
+      <fileset dir="test" includes="**/*.php"/>
+    </phplint>
   </target>
 
   <target name="test" description="Runs the unit tests.">
