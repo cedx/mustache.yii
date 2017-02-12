@@ -13,17 +13,6 @@ use yii\log\{Logger as YiiLogger};
 class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializable {
 
   /**
-   * Initializes a new instance of the class.
-   * @param array $config Name-value pairs that will be used to initialize the object properties.
-   */
-  public function __construct(array $config = []) {
-    foreach ($config as $property => $value) {
-      $setter = "set$property";
-      if (method_exists($this, $setter)) $this->$setter($value);
-    }
-  }
-
-  /**
    * Returns a string representation of this object.
    * @return string The string representation of this object.
    */
@@ -63,7 +52,7 @@ class Logger extends \Mustache_Logger_AbstractLogger implements \JsonSerializabl
    */
   public function log($level, $message, array $context = []) {
     if (!isset(static::$levels[$level])) {
-      $values = implode(', ', (new \ReflectionClass('\Mustache_Logger'))->getConstants());
+      $values = implode(', ', (new \ReflectionClass(\Mustache_Logger::class))->getConstants());
       throw new InvalidParamException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
     }
 
