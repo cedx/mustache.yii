@@ -3,12 +3,14 @@
  * Implementation of the `yii\test\mustache\CacheTest` class.
  */
 namespace yii\test\mustache;
+
+use PHPUnit\Framework\{TestCase};
 use yii\mustache\{Cache, ViewRenderer};
 
 /**
- * Tests the features of the `yii\mustache\Cache` class.
+ * @coversDefaultClass \yii\mustache\Cache
  */
-class CacheTest extends \PHPUnit_Framework_TestCase {
+class CacheTest extends TestCase {
 
   /**
    * @var Cache The data context of the tests.
@@ -16,7 +18,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `Cache::cache()` method.
+   * @test ::cache
    */
   public function testCache() {
     $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
@@ -24,7 +26,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Cache::load()` method.
+   * @test ::load
    */
   public function testLoad() {
     $this->assertFalse($this->model->load('key'));
@@ -34,6 +36,6 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model = new Cache(['viewRenderer' => \Yii::createObject(ViewRenderer::class)]);
+    $this->model = new Cache(\Yii::createObject(ViewRenderer::class));
   }
 }

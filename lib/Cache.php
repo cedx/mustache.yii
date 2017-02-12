@@ -21,13 +21,10 @@ class Cache extends \Mustache_Cache_AbstractCache implements \JsonSerializable {
 
   /**
    * Initializes a new instance of the class.
-   * @param array $config Name-value pairs that will be used to initialize the object properties.
+   * @param ViewRenderer $viewRenderer The instance used to render the views.
    */
-  public function __construct(array $config = []) {
-    foreach ($config as $property => $value) {
-      $setter = "set$property";
-      if (method_exists($this, $setter)) $this->$setter($value);
-    }
+  public function __construct(ViewRenderer $viewRenderer = null) {
+    $this->setViewRenderer($viewRenderer);
   }
 
   /**
