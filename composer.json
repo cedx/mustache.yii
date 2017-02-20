@@ -34,10 +34,10 @@
     "yiisoft/yii2": "^2.0.11"
   },
   "require-dev": {
-    "cedx/coveralls": "^0.1.0",
+    "cedx/coveralls": "^0.2.0",
     "phing/phing": "^2.16.0",
     "phpdocumentor/phpdocumentor": "^2.9.0",
-    "phpunit/phpunit": "^6.0.6"
+    "phpunit/phpunit": "^6.0.7"
   },
   "scripts": {
     "coverage": "coveralls --file=var/coverage.xml",
