@@ -6,6 +6,9 @@ php:
 env: YII_ENV="test"
 sudo: false
 
+notifications:
+  email: false
+
 install:
 - composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
 - composer global require "fxp/composer-asset-plugin"

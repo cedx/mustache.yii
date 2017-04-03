@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "type": "library",
+  "type": "yii2-extension",
 
   "authors": [{
     "email": "cedric@belin.io",
