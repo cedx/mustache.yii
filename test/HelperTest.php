@@ -1,14 +1,9 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\HelperTest` class.
- */
-namespace yii\test\mustache;
-
+namespace yii\mustache;
 use PHPUnit\Framework\{TestCase};
-use yii\mustache\{Helper};
 
 /**
- * @coversDefaultClass \yii\mustache\helpers\Helper
+ * Tests the features of the `yii\mustache\helpers\Helper` class.
  */
 class HelperTest extends TestCase {
 
@@ -18,7 +13,7 @@ class HelperTest extends TestCase {
   private $model;
 
   /**
-   * @test ::captureOutput
+   * @test Helper::captureOutput
    */
   public function testCaptureOutput() {
     $captureOutput = function(callable $callback) {
@@ -31,7 +26,7 @@ class HelperTest extends TestCase {
   }
 
   /**
-   * @test ::parseArguments
+   * @test Helper::parseArguments
    */
   public function testParseArguments() {
     $parseArguments = function(string $text, string $defaultArgument, array $defaultValues = []) {

@@ -1,15 +1,11 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\helpers\HTMLTest` class.
- */
-namespace yii\test\mustache\helpers;
+namespace yii\mustache\helpers;
 
 use PHPUnit\Framework\{TestCase};
-use yii\mustache\helpers\{HTML};
 use yii\web\{View};
 
 /**
- * @coversDefaultClass \yii\mustache\helpers\HTML
+ * Tests the features of the `yii\mustache\helpers\HTML` class.
  */
 class HTMLTest extends TestCase {
 
@@ -19,7 +15,7 @@ class HTMLTest extends TestCase {
   private $helper;
 
   /**
-   * @test ::getBeginBody
+   * @test HTML::getBeginBody
    */
   public function testGetBeginBody() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -27,7 +23,7 @@ class HTMLTest extends TestCase {
   }
 
   /**
-   * @test ::getEndBody
+   * @test HTML::getEndBody
    */
   public function testGetEndBody() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -35,7 +31,7 @@ class HTMLTest extends TestCase {
   }
 
   /**
-   * @test ::getHead
+   * @test HTML::getHead
    */
   public function testHead() {
     \Yii::$app->set('view', \Yii::createObject(View::class));
@@ -43,7 +39,7 @@ class HTMLTest extends TestCase {
   }
 
   /**
-   * @test ::getMarkdown
+   * @test HTML::getMarkdown
    */
   public function testGetMarkdown() {
     $closure = (new HTML())->getMarkdown();
@@ -51,7 +47,7 @@ class HTMLTest extends TestCase {
   }
 
   /**
-   * @test ::getSpaceless
+   * @test HTML::getSpaceless
    */
   public function testGetSpaceless() {
     $closure = (new HTML())->getSpaceless();
@@ -60,7 +56,7 @@ class HTMLTest extends TestCase {
   }
 
   /**
-   * @test ::getViewTitle
+   * @test HTML::getViewTitle
    */
   public function testViewTitle() {
     \Yii::$app->set('view', \Yii::createObject(View::class));

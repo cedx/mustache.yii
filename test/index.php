@@ -1,7 +1,4 @@
 <?php
-/**
- * Entry point of the unit tests.
- */
 use yii\console\{Application};
 
 // Set the environment.

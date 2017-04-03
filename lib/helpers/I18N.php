@@ -1,10 +1,7 @@
 <?php
-/**
- * Implementation of the `yii\mustache\helpers\I18N` class.
- */
 namespace yii\mustache\helpers;
 
-use yii\base\{InvalidCallException};
+use yii\base\{InvalidCallException, InvalidConfigException};
 use yii\helpers\{ArrayHelper};
 use yii\mustache\{Helper};
 
@@ -16,15 +13,7 @@ class I18N extends Helper {
   /**
    * @var string The default message category when no one is supplied.
    */
-  private $defaultCategory = 'app';
-
-  /**
-   * Gets the default message category when no one is supplied.
-   * @return string The default message category.
-   */
-  public function getDefaultCategory(): string {
-    return $this->defaultCategory;
-  }
+  public $defaultCategory = 'app';
 
   /**
    * Returns a function translating a message.
@@ -41,10 +30,8 @@ class I18N extends Helper {
    */
   public function getTranslate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $defaultCategory = $this->getDefaultCategory();
-
       $defaultArgs = [
-        'category' => $defaultCategory,
+        'category' => $this->defaultCategory,
         'language' => null,
         'params' => []
       ];
@@ -54,12 +41,12 @@ class I18N extends Helper {
 
       if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        $parts = explode($this->getArgumentSeparator(), $output, 2);
+        $parts = explode($this->argumentSeparator, $output, 2);
         $length = count($parts);
         if (!$length) throw new InvalidCallException('Invalid translation format.');
 
         $args = ArrayHelper::merge($defaultArgs, [
-          'category' => $length == 1 ? $defaultCategory : $parts[0],
+          'category' => $length == 1 ? $this->defaultCategory : $parts[0],
           'message' => $parts[$length - 1]
         ]);
       }
@@ -69,12 +56,11 @@ class I18N extends Helper {
   }
 
   /**
-   * Sets the default message category when no one is supplied.
-   * @param string $value The new default message category.
-   * @return I18N This instance.
+   * Initializes the object.
+   * @throws InvalidConfigException The argument separator is empty.
    */
-  public function setDefaultCategory(string $value): self {
-    $this->defaultCategory = $value;
-    return $this;
+  public function init() {
+    parent::init();
+    if (!mb_strlen($this->defaultCategory)) throw new InvalidConfigException('The argument separator is empty.');
   }
 }

@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\mustache\Logger` class.
- */
 namespace yii\mustache;
 
 use yii\base\{InvalidParamException};

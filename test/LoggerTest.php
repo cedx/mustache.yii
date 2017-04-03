@@ -1,15 +1,11 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\LoggerTest` class.
- */
-namespace yii\test\mustache;
+namespace yii\mustache;
 
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidParamException};
-use yii\mustache\{Logger};
 
 /**
- * @coversDefaultClass \yii\mustache\Logger
+ * Tests the features of the `yii\mustache\Logger` class.
  */
 class LoggerTest extends TestCase {
 
@@ -19,7 +15,7 @@ class LoggerTest extends TestCase {
   private $model;
 
   /**
-   * @test ::log
+   * @test Logger::log
    */
   public function testLog() {
     $this->expectException(InvalidParamException::class);

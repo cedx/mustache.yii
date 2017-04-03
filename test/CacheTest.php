@@ -1,14 +1,9 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\CacheTest` class.
- */
-namespace yii\test\mustache;
-
+namespace yii\mustache;
 use PHPUnit\Framework\{TestCase};
-use yii\mustache\{Cache, ViewRenderer};
 
 /**
- * @coversDefaultClass \yii\mustache\Cache
+ * Tests the features of the `yii\mustache\Cache` class.
  */
 class CacheTest extends TestCase {
 
@@ -18,7 +13,7 @@ class CacheTest extends TestCase {
   private $model;
 
   /**
-   * @test ::cache
+   * @test Cache::cache
    */
   public function testCache() {
     $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
@@ -26,7 +21,7 @@ class CacheTest extends TestCase {
   }
 
   /**
-   * @test ::load
+   * @test Cache::load
    */
   public function testLoad() {
     $this->assertFalse($this->model->load('key'));

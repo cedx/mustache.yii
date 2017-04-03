@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 6.0.0
+- Breaking change: replaced most of getters and setters by properties.
+- Added the `Helper::init()` method.
+
 ## Version 5.0.0
 - Breaking change: changed the signature of the constructors of the `Cache` and `Logger` classes.
 - Breaking change: removed the `jsonSerialize()` and `__toString()` methods.

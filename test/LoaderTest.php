@@ -1,15 +1,11 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\LoaderTest` class.
- */
-namespace yii\test\mustache;
+namespace yii\mustache;
 
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidCallException};
-use yii\mustache\{Loader, ViewRenderer};
 
 /**
- * @coversDefaultClass \yii\mustache\Loader
+ * Tests the features of the `yii\mustache\Loader` class.
  */
 class LoaderTest extends TestCase {
 
@@ -19,7 +15,7 @@ class LoaderTest extends TestCase {
   private $model;
 
   /**
-   * @test ::findViewFile
+   * @test Loader::findViewFile
    */
   public function testFindViewFile() {
     $findViewFile = function(string $name) {
@@ -34,7 +30,7 @@ class LoaderTest extends TestCase {
   }
 
   /**
-   * @test ::load
+   * @test Loader::load
    */
   public function testLoad() {
     $this->expectException(InvalidCallException::class);

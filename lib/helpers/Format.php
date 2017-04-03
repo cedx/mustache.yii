@@ -1,14 +1,20 @@
 <?php
-/**
- * Implementation of the `yii\mustache\helpers\Format` class.
- */
 namespace yii\mustache\helpers;
 
-use yii\helpers\{Html as HtmlHelper};
+use yii\helpers\{Html as HTMLHelper};
 use yii\mustache\{Helper};
 
 /**
  * Provides a set of commonly used data formatting methods.
+ * @property \Closure $boolean A function formatting a value as boolean.
+ * @property \Closure $currency A function formatting a value as currency number.
+ * @property \Closure $date A function formatting a value as date.
+ * @property \Closure $dateTime A function formatting a value as datetime.
+ * @property \Closure $decimal A function formatting a value as decimal number.
+ * @property \Closure $integer A function formatting a value as integer number without rounding.
+ * @property \Closure $ntext A function formatting a value as HTML-encoded text with newlines converted into breaks.
+ * @property \Closure $percent A function formatting a value as percent number.
+ * @property \Closure $time A function formatting a value as time.
  */
 class Format extends Helper {
 
@@ -18,7 +24,7 @@ class Format extends Helper {
    */
   public function getBoolean(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asBoolean($helper->render($value)));
+      return HTMLHelper::encode(\Yii::$app->formatter->asBoolean($helper->render($value)));
     };
   }
 
@@ -34,7 +40,7 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asCurrency(
+      return HTMLHelper::encode(\Yii::$app->formatter->asCurrency(
         $args['value'],
         $args['currency'],
         $args['options'],
@@ -50,7 +56,7 @@ class Format extends Helper {
   public function getDate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asDate($args['value'], $args['format']));
+      return HTMLHelper::encode(\Yii::$app->formatter->asDate($args['value'], $args['format']));
     };
   }
 
@@ -61,7 +67,7 @@ class Format extends Helper {
   public function getDateTime(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asDatetime($args['value'], $args['format']));
+      return HTMLHelper::encode(\Yii::$app->formatter->asDatetime($args['value'], $args['format']));
     };
   }
 
@@ -77,7 +83,7 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asDecimal(
+      return HTMLHelper::encode(\Yii::$app->formatter->asDecimal(
         $args['value'],
         $args['decimals'],
         $args['options'],
@@ -97,7 +103,7 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asInteger(
+      return HTMLHelper::encode(\Yii::$app->formatter->asInteger(
         $args['value'],
         $args['options'],
         $args['textOptions']
@@ -111,8 +117,8 @@ class Format extends Helper {
    */
   public function getNtext(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      if (!isset($value)) return \Yii::$app->getFormatter()->nullDisplay;
-      return preg_replace('/\r?\n/', '<br>', HtmlHelper::encode($helper->render($value)));
+      if (!isset($value)) return \Yii::$app->formatter->nullDisplay;
+      return preg_replace('/\r?\n/', '<br>', HTMLHelper::encode($helper->render($value)));
     };
   }
 
@@ -128,7 +134,7 @@ class Format extends Helper {
         'textOptions' => []
       ]);
 
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asPercent(
+      return HTMLHelper::encode(\Yii::$app->formatter->asPercent(
         $args['value'],
         $args['decimals'],
         $args['options'],
@@ -144,7 +150,7 @@ class Format extends Helper {
   public function getTime(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
-      return HtmlHelper::encode(\Yii::$app->getFormatter()->asTime($args['value'], $args['format']));
+      return HTMLHelper::encode(\Yii::$app->formatter->asTime($args['value'], $args['format']));
     };
   }
 }

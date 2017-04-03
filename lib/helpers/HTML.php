@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\mustache\helpers\HTML` class.
- */
 namespace yii\mustache\helpers;
 
 use yii\helpers\{Markdown};

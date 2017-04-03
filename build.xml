@@ -27,6 +27,9 @@
   </target>
 
   <target name="test" description="Runs the unit tests.">
-    <exec executable="vendor/bin/phpunit" passthru="true"/>
+    <exec executable="vendor/bin/phpunit" passthru="true">
+      <arg value="--colors=auto"/>
+      <arg value="--verbose"/>
+    </exec>
   </target>
 </project>

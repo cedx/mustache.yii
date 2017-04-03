@@ -1,10 +1,7 @@
 <?php
-/**
- * Implementation of the `yii\mustache\Helper` class.
- */
 namespace yii\mustache;
 
-use yii\base\{InvalidParamException, Object};
+use yii\base\{InvalidConfigException, InvalidParamException, Object};
 use yii\helpers\{ArrayHelper, Json};
 
 /**
@@ -15,24 +12,15 @@ abstract class Helper extends Object {
   /**
    * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.
    */
-  private $argumentSeparator = ':';
+  public $argumentSeparator = ':';
 
   /**
-   * Gets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
-   * @return string The string used to separate helper arguments.
+   * Initializes the object.
+   * @throws InvalidConfigException The argument separator is empty.
    */
-  public function getArgumentSeparator(): string {
-    return $this->argumentSeparator;
-  }
-
-  /**
-   * Sets the string used to separate the arguments for helpers supporting the "two arguments" syntax.
-   * @param string $value The new string to use to separate the helper arguments.
-   * @return Helper This instance.
-   */
-  public function setArgumentSeparator(string $value): self {
-    $this->argumentSeparator = $value;
-    return $this;
+  public function init() {
+    parent::init();
+    if (!mb_strlen($this->argumentSeparator)) throw new InvalidConfigException('The argument separator is empty.');
   }
 
   /**
@@ -47,7 +35,7 @@ abstract class Helper extends Object {
   }
 
   /**
-   * Parses the arguments of a parametrized helper.
+   * Parses the arguments of a parameterized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @param string $text The section content specifying the helper arguments.
    * @param string $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
@@ -57,7 +45,7 @@ abstract class Helper extends Object {
   protected function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
     try {
       if (is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
-      throw new InvalidParamException();
+      throw new InvalidParamException('The JSON string has an invalid format.');
     }
 
     catch (InvalidParamException $e) {

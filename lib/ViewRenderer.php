@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\mustache\ViewRenderer` class.
- */
 namespace yii\mustache;
 
 use yii\base\{InvalidCallException};
@@ -20,17 +17,17 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * @var string The identifier of the cache application component that is used to cache the compiled views. If empty, the caching is disabled.
    */
-  private $cacheId = '';
+  public $cacheId = '';
 
   /**
    * @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
    */
-  private $cachingDuration = 0;
+  public $cachingDuration = 0;
 
   /**
    * @var bool Value indicating whether to enable the logging of engine messages.
    */
-  private $enableLogging = false;
+  public $enableLogging = false;
 
   /**
    * @var \Mustache_Engine The underlying Mustache template engine.
@@ -41,30 +38,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @var array The values prepended to the context stack.
    */
   private $helpers = [];
-
-  /**
-   * Gets a value indicating whether to enable the logging of engine messages.
-   * @return bool `true` to enable the logging of engine messages, otherwise `false`.
-   */
-  public function enableLogging(): bool {
-    return $this->enableLogging;
-  }
-
-  /**
-   * Gets the identifier of the cache application component that is used to cache the compiled views.
-   * @return string The identifier of the cache application component.
-   */
-  public function getCacheId(): string {
-    return $this->cacheId;
-  }
-
-  /**
-   * Gets the time in seconds that the compiled views can remain valid in cache.
-   * @return int The time in seconds that the compiled views can remain valid in cache.
-   */
-  public function getCachingDuration(): int {
-    return $this->cachingDuration;
-  }
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
@@ -134,36 +107,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
-  }
-
-  /**
-   * Sets the identifier of the cache application component that is used to cache the compiled views.
-   * @param string $value The identifier of the cache application component. If empty, the caching is disabled.
-   * @return ViewRenderer This instance.
-   */
-  public function setCacheId(string $value): self {
-    $this->cacheId = $value;
-    return $this;
-  }
-
-  /**
-   * Sets the time in seconds that the compiled views can remain valid in cache.
-   * @param int $value The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
-   * @return ViewRenderer This instance.
-   */
-  public function setCachingDuration(int $value): self {
-    $this->cachingDuration = $value;
-    return $this;
-  }
-
-  /**
-   * Sets a value indicating whether to enable the logging of engine messages.
-   * @param bool $value `true` to enable the logging of engine messages, otherwise `false`.
-   * @return ViewRenderer This instance.
-   */
-  public function setEnableLogging(bool $value): self {
-    $this->enableLogging = $value;
-    return $this;
   }
 
   /**

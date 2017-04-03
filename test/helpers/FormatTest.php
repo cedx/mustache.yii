@@ -1,14 +1,9 @@
 <?php
-/**
- * Implementation of the `yii\test\mustache\helpers\FormatTest` class.
- */
-namespace yii\test\mustache\helpers;
-
+namespace yii\mustache\helpers;
 use PHPUnit\Framework\{TestCase};
-use yii\mustache\helpers\{Format};
 
 /**
- * @coversDefaultClass \yii\mustache\helpers\Format
+ * Tests the features of the `yii\mustache\helpers\Format` class.
  */
 class FormatTest extends TestCase {
 
@@ -18,10 +13,14 @@ class FormatTest extends TestCase {
   private $helper;
 
   /**
-   * @test ::getBoolean
+   * @test Format::getBoolean
    */
   public function testGetBoolean() {
-    $closure = (new Format())->getBoolean();
+    it('should return "No" for a falsy value', function() {
+
+    });
+
+    $closure = (new Format())->boolean;
     $this->assertEquals('No', $closure(false, $this->helper));
     $this->assertEquals('No', $closure(0, $this->helper));
     $this->assertEquals('Yes', $closure(true, $this->helper));
@@ -29,54 +28,54 @@ class FormatTest extends TestCase {
   }
 
   /**
-   * @test ::getCurrency
+   * @test Format::getCurrency
    */
   public function testGetCurrency() {
-    $closure = (new Format())->getCurrency();
+    $closure = (new Format())->currency;
     $this->assertEquals('$100.00', $closure('100', $this->helper));
     $this->assertEquals('€1,234.56', $closure('{"value": 1234.56, "currency": "EUR"}', $this->helper));
   }
 
   /**
-   * @test ::getDate
+   * @test Format::getDate
    */
   public function testGetDate() {
-    $closure = (new Format())->getDate();
+    $closure = (new Format())->date;
     $this->assertEquals('Nov 5, 1994', $closure('1994-11-05T13:15:30Z', $this->helper));
   }
 
   /**
-   * @test ::getDecimal
+   * @test Format::getDecimal
    */
   public function testGetDecimal() {
-    $closure = (new Format())->getDecimal();
+    $closure = (new Format())->decimal;
     $this->assertEquals('100.00', $closure('100', $this->helper));
     $this->assertEquals('1,234.56', $closure('1234.56', $this->helper));
   }
 
   /**
-   * @test ::getInteger
+   * @test Format::getInteger
    */
   public function testGetInteger() {
-    $closure = (new Format())->getInteger();
+    $closure = (new Format())->integer;
     $this->assertEquals('100', $closure('100', $this->helper));
     $this->assertEquals('-1,234', $closure('-1234.56', $this->helper));
   }
 
   /**
-   * @test ::getNtext
+   * @test Format::getNtext
    */
   public function testGetNtext() {
-    $closure = (new Format())->getNtext();
+    $closure = (new Format())->ntext;
     $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
     $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
   }
 
   /**
-   * @test ::getPercent
+   * @test Format::getPercent
    */
   public function testGetPercent() {
-    $closure = (new Format())->getPercent();
+    $closure = (new Format())->percent;
     $this->assertEquals('10%', $closure('0.1', $this->helper));
     $this->assertEquals('123%', $closure('1.23', $this->helper));
   }

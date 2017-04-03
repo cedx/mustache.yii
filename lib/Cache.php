@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\mustache\Cache` class.
- */
 namespace yii\mustache;
 
 /**

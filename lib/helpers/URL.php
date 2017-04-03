@@ -1,10 +1,7 @@
 <?php
-/**
- * Implementation of the `yii\mustache\helpers\URL` class.
- */
 namespace yii\mustache\helpers;
 
-use yii\helpers\{Url as UrlHelper};
+use yii\helpers\{Url as URLHelper};
 use yii\mustache\{Helper};
 
 /**
@@ -18,7 +15,7 @@ class URL extends Helper {
    */
   public function getBase(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::base($helper->render($value) ?: false);
+      return URLHelper::base($helper->render($value) ?: false);
     };
   }
 
@@ -27,7 +24,7 @@ class URL extends Helper {
    * @return string The canonical URL of the currently requested page.
    */
   public function getCanonical(): string {
-    return UrlHelper::canonical();
+    return URLHelper::canonical();
   }
 
   /**
@@ -37,7 +34,7 @@ class URL extends Helper {
   public function getCurrent(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'params', ['scheme' => false]);
-      return UrlHelper::current($args['params'], $args['scheme']);
+      return URLHelper::current($args['params'], $args['scheme']);
     };
   }
 
@@ -47,7 +44,7 @@ class URL extends Helper {
    */
   public function getHome(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::home($helper->render($value) ?: false);
+      return URLHelper::home($helper->render($value) ?: false);
     };
   }
 
@@ -57,7 +54,7 @@ class URL extends Helper {
    */
   public function getPrevious(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::previous($helper->render($value) ?: null);
+      return URLHelper::previous($helper->render($value) ?: null);
     };
   }
 
@@ -68,7 +65,7 @@ class URL extends Helper {
   public function getTo(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'url', ['scheme' => false]);
-      return UrlHelper::to($args['url'], $args['scheme']);
+      return URLHelper::to($args['url'], $args['scheme']);
     };
   }
 
@@ -79,7 +76,7 @@ class URL extends Helper {
   public function getToRoute(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'route', ['scheme' => false]);
-      return UrlHelper::toRoute($args['route'], $args['scheme']);
+      return URLHelper::toRoute($args['route'], $args['scheme']);
     };
   }
 }

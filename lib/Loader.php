@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\mustache\Loader` class.
- */
 namespace yii\mustache;
 
 use yii\base\{InvalidCallException, InvalidParamException, Object};
