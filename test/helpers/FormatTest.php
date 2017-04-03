@@ -17,67 +17,81 @@ class FormatTest extends TestCase {
    */
   public function testGetBoolean() {
     it('should return "No" for a falsy value', function() {
-
+      $closure = (new Format())->boolean;
+      $this->assertEquals('No', $closure(false, $this->helper));
+      $this->assertEquals('No', $closure(0, $this->helper));
     });
 
-    $closure = (new Format())->boolean;
-    $this->assertEquals('No', $closure(false, $this->helper));
-    $this->assertEquals('No', $closure(0, $this->helper));
-    $this->assertEquals('Yes', $closure(true, $this->helper));
-    $this->assertEquals('Yes', $closure(1, $this->helper));
+    it('should return "Yes" for a truthy value', function() {
+      $closure = (new Format())->boolean;
+      $this->assertEquals('Yes', $closure(true, $this->helper));
+      $this->assertEquals('Yes', $closure(1, $this->helper));
+    });
   }
 
   /**
    * @test Format::getCurrency
    */
   public function testGetCurrency() {
-    $closure = (new Format())->currency;
-    $this->assertEquals('$100.00', $closure('100', $this->helper));
-    $this->assertEquals('€1,234.56', $closure('{"value": 1234.56, "currency": "EUR"}', $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->currency;
+      $this->assertEquals('$100.00', $closure('100', $this->helper));
+      $this->assertEquals('€1,234.56', $closure('{"value": 1234.56, "currency": "EUR"}', $this->helper));
+    });
   }
 
   /**
    * @test Format::getDate
    */
   public function testGetDate() {
-    $closure = (new Format())->date;
-    $this->assertEquals('Nov 5, 1994', $closure('1994-11-05T13:15:30Z', $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->date;
+      $this->assertEquals('Nov 5, 1994', $closure('1994-11-05T13:15:30Z', $this->helper));
+    });
   }
 
   /**
    * @test Format::getDecimal
    */
   public function testGetDecimal() {
-    $closure = (new Format())->decimal;
-    $this->assertEquals('100.00', $closure('100', $this->helper));
-    $this->assertEquals('1,234.56', $closure('1234.56', $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->decimal;
+      $this->assertEquals('100.00', $closure('100', $this->helper));
+      $this->assertEquals('1,234.56', $closure('1234.56', $this->helper));
+    });
   }
 
   /**
    * @test Format::getInteger
    */
   public function testGetInteger() {
-    $closure = (new Format())->integer;
-    $this->assertEquals('100', $closure('100', $this->helper));
-    $this->assertEquals('-1,234', $closure('-1234.56', $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->integer;
+      $this->assertEquals('100', $closure('100', $this->helper));
+      $this->assertEquals('-1,234', $closure('-1234.56', $this->helper));
+    });
   }
 
   /**
    * @test Format::getNtext
    */
   public function testGetNtext() {
-    $closure = (new Format())->ntext;
-    $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
-    $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->ntext;
+      $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
+      $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
+    });
   }
 
   /**
    * @test Format::getPercent
    */
   public function testGetPercent() {
-    $closure = (new Format())->percent;
-    $this->assertEquals('10%', $closure('0.1', $this->helper));
-    $this->assertEquals('123%', $closure('1.23', $this->helper));
+    it('should TODO', function() {
+      $closure = (new Format())->percent;
+      $this->assertEquals('10%', $closure('0.1', $this->helper));
+      $this->assertEquals('123%', $closure('1.23', $this->helper));
+    });
   }
 
   /**
