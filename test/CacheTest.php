@@ -16,7 +16,7 @@ class CacheTest extends TestCase {
    * @test Cache::cache
    */
   public function testCache() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -28,7 +28,7 @@ class CacheTest extends TestCase {
    * @test Cache::load
    */
   public function testLoad() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 

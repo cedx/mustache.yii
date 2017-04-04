@@ -18,7 +18,7 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::getHelpers
    */
   public function testGetHelpers() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -31,7 +31,7 @@ class ViewRendererTest extends TestCase {
   public function testRender() {
     $file = __DIR__.'/fixtures/data.mustache';
 
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -54,7 +54,7 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::setHelpers
    */
   public function testSetHelpers() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 

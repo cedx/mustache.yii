@@ -22,7 +22,7 @@ class LoaderTest extends TestCase {
       return $this->findViewFile($name);
     };
 
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -37,7 +37,7 @@ class LoaderTest extends TestCase {
    * @test Loader::load
    */
   public function testLoad() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 

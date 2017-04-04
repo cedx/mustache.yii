@@ -13,7 +13,7 @@ class LoggerTest extends TestCase {
    * @test Logger::log
    */
   public function testLog() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 

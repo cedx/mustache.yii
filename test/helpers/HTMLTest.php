@@ -18,19 +18,17 @@ class HTMLTest extends TestCase {
    * @test HTML::getBeginBody
    */
   public function testGetBeginBody() {
-    it('', function() {
-
+    it('should return the tag marking the beginning of an HTML body section', function() {
+      \Yii::$app->set('view', new View());
+      expect((new HTML())->beginBody)->to->equal(View::PH_BODY_BEGIN);
     });
-
-    \Yii::$app->set('view', new View());
-    $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->beginBody);
   }
 
   /**
    * @test HTML::getEndBody
    */
   public function testGetEndBody() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -42,7 +40,7 @@ class HTMLTest extends TestCase {
    * @test HTML::getHead
    */
   public function testHead() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -54,7 +52,7 @@ class HTMLTest extends TestCase {
    * @test HTML::getMarkdown
    */
   public function testGetMarkdown() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -66,7 +64,7 @@ class HTMLTest extends TestCase {
    * @test HTML::getSpaceless
    */
   public function testGetSpaceless() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
@@ -79,12 +77,12 @@ class HTMLTest extends TestCase {
    * @test HTML::getViewTitle
    */
   public function testViewTitle() {
-    it('', function() {
+    it('should TODO', function() {
 
     });
 
     \Yii::$app->set('view', new View());
-    $this->assertNull(\Yii::$app->view->title);
+    expect(\Yii::$app->view->title)->to->be->null;
 
     $closure = (new HTML())->viewTitle;
     $closure('Foo Bar', $this->helper);
