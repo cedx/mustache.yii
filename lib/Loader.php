@@ -1,7 +1,7 @@
 <?php
 namespace yii\mustache;
 
-use yii\base\{InvalidCallException, InvalidParamException, Object};
+use yii\base\{InvalidCallException, InvalidConfigException, InvalidParamException, Object};
 use yii\helpers\{FileHelper};
 
 /**
@@ -28,6 +28,15 @@ class Loader extends Object implements \Mustache_Loader {
    * @var string[] The loaded views.
    */
   private $views = [];
+
+  /**
+   * Initializes the object.
+   * @throws InvalidConfigException The view renderer is not initialized.
+   */
+  public function init() {
+    parent::init();
+    if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
+  }
 
   /**
    * Loads the view with the specified name.

@@ -1,6 +1,6 @@
 <?php
 namespace yii\mustache;
-use yii\base\{Object};
+use yii\base\{InvalidConfigException, Object};
 
 /**
  * Component used to store compiled views to a cache application component.
@@ -31,6 +31,15 @@ class Cache extends Object implements \Mustache_Cache {
       $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $this->viewRenderer->cachingDuration);
       $this->load($key);
     }
+  }
+
+  /**
+   * Initializes the object.
+   * @throws InvalidConfigException The view renderer is not initialized.
+   */
+  public function init() {
+    parent::init();
+    if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
   }
 
   /**

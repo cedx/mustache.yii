@@ -2,10 +2,10 @@
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
 ## Version 6.0.0
+- Breaking change: added `init()` methods for validating the required properties.
 - Breaking change: the `Cache` class now extends from `Object` class, and implements the `Mustache_Cache` interface.
 - Breaking change: the `Logger` class now extends from `Object` class, and implements the [PSR-3](http://www.php-fig.org/psr/psr-3) logger interface.
 - Breaking change: replaced most of getters and setters by properties.
-- Added the `Helper::init()` method.
 
 ## Version 5.0.0
 - Breaking change: changed the signature of the constructors of the `Cache` and `Logger` classes.
