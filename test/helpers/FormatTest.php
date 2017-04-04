@@ -33,7 +33,7 @@ class FormatTest extends TestCase {
    * @test Format::getCurrency
    */
   public function testGetCurrency() {
-    it('should TODO', function() {
+    it('should format the specified value as a currency', function() {
       $closure = (new Format())->currency;
       $this->assertEquals('$100.00', $closure('100', $this->helper));
       $this->assertEquals('€1,234.56', $closure('{"value": 1234.56, "currency": "EUR"}', $this->helper));
@@ -44,7 +44,7 @@ class FormatTest extends TestCase {
    * @test Format::getDate
    */
   public function testGetDate() {
-    it('should TODO', function() {
+    it('should format the specified value as a date', function() {
       $closure = (new Format())->date;
       $this->assertEquals('Nov 5, 1994', $closure('1994-11-05T13:15:30Z', $this->helper));
     });
@@ -54,7 +54,7 @@ class FormatTest extends TestCase {
    * @test Format::getDecimal
    */
   public function testGetDecimal() {
-    it('should TODO', function() {
+    it('should format the specified value as a decimal number', function() {
       $closure = (new Format())->decimal;
       $this->assertEquals('100.00', $closure('100', $this->helper));
       $this->assertEquals('1,234.56', $closure('1234.56', $this->helper));
@@ -65,7 +65,7 @@ class FormatTest extends TestCase {
    * @test Format::getInteger
    */
   public function testGetInteger() {
-    it('should TODO', function() {
+    it('should format the specified value as an integer number', function() {
       $closure = (new Format())->integer;
       $this->assertEquals('100', $closure('100', $this->helper));
       $this->assertEquals('-1,234', $closure('-1234.56', $this->helper));
@@ -76,7 +76,7 @@ class FormatTest extends TestCase {
    * @test Format::getNtext
    */
   public function testGetNtext() {
-    it('should TODO', function() {
+    it('should replace new lines by "<br>" tags', function() {
       $closure = (new Format())->ntext;
       $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
       $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
@@ -87,7 +87,7 @@ class FormatTest extends TestCase {
    * @test Format::getPercent
    */
   public function testGetPercent() {
-    it('should TODO', function() {
+    it('should format the specified value as a percentage', function() {
       $closure = (new Format())->percent;
       $this->assertEquals('10%', $closure('0.1', $this->helper));
       $this->assertEquals('123%', $closure('1.23', $this->helper));
@@ -98,9 +98,6 @@ class FormatTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = \Yii::createObject(
-      \Mustache_LambdaHelper::class,
-      [\Yii::createObject(\Mustache_Engine::class), \Yii::createObject(\Mustache_Context::class)]
-    );
+    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
   }
 }
