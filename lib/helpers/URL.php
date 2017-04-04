@@ -6,6 +6,13 @@ use yii\mustache\{Helper};
 
 /**
  * Provides a set of methods for managing URLs.
+ * @property \Closure $base A function returning the base URL of the current request.
+ * @property string $canonical The canonical URL of the currently requested page.
+ * @property \Closure $current A function creating a URL by using the current route and the GET parameters.
+ * @property \Closure $home A function returning the home URL.
+ * @property \Closure $previous A function returning the URL previously remembered.
+ * @property \Closure $to A function creating a URL based on the given parameters.
+ * @property \Closure $toRoute A function creating a URL for the given route.
  */
 class URL extends Helper {
 
