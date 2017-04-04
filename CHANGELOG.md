@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
 ## Version 6.0.0
+- Breaking change: the `Cache` class now extends from `Object` class, and implements the `Mustache_Cache` interface.
 - Breaking change: replaced most of getters and setters by properties.
 - Added the `Helper::init()` method.
 

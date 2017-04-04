@@ -1,10 +1,11 @@
 <?php
 namespace yii\mustache;
+use yii\base\{Object};
 
 /**
  * Component used to store compiled views to a cache application component.
  */
-class Cache extends \Mustache_Cache_AbstractCache {
+class Cache extends Object implements \Mustache_Cache {
 
   /**
    * @var string The string prefixed to every cache key in order to avoid name collisions.
@@ -14,15 +15,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
   /**
    * @var ViewRenderer The instance used to render the views.
    */
-  private $viewRenderer;
-
-  /**
-   * Initializes a new instance of the class.
-   * @param ViewRenderer $viewRenderer The instance used to render the views.
-   */
-  public function __construct(ViewRenderer $viewRenderer = null) {
-    $this->setViewRenderer($viewRenderer);
-  }
+  public $viewRenderer;
 
   /**
    * Caches and loads a compiled view.
@@ -30,23 +23,14 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param string $value The view to be cached.
    */
   public function cache($key, $value) {
-    $viewRenderer = $this->getViewRenderer();
-    $cacheId = $viewRenderer->getCacheId();
+    $cacheId = $this->viewRenderer->cacheId;
 
     $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
     if (!$cache) eval("?>$value");
     else {
-      $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $viewRenderer->getCachingDuration());
+      $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $this->viewRenderer->cachingDuration);
       $this->load($key);
     }
-  }
-
-  /**
-   * Gets the instance used to render the views.
-   * @return ViewRenderer The instance used to render the views.
-   */
-  public function getViewRenderer() {
-    return $this->viewRenderer;
   }
 
   /**
@@ -55,8 +39,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key): bool {
-    $viewRenderer = $this->getViewRenderer();
-    $cacheId = $viewRenderer->getCacheId();
+    $cacheId = $this->viewRenderer->cacheId;
 
     $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
     $cacheKey = static::CACHE_KEY_PREFIX.":$key";
@@ -64,15 +47,5 @@ class Cache extends \Mustache_Cache_AbstractCache {
 
     eval("?>{$cache[$cacheKey]}");
     return true;
-  }
-
-  /**
-   * Sets the instance used to render the views.
-   * @param ViewRenderer $value The instance used to render the views.
-   * @return Cache This instance.
-   */
-  public function setViewRenderer(ViewRenderer $value = null): self {
-    $this->viewRenderer = $value;
-    return $this;
   }
 }
