@@ -31,6 +31,6 @@ class CacheTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model = new Cache(new ViewRenderer());
+    $this->model = new Cache(['viewRenderer' => new ViewRenderer()]);
   }
 }

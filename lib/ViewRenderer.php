@@ -67,7 +67,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     $options = [
-      'cache' => new Cache($this),
+      'cache' => new Cache(['viewRenderer' => $this]),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
