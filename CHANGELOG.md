@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 
 ## Version 6.0.0
 - Breaking change: the `Cache` class now extends from `Object` class, and implements the `Mustache_Cache` interface.
+- Breaking change: the `Logger` class now extends from `Object` class, and implements the [PSR-3](http://www.php-fig.org/psr/psr-3) logger interface.
 - Breaking change: replaced most of getters and setters by properties.
 - Added the `Helper::init()` method.
 
