@@ -18,6 +18,10 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::getHelpers
    */
   public function testGetHelpers() {
+    it('', function() {
+
+    });
+
     $this->assertInstanceOf(\Mustache_HelperCollection::class, $this->model->helpers);
   }
 
@@ -26,6 +30,10 @@ class ViewRendererTest extends TestCase {
    */
   public function testRender() {
     $file = __DIR__.'/fixtures/data.mustache';
+
+    it('', function() {
+
+    });
 
     $data = null;
     $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
@@ -46,6 +54,10 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::setHelpers
    */
   public function testSetHelpers() {
+    it('', function() {
+
+    });
+
     $this->model->helpers = ['var' => 'value'];
 
     $helpers = $this->model->helpers;

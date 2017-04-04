@@ -22,6 +22,10 @@ class LoaderTest extends TestCase {
       return $this->findViewFile($name);
     };
 
+    it('', function() {
+
+    });
+
     $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
     $this->assertEquals($expected, $findViewFile->call($this->model, '//view'));
 
@@ -33,6 +37,10 @@ class LoaderTest extends TestCase {
    * @test Loader::load
    */
   public function testLoad() {
+    it('', function() {
+
+    });
+
     $this->expectException(InvalidCallException::class);
     $this->model->load('view');
   }

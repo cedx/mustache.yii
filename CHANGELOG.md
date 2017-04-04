@@ -6,6 +6,8 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Breaking change: the `Cache` class now extends from `Object` class, and implements the `Mustache_Cache` interface.
 - Breaking change: the `Logger` class now extends from `Object` class, and implements the [PSR-3](http://www.php-fig.org/psr/psr-3) logger interface.
 - Breaking change: replaced most of getters and setters by properties.
+- Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
+- Updated the package dependencies.
 
 ## Version 5.0.0
 - Breaking change: changed the signature of the constructors of the `Cache` and `Logger` classes.

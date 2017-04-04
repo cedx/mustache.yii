@@ -16,6 +16,10 @@ class CacheTest extends TestCase {
    * @test Cache::cache
    */
   public function testCache() {
+    it('', function() {
+
+    });
+
     $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
     $this->assertTrue(class_exists('YiiMustacheTemplateTestModel'));
   }
@@ -24,6 +28,10 @@ class CacheTest extends TestCase {
    * @test Cache::load
    */
   public function testLoad() {
+    it('', function() {
+
+    });
+
     $this->assertFalse($this->model->load('key'));
   }
 

@@ -18,6 +18,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getBeginBody
    */
   public function testGetBeginBody() {
+    it('', function() {
+
+    });
+
     \Yii::$app->set('view', new View());
     $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->beginBody);
   }
@@ -26,6 +30,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getEndBody
    */
   public function testGetEndBody() {
+    it('', function() {
+
+    });
+
     \Yii::$app->set('view', new View());
     $this->assertEquals(View::PH_BODY_END, (new HTML())->endBody);
   }
@@ -34,6 +42,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getHead
    */
   public function testHead() {
+    it('', function() {
+
+    });
+
     \Yii::$app->set('view', new View());
     $this->assertEquals(View::PH_HEAD, (new HTML())->head);
   }
@@ -42,6 +54,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getMarkdown
    */
   public function testGetMarkdown() {
+    it('', function() {
+
+    });
+
     $closure = (new HTML())->markdown;
     $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
@@ -50,6 +66,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getSpaceless
    */
   public function testGetSpaceless() {
+    it('', function() {
+
+    });
+
     $closure = (new HTML())->spaceless;
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
     $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));
@@ -59,6 +79,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getViewTitle
    */
   public function testViewTitle() {
+    it('', function() {
+
+    });
+
     \Yii::$app->set('view', new View());
     $this->assertNull(\Yii::$app->view->title);
 
