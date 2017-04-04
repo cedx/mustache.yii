@@ -18,31 +18,31 @@ class HTMLTest extends TestCase {
    * @test HTML::getBeginBody
    */
   public function testGetBeginBody() {
-    \Yii::$app->set('view', \Yii::createObject(View::class));
-    $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->getBeginBody());
+    \Yii::$app->set('view', new View());
+    $this->assertEquals(View::PH_BODY_BEGIN, (new HTML())->beginBody);
   }
 
   /**
    * @test HTML::getEndBody
    */
   public function testGetEndBody() {
-    \Yii::$app->set('view', \Yii::createObject(View::class));
-    $this->assertEquals(View::PH_BODY_END, (new HTML())->getEndBody());
+    \Yii::$app->set('view', new View());
+    $this->assertEquals(View::PH_BODY_END, (new HTML())->endBody);
   }
 
   /**
    * @test HTML::getHead
    */
   public function testHead() {
-    \Yii::$app->set('view', \Yii::createObject(View::class));
-    $this->assertEquals(View::PH_HEAD, (new HTML())->getHead());
+    \Yii::$app->set('view', new View());
+    $this->assertEquals(View::PH_HEAD, (new HTML())->head);
   }
 
   /**
    * @test HTML::getMarkdown
    */
   public function testGetMarkdown() {
-    $closure = (new HTML())->getMarkdown();
+    $closure = (new HTML())->markdown;
     $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
 
@@ -50,7 +50,7 @@ class HTMLTest extends TestCase {
    * @test HTML::getSpaceless
    */
   public function testGetSpaceless() {
-    $closure = (new HTML())->getSpaceless();
+    $closure = (new HTML())->spaceless;
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
     $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));
   }
@@ -59,10 +59,10 @@ class HTMLTest extends TestCase {
    * @test HTML::getViewTitle
    */
   public function testViewTitle() {
-    \Yii::$app->set('view', \Yii::createObject(View::class));
+    \Yii::$app->set('view', new View());
     $this->assertNull(\Yii::$app->view->title);
 
-    $closure = (new HTML())->getViewTitle();
+    $closure = (new HTML())->viewTitle;
     $closure('Foo Bar', $this->helper);
     $this->assertEquals('Foo Bar', \Yii::$app->view->title);
   }
@@ -71,9 +71,6 @@ class HTMLTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = \Yii::createObject(
-      \Mustache_LambdaHelper::class,
-      [\Yii::createObject(\Mustache_Engine::class), \Yii::createObject(\Mustache_Context::class)]
-    );
+    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
   }
 }

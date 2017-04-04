@@ -22,7 +22,7 @@ class LoaderTest extends TestCase {
       return $this->findViewFile($name);
     };
 
-    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->getViewPath().'/view.php');
+    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
     $this->assertEquals($expected, $findViewFile->call($this->model, '//view'));
 
     $this->expectException(InvalidCallException::class);
@@ -41,6 +41,6 @@ class LoaderTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model = new Loader(['viewRenderer' => \Yii::createObject(ViewRenderer::class)]);
+    $this->model = new Loader(['viewRenderer' => new ViewRenderer()]);
   }
 }

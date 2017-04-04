@@ -6,6 +6,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
+ * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
@@ -53,10 +54,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public function init() {
     $helpers = [
       'app' => \Yii::$app,
-      'format' => \Yii::createObject(helpers\Format::class),
-      'html' => \Yii::createObject(helpers\HTML::class),
-      'i18n' => \Yii::createObject(helpers\I18N::class),
-      'url' => \Yii::createObject(helpers\URL::class),
+      'format' => new helpers\Format(),
+      'html' => new helpers\HTML(),
+      'i18n' => new helpers\I18N(),
+      'url' => new helpers\URL(),
       'yii' => [
         'debug' => YII_DEBUG,
         'devEnv' => YII_ENV_DEV,
@@ -66,17 +67,17 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     $options = [
-      'cache' => \Yii::createObject(Cache::class, [$this]),
+      'cache' => new Cache($this),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
       'helpers' => ArrayHelper::merge($helpers, $this->helpers),
-      'partials_loader' => \Yii::createObject(['class' => Loader::class, 'viewRenderer' => $this]),
+      'partials_loader' => new Loader(['viewRenderer' => $this]),
       'strict_callables' => true
     ];
 
-    if ($this->enableLogging()) $options['logger'] = \Yii::createObject(Logger::class);
-    $this->engine = \Yii::createObject(\Mustache_Engine::class, [$options]);
+    if ($this->enableLogging) $options['logger'] = new Logger();
+    $this->engine = new \Mustache_Engine($options);
 
     parent::init();
     $this->helpers = [];
@@ -91,10 +92,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @throws InvalidCallException The specified view file is not found.
    */
   public function render($view, $file, $params): string {
-    $cacheId = $this->getCacheId();
-    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
-
+    $cache = mb_strlen($this->cacheId) ? \Yii::$app->get($this->cacheId) : null;
     $cacheKey = static::CACHE_KEY_PREFIX.":$file";
+
     if ($cache && $cache->exists($cacheKey))
       $output = $cache[$cacheKey];
     else {
@@ -102,7 +102,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       if (!is_file($path)) throw new InvalidCallException("View file \"$file\" does not exist.");
 
       $output = @file_get_contents($path);
-      if ($cache) $cache->set($cacheKey, $output, $this->getCachingDuration());
+      if ($cache) $cache->set($cacheKey, $output, $this->cachingDuration);
     }
 
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);

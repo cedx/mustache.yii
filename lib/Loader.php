@@ -22,20 +22,12 @@ class Loader extends Object implements \Mustache_Loader {
   /**
    * @var ViewRenderer The instance used to render the views.
    */
-  private $viewRenderer;
+  public $viewRenderer;
 
   /**
    * @var string[] The loaded views.
    */
   private $views = [];
-
-  /**
-   * Gets the instance used to render the views.
-   * @return ViewRenderer The instance used to render the views.
-   */
-  public function getViewRenderer() {
-    return $this->viewRenderer;
-  }
 
   /**
    * Loads the view with the specified name.
@@ -45,8 +37,7 @@ class Loader extends Object implements \Mustache_Loader {
    */
   public function load($name): string {
     if (!isset($this->views[$name])) {
-      $viewRenderer = $this->getViewRenderer();
-      $cacheId = $viewRenderer->getCacheId();
+      $cacheId = $this->viewRenderer->cacheId;
 
       $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
       $cacheKey = static::CACHE_KEY_PREFIX.":$name";
@@ -56,23 +47,13 @@ class Loader extends Object implements \Mustache_Loader {
         if (!is_file($path)) throw new InvalidCallException("The view file \"$path\" does not exist.");
 
         $output = @file_get_contents($path);
-        if ($cache) $cache->set($cacheKey, $output, $viewRenderer->getCachingDuration());
+        if ($cache) $cache->set($cacheKey, $output, $this->viewRenderer->cachingDuration);
       }
 
       $this->views[$name] = $output;
     }
 
     return $this->views[$name];
-  }
-
-  /**
-   * Sets the instance used to render the views.
-   * @param ViewRenderer $value The instance used to render the views.
-   * @return Loader This instance.
-   */
-  public function setViewRenderer(ViewRenderer $value = null): self {
-    $this->viewRenderer = $value;
-    return $this;
   }
 
   /**
@@ -84,20 +65,19 @@ class Loader extends Object implements \Mustache_Loader {
   protected function findViewFile(string $name): string {
     if (!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
 
-    $appViewPath = \Yii::$app->getViewPath();
     $controller = \Yii::$app->controller;
 
-    if (mb_substr($name, 0, 2) == '//') $file = $appViewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
+    if (mb_substr($name, 0, 2) == '//') $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
       if (!$controller) throw new InvalidCallException("Unable to locate the view \"$name\": no active controller.");
-      $file = $controller->module->getViewPath().DIRECTORY_SEPARATOR.ltrim($name, '/');
+      $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     }
     else {
-      $viewPath = $controller ? $controller->getViewPath() : $appViewPath;
+      $viewPath = $controller ? $controller->viewPath : \Yii::$app->viewPath;
       $file = \Yii::getAlias("$viewPath/$name");
     }
 
-    $view = \Yii::$app->getView();
+    $view = \Yii::$app->view;
     if ($view && $view->theme) $file = $view->theme->applyTo($file);
     if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
     return $file;
