@@ -18,11 +18,9 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::getHelpers
    */
   public function testGetHelpers() {
-    it('should TODO', function() {
-
+    it('should return a Mustache helper collection', function() {
+      expect($this->model->helpers)->to->be->instanceOf(\Mustache_HelperCollection::class);
     });
-
-    $this->assertInstanceOf(\Mustache_HelperCollection::class, $this->model->helpers);
   }
 
   /**
@@ -31,38 +29,36 @@ class ViewRendererTest extends TestCase {
   public function testRender() {
     $file = __DIR__.'/fixtures/data.mustache';
 
-    it('should TODO', function() {
-
+    it('should remove placeholders when there is no corresponding binding', function() use ($file) {
+      $data = null;
+      $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+      expect($output[0])->to->equal('<test></test>');
+      expect($output[1])->to->equal('<test></test>');
+      expect($output[2])->to->equal('<test></test>');
+      expect($output[3])->to->equal('<test>hidden</test>');
     });
 
-    $data = null;
-    $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
-    $this->assertEquals('<test></test>', $output[0]);
-    $this->assertEquals('<test></test>', $output[1]);
-    $this->assertEquals('<test></test>', $output[2]);
-    $this->assertEquals('<test>hidden</test>', $output[3]);
-
-    $data = ['label' => '"Mustache"', 'show' => true];
-    $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
-    $this->assertEquals('<test>&quot;Mustache&quot;</test>', $output[0]);
-    $this->assertEquals('<test>"Mustache"</test>', $output[1]);
-    $this->assertEquals('<test>visible</test>', $output[2]);
-    $this->assertEquals('<test></test>', $output[3]);
+    it('should replace placeholders with the proper values when there is a corresponding binding', function() use ($file) {
+      $data = ['label' => '"Mustache"', 'show' => true];
+      $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+      expect($output[0])->to->equal('<test>&quot;Mustache&quot;</test>');
+      expect($output[1])->to->equal('<test>"Mustache"</test>');
+      expect($output[2])->to->equal('<test>visible</test>');
+      expect($output[3])->to->equal('<test></test>');
+    });
   }
 
   /**
    * @test ViewRenderer::setHelpers
    */
   public function testSetHelpers() {
-    it('should TODO', function() {
+    it('should allow arrays as input', function() {
+      $this->model->helpers = ['var' => 'value'];
 
+      $helpers = $this->model->helpers;
+      expect($helpers->has('var'))->to->be->true;
+      expect($helpers->get('var'))->to->equal('value');
     });
-
-    $this->model->helpers = ['var' => 'value'];
-
-    $helpers = $this->model->helpers;
-    $this->assertTrue($helpers->has('var'));
-    $this->assertEquals('value', $helpers->get('var'));
   }
 
   /**

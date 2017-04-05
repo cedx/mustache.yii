@@ -22,27 +22,22 @@ class LoaderTest extends TestCase {
       return $this->findViewFile($name);
     };
 
-    it('should TODO', function() {
-
+    it('should return the path of the corresponding view file', function() use ($findViewFile) {
+      expect($findViewFile->call($this->model, '//view'))->to->equal(str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php'));
     });
 
-    $expected = str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
-    $this->assertEquals($expected, $findViewFile->call($this->model, '//view'));
-
-    $this->expectException(InvalidCallException::class);
-    $findViewFile->call($this->model, '/view');
+    it('should throw an exception if the view file is not found', function() use ($findViewFile) {
+      expect(function() use ($findViewFile) { $findViewFile->call($this->model, '/view'); })->to->throw(InvalidCallException::class);
+    });
   }
 
   /**
    * @test Loader::load
    */
   public function testLoad() {
-    it('should TODO', function() {
-
+    it('should throw an exception if the view file is not found', function() {
+      expect(function() { $this->model->load('view'); })->to->throw(InvalidCallException::class);
     });
-
-    $this->expectException(InvalidCallException::class);
-    $this->model->load('view');
   }
 
   /**

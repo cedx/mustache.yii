@@ -13,11 +13,8 @@ class LoggerTest extends TestCase {
    * @test Logger::log
    */
   public function testLog() {
-    it('should TODO', function() {
-
+    it('should throw an exception if the log level is invalid', function() {
+      expect(function() { (new Logger())->log('dummy', 'Hello World!'); })->to->throw(InvalidParamException::class);
     });
-
-    $this->expectException(InvalidParamException::class);
-    (new Logger())->log('dummy', 'Hello World!');
   }
 }
