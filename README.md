@@ -22,12 +22,15 @@ $ composer require cedx/yii2-mustache
 In order to start using Mustache you need to configure the `view` application component, like the following:
 
 ```php
+use yii\mustache\{ViewRenderer};
+use yii\web\{View};
+
 return [
   'components' => [
     'view' => [
-      'class' => 'yii\web\View',
+      'class' => View::class,
       'renderers' => [
-        'mustache' => 'yii\mustache\ViewRenderer'
+        'mustache' => ViewRenderer::class
       ]
     ]
   ]
