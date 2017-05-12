@@ -4,8 +4,6 @@
   "name": "cedx/yii2-mustache",
 
   "license": "Apache-2.0",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "type": "yii2-extension",
 
   "authors": [{
