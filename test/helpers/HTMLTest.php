@@ -15,11 +15,17 @@ class HTMLTest extends TestCase {
   private $helper;
 
   /**
+   * Performs a common set of tasks just before the first test of the class is run.
+   */
+  public static function setUpBeforeClass() {
+    \Yii::$app->set('view', View::class);
+  }
+
+  /**
    * @test HTML::getBeginBody
    */
   public function testGetBeginBody() {
     it('should return the tag marking the beginning of an HTML body section', function() {
-      \Yii::$app->set('view', View::class);
       expect((new HTML())->beginBody)->to->equal(View::PH_BODY_BEGIN);
     });
   }
@@ -29,7 +35,6 @@ class HTMLTest extends TestCase {
    */
   public function testGetEndBody() {
     it('should return the tag marking the ending of an HTML body section', function() {
-      \Yii::$app->set('view', View::class);
       expect((new HTML())->endBody)->to->equal(View::PH_BODY_END);
     });
   }
@@ -39,7 +44,6 @@ class HTMLTest extends TestCase {
    */
   public function testHead() {
     it('should return the tag marking the position of an HTML head section', function() {
-      \Yii::$app->set('view', View::class);
       expect((new HTML())->head)->to->equal(View::PH_HEAD);
     });
   }
@@ -70,7 +74,6 @@ class HTMLTest extends TestCase {
    */
   public function testViewTitle() {
     it('should set the view title', function() {
-      \Yii::$app->set('view', View::class);
       expect(\Yii::$app->view->title)->to->be->null;
 
       $closure = (new HTML())->viewTitle;
