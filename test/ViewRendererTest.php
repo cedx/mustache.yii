@@ -27,20 +27,22 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::render
    */
   public function testRender() {
+    /** @var View $view */
+    $view = \Yii::createObject(View::class);
     $file = __DIR__.'/fixtures/data.mustache';
 
-    it('should remove placeholders when there is no corresponding binding', function() use ($file) {
+    it('should remove placeholders when there is no corresponding binding', function() use ($file, $view) {
       $data = null;
-      $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+      $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
       expect($output[0])->to->equal('<test></test>');
       expect($output[1])->to->equal('<test></test>');
       expect($output[2])->to->equal('<test></test>');
       expect($output[3])->to->equal('<test>hidden</test>');
     });
 
-    it('should replace placeholders with the proper values when there is a corresponding binding', function() use ($file) {
+    it('should replace placeholders with the proper values when there is a corresponding binding', function() use ($file, $view) {
       $data = ['label' => '"Mustache"', 'show' => true];
-      $output = preg_split('/\r?\n/', $this->model->render(new View(), $file, $data));
+      $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
       expect($output[0])->to->equal('<test>&quot;Mustache&quot;</test>');
       expect($output[1])->to->equal('<test>"Mustache"</test>');
       expect($output[2])->to->equal('<test>visible</test>');
