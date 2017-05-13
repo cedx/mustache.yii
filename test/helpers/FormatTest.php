@@ -17,13 +17,13 @@ class FormatTest extends TestCase {
    */
   public function testGetBoolean() {
     it('should return "No" for a falsy value', function() {
-      $closure = (new Format())->boolean;
+      $closure = (new Format)->boolean;
       expect($closure(false, $this->helper))->to->equal('No');
       expect($closure(0, $this->helper))->to->equal('No');
     });
 
     it('should return "Yes" for a truthy value', function() {
-      $closure = (new Format())->boolean;
+      $closure = (new Format)->boolean;
       expect($closure(true, $this->helper))->to->equal('Yes');
       expect($closure(1, $this->helper))->to->equal('Yes');
     });
@@ -34,7 +34,7 @@ class FormatTest extends TestCase {
    */
   public function testGetCurrency() {
     it('should format the specified value as a currency', function() {
-      $closure = (new Format())->currency;
+      $closure = (new Format)->currency;
       expect($closure('100', $this->helper))->to->equal('$100.00');
       expect($closure('{"value": 1234.56, "currency": "EUR"}', $this->helper))->to->equal('€1,234.56');
     });
@@ -45,7 +45,7 @@ class FormatTest extends TestCase {
    */
   public function testGetDate() {
     it('should format the specified value as a date', function() {
-      $closure = (new Format())->date;
+      $closure = (new Format)->date;
       expect($closure('1994-11-05T13:15:30Z', $this->helper))->to->equal('Nov 5, 1994');
     });
   }
@@ -55,7 +55,7 @@ class FormatTest extends TestCase {
    */
   public function testGetDecimal() {
     it('should format the specified value as a decimal number', function() {
-      $closure = (new Format())->decimal;
+      $closure = (new Format)->decimal;
       expect($closure('100', $this->helper))->to->equal('100.00');
       expect($closure('1234.56', $this->helper))->to->equal('1,234.56');
     });
@@ -66,7 +66,7 @@ class FormatTest extends TestCase {
    */
   public function testGetInteger() {
     it('should format the specified value as an integer number', function() {
-      $closure = (new Format())->integer;
+      $closure = (new Format)->integer;
       expect($closure('100', $this->helper))->to->equal('100');
       expect($closure('-1234.56', $this->helper))->to->equal('-1,234');
     });
@@ -77,7 +77,7 @@ class FormatTest extends TestCase {
    */
   public function testGetNtext() {
     it('should replace new lines by "<br>" tags', function() {
-      $closure = (new Format())->ntext;
+      $closure = (new Format)->ntext;
       expect($closure("Foo\nBar", $this->helper))->to->equal('Foo<br>Bar');
       expect($closure("Foo\r\nBaz", $this->helper))->to->equal('Foo<br>Baz');
     });
@@ -88,7 +88,7 @@ class FormatTest extends TestCase {
    */
   public function testGetPercent() {
     it('should format the specified value as a percentage', function() {
-      $closure = (new Format())->percent;
+      $closure = (new Format)->percent;
       expect($closure('0.1', $this->helper))->to->equal('10%');
       expect($closure('1.23', $this->helper))->to->equal('123%');
     });
@@ -98,6 +98,6 @@ class FormatTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
+    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine, new \Mustache_Context);
   }
 }

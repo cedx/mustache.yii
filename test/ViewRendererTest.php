@@ -67,6 +67,6 @@ class ViewRendererTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model = new ViewRenderer();
+    $this->model = new ViewRenderer;
   }
 }

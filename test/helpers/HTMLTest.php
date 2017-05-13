@@ -26,7 +26,7 @@ class HTMLTest extends TestCase {
    */
   public function testGetBeginBody() {
     it('should return the tag marking the beginning of an HTML body section', function() {
-      expect((new HTML())->beginBody)->to->equal(View::PH_BODY_BEGIN);
+      expect((new HTML)->beginBody)->to->equal(View::PH_BODY_BEGIN);
     });
   }
 
@@ -35,7 +35,7 @@ class HTMLTest extends TestCase {
    */
   public function testGetEndBody() {
     it('should return the tag marking the ending of an HTML body section', function() {
-      expect((new HTML())->endBody)->to->equal(View::PH_BODY_END);
+      expect((new HTML)->endBody)->to->equal(View::PH_BODY_END);
     });
   }
 
@@ -44,7 +44,7 @@ class HTMLTest extends TestCase {
    */
   public function testHead() {
     it('should return the tag marking the position of an HTML head section', function() {
-      expect((new HTML())->head)->to->equal(View::PH_HEAD);
+      expect((new HTML)->head)->to->equal(View::PH_HEAD);
     });
   }
 
@@ -53,7 +53,7 @@ class HTMLTest extends TestCase {
    */
   public function testGetMarkdown() {
     it('should convert Markdown code to HTML', function() {
-      $closure = (new HTML())->markdown;
+      $closure = (new HTML)->markdown;
       expect($closure("# title", $this->helper))->to->equal("<h1>title</h1>\n");
     });
   }
@@ -63,7 +63,7 @@ class HTMLTest extends TestCase {
    */
   public function testGetSpaceless() {
     it('should remove whitespace characters between HTML tags', function() {
-      $closure = (new HTML())->spaceless;
+      $closure = (new HTML)->spaceless;
       expect($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper))->to->equal('<strong>label</strong><em>label</em>');
       expect($closure('<strong> label </strong>  <em> label </em>', $this->helper))->to->equal('<strong> label </strong><em> label </em>');
     });
@@ -76,7 +76,7 @@ class HTMLTest extends TestCase {
     it('should set the view title', function() {
       expect(\Yii::$app->view->title)->to->be->null;
 
-      $closure = (new HTML())->viewTitle;
+      $closure = (new HTML)->viewTitle;
       $closure('Foo Bar', $this->helper);
       expect(\Yii::$app->view->title)->to->equal('Foo Bar');
     });
@@ -86,6 +86,6 @@ class HTMLTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
+    $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine, new \Mustache_Context);
   }
 }
