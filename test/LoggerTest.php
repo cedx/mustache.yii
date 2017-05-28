@@ -1,6 +1,7 @@
 <?php
 namespace yii\mustache;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidParamException};
 
