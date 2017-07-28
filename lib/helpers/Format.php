@@ -24,7 +24,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as boolean.
    */
   public function getBoolean(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       return HTMLHelper::encode(\Yii::$app->formatter->asBoolean($helper->render($value)));
     };
   }
@@ -34,7 +34,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as currency number.
    */
   public function getCurrency(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', [
         'currency' => null,
         'options' => [],
@@ -55,7 +55,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as date.
    */
   public function getDate(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
       return HTMLHelper::encode(\Yii::$app->formatter->asDate($args['value'], $args['format']));
     };
@@ -66,7 +66,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as datetime.
    */
   public function getDateTime(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
       return HTMLHelper::encode(\Yii::$app->formatter->asDatetime($args['value'], $args['format']));
     };
@@ -77,7 +77,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as decimal number.
    */
   public function getDecimal(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', [
         'decimals' => null,
         'options' => [],
@@ -98,7 +98,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as integer number without rounding.
    */
   public function getInteger(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', [
         'options' => [],
         'textOptions' => []
@@ -117,7 +117,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as HTML-encoded text with newlines converted into breaks.
    */
   public function getNtext(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       if (!isset($value)) return \Yii::$app->formatter->nullDisplay;
       return preg_replace('/\r?\n/', '<br>', HTMLHelper::encode($helper->render($value)));
     };
@@ -128,7 +128,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as percent number.
    */
   public function getPercent(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', [
         'decimals' => null,
         'options' => [],
@@ -149,7 +149,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as time.
    */
   public function getTime(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'value', ['format' => null]);
       return HTMLHelper::encode(\Yii::$app->formatter->asTime($args['value'], $args['format']));
     };

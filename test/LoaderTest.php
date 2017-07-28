@@ -20,7 +20,7 @@ class LoaderTest extends TestCase {
    * @test Loader::findViewFile
    */
   public function testFindViewFile() {
-    $findViewFile = function(string $name) {
+    $findViewFile = function(string $name): string {
       /** @var Loader $this */
       return $this->findViewFile($name);
     };

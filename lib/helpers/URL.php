@@ -22,7 +22,7 @@ class URL extends Helper {
    * @return \Closure A function returning the base URL of the current request.
    */
   public function getBase(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       return URLHelper::base($helper->render($value) ?: false);
     };
   }
@@ -40,7 +40,7 @@ class URL extends Helper {
    * @return \Closure A function creating a URL by using the current route and the GET parameters.
    */
   public function getCurrent(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'params', ['scheme' => false]);
       return URLHelper::current($args['params'], $args['scheme']);
     };
@@ -51,7 +51,7 @@ class URL extends Helper {
    * @return \Closure A function returning the home URL.
    */
   public function getHome(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       return URLHelper::home($helper->render($value) ?: false);
     };
   }
@@ -61,7 +61,7 @@ class URL extends Helper {
    * @return \Closure A function returning the URL previously remembered.
    */
   public function getPrevious(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function(string $value, \Mustache_LambdaHelper $helper) {
       return URLHelper::previous($helper->render($value) ?: null);
     };
   }
@@ -71,7 +71,7 @@ class URL extends Helper {
    * @return \Closure A function creating a URL based on the given parameters.
    */
   public function getTo(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'url', ['scheme' => false]);
       return URLHelper::to($args['url'], $args['scheme']);
     };
@@ -82,7 +82,7 @@ class URL extends Helper {
    * @return \Closure A function creating a URL for the given route.
    */
   public function getToRoute(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function(string $value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'route', ['scheme' => false]);
       return URLHelper::toRoute($args['route'], $args['scheme']);
     };
