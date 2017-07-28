@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace yii\mustache\helpers;
 
 use yii\helpers\{Html as HTMLHelper};
@@ -23,7 +24,7 @@ class Format extends Helper {
    * @return \Closure A function formatting a value as boolean.
    */
   public function getBoolean(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       return HTMLHelper::encode(\Yii::$app->formatter->asBoolean($helper->render($value)));
     };
   }

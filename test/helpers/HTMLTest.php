@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace yii\mustache\helpers;
 
 use function PHPUnit\Expect\{expect, it};

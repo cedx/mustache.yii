@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace yii\mustache\helpers;
 
 use yii\helpers\{Url as URLHelper};
@@ -50,7 +51,7 @@ class URL extends Helper {
    * @return \Closure A function returning the home URL.
    */
   public function getHome(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       return URLHelper::home($helper->render($value) ?: false);
     };
   }
@@ -70,7 +71,7 @@ class URL extends Helper {
    * @return \Closure A function creating a URL based on the given parameters.
    */
   public function getTo(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'url', ['scheme' => false]);
       return URLHelper::to($args['url'], $args['scheme']);
     };
@@ -81,7 +82,7 @@ class URL extends Helper {
    * @return \Closure A function creating a URL for the given route.
    */
   public function getToRoute(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'route', ['scheme' => false]);
       return URLHelper::toRoute($args['route'], $args['scheme']);
     };
