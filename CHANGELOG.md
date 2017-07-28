@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 6.1.0
+- Enabled the strict typing.
+- Replaced [phpDocumentor](https://www.phpdoc.org) documentation generator by [ApiGen](https://github.com/ApiGen/ApiGen).
+- Updated the package dependencies.
+
 ## Version 6.0.0
 - Breaking change: added `init()` methods for validating the required properties.
 - Breaking change: the `Cache` class now extends from `Object` class, and implements the `Mustache_Cache` interface.
