@@ -33,13 +33,14 @@
     "yiisoft/yii2": "^2.0.12"
   },
   "require-dev": {
-    "cedx/coveralls": "^1.0.0",
+    "apigen/apigen": "^5.0.0-RC3",
+    "cedx/coveralls": "^2.0.1",
     "cedx/phpunit-expect": "^0.2.0",
     "phing/phing": "^2.16.0",
-    "phpdocumentor/phpdocumentor": "^2.9.0"
+    "roave/better-reflection": "@dev"
   },
   "scripts": {
-    "coverage": "coveralls --file=var/coverage.xml",
+    "coverage": "coveralls var/coverage.xml",
     "test": "phpunit --colors=auto --verbose"
   },
   "support": {
