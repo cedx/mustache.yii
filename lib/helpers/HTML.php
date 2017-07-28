@@ -62,7 +62,7 @@ class HTML extends Helper {
    * @return \Closure A function converting Markdown into HTML.
    */
   public function getMarkdown(): \Closure {
-    return function(string $value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::process($args['markdown'], $args['flavor']);
     };
@@ -73,7 +73,7 @@ class HTML extends Helper {
    * @return \Closure A function converting Markdown into HTML but only parsing inline elements.
    */
   public function getMarkdownParagraph(): \Closure {
-    return function(string $value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::processParagraph($args['markdown'], $args['flavor']);
     };
@@ -84,7 +84,7 @@ class HTML extends Helper {
    * @return \Closure A function removing whitespaces between HTML tags.
    */
   public function getSpaceless(): \Closure {
-    return function(string $value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       return $this->captureOutput(function() use ($helper, $value) {
         Spaceless::begin();
         echo $helper->render($value);
@@ -98,7 +98,7 @@ class HTML extends Helper {
    * @return \Closure A function setting the view title.
    */
   public function getViewTitle(): \Closure {
-    return function(string $value, \Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper) {
       $view = \Yii::$app->view;
       if ($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };

@@ -32,7 +32,7 @@ class I18N extends Helper {
    * @throws InvalidCallException The specified message has an invalid format.
    */
   public function getTranslate(): \Closure {
-    return function(string $value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper): string {
       $defaultArgs = [
         'category' => $this->defaultCategory,
         'language' => null,
