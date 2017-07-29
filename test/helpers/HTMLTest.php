@@ -61,6 +61,16 @@ class HTMLTest extends TestCase {
   }
 
   /**
+   * @test HTML::getMarkdownParagraph
+   */
+  public function testGetMarkdownParagraph() {
+    it('should convert Markdown code to HTML', function() {
+      $closure = (new HTML)->markdownParagraph;
+      expect($closure("*title*", $this->helper))->to->equal('<em>title</em>');
+    });
+  }
+
+  /**
    * @test HTML::getSpaceless
    */
   public function testGetSpaceless() {
