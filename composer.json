@@ -35,7 +35,7 @@
   "require-dev": {
     "apigen/apigen": "^5.0.0-RC3",
     "cedx/coveralls": "^2.0.1",
-    "cedx/phpunit-expect": "^0.2.0",
+    "cedx/phpunit-expect": "^0.3.0",
     "phing/phing": "^2.16.0",
     "roave/better-reflection": "@dev"
   },
