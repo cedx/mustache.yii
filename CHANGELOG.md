@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version 7.0.0
+- Updated the package dependencies.
+
 ## Version 6.1.0
 - Enabled the strict typing.
 - Replaced [phpDocumentor](https://www.phpdoc.org) documentation generator by [ApiGen](https://github.com/ApiGen/ApiGen).
