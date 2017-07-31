@@ -19,8 +19,7 @@ class HelperTest extends TestCase {
    * @test Helper::captureOutput
    */
   public function testCaptureOutput() {
-    $captureOutput = function(callable $callback): string {
-      /** @var Helper $this */
+    $captureOutput = function($callback) {
       return $this->captureOutput($callback);
     };
 
@@ -33,8 +32,7 @@ class HelperTest extends TestCase {
    * @test Helper::parseArguments
    */
   public function testParseArguments() {
-    $parseArguments = function(string $text, string $defaultArgument, array $defaultValues = []): array {
-      /** @var Helper $this */
+    $parseArguments = function($text, $defaultArgument, $defaultValues = []) {
       return $this->parseArguments($text, $defaultArgument, $defaultValues);
     };
 

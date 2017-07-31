@@ -56,7 +56,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     $helpers = [
       'app' => \Yii::$app,
       'format' => \Yii::createObject(helpers\Format::class),
-      'html' => \Yii::createObject(helpers\HTML::class),
+      'html' => \Yii::createObject(helpers\Html::class),
       'i18n' => \Yii::createObject(helpers\I18N::class),
       'url' => \Yii::createObject(helpers\URL::class),
       'yii' => [

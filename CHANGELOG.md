@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
 ## Version 7.0.0
+- Breaking change: renamed the `yii\mustache\helpers\HTML` class to `Html`.
 - Updated the package dependencies.
 
 ## Version 6.1.0

@@ -16,7 +16,7 @@ use yii\widgets\{Spaceless};
  * @property \Closure $spaceless A function removing whitespaces between HTML tags.
  * @property \Closure $viewTitle A function setting the view title.
  */
-class HTML extends Helper {
+class Html extends Helper {
 
   /**
    * Returns the tag marking the beginning of an HTML body section.
@@ -62,7 +62,7 @@ class HTML extends Helper {
    * @return \Closure A function converting Markdown into HTML.
    */
   public function getMarkdown(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::process($args['markdown'], $args['flavor']);
     };
@@ -73,7 +73,7 @@ class HTML extends Helper {
    * @return \Closure A function converting Markdown into HTML but only parsing inline elements.
    */
   public function getMarkdownParagraph(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper) {
       $args = $this->parseArguments($helper->render($value), 'markdown', ['flavor' => Markdown::$defaultFlavor]);
       return Markdown::processParagraph($args['markdown'], $args['flavor']);
     };
@@ -84,7 +84,7 @@ class HTML extends Helper {
    * @return \Closure A function removing whitespaces between HTML tags.
    */
   public function getSpaceless(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper): string {
+    return function($value, \Mustache_LambdaHelper $helper) {
       return $this->captureOutput(function() use ($helper, $value) {
         Spaceless::begin();
         echo $helper->render($value);
