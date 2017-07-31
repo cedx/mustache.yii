@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 
 ## Version 7.0.0
 - Breaking change: renamed the `yii\mustache\helpers\HTML` class to `Html`.
+- Breaking change: renamed the `yii\mustache\helpers\URL` class to `Url`.
 - Updated the package dependencies.
 
 ## Version 6.1.0

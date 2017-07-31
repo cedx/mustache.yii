@@ -58,7 +58,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'format' => \Yii::createObject(helpers\Format::class),
       'html' => \Yii::createObject(helpers\Html::class),
       'i18n' => \Yii::createObject(helpers\I18N::class),
-      'url' => \Yii::createObject(helpers\URL::class),
+      'url' => \Yii::createObject(helpers\Url::class),
       'yii' => [
         'debug' => YII_DEBUG,
         'devEnv' => YII_ENV_DEV,
