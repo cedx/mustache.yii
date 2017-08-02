@@ -25,10 +25,7 @@ class Html extends Helper {
   public function getBeginBody(): string {
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('beginBody')) return '';
-
-    return $this->captureOutput(function() use ($view) {
-      $view->beginBody();
-    });
+    return $this->captureOutput([$view, 'beginBody']);
   }
 
   /**
@@ -38,10 +35,7 @@ class Html extends Helper {
   public function getEndBody(): string {
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('endBody')) return '';
-
-    return $this->captureOutput(function() use ($view) {
-      $view->endBody();
-    });
+    return $this->captureOutput([$view, 'endBody']);
   }
 
   /**
@@ -51,10 +45,7 @@ class Html extends Helper {
   public function getHead(): string {
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('head')) return '';
-
-    return $this->captureOutput(function() use ($view) {
-      $view->head();
-    });
+    return $this->captureOutput([$view, 'head']);
   }
 
   /**
