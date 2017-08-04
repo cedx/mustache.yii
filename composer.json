@@ -33,11 +33,11 @@
     "yiisoft/yii2": "^2.0.12"
   },
   "require-dev": {
-    "apigen/apigen": "^5.0.0-RC3",
-    "cedx/coveralls": "^3.0.0",
+    "apigen/apigen": "^5.0.0-RC4",
+    "cedx/coveralls": "^4.0.0",
     "cedx/phpunit-expect": "^0.4.0",
     "phing/phing": "^2.16.0",
-    "roave/better-reflection": "@dev"
+    "roave/better-reflection": "dev-master#a83ef24"
   },
   "scripts": {
     "coverage": "coveralls var/coverage.xml",
