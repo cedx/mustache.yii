@@ -6,6 +6,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Breaking change: removed the `ViewRenderer::$cacheId` property.
 - Added the `ViewRenderer::$cache` property.
 - Added the `ViewRenderer::$enableCaching` property.
+- Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version 7.0.0
 - Breaking change: renamed the `yii\mustache\helpers\HTML` class to `Html`.
