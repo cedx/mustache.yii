@@ -11,11 +11,6 @@ use yii\helpers\{FileHelper};
 class Loader extends Object implements \Mustache_Loader {
 
   /**
-   * @var string The string prefixed to every cache key in order to avoid name collisions.
-   */
-  const CACHE_KEY_PREFIX = __CLASS__;
-
-  /**
    * @var string The default extension of template files.
    */
   const DEFAULT_EXTENSION = 'mustache';
@@ -47,7 +42,8 @@ class Loader extends Object implements \Mustache_Loader {
    */
   public function load($name): string {
     if (!isset($this->views[$name])) {
-      $cacheId = $this->viewRenderer->cacheId;
+      $cacheKey = [__CLASS__, $name];
+      $viewRenderer = $this->viewRenderer;
 
       if ($viewRenderer->enableCaching && $viewRenderer->cache->exists($cacheKey))
         $output = $viewRenderer->cache->get($cacheKey);

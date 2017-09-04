@@ -2,6 +2,9 @@
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
 ## Version 8.0.0
+- Breaking change: removed the `CACHE_KEY_PREFIX` constants.
+- Breaking change: removed the `ViewRenderer::$cacheId` property.
+- Added the `ViewRenderer::$cache` property.
 - Added the `ViewRenderer::$enableCaching` property.
 
 ## Version 7.0.0

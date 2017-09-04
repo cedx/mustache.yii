@@ -13,14 +13,14 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
-   * @var string The string prefixed to every cache key in order to avoid name collisions.
+   * @var array|string|\yii\caching\Cache The cache object or the application component ID of the cache object.
    */
-  const CACHE_KEY_PREFIX = __CLASS__;
+  public $cache = 'cache';
 
   /**
-   * @var string The identifier of the cache application component that is used to cache the compiled views. If empty, the caching is disabled.
+   * @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
    */
-  public $cacheId = '';
+  public $cachingDuration = 0;
 
   /**
    * @var bool Value indicating whether to enable caching view templates.

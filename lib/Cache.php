@@ -10,11 +10,6 @@ use yii\base\{InvalidConfigException, Object};
 class Cache extends Object implements \Mustache_Cache {
 
   /**
-   * @var string The string prefixed to every cache key in order to avoid name collisions.
-   */
-  const CACHE_KEY_PREFIX = __CLASS__;
-
-  /**
    * @var ViewRenderer The instance used to render the views.
    */
   public $viewRenderer;
@@ -25,12 +20,10 @@ class Cache extends Object implements \Mustache_Cache {
    * @param string $value The view to be cached.
    */
   public function cache($key, $value) {
-    $cacheId = $this->viewRenderer->cacheId;
-
-    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
-    if (!$cache) eval("?>$value");
+    $viewRenderer = $this->viewRenderer;
+    if (!$viewRenderer->enableCaching) eval("?>$value");
     else {
-      $cache->set(static::CACHE_KEY_PREFIX.":$key", $value, $this->viewRenderer->cachingDuration);
+      $viewRenderer->cache->set([__CLASS__, $key], $value, $viewRenderer->cachingDuration);
       $this->load($key);
     }
   }
@@ -50,13 +43,12 @@ class Cache extends Object implements \Mustache_Cache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key): bool {
-    $cacheId = $this->viewRenderer->cacheId;
+    $cacheKey = [__CLASS__, $key];
+    $viewRenderer = $this->viewRenderer;
+    if (!$viewRenderer->enableCaching || !$viewRenderer->cache->exists($cacheKey)) return false;
 
-    $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
-    $cacheKey = static::CACHE_KEY_PREFIX.":$key";
-    if (!$cache || !$cache->exists($cacheKey)) return false;
-
-    eval("?>{$cache[$cacheKey]}");
+    $code = $viewRenderer->cache->get($cacheKey);
+    eval("?>$code");
     return true;
   }
 }
