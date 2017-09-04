@@ -35,7 +35,7 @@
     "cedx/coveralls": "^4.0.0",
     "cedx/phpunit-expect": "^0.4.0",
     "phing/phing": "^2.16.0",
-    "roave/better-reflection": "dev-master#a402048"
+    "roave/better-reflection": "dev-master#ced147d"
   },
   "scripts": {
     "coverage": "coveralls var/coverage.xml",

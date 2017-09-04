@@ -3,6 +3,7 @@ declare(strict_types=1);
 namespace yii\mustache;
 
 use yii\base\{InvalidCallException};
+use yii\di\{Instance};
 use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
@@ -22,12 +23,12 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public $cacheId = '';
 
   /**
-   * @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
+   * @var bool Value indicating whether to enable caching view templates.
    */
-  public $cachingDuration = 0;
+  public $enableCaching = false;
 
   /**
-   * @var bool Value indicating whether to enable the logging of engine messages.
+   * @var bool Value indicating whether to enable logging engine messages.
    */
   public $enableLogging = false;
 
@@ -68,7 +69,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     $options = [
-      'cache' => \Yii::createObject(['class' => Cache::class, 'viewRenderer' => $this]),
       'charset' => \Yii::$app->charset,
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
@@ -76,6 +76,11 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'partials_loader' => \Yii::createObject(['class' => Loader::class, 'viewRenderer' => $this]),
       'strict_callables' => true
     ];
+
+    if ($this->enableCaching) {
+      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
+      $options['cache'] = \Yii::createObject(['class' => Cache::class, 'viewRenderer' => $this]);
+    }
 
     if ($this->enableLogging) $options['logger'] = \Yii::createObject(Logger::class);
     $this->engine = new \Mustache_Engine($options);
@@ -93,17 +98,15 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @throws InvalidCallException The specified view file is not found.
    */
   public function render($view, $file, $params): string {
-    $cache = mb_strlen($this->cacheId) ? \Yii::$app->get($this->cacheId) : null;
-    $cacheKey = static::CACHE_KEY_PREFIX.":$file";
-
-    if ($cache && $cache->exists($cacheKey))
-      $output = $cache[$cacheKey];
+    $cacheKey = [__CLASS__, $file];
+    if ($this->enableCaching && $this->cache->exists($cacheKey))
+      $output = $this->cache->get($cacheKey);
     else {
       $path = FileHelper::localize($file);
       if (!is_file($path)) throw new InvalidCallException("View file \"$file\" does not exist.");
 
       $output = @file_get_contents($path);
-      if ($cache) $cache->set($cacheKey, $output, $this->cachingDuration);
+      if ($this->enableCaching) $this->cache->set($cacheKey, $output, $this->cachingDuration);
     }
 
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);

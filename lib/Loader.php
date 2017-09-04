@@ -49,15 +49,14 @@ class Loader extends Object implements \Mustache_Loader {
     if (!isset($this->views[$name])) {
       $cacheId = $this->viewRenderer->cacheId;
 
-      $cache = mb_strlen($cacheId) ? \Yii::$app->get($cacheId) : null;
-      $cacheKey = static::CACHE_KEY_PREFIX.":$name";
-      if ($cache && $cache->exists($cacheKey)) $output = $cache[$cacheKey];
+      if ($viewRenderer->enableCaching && $viewRenderer->cache->exists($cacheKey))
+        $output = $viewRenderer->cache->get($cacheKey);
       else {
         $path = FileHelper::localize($this->findViewFile($name));
         if (!is_file($path)) throw new InvalidCallException("The view file \"$path\" does not exist.");
 
         $output = @file_get_contents($path);
-        if ($cache) $cache->set($cacheKey, $output, $this->viewRenderer->cachingDuration);
+        if ($viewRenderer->enableCaching) $viewRenderer->cache->set($cacheKey, $output, $viewRenderer->cachingDuration);
       }
 
       $this->views[$name] = $output;
