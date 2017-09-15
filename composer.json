@@ -31,7 +31,7 @@
     "yiisoft/yii2": "^2.0.12"
   },
   "require-dev": {
-    "cedx/coveralls": "^5.0.0",
+    "cedx/coveralls": "^6.0.0",
     "cedx/phpunit-expect": "^0.4.0",
     "phing/phing": "^2.16.0"
   },

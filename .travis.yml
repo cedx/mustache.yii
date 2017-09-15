@@ -13,4 +13,4 @@ install:
 - composer install --no-interaction
 
 script: composer test
-after_script: composer coverage
+after_success: composer coverage
