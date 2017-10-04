@@ -1,11 +1,11 @@
 dist: trusty
+language: php
 sudo: false
-notifications:
-  email: false
 
 env: YII_ENV="test"
-language: php
 php: '7.1'
+notifications:
+  email: false
 
 install:
 - composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
