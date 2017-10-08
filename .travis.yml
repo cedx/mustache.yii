@@ -1,9 +1,10 @@
 dist: trusty
-language: php
 sudo: false
 
-env: YII_ENV="test"
+language: php
 php: '7.1'
+
+env: YII_ENV="test"
 notifications:
   email: false
 
