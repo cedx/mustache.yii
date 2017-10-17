@@ -56,10 +56,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public function init() {
     $helpers = [
       'app' => \Yii::$app,
-      'format' => \Yii::createObject(helpers\Format::class),
-      'html' => \Yii::createObject(helpers\Html::class),
-      'i18n' => \Yii::createObject(helpers\I18N::class),
-      'url' => \Yii::createObject(helpers\Url::class),
+      'format' => new helpers\Format,
+      'html' => new helpers\Html,
+      'i18n' => new helpers\I18N,
+      'url' => new helpers\Url,
       'yii' => [
         'debug' => YII_DEBUG,
         'devEnv' => YII_ENV_DEV,
@@ -73,16 +73,16 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'entity_flags' => ENT_QUOTES | ENT_SUBSTITUTE,
       'escape' => [Html::class, 'encode'],
       'helpers' => ArrayHelper::merge($helpers, $this->helpers),
-      'partials_loader' => \Yii::createObject(['class' => Loader::class, 'viewRenderer' => $this]),
+      'partials_loader' => new Loader(['viewRenderer' => $this]),
       'strict_callables' => true
     ];
 
     if ($this->enableCaching) {
       $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
-      $options['cache'] = \Yii::createObject(['class' => Cache::class, 'viewRenderer' => $this]);
+      $options['cache'] = new Cache(['viewRenderer' => $this]);
     }
 
-    if ($this->enableLogging) $options['logger'] = \Yii::createObject(Logger::class);
+    if ($this->enableLogging) $options['logger'] = new Logger;
     $this->engine = new \Mustache_Engine($options);
 
     parent::init();
