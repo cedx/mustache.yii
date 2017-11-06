@@ -13,7 +13,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
-   * @var array|string|\yii\caching\Cache The cache object or the application component ID of the cache object.
+   * @var array|string|\yii\caching\CacheInterface The cache object or the application component ID of the cache object.
    */
   public $cache = 'cache';
 
