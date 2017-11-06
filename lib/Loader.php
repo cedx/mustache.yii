@@ -2,13 +2,13 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{InvalidCallException, InvalidConfigException, InvalidParamException, Object};
+use yii\base\{BaseObject, InvalidCallException, InvalidConfigException, InvalidParamException};
 use yii\helpers\{FileHelper};
 
 /**
  * Loads views from the file system.
  */
-class Loader extends Object implements \Mustache_Loader {
+class Loader extends BaseObject implements \Mustache_Loader {
 
   /**
    * @var string The default extension of template files.

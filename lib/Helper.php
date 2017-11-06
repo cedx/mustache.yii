@@ -2,13 +2,13 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{InvalidConfigException, InvalidParamException, Object};
+use yii\base\{BaseObject, InvalidConfigException, InvalidParamException};
 use yii\helpers\{ArrayHelper, Json};
 
 /**
  * Provides the abstract base class for a view helper.
  */
-abstract class Helper extends Object {
+abstract class Helper extends BaseObject {
 
   /**
    * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.

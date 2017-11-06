@@ -2,12 +2,12 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{InvalidConfigException, Object};
+use yii\base\{BaseObject, InvalidConfigException};
 
 /**
  * Component used to store compiled views to a cache application component.
  */
-class Cache extends Object implements \Mustache_Cache {
+class Cache extends BaseObject implements \Mustache_Cache {
 
   /**
    * @var ViewRenderer The instance used to render the views.

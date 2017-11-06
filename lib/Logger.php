@@ -3,13 +3,13 @@ declare(strict_types=1);
 namespace yii\mustache;
 
 use Psr\Log\{LoggerInterface, LoggerTrait, LogLevel};
-use yii\base\{InvalidParamException, Object};
+use yii\base\{BaseObject, InvalidParamException};
 use yii\log\{Logger as YiiLogger};
 
 /**
  * Component used to log messages from the view engine to the application logger.
  */
-class Logger extends Object implements LoggerInterface {
+class Logger extends BaseObject implements LoggerInterface {
   use LoggerTrait;
 
   /**
