@@ -29,7 +29,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
    * Initializes the object.
    * @throws InvalidConfigException The view renderer is not initialized.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
   }

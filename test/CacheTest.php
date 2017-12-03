@@ -18,7 +18,7 @@ class CacheTest extends TestCase {
   /**
    * @test Cache::cache
    */
-  public function testCache() {
+  public function testCache(): void {
     it('should evaluate the PHP code put in cache', function() {
       $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
       expect(class_exists('YiiMustacheTemplateTestModel'))->to->be->true;
@@ -28,7 +28,7 @@ class CacheTest extends TestCase {
   /**
    * @test Cache::load
    */
-  public function testLoad() {
+  public function testLoad(): void {
     it('should return `false` for an unknown key', function() {
       expect($this->model->load('key'))->to->be->false;
     });
@@ -37,7 +37,7 @@ class CacheTest extends TestCase {
   /**
    * Performs a common set of tasks just before each test method is called.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->model = new Cache([
       'viewRenderer' => \Yii::createObject(ViewRenderer::class)
     ]);

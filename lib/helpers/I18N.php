@@ -62,7 +62,7 @@ class I18N extends Helper {
    * Initializes the object.
    * @throws InvalidConfigException The argument separator is empty.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!mb_strlen($this->defaultCategory)) throw new InvalidConfigException('The argument separator is empty.');
   }

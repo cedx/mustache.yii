@@ -19,7 +19,7 @@ class ViewRendererTest extends TestCase {
   /**
    * @test ViewRenderer::getHelpers
    */
-  public function testGetHelpers() {
+  public function testGetHelpers(): void {
     it('should return a Mustache helper collection', function() {
       expect($this->model->helpers)->to->be->instanceOf(\Mustache_HelperCollection::class);
     });
@@ -28,7 +28,7 @@ class ViewRendererTest extends TestCase {
   /**
    * @test ViewRenderer::render
    */
-  public function testRender() {
+  public function testRender(): void {
     /** @var View $view */
     $view = \Yii::createObject(View::class);
     $file = __DIR__.'/fixtures/data.mustache';
@@ -55,7 +55,7 @@ class ViewRendererTest extends TestCase {
   /**
    * @test ViewRenderer::setHelpers
    */
-  public function testSetHelpers() {
+  public function testSetHelpers(): void {
     it('should allow arrays as input', function() {
       $this->model->helpers = ['var' => 'value'];
 
@@ -68,7 +68,7 @@ class ViewRendererTest extends TestCase {
   /**
    * Performs a common set of tasks just before each test method is called.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->model = new ViewRenderer;
   }
 }
