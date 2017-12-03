@@ -13,7 +13,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
   /**
    * @var string The default extension of template files.
    */
-  const DEFAULT_EXTENSION = 'mustache';
+  private const DEFAULT_EXTENSION = 'mustache';
 
   /**
    * @var ViewRenderer The instance used to render the views.
