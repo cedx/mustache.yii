@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
 
+## Version [9.0.0](https://github.com/cedx/yii2-mustache/compare/v8.0.0...v9.0.0)
+- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: using PHP 7.1 features, like nullable types and void functions.
+
 ## Version [8.0.0](https://github.com/cedx/yii2-mustache/compare/v7.0.0...v8.0.0)
 - Breaking change: removed the `CACHE_KEY_PREFIX` constants.
 - Breaking change: removed the `ViewRenderer::$cacheId` property.
