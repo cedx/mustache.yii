@@ -19,7 +19,7 @@ abstract class Helper extends BaseObject {
    * Initializes the object.
    * @throws InvalidConfigException The argument separator is empty.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!mb_strlen($this->argumentSeparator)) throw new InvalidConfigException('The argument separator is empty.');
   }

@@ -18,7 +18,7 @@ class HelperTest extends TestCase {
   /**
    * @test Helper::captureOutput
    */
-  public function testCaptureOutput() {
+  public function testCaptureOutput(): void {
     $captureOutput = function($callback) {
       return $this->captureOutput($callback);
     };
@@ -31,7 +31,7 @@ class HelperTest extends TestCase {
   /**
    * @test Helper::parseArguments
    */
-  public function testParseArguments() {
+  public function testParseArguments(): void {
     $parseArguments = function($text, $defaultArgument, $defaultValues = []) {
       return $this->parseArguments($text, $defaultArgument, $defaultValues);
     };
@@ -62,7 +62,7 @@ class HelperTest extends TestCase {
   /**
    * Performs a common set of tasks just before each test method is called.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->model = $this->getMockForAbstractClass(Helper::class);
   }
 }

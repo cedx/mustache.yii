@@ -19,7 +19,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    * @param string $key The key identifying the view to be cached.
    * @param string $value The view to be cached.
    */
-  public function cache($key, $value) {
+  public function cache($key, $value): void {
     $viewRenderer = $this->viewRenderer;
     if (!$viewRenderer->enableCaching) eval("?>$value");
     else {
@@ -32,7 +32,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    * Initializes the object.
    * @throws InvalidConfigException The view renderer is not initialized.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
   }

@@ -19,7 +19,7 @@ class LoaderTest extends TestCase {
   /**
    * @test Loader::findViewFile
    */
-  public function testFindViewFile() {
+  public function testFindViewFile(): void {
     $findViewFile = function($name) {
       return $this->findViewFile($name);
     };
@@ -36,7 +36,7 @@ class LoaderTest extends TestCase {
   /**
    * @test Loader::load
    */
-  public function testLoad() {
+  public function testLoad(): void {
     it('should throw an exception if the view file is not found', function() {
       expect(function() { $this->model->load('view'); })->to->throw(InvalidCallException::class);
     });
@@ -45,7 +45,7 @@ class LoaderTest extends TestCase {
   /**
    * Performs a common set of tasks just before each test method is called.
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->model = new Loader([
       'viewRenderer' => \Yii::createObject(ViewRenderer::class)
     ]);

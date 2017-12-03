@@ -53,7 +53,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * Initializes the application component.
    */
-  public function init() {
+  public function init(): void {
     $helpers = [
       'app' => \Yii::$app,
       'format' => new helpers\Format,
