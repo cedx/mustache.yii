@@ -6,7 +6,6 @@ php:
 - '7.1'
 - '7.2'
 
-env: YII_ENV="test"
 notifications:
   email: false
 
