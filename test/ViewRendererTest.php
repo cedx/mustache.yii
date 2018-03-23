@@ -29,9 +29,8 @@ class ViewRendererTest extends TestCase {
    * @test ViewRenderer::render
    */
   public function testRender(): void {
-    /** @var View $view */
-    $view = \Yii::createObject(View::class);
     $file = __DIR__.'/fixtures/data.mustache';
+    $view = new View;
 
     it('should remove placeholders when there is no corresponding binding', function() use ($file, $view) {
       $data = null;

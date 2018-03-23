@@ -46,8 +46,6 @@ class LoaderTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp(): void {
-    $this->model = new Loader([
-      'viewRenderer' => \Yii::createObject(ViewRenderer::class)
-    ]);
+    $this->model = new Loader(['viewRenderer' => new ViewRenderer]);
   }
 }
