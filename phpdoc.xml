@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<phpdoc>
+  <title>Mustache for Yii</title>
+
+  <parser>
+    <target>var</target>
+  </parser>
+  <transformer>
+    <target>doc/api</target>
+  </transformer>
+  <transformations>
+    <template name="responsive"/>
+  </transformations>
+
+  <files>
+    <directory>lib</directory>
+  </files>
+</phpdoc>
