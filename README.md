@@ -78,9 +78,9 @@ that means these will be searched in the same directory as the currently rendere
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
 
 ## See also
-- [API reference](https://dev.belin.io/yii2-mustache)
+- [API reference](https://dev.belin.io/yii2-mustache/api)
 - [Code coverage](https://coveralls.io/github/cedx/yii2-mustache)
 - [Continuous integration](https://travis-ci.org/cedx/yii2-mustache)
 
 ## License
-[Mustache for Yii](https://github.com/cedx/yii2-mustache) is distributed under the MIT License.
+[Mustache for Yii](https://dev.belin.io/yii2-mustache) is distributed under the MIT License.
