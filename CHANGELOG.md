@@ -85,7 +85,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 ## Version [0.4.2](https://github.com/cedx/yii2-mustache/compare/v0.4.1...v0.4.2)
 - Added code coverage.
 - Added new unit tests.
-- Added support for [Travis CI](https://travis-ci.org) continuous integration.
+- Added support for [Travis CI](https://travis-ci.com) continuous integration.
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 - Updated the package dependencies.
 
