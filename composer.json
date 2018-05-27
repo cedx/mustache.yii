@@ -32,7 +32,7 @@
   },
   "require-dev": {
     "cedx/coveralls": "^6.0.0",
-    "cedx/phpunit-expect": "^0.4.0",
+    "cedx/phpunit-expect": "^0.5.0",
     "phing/phing": "^2.16.1"
   },
   "scripts": {
