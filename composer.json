@@ -1,6 +1,6 @@
 {
   "description": "Mustache templating for the Yii Framework.",
-  "homepage": "https://cedx.github.io/yii2-mustache",
+  "homepage": "https://dev.belin.io/yii2-mustache",
   "license": "MIT",
   "name": "cedx/yii2-mustache",
   "type": "yii2-extension",
@@ -40,7 +40,7 @@
     "test": "phpunit --colors=auto --verbose"
   },
   "support": {
-    "docs": "https://cedx.github.io/yii2-mustache/api",
+    "docs": "https://dev.belin.io/yii2-mustache/api",
     "issues": "https://github.com/cedx/yii2-mustache/issues"
   }
 }

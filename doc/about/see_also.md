@@ -1,7 +1,7 @@
 # See also
 
 ## Development
-- [API reference](https://cedx.github.io/yii2-mustache/api)
+- [API reference](https://dev.belin.io/yii2-mustache/api)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-mustache)
 - [Yii Framework](https://www.yiiframework.com)
 

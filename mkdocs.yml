@@ -1,7 +1,7 @@
 site_name: Mustache for Yii
 site_description: Mustache templating for the Yii, high-performance PHP framework.
 site_author: Cédric Belin - cedric@belin.io
-site_url: https://cedx.github.io/yii2-mustache
+site_url: https://dev.belin.io/yii2-mustache
 
 docs_dir: doc
 site_dir: web
