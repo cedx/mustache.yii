@@ -1,5 +1,8 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Mustache for Yii](https://github.com/cedx/yii2-mustache) library.
+
+## Version [9.0.0](https://github.com/cedx/yii2-mustache/compare/v8.0.0...v9.0.0)
+- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Updated the package dependencies.
 
 ## Version [9.0.0](https://github.com/cedx/yii2-mustache/compare/v8.0.0...v9.0.0)
 - Breaking change: classes extending from `yii\base\Object` now extend from `BaseObject`.
@@ -99,7 +102,7 @@ This file contains highlights of what changes on each version of the [Mustache f
 - Replaced the documentation system by [Doxygen](http://www.doxygen.org).
 
 ## Version [0.3.0](https://github.com/cedx/yii2-mustache/compare/v0.2.0...v0.3.0)
-- Breaking change: ported the library API to [Yii](http://www.yiiframework.com) version 2.
+- Breaking change: ported the library API to [Yii](https://www.yiiframework.com) version 2.
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 ## Version [0.2.0](https://github.com/cedx/yii2-mustache/compare/v0.1.1...v0.2.0)

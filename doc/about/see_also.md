@@ -3,7 +3,7 @@
 ## Development
 - [API reference](https://cedx.github.io/yii2-mustache/api)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-mustache)
-- [Yii Framework](http://www.yiiframework.com/doc-2.0/guide-README.html)
+- [Yii Framework](https://www.yiiframework.com)
 
 ## Testing
 - [Continuous integration](https://travis-ci.org/cedx/yii2-mustache)
