@@ -4,6 +4,7 @@ namespace yii\mustache;
 
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
+use yii\console\{Application};
 
 /**
  * Tests the features of the `yii\mustache\Cache` class.
@@ -38,6 +39,7 @@ class CacheTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp(): void {
+    new Application(['id' => 'yii2-free-mobile', 'basePath' => '@root/lib']);
     $this->model = new Cache(['viewRenderer' => new ViewRenderer]);
   }
 }
