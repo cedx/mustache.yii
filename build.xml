@@ -28,4 +28,11 @@
   <target name="test" description="Run the tests">
     <exec command="php vendor/bin/phpunit --colors=auto --verbose" passthru="true"/>
   </target>
+
+  <target name="upgrade" description="Upgrade the project">
+    <exec command="git reset --hard" passthru="true"/>
+    <exec command="git fetch --all --prune" passthru="true"/>
+    <exec command="git pull --rebase" passthru="true"/>
+    <exec command="composer update" passthru="true"/>
+  </target>
 </project>
