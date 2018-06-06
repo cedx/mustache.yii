@@ -6,18 +6,6 @@
 This package provides a view renderer, the `yii\mustache\ViewRenderer` class.
 This renderer allows to use [Mustache syntax](https://mustache.github.io/mustache.5.html) in view templates.
 
-## Requirements
-The latest [PHP](https://secure.php.net) and [Composer](https://getcomposer.org) versions.
-If you plan to play with the sources, you will also need the latest [Phing](https://www.phing.info) version.
-
-## Installing via [Composer](https://getcomposer.org)
-From a command prompt, run:
-
-```shell
-$ composer global require fxp/composer-asset-plugin
-$ composer require cedx/yii2-mustache
-```
-
 ## Configuring application
 In order to start using Mustache you need to configure the `view` application component, like the following:
 
