@@ -1,11 +1,8 @@
 dist: trusty
-sudo: false
-
 language: php
+notifications: {email: false}
 php: '7.2'
-
-notifications:
-  email: false
+sudo: false
 
 install:
 - composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
