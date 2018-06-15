@@ -59,7 +59,7 @@ class FormatTest extends TestCase {
   public function testGetDecimal(): void {
     it('should format the specified value as a decimal number', function() {
       $closure = (new Format)->decimal;
-      expect($closure('100', $this->helper))->to->equal('100.00');
+      expect($closure('100', $this->helper))->to->equal('100');
       expect($closure('1234.56', $this->helper))->to->equal('1,234.56');
     });
   }
