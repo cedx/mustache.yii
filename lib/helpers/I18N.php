@@ -22,7 +22,7 @@ class I18N extends Helper {
    * Returns a function translating a message.
    * @return \Closure A function translating a message.
    */
-  public function getT(): \Closure {
+  function getT(): \Closure {
     return static::getTranslate();
   }
 
@@ -31,7 +31,7 @@ class I18N extends Helper {
    * @return \Closure A function translating a message.
    * @throws InvalidCallException The specified message has an invalid format.
    */
-  public function getTranslate(): \Closure {
+  function getTranslate(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       $defaultArgs = [
         'category' => $this->defaultCategory,
@@ -62,7 +62,7 @@ class I18N extends Helper {
    * Initializes the object.
    * @throws InvalidConfigException The argument separator is empty.
    */
-  public function init(): void {
+  function init(): void {
     parent::init();
     if (!mb_strlen($this->defaultCategory)) throw new InvalidConfigException('The argument separator is empty.');
   }

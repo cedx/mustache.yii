@@ -46,14 +46,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
    * @return \Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
-  public function getHelpers(): ?\Mustache_HelperCollection {
+  function getHelpers(): ?\Mustache_HelperCollection {
     return $this->engine ? $this->engine->getHelpers() : null;
   }
 
   /**
    * Initializes the application component.
    */
-  public function init(): void {
+  function init(): void {
     $helpers = [
       'app' => \Yii::$app,
       'format' => new helpers\Format,
@@ -78,7 +78,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     if ($this->enableCaching) {
-      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
+      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class));
       $options['cache'] = new Cache(['viewRenderer' => $this]);
     }
 
@@ -97,7 +97,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @return string The rendering result.
    * @throws InvalidCallException The specified view file is not found.
    */
-  public function render($view, $file, $params): string {
+  function render($view, $file, $params): string {
     $cacheKey = [__CLASS__, $file];
     if ($this->enableCaching && $this->cache->exists($cacheKey))
       $output = $this->cache->get($cacheKey);
@@ -118,7 +118,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @param array $value The list of the values to prepend to the context stack.
    * @return self This instance.
    */
-  public function setHelpers(array $value): self {
+  function setHelpers(array $value): self {
     if ($this->engine) $this->engine->setHelpers($value);
     else $this->helpers = $value;
     return $this;

@@ -33,7 +33,7 @@ class Logger extends BaseObject implements LoggerInterface {
    * @param array $context The log context.
    * @throws InvalidParamException The specified logging level is unknown.
    */
-  public function log($level, $message, array $context = []): void {
+  function log($level, $message, array $context = []): void {
     if (!isset(static::$levels[$level])) {
       $values = implode(', ', (new \ReflectionClass(LogLevel::class))->getConstants());
       throw new InvalidParamException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
