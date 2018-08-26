@@ -3,6 +3,7 @@
 .* text
 *.json text
 *.md text
+*.neon text
 *.php text diff=php
 *.txt text
 *.xml text

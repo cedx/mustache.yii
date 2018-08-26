@@ -11,6 +11,10 @@
   "autoload": {
     "psr-4": {"yii\\mustache\\": "lib/"}
   },
+  "autoload-dev": {
+    "files": ["vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"],
+    "psr-4": {"yii\\mustache\\": "test/"}
+  },
   "config": {
     "optimize-autoloader": true
   },
@@ -31,13 +35,14 @@
     "yiisoft/yii2": "^2.0.15"
   },
   "require-dev": {
-    "cedx/coveralls": "^7.0.0",
-    "cedx/phpunit-expect": "^0.5.0",
-    "phing/phing": "^2.16.1"
+    "cedx/coveralls": "^9.0.1",
+    "phing/phing": "^2.16.1",
+    "phpstan/phpstan": "^0.10.3",
+    "phpunit/phpunit": "^7.3.2"
   },
   "scripts": {
-    "coverage": "coveralls var/coverage.xml",
-    "test": "phpunit"
+    "coverage": "phing coverage",
+    "test": "phing test"
   },
   "support": {
     "docs": "https://dev.belin.io/yii2-mustache/api",

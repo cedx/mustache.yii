@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <project default="test" name="yii2-mustache">
-  <if>
+  <condition property="composer" value="C:\Program Files\PHP\share\composer.phar" else="/usr/local/bin/composer">
     <os family="windows"/>
-    <then><property name="composer" value="C:\Program Files\PHP\share\composer.phar"/></then>
-    <else><property name="composer" value="/usr/local/bin/composer"/></else>
-  </if>
+  </condition>
 
   <target name="clean" description="Delete the generated files">
     <delete dir="build" quiet="true"/>
@@ -27,10 +25,10 @@
   </target>
 
   <target name="lint" description="Perform the static analysis">
-    <phpLint>
-      <fileSet dir="lib" includes="**/*.php"/>
-      <fileSet dir="test" includes="**/*.php"/>
-    </phpLint>
+    <phpLint file="example/main.php"/>
+    <exec executable="vendor/bin/phpstan" passthru="true">
+      <arg value="analyse"/>
+    </exec>
   </target>
 
   <target name="test" description="Run the tests">
