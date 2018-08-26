@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
 /**
@@ -16,84 +15,84 @@ class FormatTest extends TestCase {
   private $helper;
 
   /**
-   * @test Format::getBoolean
+   * Tests the `Format::getBoolean
    */
-  public function testGetBoolean(): void {
-    it('should return "No" for a falsy value', function() {
+  function testGetBoolean(): void {
+    // It should return "No" for a falsy value.
       $closure = (new Format)->boolean;
-      expect($closure(false, $this->helper))->to->equal('No');
-      expect($closure(0, $this->helper))->to->equal('No');
+      assertThat($closure(false, $this->helper), equalTo('No');
+      assertThat($closure(0, $this->helper), equalTo('No');
     });
 
-    it('should return "Yes" for a truthy value', function() {
+    // It should return "Yes" for a truthy value.
       $closure = (new Format)->boolean;
-      expect($closure(true, $this->helper))->to->equal('Yes');
-      expect($closure(1, $this->helper))->to->equal('Yes');
+      assertThat($closure(true, $this->helper), equalTo('Yes');
+      assertThat($closure(1, $this->helper), equalTo('Yes');
     });
   }
 
   /**
-   * @test Format::getCurrency
+   * Tests the `Format::getCurrency
    */
-  public function testGetCurrency(): void {
-    it('should format the specified value as a currency', function() {
+  function testGetCurrency(): void {
+    // It should format the specified value as a currency.
       $closure = (new Format)->currency;
-      expect($closure('100', $this->helper))->to->equal('$100.00');
-      expect($closure('{"value": 1234.56, "currency": "EUR"}', $this->helper))->to->equal('€1,234.56');
+      assertThat($closure('100', $this->helper), equalTo('$100.00');
+      assertThat($closure('{"value": 1234.56, "currency": "EUR"}', $this->helper), equalTo('€1,234.56');
     });
   }
 
   /**
-   * @test Format::getDate
+   * Tests the `Format::getDate
    */
-  public function testGetDate(): void {
-    it('should format the specified value as a date', function() {
+  function testGetDate(): void {
+    // It should format the specified value as a date.
       $closure = (new Format)->date;
-      expect($closure('1994-11-05T13:15:30Z', $this->helper))->to->equal('Nov 5, 1994');
+      assertThat($closure('1994-11-05T13:15:30Z', $this->helper), equalTo('Nov 5, 1994');
     });
   }
 
   /**
-   * @test Format::getDecimal
+   * Tests the `Format::getDecimal
    */
-  public function testGetDecimal(): void {
-    it('should format the specified value as a decimal number', function() {
+  function testGetDecimal(): void {
+    // It should format the specified value as a decimal number.
       $closure = (new Format)->decimal;
-      expect($closure('1234.56', $this->helper))->to->equal('1,234.56');
-      expect($closure('{"value": 100, "decimals": 4}', $this->helper))->to->equal('100.0000');
+      assertThat($closure('1234.56', $this->helper), equalTo('1,234.56');
+      assertThat($closure('{"value": 100, "decimals": 4}', $this->helper), equalTo('100.0000');
     });
   }
 
   /**
-   * @test Format::getInteger
+   * Tests the `Format::getInteger
    */
-  public function testGetInteger(): void {
-    it('should format the specified value as an integer number', function() {
+  function testGetInteger(): void {
+    // It should format the specified value as an integer number.
       $closure = (new Format)->integer;
-      expect($closure('100', $this->helper))->to->equal('100');
-      expect($closure('-1234.56', $this->helper))->to->equal('-1,234');
+      assertThat($closure('100', $this->helper), equalTo('100');
+      assertThat($closure('-1234.56', $this->helper), equalTo('-1,234');
     });
   }
 
   /**
-   * @test Format::getNtext
+   * Tests the `Format::getNtext
    */
-  public function testGetNtext(): void {
-    it('should replace new lines by "<br>" tags', function() {
+  function testGetNtext(): void {
+    // It should replace new lines by "<br>" tags.
       $closure = (new Format)->ntext;
-      expect($closure("Foo\nBar", $this->helper))->to->equal('Foo<br>Bar');
-      expect($closure("Foo\r\nBaz", $this->helper))->to->equal('Foo<br>Baz');
+      assertThat($closure("Foo\nBar", $this->helper), equalTo('Foo<br>Bar');
+      assertThat($closure("Foo\r\nBaz", $this->helper), equalTo('Foo<br>Baz');
     });
   }
 
   /**
-   * @test Format::getPercent
+   * Tests the `Format::getPercent
    */
-  public function testGetPercent(): void {
-    it('should format the specified value as a percentage', function() {
+  function testGetPercent(): void {
+    // It should format the specified value as a percentage.
       $closure = (new Format)->percent;
-      expect($closure('0.1', $this->helper))->to->equal('10%');
-      expect($closure('1.23', $this->helper))->to->equal('123%');
+      assertThat($closure('0.1', $this->helper), equalTo('10%');
+      assertThat($closure('1.23', $this->helper), equalTo('123%');
     });
   }
 

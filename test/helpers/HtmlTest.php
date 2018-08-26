@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
@@ -19,78 +18,78 @@ class HtmlTest extends TestCase {
   /**
    * Performs a common set of tasks just before the first test of the class is run.
    */
-  public static function setUpBeforeClass(): void {
-    \Yii::$app->set('view', View::class);
+  static function setUpBeforeClass(): void {
+    \Yii::$app->set('view', View::class));
   }
 
   /**
-   * @test Html::getBeginBody
+   * Tests the `Html::getBeginBody
    */
-  public function testGetBeginBody(): void {
-    it('should return the tag marking the beginning of an HTML body section', function() {
-      expect((new Html)->beginBody)->to->equal(View::PH_BODY_BEGIN);
+  function testGetBeginBody(): void {
+    // It should return the tag marking the beginning of an HTML body section.
+      assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN);
     });
   }
 
   /**
-   * @test Html::getEndBody
+   * Tests the `Html::getEndBody
    */
-  public function testGetEndBody(): void {
-    it('should return the tag marking the ending of an HTML body section', function() {
-      expect((new Html)->endBody)->to->equal(View::PH_BODY_END);
+  function testGetEndBody(): void {
+    // It should return the tag marking the ending of an HTML body section.
+      assertThat((new Html)->endBody, equalTo(View::PH_BODY_END);
     });
   }
 
   /**
-   * @test Html::getHead
+   * Tests the `Html::getHead
    */
-  public function testHead(): void {
-    it('should return the tag marking the position of an HTML head section', function() {
-      expect((new Html)->head)->to->equal(View::PH_HEAD);
+  function testHead(): void {
+    // It should return the tag marking the position of an HTML head section.
+      assertThat((new Html)->head, equalTo(View::PH_HEAD);
     });
   }
 
   /**
-   * @test Html::getMarkdown
+   * Tests the `Html::getMarkdown
    */
-  public function testGetMarkdown(): void {
-    it('should convert Markdown code to HTML', function() {
+  function testGetMarkdown(): void {
+    // It should convert Markdown code to HTML.
       $closure = (new Html)->markdown;
-      expect($closure("# title", $this->helper))->to->equal("<h1>title</h1>\n");
+      assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n");
     });
   }
 
   /**
-   * @test Html::getMarkdownParagraph
+   * Tests the `Html::getMarkdownParagraph
    */
-  public function testGetMarkdownParagraph(): void {
-    it('should convert Markdown code to HTML', function() {
+  function testGetMarkdownParagraph(): void {
+    // It should convert Markdown code to HTML.
       $closure = (new Html)->markdownParagraph;
-      expect($closure("*title*", $this->helper))->to->equal('<em>title</em>');
+      assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>');
     });
   }
 
   /**
-   * @test Html::getSpaceless
+   * Tests the `Html::getSpaceless
    */
-  public function testGetSpaceless(): void {
-    it('should remove whitespace characters between HTML tags', function() {
+  function testGetSpaceless(): void {
+    // It should remove whitespace characters between HTML tags.
       $closure = (new Html)->spaceless;
-      expect($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper))->to->equal('<strong>label</strong><em>label</em>');
-      expect($closure('<strong> label </strong>  <em> label </em>', $this->helper))->to->equal('<strong> label </strong><em> label </em>');
+      assertThat($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper), equalTo('<strong>label</strong><em>label</em>');
+      assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>');
     });
   }
 
   /**
-   * @test Html::getViewTitle
+   * Tests the `Html::getViewTitle
    */
-  public function testViewTitle(): void {
-    it('should set the view title', function() {
-      expect(\Yii::$app->view->title)->to->be->null;
+  function testViewTitle(): void {
+    // It should set the view title.
+      assertThat(\Yii::$app->view->title, isNull());
 
       $closure = (new Html)->viewTitle;
       $closure('Foo Bar', $this->helper);
-      expect(\Yii::$app->view->title)->to->equal('Foo Bar');
+      assertThat(\Yii::$app->view->title, equalTo('Foo Bar');
     });
   }
 

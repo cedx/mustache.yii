@@ -3,6 +3,7 @@
 ## Version [10.0.0](https://github.com/cedx/yii2-mustache/compare/v9.0.0...v10.0.0)
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Dropped the dependency on [PHPUnit-Expect](https://dev.belin.io/phpunit-expect).
 - Updated the package dependencies.
 
 ## Version [9.0.0](https://github.com/cedx/yii2-mustache/compare/v8.0.0...v9.0.0)

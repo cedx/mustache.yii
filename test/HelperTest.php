@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
 /**
@@ -16,46 +15,46 @@ class HelperTest extends TestCase {
   private $model;
 
   /**
-   * @test Helper::captureOutput
+   * Tests the `Helper::captureOutput
    */
-  public function testCaptureOutput(): void {
+  function testCaptureOutput(): void {
     $captureOutput = function($callback) {
       return $this->captureOutput($callback);
     };
 
-    it('should return the content of the output buffer', function() use ($captureOutput) {
-      expect($captureOutput->call($this->model, function() { echo 'Hello World!'; }))->to->equal('Hello World!');
+    // It should return the content of the output buffer.
+      assertThat($captureOutput->call($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!');
     });
   }
 
   /**
-   * @test Helper::parseArguments
+   * Tests the `Helper::parseArguments
    */
-  public function testParseArguments(): void {
+  function testParseArguments(): void {
     $parseArguments = function($text, $defaultArgument, $defaultValues = []) {
       return $this->parseArguments($text, $defaultArgument, $defaultValues);
     };
 
-    it('should transform a single value into an array', function() use ($parseArguments) {
+    // It should transform a single value into an array.
       $expected = ['foo' => 'FooBar'];
-      expect($parseArguments->call($this->model, 'FooBar', 'foo'))->to->equal($expected);
+      assertThat($parseArguments->call($this->model, 'FooBar', 'foo'), equalTo($expected);
 
       $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
-      expect($parseArguments->call($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]))->to->equal($expected);
+      assertThat($parseArguments->call($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
     });
 
-    it('should transform a JSON string into an array', function() use ($parseArguments) {
+    // It should transform a JSON string into an array.
       $data = '{
         "foo": "FooBar",
         "bar": {"baz": true}
       }';
 
       $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
-      expect($parseArguments->call($this->model, $data, 'foo', ['BarFoo' => [123, 456]]))->to->equal($expected);
+      assertThat($parseArguments->call($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected);
 
       $data = '{"foo": [123, 456]}';
       $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
-      expect($parseArguments->call($this->model, $data, 'foo', ['bar' => ['baz' => false]]))->to->equal($expected);
+      assertThat($parseArguments->call($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
     });
   }
 
@@ -63,6 +62,6 @@ class HelperTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp(): void {
-    $this->model = $this->getMockForAbstractClass(Helper::class);
+    $this->model = $this->getMockForAbstractClass(Helper::class));
   }
 }

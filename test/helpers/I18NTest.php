@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
 /**
@@ -16,35 +15,35 @@ class I18NTest extends TestCase {
   private $helper;
 
   /**
-   * @test I18N::getTranslate
+   * Tests the `I18N::getTranslate
    */
-  public function testGetTranslate(): void {
-    it('should return the specified string if no translation is matching', function() {
+  function testGetTranslate(): void {
+    // It should return the specified string if no translation is matching.
       $translation = \Yii::t('app', 'foo');
-      expect($translation)->to->equal('foo');
+      assertThat($translation, equalTo('foo'));
 
       $i18n = new I18N;
       foreach ([$i18n->t, $i18n->translate] as $closure) {
-        expect($closure('foo', $this->helper))->to->equal($translation);
-        expect($closure('app:foo', $this->helper))->to->equal($translation);
-        expect($closure('{"message": "foo"}', $this->helper))->to->equal($translation);
-        expect($closure('{"category": "app", "language": "en-US", "message": "foo"}', $this->helper))->to->equal($translation);
+        assertThat($closure('foo', $this->helper), equalTo($translation);
+        assertThat($closure('app:foo', $this->helper), equalTo($translation);
+        assertThat($closure('{"message": "foo"}', $this->helper), equalTo($translation);
+        assertThat($closure('{"category": "app", "language": "en-US", "message": "foo"}', $this->helper), equalTo($translation);
       }
     });
 
-    it('should return the translated string if a translation is matching', function() {
+    // It should return the translated string if a translation is matching.
       $translation = \Yii::t('yii', 'Error', [], 'fr-FR');
-      expect($translation)->to->equal('Erreur');
+      assertThat($translation, equalTo('Erreur');
 
       $language = \Yii::$app->language;
       \Yii::$app->language = 'fr-FR';
 
       $i18n = new I18N(['defaultCategory' => 'yii']);
       foreach ([$i18n->t, $i18n->translate] as $closure) {
-        expect($closure('Error', $this->helper))->to->equal($translation);
-        expect($closure('yii:Error', $this->helper))->to->equal($translation);
-        expect($closure('{"message": "Error"}', $this->helper))->to->equal($translation);
-        expect($closure('{"category": "yii", "language": "fr-FR", "message": "Error"}', $this->helper))->to->equal($translation);
+        assertThat($closure('Error', $this->helper), equalTo($translation);
+        assertThat($closure('yii:Error', $this->helper), equalTo($translation);
+        assertThat($closure('{"message": "Error"}', $this->helper), equalTo($translation);
+        assertThat($closure('{"category": "yii", "language": "fr-FR", "message": "Error"}', $this->helper), equalTo($translation);
       }
 
       \Yii::$app->language = $language;
