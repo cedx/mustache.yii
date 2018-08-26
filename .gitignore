@@ -1,4 +1,6 @@
 /.*/
+!/.vscode/
+
 /build/
 /doc/api/
 /var/
