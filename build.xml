@@ -4,7 +4,7 @@
     <os family="windows"/>
   </condition>
 
-  <target name="clean" description="Delete the generated files">
+  <target name="clean" description="Delete all generated files and reset any saved state">
     <delete dir="build" quiet="true"/>
     <delete dir="doc/api" quiet="true"/>
     <delete dir="web" quiet="true"/>
@@ -13,7 +13,7 @@
     </delete>
   </target>
 
-  <target name="coverage" description="Upload the code coverage">
+  <target name="coverage" description="Send the results of the code coverage">
     <exec executable="vendor/bin/coveralls" passthru="true">
       <arg file="var/coverage.xml"/>
     </exec>
@@ -24,18 +24,18 @@
     <exec command="mkdocs build" passthru="true"/>
   </target>
 
-  <target name="lint" description="Perform the static analysis">
+  <target name="lint" description="Perform the static analysis of source code">
     <phpLint file="example/main.php"/>
     <exec executable="vendor/bin/phpstan" passthru="true">
       <arg value="analyse"/>
     </exec>
   </target>
 
-  <target name="test" description="Run the tests">
+  <target name="test" description="Run the test suites">
     <exec executable="vendor/bin/phpunit" passthru="true"/>
   </target>
 
-  <target name="upgrade" description="Upgrade the project">
+  <target name="upgrade" description="Upgrade the project to the latest revision">
     <exec command="git reset --hard" passthru="true"/>
     <exec command="git fetch --all --prune" passthru="true"/>
     <exec command="git pull --rebase" passthru="true"/>
