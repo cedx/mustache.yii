@@ -29,7 +29,7 @@ markdown_extensions:
 pages:
 - Overview: index.md
 - Installation: installation.md
-- Usage: TODO.md
+#- Usage: TODO.md
 - About:
   - Changelog: about/changelog.md
   - License: about/license.md
