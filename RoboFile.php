@@ -76,6 +76,14 @@ class RoboFile extends Tasks {
   }
 
   /**
+   * Increments the version number of the package.
+   * @param string $component The part in the version number to increment.
+   */
+  function version(string $component = 'patch'): void {
+    $this->taskSemVer('.semver')->increment($component)->run();
+  }
+
+  /**
    * Watches for file changes.
    */
   function watch(): void {
