@@ -16,26 +16,27 @@ class CacheTest extends TestCase {
   private $model;
 
   /**
-   * Tests the `Cache::cache
+   * Tests the `Cache::cache()` method.
+   * @test
    */
   function testCache(): void {
     // It should evaluate the PHP code put in cache.
-      $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
-      assertThat(class_exists('YiiMustacheTemplateTestModel'), isTrue());
-    });
+    $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
+    assertThat(class_exists('YiiMustacheTemplateTestModel'), isTrue());
   }
 
   /**
-   * Tests the `Cache::load
+   * Tests the `Cache::load()` method.
+   * @test
    */
   function testLoad(): void {
     // It should return `false` for an unknown key.
-      assertThat($this->model->load('key'), isFalse());
-    });
+    assertThat($this->model->load('key'), isFalse());
   }
 
   /**
    * Performs a common set of tasks just before each test method is called.
+   * @before
    */
   protected function setUp(): void {
     new Application(['id' => 'yii2-free-mobile', 'basePath' => '@root/lib']);

@@ -15,7 +15,8 @@ class HelperTest extends TestCase {
   private $model;
 
   /**
-   * Tests the `Helper::captureOutput
+   * Tests the `Helper::captureOutput()` method.
+   * @test
    */
   function testCaptureOutput(): void {
     $captureOutput = function($callback) {
@@ -23,12 +24,12 @@ class HelperTest extends TestCase {
     };
 
     // It should return the content of the output buffer.
-      assertThat($captureOutput->call($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!');
-    });
+    assertThat($captureOutput->call($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!');
   }
 
   /**
-   * Tests the `Helper::parseArguments
+   * Tests the `Helper::parseArguments()` method.
+   * @test
    */
   function testParseArguments(): void {
     $parseArguments = function($text, $defaultArgument, $defaultValues = []) {
@@ -36,30 +37,29 @@ class HelperTest extends TestCase {
     };
 
     // It should transform a single value into an array.
-      $expected = ['foo' => 'FooBar'];
-      assertThat($parseArguments->call($this->model, 'FooBar', 'foo'), equalTo($expected);
+    $expected = ['foo' => 'FooBar'];
+    assertThat($parseArguments->call($this->model, 'FooBar', 'foo'), equalTo($expected);
 
-      $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
-      assertThat($parseArguments->call($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
-    });
+    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
+    assertThat($parseArguments->call($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
 
     // It should transform a JSON string into an array.
-      $data = '{
-        "foo": "FooBar",
-        "bar": {"baz": true}
-      }';
+    $data = '{
+      "foo": "FooBar",
+      "bar": {"baz": true}
+    }';
 
-      $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
-      assertThat($parseArguments->call($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected);
+    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
+    assertThat($parseArguments->call($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected);
 
-      $data = '{"foo": [123, 456]}';
-      $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
-      assertThat($parseArguments->call($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
-    });
+    $data = '{"foo": [123, 456]}';
+    $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
+    assertThat($parseArguments->call($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
   }
 
   /**
    * Performs a common set of tasks just before each test method is called.
+   * @before
    */
   protected function setUp(): void {
     $this->model = $this->getMockForAbstractClass(Helper::class));

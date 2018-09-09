@@ -16,7 +16,8 @@ class LoaderTest extends TestCase {
   private $model;
 
   /**
-   * Tests the `Loader::findViewFile
+   * Tests the `Loader::findViewFile()` method.
+   * @test
    */
   function testFindViewFile(): void {
     $findViewFile = function($name) {
@@ -24,25 +25,24 @@ class LoaderTest extends TestCase {
     };
 
     // It should return the path of the corresponding view file.
-      assertThat($findViewFile->call($this->model, '//view'), equalTo(str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php'));
-    });
+    assertThat($findViewFile->call($this->model, '//view'), equalTo(str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php'));
 
     // It should throw an exception if the view file is not found.
-      assertThat(function() use ($findViewFile) { $findViewFile->call($this->model, '/view'); })->to->throw(InvalidCallException::class));
-    });
+    assertThat(function() use ($findViewFile) { $findViewFile->call($this->model, '/view'); })->to->throw(InvalidCallException::class));
   }
 
   /**
-   * Tests the `Loader::load
+   * Tests the `Loader::load()` method.
+   * @test
    */
   function testLoad(): void {
     // It should throw an exception if the view file is not found.
-      assertThat(function() { $this->model->load('view'); })->to->throw(InvalidCallException::class));
-    });
+    assertThat(function() { $this->model->load('view'); })->to->throw(InvalidCallException::class));
   }
 
   /**
    * Performs a common set of tasks just before each test method is called.
+   * @before
    */
   protected function setUp(): void {
     $this->model = new Loader(['viewRenderer' => new ViewRenderer]);

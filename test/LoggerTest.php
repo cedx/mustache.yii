@@ -11,11 +11,11 @@ use yii\base\{InvalidParamException};
 class LoggerTest extends TestCase {
 
   /**
-   * Tests the `Logger::log
+   * Tests the `Logger::log()` method.
+   * @test
    */
   function testLog(): void {
     // It should throw an exception if the log level is invalid.
-      assertThat(function() { (new Logger)->log('dummy', 'Hello World!'); })->to->throw(InvalidParamException::class));
-    });
+    assertThat(function() { (new Logger)->log('dummy', 'Hello World!'); })->to->throw(InvalidParamException::class));
   }
 }
