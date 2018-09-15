@@ -19,7 +19,7 @@ composer --version
 
 !!! info
     If you plan to play with the package sources, you will also need
-    [Phing](https://www.phing.info) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
+    [Robo](https://robo.li) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
 
 ## Installing with Composer package manager
 
