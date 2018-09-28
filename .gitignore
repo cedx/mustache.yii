@@ -9,6 +9,7 @@
 /vendor/
 /web/
 
+/*.code-workspace
 /*.iml
 /**/.DS_Store
 /composer.lock
