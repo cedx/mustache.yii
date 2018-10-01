@@ -15,8 +15,8 @@ class RoboFile extends Tasks {
    */
   function __construct() {
     $path = (string) getenv('PATH');
-    $vendorDir = (string) realpath('vendor/bin');
-    if (strpos($path, $vendorDir) === false) putenv("PATH=$vendorDir".PATH_SEPARATOR.$path);
+    $vendor = (string) realpath('vendor/bin');
+    if (strpos($path, $vendor) === false) putenv("PATH=$vendor".PATH_SEPARATOR.$path);
   }
 
   /**
