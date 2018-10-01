@@ -12,7 +12,7 @@
     "psr-4": {"yii\\mustache\\": "lib/"}
   },
   "autoload-dev": {
-    "files": ["vendor/phpunit/phpunit/src/Framework/Assert/Functions.php", "vendor/yiisoft/yii2/Yii.php"],
+    "files": ["vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"],
     "psr-4": {"yii\\mustache\\": "test/"}
   },
   "config": {

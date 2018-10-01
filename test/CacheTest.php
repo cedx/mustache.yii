@@ -39,7 +39,6 @@ class CacheTest extends TestCase {
    * @before
    */
   protected function setUp(): void {
-    new Application(['id' => 'yii2-free-mobile', 'basePath' => '@root/lib']);
     $this->model = new Cache(['viewRenderer' => new ViewRenderer]);
   }
 }
