@@ -116,7 +116,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * Sets the values to prepend to the context stack, so they will be available in any view loaded by this instance.
    * @param array $value The list of the values to prepend to the context stack.
-   * @return self This instance.
+   * @return $this This instance.
    */
   function setHelpers(array $value): self {
     if ($this->engine) $this->engine->setHelpers($value);
