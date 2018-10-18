@@ -63,7 +63,7 @@ class ViewRendererTest extends TestCase {
   }
 
   /**
-   * Performs a common set of tasks just before each test method is called.
+   * This method is called before each test.
    * @before
    */
   protected function setUp(): void {

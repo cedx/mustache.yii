@@ -16,7 +16,7 @@ class HtmlTest extends TestCase {
   private $helper;
 
   /**
-   * Performs a common set of tasks just before the first test of the class is run.
+   * This method is called before the first test of this test class is run.
    * @beforeClass
    */
   static function setUpBeforeClass(): void {
@@ -95,7 +95,7 @@ class HtmlTest extends TestCase {
   }
 
   /**
-   * Performs a common set of tasks just before each test method is called.
+   * This method is called before each test.
    * @before
    */
   protected function setUp(): void {
