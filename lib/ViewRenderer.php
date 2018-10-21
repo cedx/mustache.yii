@@ -78,7 +78,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     if ($this->enableCaching) {
-      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class));
+      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
       $options['cache'] = new Cache(['viewRenderer' => $this]);
     }
 
