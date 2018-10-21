@@ -20,7 +20,7 @@ class HtmlTest extends TestCase {
    * @beforeClass
    */
   static function setUpBeforeClass(): void {
-    \Yii::$app->set('view', View::class));
+    \Yii::$app->set('view', View::class);
   }
 
   /**

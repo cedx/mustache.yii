@@ -62,6 +62,6 @@ class HelperTest extends TestCase {
    * @before
    */
   protected function setUp(): void {
-    $this->model = $this->getMockForAbstractClass(Helper::class));
+    $this->model = $this->getMockForAbstractClass(Helper::class);
   }
 }
