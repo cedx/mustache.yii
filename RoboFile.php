@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-use Robo\Tasks;
+use Robo\{Result, Tasks};
 
 // Load the dependencies.
 require_once __DIR__.'/vendor/autoload.php';
@@ -57,9 +57,10 @@ class RoboFile extends Tasks {
 
   /**
    * Runs the test suites.
+   * @return Result The task result.
    */
-  function test(): void {
-    $this->taskPhpUnit()->run();
+  function test(): Result {
+    return $this->taskPhpUnit()->run();
   }
 
   /**
