@@ -2,8 +2,6 @@
 !/.vscode/
 
 /build/
-/doc/about/changelog.md
-/doc/about/license.md
 /doc/api/
 /var/
 /vendor/
@@ -13,3 +11,5 @@
 /*.iml
 /**/.DS_Store
 /composer.lock
+/doc/about/changelog.md
+/doc/about/license.md
