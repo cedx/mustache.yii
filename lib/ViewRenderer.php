@@ -33,7 +33,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public $enableLogging = false;
 
   /**
-   * @var \Mustache_Engine The underlying Mustache template engine.
+   * @var \Mustache_Engine|null The underlying Mustache template engine.
    */
   private $engine;
 
@@ -78,7 +78,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     if ($this->enableCaching) {
-      $this->cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
+      /** @var \yii\caching\Cache $cache */
+      $cache = Instance::ensure($this->cache, \yii\caching\Cache::class);
+      $this->cache = $cache;
       $options['cache'] = new Cache(['viewRenderer' => $this]);
     }
 
