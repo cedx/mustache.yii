@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace yii\mustache;
 
 use Psr\Log\{LoggerInterface, LoggerTrait, LogLevel};
-use yii\base\{BaseObject, InvalidParamException};
+use yii\base\{BaseObject, InvalidArgumentException};
 use yii\log\{Logger as YiiLogger};
 
 /**
@@ -31,12 +31,12 @@ class Logger extends BaseObject implements LoggerInterface {
    * @param int $level The logging level.
    * @param string $message The message to be logged.
    * @param array $context The log context.
-   * @throws InvalidParamException The specified logging level is unknown.
+   * @throws InvalidArgumentException The specified logging level is unknown.
    */
   function log($level, $message, array $context = []): void {
     if (!isset(static::$levels[$level])) {
       $values = implode(', ', (new \ReflectionClass(LogLevel::class))->getConstants());
-      throw new InvalidParamException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
+      throw new InvalidArgumentException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
     }
 
     \Yii::getLogger()->log($message, static::$levels[$level], __METHOD__);

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{BaseObject, InvalidConfigException, InvalidParamException};
+use yii\base\{BaseObject, InvalidArgumentException, InvalidConfigException};
 use yii\helpers\{ArrayHelper, Json};
 
 /**
@@ -46,10 +46,10 @@ abstract class Helper extends BaseObject {
   protected function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
     try {
       if (is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
-      throw new InvalidParamException('The JSON string has an invalid format.');
+      throw new InvalidArgumentException('The JSON string has an invalid format.');
     }
 
-    catch (InvalidParamException $e) {
+    catch (InvalidArgumentException $e) {
       $defaultValues[$defaultArgument] = $text;
       return $defaultValues;
     }

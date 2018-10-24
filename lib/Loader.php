@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{BaseObject, InvalidCallException, InvalidConfigException, InvalidParamException};
+use yii\base\{BaseObject, InvalidArgumentException, InvalidCallException, InvalidConfigException};
 use yii\helpers\{FileHelper};
 
 /**
@@ -68,7 +68,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
    * @throws \BadMethodCallException Unable to locate the view file.
    */
   protected function findViewFile(string $name): string {
-    if (!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
+    if (!mb_strlen($name)) throw new InvalidArgumentException('The view name is empty.');
 
     $controller = \Yii::$app->controller;
 
