@@ -44,6 +44,7 @@ class I18N extends Helper {
 
       if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
+        /** @var string[] $parts */
         $parts = explode($this->argumentSeparator, $output, 2);
         $length = count($parts);
         if (!$length) throw new InvalidCallException('Invalid translation format.');

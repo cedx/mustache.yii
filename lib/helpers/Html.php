@@ -23,6 +23,7 @@ class Html extends Helper {
    * @return string The tag marking the beginning of an HTML body section.
    */
   function getBeginBody(): string {
+    /** @var \yii\web\View|null $view */
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('beginBody')) return '';
     return $this->captureOutput([$view, 'beginBody']);
@@ -33,6 +34,7 @@ class Html extends Helper {
    * @return string The tag marking the ending of an HTML body section.
    */
   function getEndBody(): string {
+    /** @var \yii\web\View|null $view */
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('endBody')) return '';
     return $this->captureOutput([$view, 'endBody']);
@@ -43,6 +45,7 @@ class Html extends Helper {
    * @return string The tag marking the position of an HTML head section.
    */
   function getHead(): string {
+    /** @var \yii\web\View|null $view */
     $view = \Yii::$app->view;
     if (!$view || !$view->hasMethod('head')) return '';
     return $this->captureOutput([$view, 'head']);

@@ -59,13 +59,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'format' => new helpers\Format,
       'html' => new helpers\Html,
       'i18n' => new helpers\I18N,
-      'url' => new helpers\Url,
-      'yii' => [
-        'debug' => YII_DEBUG,
-        'devEnv' => YII_ENV_DEV,
-        'prodEnv' => YII_ENV_PROD,
-        'testEnv' => YII_ENV_TEST
-      ]
+      'url' => new helpers\Url
     ];
 
     $options = [
@@ -100,19 +94,24 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @throws InvalidCallException The specified view file is not found.
    */
   function render($view, $file, $params): string {
+    /** @var \yii\caching\Cache $cache */
+    $cache = $this->cache;
     $cacheKey = [__CLASS__, $file];
-    if ($this->enableCaching && $this->cache->exists($cacheKey))
-      $output = $this->cache->get($cacheKey);
+
+    if ($this->enableCaching && $cache->exists($cacheKey))
+      $output = $cache->get($cacheKey);
     else {
       $path = FileHelper::localize($file);
-      if (!is_file($path)) throw new InvalidCallException("View file \"$file\" does not exist.");
+      if (!is_file($path)) throw new InvalidCallException("View file '$file' does not exist.");
 
       $output = @file_get_contents($path);
-      if ($this->enableCaching) $this->cache->set($cacheKey, $output, $this->cachingDuration);
+      if ($this->enableCaching) $cache->set($cacheKey, $output, $this->cachingDuration);
     }
 
+    /** @var \Mustache_Engine $engine */
+    $engine = $this->engine;
     $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);
-    return $this->engine->render($output, $values);
+    return $engine->render($output, $values);
   }
 
   /**

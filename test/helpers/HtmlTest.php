@@ -29,7 +29,7 @@ class HtmlTest extends TestCase {
    */
   function testGetBeginBody(): void {
     // It should return the tag marking the beginning of an HTML body section.
-    assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN);
+    assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN));
   }
 
   /**
@@ -38,7 +38,7 @@ class HtmlTest extends TestCase {
    */
   function testGetEndBody(): void {
     // It should return the tag marking the ending of an HTML body section.
-    assertThat((new Html)->endBody, equalTo(View::PH_BODY_END);
+    assertThat((new Html)->endBody, equalTo(View::PH_BODY_END));
   }
 
   /**
@@ -47,7 +47,7 @@ class HtmlTest extends TestCase {
    */
   function testHead(): void {
     // It should return the tag marking the position of an HTML head section.
-    assertThat((new Html)->head, equalTo(View::PH_HEAD);
+    assertThat((new Html)->head, equalTo(View::PH_HEAD));
   }
 
   /**
@@ -57,7 +57,7 @@ class HtmlTest extends TestCase {
   function testGetMarkdown(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdown;
-    assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n");
+    assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n"));
   }
 
   /**
@@ -67,7 +67,7 @@ class HtmlTest extends TestCase {
   function testGetMarkdownParagraph(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdownParagraph;
-    assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>');
+    assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>'));
   }
 
   /**
@@ -77,8 +77,8 @@ class HtmlTest extends TestCase {
   function testGetSpaceless(): void {
     // It should remove whitespace characters between HTML tags.
     $closure = (new Html)->spaceless;
-    assertThat($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper), equalTo('<strong>label</strong><em>label</em>');
-    assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>');
+    assertThat($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper), equalTo('<strong>label</strong><em>label</em>'));
+    assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>'));
   }
 
   /**
@@ -91,7 +91,7 @@ class HtmlTest extends TestCase {
 
     $closure = (new Html)->viewTitle;
     $closure('Foo Bar', $this->helper);
-    assertThat(\Yii::$app->view->title, equalTo('Foo Bar');
+    assertThat(\Yii::$app->view->title, equalTo('Foo Bar'));
   }
 
   /**

@@ -16,6 +16,7 @@ class LoggerTest extends TestCase {
    */
   function testLog(): void {
     // It should throw an exception if the log level is invalid.
-    assertThat(function() { (new Logger)->log('dummy', 'Hello World!'); })->to->throw(InvalidArgumentException::class);
+    $this->expectException(InvalidArgumentException::class);
+    (new Logger)->log(666, 'Hello World!');
   }
 }

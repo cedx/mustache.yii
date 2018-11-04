@@ -23,7 +23,9 @@ class Cache extends BaseObject implements \Mustache_Cache {
     $viewRenderer = $this->viewRenderer;
     if (!$viewRenderer->enableCaching) eval("?>$value");
     else {
-      $viewRenderer->cache->set([__CLASS__, $key], $value, $viewRenderer->cachingDuration);
+      /** @var \yii\caching\Cache $cache */
+      $cache = $viewRenderer->cache;
+      $cache->set([__CLASS__, $key], $value, $viewRenderer->cachingDuration);
       $this->load($key);
     }
   }
@@ -45,10 +47,12 @@ class Cache extends BaseObject implements \Mustache_Cache {
   function load($key): bool {
     $cacheKey = [__CLASS__, $key];
     $viewRenderer = $this->viewRenderer;
-    if (!$viewRenderer->enableCaching || !$viewRenderer->cache->exists($cacheKey)) return false;
 
-    $code = $viewRenderer->cache->get($cacheKey);
-    eval("?>$code");
+    /** @var \yii\caching\Cache $cache */
+    $cache = $viewRenderer->cache;
+    if (!$viewRenderer->enableCaching || !$cache->exists($cacheKey)) return false;
+
+    eval("?>{$cache->get($cacheKey)}");
     return true;
   }
 }

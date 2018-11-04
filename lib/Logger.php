@@ -36,7 +36,7 @@ class Logger extends BaseObject implements LoggerInterface {
   function log($level, $message, array $context = []): void {
     if (!isset(static::$levels[$level])) {
       $values = implode(', ', (new \ReflectionClass(LogLevel::class))->getConstants());
-      throw new InvalidArgumentException("Invalid enumerable value \"$level\". Please make sure it is among ($values).");
+      throw new InvalidArgumentException("Invalid enumerable value '$level'. Please make sure it is among ($values).");
     }
 
     \Yii::getLogger()->log($message, static::$levels[$level], __METHOD__);

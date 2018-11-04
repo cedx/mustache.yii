@@ -3,7 +3,6 @@ declare(strict_types=1);
 namespace yii\mustache;
 
 use PHPUnit\Framework\{TestCase};
-use yii\console\{Application};
 
 /**
  * Tests the features of the `yii\mustache\Cache` class.

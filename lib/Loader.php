@@ -45,14 +45,16 @@ class Loader extends BaseObject implements \Mustache_Loader {
       $cacheKey = [__CLASS__, $name];
       $viewRenderer = $this->viewRenderer;
 
-      if ($viewRenderer->enableCaching && $viewRenderer->cache->exists($cacheKey))
-        $output = $viewRenderer->cache->get($cacheKey);
+      /** @var \yii\caching\Cache $cache */
+      $cache = $viewRenderer->cache;
+      if ($viewRenderer->enableCaching && $cache->exists($cacheKey))
+        $output = $cache->get($cacheKey);
       else {
         $path = FileHelper::localize($this->findViewFile($name));
-        if (!is_file($path)) throw new InvalidCallException("The view file \"$path\" does not exist.");
+        if (!is_file($path)) throw new InvalidCallException("The view file '$path' does not exist.");
 
         $output = @file_get_contents($path);
-        if ($viewRenderer->enableCaching) $viewRenderer->cache->set($cacheKey, $output, $viewRenderer->cachingDuration);
+        if ($viewRenderer->enableCaching) $cache->set($cacheKey, $output, $viewRenderer->cachingDuration);
       }
 
       $this->views[$name] = $output;
@@ -74,7 +76,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
 
     if (mb_substr($name, 0, 2) == '//') $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
-      if (!$controller) throw new InvalidCallException("Unable to locate the view \"$name\": no active controller.");
+      if (!$controller) throw new InvalidCallException("Unable to locate the view '$name': no active controller.");
       $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     }
     else {

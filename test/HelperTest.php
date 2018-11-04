@@ -10,21 +10,33 @@ use PHPUnit\Framework\{TestCase};
 class HelperTest extends TestCase {
 
   /**
-   * @var Helper The data context of the tests.
+   * @var \ReflectionClass The object used to change the visibility of inaccessible class members.
+   */
+  private static $reflection;
+
+  /**
+   * @var \PHPUnit\Framework\MockObject\MockObject The data context of the tests.
    */
   private $model;
+
+  /**
+   * This method is called before the first test of this test class is run.
+   * @beforeClass
+   */
+  static function setUpBeforeClass(): void {
+    static::$reflection = new \ReflectionClass(Helper::class);
+  }
 
   /**
    * Tests the `Helper::captureOutput()` method.
    * @test
    */
   function testCaptureOutput(): void {
-    $captureOutput = function($callback) {
-      return $this->captureOutput($callback);
-    };
+    $method = static::$reflection->getMethod('captureOutput');
+    $method->setAccessible(true);
 
     // It should return the content of the output buffer.
-    assertThat($captureOutput->call($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!');
+    assertThat($method->invoke($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!'));
   }
 
   /**
@@ -32,16 +44,15 @@ class HelperTest extends TestCase {
    * @test
    */
   function testParseArguments(): void {
-    $parseArguments = function($text, $defaultArgument, $defaultValues = []) {
-      return $this->parseArguments($text, $defaultArgument, $defaultValues);
-    };
+    $method = static::$reflection->getMethod('parseArguments');
+    $method->setAccessible(true);
 
     // It should transform a single value into an array.
     $expected = ['foo' => 'FooBar'];
-    assertThat($parseArguments->call($this->model, 'FooBar', 'foo'), equalTo($expected);
+    assertThat($method->invoke($this->model, 'FooBar', 'foo'), equalTo($expected));
 
     $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
-    assertThat($parseArguments->call($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
+    assertThat($method->invoke($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected));
 
     // It should transform a JSON string into an array.
     $data = '{
@@ -50,11 +61,11 @@ class HelperTest extends TestCase {
     }';
 
     $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
-    assertThat($parseArguments->call($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected);
+    assertThat($method->invoke($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected));
 
     $data = '{"foo": [123, 456]}';
     $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
-    assertThat($parseArguments->call($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected);
+    assertThat($method->invoke($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected));
   }
 
   /**

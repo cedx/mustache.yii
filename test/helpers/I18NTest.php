@@ -33,17 +33,17 @@ class I18NTest extends TestCase {
 
     // It should return the translated string if a translation is matching.
     $translation = \Yii::t('yii', 'Error', [], 'fr-FR');
-    assertThat($translation, equalTo('Erreur');
+    assertThat($translation, equalTo('Erreur'));
 
     $language = \Yii::$app->language;
     \Yii::$app->language = 'fr-FR';
 
     $i18n = new I18N(['defaultCategory' => 'yii']);
     foreach ([$i18n->t, $i18n->translate] as $closure) {
-      assertThat($closure('Error', $this->helper), equalTo($translation);
-      assertThat($closure('yii:Error', $this->helper), equalTo($translation);
-      assertThat($closure('{"message": "Error"}', $this->helper), equalTo($translation);
-      assertThat($closure('{"category": "yii", "language": "fr-FR", "message": "Error"}', $this->helper), equalTo($translation);
+      assertThat($closure('Error', $this->helper), equalTo($translation));
+      assertThat($closure('yii:Error', $this->helper), equalTo($translation));
+      assertThat($closure('{"message": "Error"}', $this->helper), equalTo($translation));
+      assertThat($closure('{"category": "yii", "language": "fr-FR", "message": "Error"}', $this->helper), equalTo($translation));
     }
 
     \Yii::$app->language = $language;

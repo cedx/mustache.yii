@@ -20,15 +20,15 @@ class LoaderTest extends TestCase {
    * @test
    */
   function testFindViewFile(): void {
-    $findViewFile = function($name) {
-      return $this->findViewFile($name);
-    };
+    $method = (new \ReflectionClass(Loader::class))->getMethod('findViewFile');
+    $method->setAccessible(true);
 
     // It should return the path of the corresponding view file.
-    assertThat($findViewFile->call($this->model, '//view'), equalTo(str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php'));
+    assertThat($method->invoke($this->model, '//view'), equalTo(str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php')));
 
     // It should throw an exception if the view file is not found.
-    assertThat(function() use ($findViewFile) { $findViewFile->call($this->model, '/view'); })->to->throw(InvalidCallException::class));
+    $this->expectException(InvalidCallException::class);
+    $method->invoke($this->model, '/view');
   }
 
   /**
@@ -37,7 +37,8 @@ class LoaderTest extends TestCase {
    */
   function testLoad(): void {
     // It should throw an exception if the view file is not found.
-    assertThat(function() { $this->model->load('view'); })->to->throw(InvalidCallException::class));
+    $this->expectException(InvalidCallException::class);
+    $this->model->load('view');
   }
 
   /**

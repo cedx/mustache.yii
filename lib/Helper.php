@@ -32,7 +32,7 @@ abstract class Helper extends BaseObject {
   protected function captureOutput(callable $callback): string {
     ob_start();
     call_user_func($callback);
-    return ob_get_clean();
+    return (string) ob_get_clean();
   }
 
   /**

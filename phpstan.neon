@@ -1,7 +1,5 @@
 parameters:
   excludes_analyse: [test/index.php]
+  ignoreErrors: ['/on an unknown class Yii/']
   level: max
   paths: [lib, test]
-  ignoreErrors:
-  - '/Constant YII_\w+ not found/'
-  - '/on an unknown class Yii/'
