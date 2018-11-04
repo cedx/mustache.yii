@@ -7,7 +7,7 @@ use yii\di\{Instance};
 use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
- * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
+ * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
  * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
