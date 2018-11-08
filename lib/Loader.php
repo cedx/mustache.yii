@@ -73,8 +73,8 @@ class Loader extends BaseObject implements \Mustache_Loader {
     if (!mb_strlen($name)) throw new InvalidArgumentException('The view name is empty.');
 
     $controller = \Yii::$app->controller;
-
-    if (mb_substr($name, 0, 2) == '//') $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
+    if (mb_substr($name, 0, 2) == '//')
+      $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     else if ($name[0] == '/') {
       if (!$controller) throw new InvalidCallException("Unable to locate the view '$name': no active controller.");
       $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');

@@ -53,7 +53,7 @@ There are two ways of referencing partials:
 {{> @app/views/layouts/2columns }}
 ```
 
-In the first case the view will be searched relatively to the current view path. For `post.mustache`
-that means these will be searched in the same directory as the currently rendered template.
+In the first case the view will be searched relatively to the current view path.
+For `post.mustache` that means these will be searched in the same directory as the currently rendered template.
 
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
