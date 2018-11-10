@@ -33,7 +33,7 @@ class ViewRendererTest extends TestCase {
     $view = new View;
 
     // It should remove placeholders when there is no corresponding binding.
-    $data = null;
+    $data = [];
     $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
     assertThat($output[0], equalTo('<test></test>'));
     assertThat($output[1], equalTo('<test></test>'));
@@ -55,8 +55,7 @@ class ViewRendererTest extends TestCase {
    */
   function testSetHelpers(): void {
     // It should allow arrays as input.
-    $this->model->helpers = ['var' => 'value'];
-
+    $this->model->setHelpers(['var' => 'value']);
     $helpers = $this->model->helpers;
     assertThat($helpers->has('var'), isTrue());
     assertThat($helpers->get('var'), equalTo('value'));
