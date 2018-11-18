@@ -3,11 +3,14 @@
 
 [Mustache](https://mustache.github.io) templating for [Yii](https://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
 
-## Resources
-- [Documentation](https://dev.belin.io/yii2-mustache)
+## Documentation
+- [User guide](https://dev.belin.io/yii2-mustache)
 - [API reference](https://dev.belin.io/yii2-mustache/api)
+
+## Development
+- [Git repository](https://git.belin.io/cedx/yii2-mustache)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-mustache)
-- [GitHub repository](https://github.com/cedx/yii2-mustache)
+- [Submit an issue](https://git.belin.io/cedx/yii2-mustache/issues)
 
 ## License
 [Mustache for Yii](https://dev.belin.io/yii2-mustache) is distributed under the MIT License.
