@@ -43,7 +43,6 @@ class RoboFile extends Tasks {
       ->copy('LICENSE.md', 'doc/about/license.md')
       ->run();
 
-    $this->_exec('phpdoc');
     $this->_exec('mkdocs build');
   }
 
