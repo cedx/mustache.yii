@@ -10,7 +10,7 @@
 ## Development
 - [Git repository](https://git.belin.io/cedx/yii2-mustache)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-mustache)
-- [Submit an issue](https://git.belin.io/cedx/yii2-mustache/issues)
+- [Submit an issue](https://github.com/cedx/yii2-mustache/issues)
 
 ## License
 [Mustache for Yii](https://dev.belin.io/yii2-mustache) is distributed under the MIT License.
