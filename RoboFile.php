@@ -29,29 +29,34 @@ class RoboFile extends Tasks {
 
   /**
    * Uploads the results of the code coverage.
+   * @return Result The task result.
    */
-  function coverage(): void {
-    $this->_exec('coveralls var/coverage.xml');
+  function coverage(): Result {
+    return $this->_exec('coveralls var/coverage.xml');
   }
 
   /**
    * Builds the documentation.
+   * @return Result The task result.
    */
-  function doc(): void {
+  function doc(): Result {
     $this->taskFilesystemStack()
       ->copy('CHANGELOG.md', 'doc/about/changelog.md')
       ->copy('LICENSE.md', 'doc/about/license.md')
       ->run();
 
-    $this->_exec('mkdocs build');
+    return $this->_exec('mkdocs build');
   }
 
   /**
    * Performs the static analysis of source code.
+   * @return Result The task result.
    */
-  function lint(): void {
-    $this->_exec('php -l example/main.php');
-    $this->_exec('phpstan analyse');
+  function lint(): Result {
+    return $this->taskExecStack()
+      ->exec('php -l example/main.php')
+      ->exec('phpstan analyse')
+      ->run();
   }
 
   /**
@@ -64,10 +69,11 @@ class RoboFile extends Tasks {
 
   /**
    * Upgrades the project to the latest revision.
+   * @return Result The task result.
    */
-  function upgrade(): void {
+  function upgrade(): Result {
     $composer = escapeshellarg(PHP_OS_FAMILY == 'Windows' ? 'C:\Program Files\PHP\share\composer.phar' : '/usr/local/bin/composer');
-    $this->taskExecStack()->stopOnFail()
+    return $this->taskExecStack()->stopOnFail()
       ->exec('git reset --hard')
       ->exec('git fetch --all --prune')
       ->exec('git pull --rebase')
@@ -78,9 +84,10 @@ class RoboFile extends Tasks {
   /**
    * Increments the version number of the package.
    * @param string $component The part in the version number to increment.
+   * @return Result The task result.
    */
-  function version(string $component = 'patch'): void {
-    $this->taskSemVer('.semver')->increment($component)->run();
+  function version(string $component = 'patch'): Result {
+    return $this->taskSemVer('.semver')->increment($component)->run();
   }
 
   /**
