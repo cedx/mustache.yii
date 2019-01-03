@@ -27,7 +27,6 @@ composer --version
 From a command prompt, run:
 
 ```shell
-composer global require fxp/composer-asset-plugin
 composer require cedx/yii2-mustache
 ```
 
