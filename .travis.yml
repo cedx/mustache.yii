@@ -4,8 +4,8 @@ notifications: {email: false}
 php: ['7.2', '7.3']
 
 install:
-- composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
-- composer install --no-interaction
+  - composer config --global github-oauth.github.com $GITHUB_ACCESS_TOKEN
+  - composer install --no-interaction
 
 script: composer test
 after_success: composer coverage
