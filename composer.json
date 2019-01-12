@@ -6,7 +6,9 @@
   "type": "yii2-extension",
   "authors": [{
     "email": "cedric@belin.io",
-    "name": "Cédric Belin"
+    "name": "Cédric Belin",
+    "homepage": "https://belin.io",
+    "role": "Developer"
   }],
   "autoload": {
     "psr-4": {"yii\\mustache\\": "lib/"}
