@@ -44,7 +44,7 @@
     "cedx/coveralls": "^9.1.2",
     "consolidation/robo": "^1.4.4",
     "henrikbjorn/lurker": "^1.2.0",
-    "phpstan/phpstan": "^0.11.1",
+    "phpstan/phpstan": "^0.11.2",
     "phpunit/phpunit": "^7.5.4"
   },
   "scripts": {
