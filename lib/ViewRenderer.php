@@ -44,7 +44,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
-   * @return \Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
+   * @return \Mustache_HelperCollection|null The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
   function getHelpers(): ?\Mustache_HelperCollection {
     return $this->engine ? $this->engine->getHelpers() : null;
