@@ -93,7 +93,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @return string The rendering result.
    * @throws InvalidCallException The specified view file is not found.
    */
-  function render($view, $file, $params): string {
+  function render($view, $file, $params = array()): string {
     /** @var \yii\caching\Cache $cache */
     $cache = $this->cache;
     $cacheKey = [__CLASS__, $file];
@@ -110,7 +110,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     /** @var \Mustache_Engine $engine */
     $engine = $this->engine;
-    $values = ArrayHelper::merge(['this' => $view], is_array($params) ? $params : []);
+    $values = ArrayHelper::merge(['this' => $view], $params);
     return $engine->render($output, $values);
   }
 
