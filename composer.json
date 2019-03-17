@@ -4,12 +4,9 @@
   "license": "MIT",
   "name": "cedx/yii2-mustache",
   "type": "yii2-extension",
-  "authors": [{
-    "email": "cedric@belin.io",
-    "name": "Cédric Belin",
-    "homepage": "https://belin.io",
-    "role": "Developer"
-  }],
+  "authors": [
+    {"email": "cedric@belin.io", "name": "Cédric Belin", "homepage": "https://belin.io"}
+  ],
   "autoload": {
     "psr-4": {"yii\\mustache\\": "lib/"}
   },
@@ -45,7 +42,7 @@
     "consolidation/robo": "^1.4.6",
     "henrikbjorn/lurker": "^1.2.0",
     "phpstan/phpstan": "^0.11.4",
-    "phpunit/phpunit": "^8.0.4"
+    "phpunit/phpunit": "^8.0.5"
   },
   "scripts": {
     "coverage": "robo coverage",
