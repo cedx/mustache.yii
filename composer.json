@@ -41,8 +41,8 @@
     "cedx/coveralls": "^10.0.0",
     "consolidation/robo": "^1.4.9",
     "henrikbjorn/lurker": "^1.2.0",
-    "phpstan/phpstan": "^0.11.4",
-    "phpunit/phpunit": "^8.0.5"
+    "phpstan/phpstan": "^0.11.5",
+    "phpunit/phpunit": "^8.0.6"
   },
   "scripts": {
     "coverage": "robo coverage",
