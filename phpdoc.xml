@@ -13,6 +13,6 @@
   </transformations>
 
   <files>
-    <directory>lib</directory>
+    <directory>src</directory>
   </files>
 </phpdoc>
