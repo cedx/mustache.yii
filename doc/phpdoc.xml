@@ -3,16 +3,16 @@
   <title>Mustache for Yii</title>
 
   <parser>
-    <target>var</target>
+    <target>../var</target>
   </parser>
   <transformer>
-    <target>doc/api</target>
+    <target>../doc/api</target>
   </transformer>
   <transformations>
     <template name="responsive"/>
   </transformations>
 
   <files>
-    <directory>src</directory>
+    <directory>../src</directory>
   </files>
 </phpdoc>

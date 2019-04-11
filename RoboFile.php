@@ -44,7 +44,7 @@ class RoboFile extends Tasks {
       ->copy('LICENSE.md', 'doc/about/license.md')
       ->run();
 
-    return $this->_exec('mkdocs build');
+    return $this->_exec('mkdocs build --config-file=doc/mkdocs.yml');
   }
 
   /**
