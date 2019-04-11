@@ -63,7 +63,7 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function test(): Result {
-    return $this->taskPhpUnit()->run();
+    return $this->_exec('phpunit --configuration=test/phpunit.xml');
   }
 
   /**
