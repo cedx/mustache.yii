@@ -21,6 +21,7 @@ class RoboFile extends Tasks {
 
   /**
    * Deletes all generated files and reset any saved state.
+   * @return Result The task result.
    */
   function clean(): Result {
     return $this->collectionBuilder()
@@ -96,6 +97,7 @@ class RoboFile extends Tasks {
 
   /**
    * Watches for file changes.
+   * @return Result The task result.
    */
   function watch(): Result {
     return $this->taskWatch()
