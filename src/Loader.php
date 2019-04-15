@@ -7,9 +7,6 @@ use yii\helpers\{FileHelper};
 /** Loads views from the file system. */
 class Loader extends BaseObject implements \Mustache_Loader {
 
-  /** @var string The default extension of template files. */
-  private const DEFAULT_EXTENSION = 'mustache';
-
   /** @var ViewRenderer The instance used to render the views. */
   public $viewRenderer;
 
@@ -77,7 +74,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
 
     $view = \Yii::$app->view;
     if ($view && $view->theme) $file = $view->theme->applyTo($file);
-    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : 'mustache');
     return $file;
   }
 }
