@@ -6,7 +6,7 @@
     <target>../var</target>
   </parser>
   <transformer>
-    <target>../doc/api</target>
+    <target>api</target>
   </transformer>
   <transformations>
     <template name="responsive"/>
