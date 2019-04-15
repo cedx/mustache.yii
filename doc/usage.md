@@ -4,8 +4,7 @@
 In order to start using [Mustache](https://mustache.github.io) you need to configure the `view` application component, like the following:
 
 ```php
-<?php
-return [
+<?php return [
   'components' => [
     'view' => [
       'class' => 'yii\web\View',
