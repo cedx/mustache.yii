@@ -4,18 +4,14 @@ namespace yii\mustache;
 use yii\base\{BaseObject, InvalidArgumentException, InvalidConfigException};
 use yii\helpers\{ArrayHelper, Json};
 
-/**
- * Provides the abstract base class for a view helper.
- */
+/** Provides the abstract base class for a view helper. */
 abstract class Helper extends BaseObject {
 
-  /**
-   * @var string String used to separate the arguments for helpers supporting the "two arguments" syntax.
-   */
+  /** @var string String used to separate the arguments for helpers supporting the "two arguments" syntax. */
   public $argumentSeparator = ':';
 
   /**
-   * Initializes the object.
+   * Initializes this object.
    * @throws InvalidConfigException The argument separator is empty.
    */
   function init(): void {

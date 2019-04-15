@@ -3,20 +3,13 @@ namespace yii\mustache\helpers;
 
 use PHPUnit\Framework\{TestCase};
 
-/**
- * Tests the features of the `yii\mustache\helpers\I18N` class.
- */
+/** Tests the features of the `yii\mustache\helpers\I18N` class. */
 class I18NTest extends TestCase {
 
-  /**
-   * @var \Mustache_LambdaHelper The engine used to render strings.
-   */
+  /** @var \Mustache_LambdaHelper The engine used to render strings. */
   private $helper;
 
-  /**
-   * Tests the `I18N::getTranslate()` method.
-   * @test
-   */
+  /** @test Tests the `I18N::getTranslate()` method. */
   function testGetTranslate(): void {
     // It should return the specified string if no translation is matching.
     $translation = \Yii::t('app', 'foo');
@@ -48,10 +41,7 @@ class I18NTest extends TestCase {
     \Yii::$app->language = $language;
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine, new \Mustache_Context);
   }

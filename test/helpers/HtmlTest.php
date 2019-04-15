@@ -4,75 +4,50 @@ namespace yii\mustache\helpers;
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
-/**
- * Tests the features of the `yii\mustache\helpers\Html` class.
- */
+/** Tests the features of the `yii\mustache\helpers\Html` class. */
 class HtmlTest extends TestCase {
 
-  /**
-   * @var \Mustache_LambdaHelper The engine used to render strings.
-   */
+  /** @var \Mustache_LambdaHelper The engine used to render strings. */
   private $helper;
 
-  /**
-   * This method is called before the first test of this test class is run.
-   * @beforeClass
-   */
+  /** @beforeClass This method is called before the first test of this test class is run. */
   static function setUpBeforeClass(): void {
     \Yii::$app->set('view', View::class);
   }
 
-  /**
-   * Tests the `Html::getBeginBody()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getBeginBody()` method. */
   function testGetBeginBody(): void {
     // It should return the tag marking the beginning of an HTML body section.
     assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN));
   }
 
-  /**
-   * Tests the `Html::getEndBody()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getEndBody()` method. */
   function testGetEndBody(): void {
     // It should return the tag marking the ending of an HTML body section.
     assertThat((new Html)->endBody, equalTo(View::PH_BODY_END));
   }
 
-  /**
-   * Tests the `Html::getHead()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getHead()` method. */
   function testHead(): void {
     // It should return the tag marking the position of an HTML head section.
     assertThat((new Html)->head, equalTo(View::PH_HEAD));
   }
 
-  /**
-   * Tests the `Html::getMarkdown()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getMarkdown()` method. */
   function testGetMarkdown(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdown;
     assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n"));
   }
 
-  /**
-   * Tests the `Html::getMarkdownParagraph()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getMarkdownParagraph()` method. */
   function testGetMarkdownParagraph(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdownParagraph;
     assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>'));
   }
 
-  /**
-   * Tests the `Html::getSpaceless()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getSpaceless()` method. */
   function testGetSpaceless(): void {
     // It should remove whitespace characters between HTML tags.
     $closure = (new Html)->spaceless;
@@ -80,10 +55,7 @@ class HtmlTest extends TestCase {
     assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>'));
   }
 
-  /**
-   * Tests the `Html::getViewTitle()` method.
-   * @test
-   */
+  /** @test Tests the `Html::getViewTitle()` method. */
   function testViewTitle(): void {
     // It should set the view title.
     assertThat(\Yii::$app->view->title, isNull());
@@ -93,10 +65,7 @@ class HtmlTest extends TestCase {
     assertThat(\Yii::$app->view->title, equalTo('Foo Bar'));
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine, new \Mustache_Context);
   }

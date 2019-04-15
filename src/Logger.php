@@ -5,15 +5,11 @@ use Psr\Log\{LoggerInterface, LoggerTrait, LogLevel};
 use yii\base\{BaseObject, InvalidArgumentException};
 use yii\log\{Logger as YiiLogger};
 
-/**
- * Component used to log messages from the view engine to the application logger.
- */
+/** Component used to log messages from the view engine to the application logger. */
 class Logger extends BaseObject implements LoggerInterface {
   use LoggerTrait;
 
-  /**
-   * @var int[] Mappings between Mustache levels and Yii ones.
-   */
+  /** @var int[] Mappings between Mustache levels and Yii ones. */
   private static $levels = [
     LogLevel::ALERT => YiiLogger::LEVEL_ERROR,
     LogLevel::CRITICAL => YiiLogger::LEVEL_ERROR,

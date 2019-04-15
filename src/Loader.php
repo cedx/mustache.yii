@@ -4,28 +4,20 @@ namespace yii\mustache;
 use yii\base\{BaseObject, InvalidArgumentException, InvalidCallException, InvalidConfigException};
 use yii\helpers\{FileHelper};
 
-/**
- * Loads views from the file system.
- */
+/** Loads views from the file system. */
 class Loader extends BaseObject implements \Mustache_Loader {
 
-  /**
-   * @var string The default extension of template files.
-   */
+  /** @var string The default extension of template files. */
   private const DEFAULT_EXTENSION = 'mustache';
 
-  /**
-   * @var ViewRenderer The instance used to render the views.
-   */
+  /** @var ViewRenderer The instance used to render the views. */
   public $viewRenderer;
 
-  /**
-   * @var string[] The loaded views.
-   */
+  /** @var string[] The loaded views. */
   private $views = [];
 
   /**
-   * Initializes the object.
+   * Initializes this object.
    * @throws InvalidConfigException The view renderer is not initialized.
    */
   function init(): void {

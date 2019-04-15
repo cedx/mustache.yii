@@ -12,9 +12,7 @@ use yii\mustache\{Helper};
  */
 class I18N extends Helper {
 
-  /**
-   * @var string The default message category when no one is supplied.
-   */
+  /** @var string The default message category when no one is supplied. */
   public $defaultCategory = 'app';
 
   /**
@@ -59,7 +57,7 @@ class I18N extends Helper {
   }
 
   /**
-   * Initializes the object.
+   * Initializes this object.
    * @throws InvalidConfigException The argument separator is empty.
    */
   function init(): void {

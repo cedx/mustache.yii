@@ -4,20 +4,13 @@ namespace yii\mustache;
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidCallException};
 
-/**
- * Tests the features of the `yii\mustache\Loader` class.
- */
+/** Tests the features of the `yii\mustache\Loader` class. */
 class LoaderTest extends TestCase {
 
-  /**
-   * @var Loader The data context of the tests.
-   */
+  /** @var Loader The data context of the tests. */
   private $model;
 
-  /**
-   * Tests the `Loader::findViewFile()` method.
-   * @test
-   */
+  /** @test Tests the `Loader::findViewFile()` method. */
   function testFindViewFile(): void {
     $method = (new \ReflectionClass(Loader::class))->getMethod('findViewFile');
     $method->setAccessible(true);
@@ -30,20 +23,14 @@ class LoaderTest extends TestCase {
     $method->invoke($this->model, '/view');
   }
 
-  /**
-   * Tests the `Loader::load()` method.
-   * @test
-   */
+  /** @test Tests the `Loader::load()` method. */
   function testLoad(): void {
     // It should throw an exception if the view file is not found.
     $this->expectException(InvalidCallException::class);
     $this->model->load('view');
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     $this->model = new Loader(['viewRenderer' => new ViewRenderer]);
   }

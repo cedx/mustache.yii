@@ -11,34 +11,22 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
-  /**
-   * @var array|string|\yii\caching\CacheInterface The cache object or the application component ID of the cache object.
-   */
+  /** @var array|string|\yii\caching\CacheInterface The cache object or the application component ID of the cache object. */
   public $cache = 'cache';
 
-  /**
-   * @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires.
-   */
+  /** @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires. */
   public $cachingDuration = 0;
 
-  /**
-   * @var bool Value indicating whether to enable caching view templates.
-   */
+  /** @var bool Value indicating whether to enable caching view templates. */
   public $enableCaching = false;
 
-  /**
-   * @var bool Value indicating whether to enable logging engine messages.
-   */
+  /** @var bool Value indicating whether to enable logging engine messages. */
   public $enableLogging = false;
 
-  /**
-   * @var \Mustache_Engine|null The underlying Mustache template engine.
-   */
+  /** @var \Mustache_Engine|null The underlying Mustache template engine. */
   private $engine;
 
-  /**
-   * @var array The values prepended to the context stack.
-   */
+  /** @var array The values prepended to the context stack. */
   private $helpers = [];
 
   /**
@@ -49,9 +37,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     return $this->engine ? $this->engine->getHelpers() : null;
   }
 
-  /**
-   * Initializes the application component.
-   */
+  /** Initializes the application component.*/
   function init(): void {
     $helpers = [
       'app' => \Yii::$app,

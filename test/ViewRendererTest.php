@@ -4,29 +4,19 @@ namespace yii\mustache;
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
-/**
- * Tests the features of the `yii\mustache\ViewRenderer` class.
- */
+/** Tests the features of the `yii\mustache\ViewRenderer` class. */
 class ViewRendererTest extends TestCase {
 
-  /**
-   * @var ViewRenderer The data context of the tests.
-   */
+  /** @var ViewRenderer The data context of the tests. */
   private $model;
 
-  /**
-   * Tests the `ViewRenderer::getHelpers()` method.
-   * @test
-   */
+  /** @test Tests the `ViewRenderer::getHelpers()` method. */
   function testGetHelpers(): void {
     // It should return a Mustache helper collection.
     assertThat($this->model->helpers, isInstanceOf(\Mustache_HelperCollection::class));
   }
 
-  /**
-   * Tests the `ViewRenderer::render()` method.
-   * @test
-   */
+  /** @test Tests the `ViewRenderer::render()` method. */
   function testRender(): void {
     $file = __DIR__.'/fixtures/data.mustache';
     $view = new View;
@@ -48,10 +38,7 @@ class ViewRendererTest extends TestCase {
     assertThat($output[3], equalTo('<test></test>'));
   }
 
-  /**
-   * Tests the `ViewRenderer::setHelpers()` method.
-   * @test
-   */
+  /** @test Tests the `ViewRenderer::setHelpers()` method. */
   function testSetHelpers(): void {
     // It should allow arrays as input.
     $this->model->setHelpers(['var' => 'value']);
@@ -60,10 +47,7 @@ class ViewRendererTest extends TestCase {
     assertThat($helpers->get('var'), equalTo('value'));
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     $this->model = new ViewRenderer;
   }

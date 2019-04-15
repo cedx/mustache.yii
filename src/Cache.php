@@ -3,14 +3,10 @@ namespace yii\mustache;
 
 use yii\base\{BaseObject, InvalidConfigException};
 
-/**
- * Component used to store compiled views to a cache application component.
- */
+/** Component used to store compiled views to a cache application component. */
 class Cache extends BaseObject implements \Mustache_Cache {
 
-  /**
-   * @var ViewRenderer The instance used to render the views.
-   */
+  /** @var ViewRenderer The instance used to render the views. */
   public $viewRenderer;
 
   /**
@@ -30,7 +26,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
   }
 
   /**
-   * Initializes the object.
+   * Initializes this object.
    * @throws InvalidConfigException The view renderer is not initialized.
    */
   function init(): void {

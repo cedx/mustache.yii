@@ -3,33 +3,21 @@ namespace yii\mustache;
 
 use PHPUnit\Framework\{TestCase};
 
-/**
- * Tests the features of the `yii\mustache\helpers\Helper` class.
- */
+/** Tests the features of the `yii\mustache\helpers\Helper` class. */
 class HelperTest extends TestCase {
 
-  /**
-   * @var \ReflectionClass The object used to change the visibility of inaccessible class members.
-   */
+  /** @var \ReflectionClass The object used to change the visibility of inaccessible class members. */
   private static $reflection;
 
-  /**
-   * @var \PHPUnit\Framework\MockObject\MockObject The data context of the tests.
-   */
+  /** @var \PHPUnit\Framework\MockObject\MockObject The data context of the tests. */
   private $model;
 
-  /**
-   * This method is called before the first test of this test class is run.
-   * @beforeClass
-   */
+  /** @beforeClass This method is called before the first test of this test class is run. */
   static function setUpBeforeClass(): void {
     static::$reflection = new \ReflectionClass(Helper::class);
   }
 
-  /**
-   * Tests the `Helper::captureOutput()` method.
-   * @test
-   */
+  /** @test Tests the `Helper::captureOutput()` method. */
   function testCaptureOutput(): void {
     $method = static::$reflection->getMethod('captureOutput');
     $method->setAccessible(true);
@@ -38,10 +26,7 @@ class HelperTest extends TestCase {
     assertThat($method->invoke($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!'));
   }
 
-  /**
-   * Tests the `Helper::parseArguments()` method.
-   * @test
-   */
+  /** @test Tests the `Helper::parseArguments()` method. */
   function testParseArguments(): void {
     $method = static::$reflection->getMethod('parseArguments');
     $method->setAccessible(true);
@@ -67,10 +52,7 @@ class HelperTest extends TestCase {
     assertThat($method->invoke($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected));
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     $this->model = $this->getMockForAbstractClass(Helper::class);
   }
