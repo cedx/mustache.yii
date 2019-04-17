@@ -73,12 +73,12 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function upgrade(): Result {
-    $composer = escapeshellarg(PHP_OS_FAMILY == 'Windows' ? 'C:\Program Files\PHP\share\composer.phar' : '/usr/local/bin/composer');
+    $composer = PHP_OS_FAMILY == 'Windows' ? 'php '.escapeshellarg('C:\Program Files\PHP\share\composer.phar') : 'composer';
     return $this->taskExecStack()
       ->exec('git reset --hard')
       ->exec('git fetch --all --prune')
       ->exec('git pull --rebase')
-      ->exec("php $composer update --no-interaction")
+      ->exec("$composer update --no-interaction")
       ->run();
   }
 
