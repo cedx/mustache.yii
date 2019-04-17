@@ -7,5 +7,5 @@ install:
   - composer config --global github-oauth.github.com ${GITHUB_ACCESS_TOKEN}
   - composer install --no-interaction
 
-script: composer test
-after_success: composer coverage
+script: composer run-script test
+after_success: composer run-script coverage
