@@ -1,4 +1,4 @@
 parameters:
   ignoreErrors: ['/on an unknown class Yii/']
   level: max
-  paths: [src, test]
+  paths: [lib, test]

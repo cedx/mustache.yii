@@ -8,7 +8,7 @@
     {"email": "cedric@belin.io", "name": "Cédric Belin", "homepage": "https://belin.io"}
   ],
   "autoload": {
-    "psr-4": {"yii\\mustache\\": "src/"}
+    "psr-4": {"yii\\mustache\\": "lib/"}
   },
   "autoload-dev": {
     "files": ["vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"],
