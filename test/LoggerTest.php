@@ -7,7 +7,7 @@ use yii\base\{InvalidArgumentException};
 /** Tests the features of the `yii\mustache\Logger` class. */
 class LoggerTest extends TestCase {
 
-  /** @test Tests the `Logger::log()` method. */
+  /** @test Logger->log() */
   function testLog(): void {
     // It should throw an exception if the log level is invalid.
     $this->expectException(InvalidArgumentException::class);

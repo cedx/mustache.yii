@@ -10,13 +10,13 @@ class ViewRendererTest extends TestCase {
   /** @var ViewRenderer The data context of the tests. */
   private $model;
 
-  /** @test Tests the `ViewRenderer::getHelpers()` method. */
+  /** @test ViewRenderer->getHelpers() */
   function testGetHelpers(): void {
     // It should return a Mustache helper collection.
     assertThat($this->model->helpers, isInstanceOf(\Mustache_HelperCollection::class));
   }
 
-  /** @test Tests the `ViewRenderer::render()` method. */
+  /** @test ViewRenderer->render() */
   function testRender(): void {
     $file = __DIR__.'/fixtures/data.mustache';
     $view = new View;
@@ -38,7 +38,7 @@ class ViewRendererTest extends TestCase {
     assertThat($output[3], equalTo('<test></test>'));
   }
 
-  /** @test Tests the `ViewRenderer::setHelpers()` method. */
+  /** @test ViewRenderer->setHelpers() */
   function testSetHelpers(): void {
     // It should allow arrays as input.
     $this->model->setHelpers(['var' => 'value']);

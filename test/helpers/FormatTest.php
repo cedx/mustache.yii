@@ -9,7 +9,7 @@ class FormatTest extends TestCase {
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
   private $helper;
 
-  /** @test Tests the `Format::getBoolean()` method. */
+  /** @test Format->getBoolean() */
   function testGetBoolean(): void {
     // It should return "No" for a falsy value.
     $closure = (new Format)->boolean;
@@ -22,7 +22,7 @@ class FormatTest extends TestCase {
     assertThat($closure(1, $this->helper), equalTo('Yes'));
   }
 
-  /** @test Tests the `Format::getCurrency()` method. */
+  /** @test Format->getCurrency() */
   function testGetCurrency(): void {
     // It should format the specified value as a currency.
     $closure = (new Format)->currency;
@@ -30,14 +30,14 @@ class FormatTest extends TestCase {
     assertThat($closure('{"value": 1234.56, "currency": "EUR"}', $this->helper), equalTo('€1,234.56'));
   }
 
-  /** @test Tests the `Format::getDate()` method. */
+  /** @test Format->getDate() */
   function testGetDate(): void {
     // It should format the specified value as a date.
     $closure = (new Format)->date;
     assertThat($closure('1994-11-05T13:15:30Z', $this->helper), equalTo('Nov 5, 1994'));
   }
 
-  /** @test Tests the `Format::getDecimal()` method. */
+  /** @test Format->getDecimal() */
   function testGetDecimal(): void {
     // It should format the specified value as a decimal number.
     $closure = (new Format)->decimal;
@@ -45,7 +45,7 @@ class FormatTest extends TestCase {
     assertThat($closure('{"value": 100, "decimals": 4}', $this->helper), equalTo('100.0000'));
   }
 
-  /** @test Tests the `Format::getInteger()` method. */
+  /** @test Format->getInteger() */
   function testGetInteger(): void {
     // It should format the specified value as an integer number.
     $closure = (new Format)->integer;
@@ -53,7 +53,7 @@ class FormatTest extends TestCase {
     assertThat($closure('-1234.56', $this->helper), equalTo('-1,234'));
   }
 
-  /** @test Tests the `Format::getNtext()` method. */
+  /** @test Format->getNtext() */
   function testGetNtext(): void {
     // It should replace new lines by "<br>" tags.
     $closure = (new Format)->ntext;
@@ -61,7 +61,7 @@ class FormatTest extends TestCase {
     assertThat($closure("Foo\r\nBaz", $this->helper), equalTo('Foo<br>Baz'));
   }
 
-  /** @test Tests the `Format::getPercent()` method. */
+  /** @test Format->getPercent() */
   function testGetPercent(): void {
     // It should format the specified value as a percentage.
     $closure = (new Format)->percent;

@@ -9,14 +9,14 @@ class CacheTest extends TestCase {
   /** @var Cache The data context of the tests. */
   private $model;
 
-  /** @test Tests the `Cache::cache()` method. */
+  /** @test Cache->cache() */
   function testCache(): void {
     // It should evaluate the PHP code put in cache.
     $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
     assertThat(class_exists('YiiMustacheTemplateTestModel'), isTrue());
   }
 
-  /** @test Tests the `Cache::load()` method. */
+  /** @test Cache->load() */
   function testLoad(): void {
     // It should return `false` for an unknown key.
     assertThat($this->model->load('key'), isFalse());

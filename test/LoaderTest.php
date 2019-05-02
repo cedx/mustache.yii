@@ -10,7 +10,7 @@ class LoaderTest extends TestCase {
   /** @var Loader The data context of the tests. */
   private $model;
 
-  /** @test Tests the `Loader::findViewFile()` method. */
+  /** @test Loader->findViewFile() */
   function testFindViewFile(): void {
     $method = (new \ReflectionClass(Loader::class))->getMethod('findViewFile');
     $method->setAccessible(true);
@@ -23,7 +23,7 @@ class LoaderTest extends TestCase {
     $method->invoke($this->model, '/view');
   }
 
-  /** @test Tests the `Loader::load()` method. */
+  /** @test Loader->load() */
   function testLoad(): void {
     // It should throw an exception if the view file is not found.
     $this->expectException(InvalidCallException::class);

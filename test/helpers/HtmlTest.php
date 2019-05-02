@@ -15,39 +15,39 @@ class HtmlTest extends TestCase {
     \Yii::$app->set('view', View::class);
   }
 
-  /** @test Tests the `Html::getBeginBody()` method. */
+  /** @test Html->getBeginBody() */
   function testGetBeginBody(): void {
     // It should return the tag marking the beginning of an HTML body section.
     assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN));
   }
 
-  /** @test Tests the `Html::getEndBody()` method. */
+  /** @test Html->getEndBody() */
   function testGetEndBody(): void {
     // It should return the tag marking the ending of an HTML body section.
     assertThat((new Html)->endBody, equalTo(View::PH_BODY_END));
   }
 
-  /** @test Tests the `Html::getHead()` method. */
+  /** @test Html->getHead() */
   function testHead(): void {
     // It should return the tag marking the position of an HTML head section.
     assertThat((new Html)->head, equalTo(View::PH_HEAD));
   }
 
-  /** @test Tests the `Html::getMarkdown()` method. */
+  /** @test Html->getMarkdown() */
   function testGetMarkdown(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdown;
     assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n"));
   }
 
-  /** @test Tests the `Html::getMarkdownParagraph()` method. */
+  /** @test Html->getMarkdownParagraph() */
   function testGetMarkdownParagraph(): void {
     // It should convert Markdown code to HTML.
     $closure = (new Html)->markdownParagraph;
     assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>'));
   }
 
-  /** @test Tests the `Html::getSpaceless()` method. */
+  /** @test Html->getSpaceless() */
   function testGetSpaceless(): void {
     // It should remove whitespace characters between HTML tags.
     $closure = (new Html)->spaceless;
@@ -55,7 +55,7 @@ class HtmlTest extends TestCase {
     assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>'));
   }
 
-  /** @test Tests the `Html::getViewTitle()` method. */
+  /** @test Html->getViewTitle() */
   function testViewTitle(): void {
     // It should set the view title.
     assertThat(\Yii::$app->view->title, isNull());

@@ -17,7 +17,7 @@ class HelperTest extends TestCase {
     static::$reflection = new \ReflectionClass(Helper::class);
   }
 
-  /** @test Tests the `Helper::captureOutput()` method. */
+  /** @test Helper->captureOutput() */
   function testCaptureOutput(): void {
     $method = static::$reflection->getMethod('captureOutput');
     $method->setAccessible(true);
@@ -26,7 +26,7 @@ class HelperTest extends TestCase {
     assertThat($method->invoke($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!'));
   }
 
-  /** @test Tests the `Helper::parseArguments()` method. */
+  /** @test Helper->parseArguments() */
   function testParseArguments(): void {
     $method = static::$reflection->getMethod('parseArguments');
     $method->setAccessible(true);
