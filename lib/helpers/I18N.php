@@ -20,7 +20,7 @@ class I18N extends Helper {
    * @return \Closure A function translating a message.
    */
   function getT(): \Closure {
-    return static::getTranslate();
+    return $this->getTranslate();
   }
 
   /**
