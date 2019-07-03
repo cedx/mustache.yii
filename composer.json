@@ -35,14 +35,14 @@
     "ext-pcre": "*",
     "mustache/mustache": "^2.12.0",
     "psr/log": "^1.1.0",
-    "yiisoft/yii2": "^2.0.21"
+    "yiisoft/yii2": "^2.0.22"
   },
   "require-dev": {
     "cedx/coveralls": "^10.1.0",
     "consolidation/robo": "^1.4.9",
     "henrikbjorn/lurker": "^1.2.0",
     "phpstan/phpstan": "^0.11.8",
-    "phpunit/phpunit": "^8.2.3"
+    "phpunit/phpunit": "^8.2.4"
   },
   "scripts": {
     "coverage": "robo coverage",
