@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidArgumentException};
 
@@ -9,8 +10,8 @@ class LoggerTest extends TestCase {
 
   /** @test Logger->log() */
   function testLog(): void {
-    // It should throw an exception if the log level is invalid.
-    $this->expectException(InvalidArgumentException::class);
-    (new Logger)->log(666, 'Hello World!');
+    it('should throw an exception if the log level is invalid', function() {
+      expect(function() { (new Logger)->log(666, 'Hello World!'); })->to->throw(InvalidArgumentException::class);
+    });
   }
 }

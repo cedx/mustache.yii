@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache\helpers;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
@@ -17,52 +18,59 @@ class HtmlTest extends TestCase {
 
   /** @test Html->getBeginBody() */
   function testGetBeginBody(): void {
-    // It should return the tag marking the beginning of an HTML body section.
-    assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN));
+    it('should return the tag marking the beginning of an HTML body section', function() {
+      expect((new Html)->beginBody)->to->equal(View::PH_BODY_BEGIN);
+    });
   }
 
   /** @test Html->getEndBody() */
   function testGetEndBody(): void {
-    // It should return the tag marking the ending of an HTML body section.
-    assertThat((new Html)->endBody, equalTo(View::PH_BODY_END));
+    it('should return the tag marking the ending of an HTML body section', function() {
+      expect((new Html)->endBody)->to->equal(View::PH_BODY_END);
+    });
   }
 
   /** @test Html->getHead() */
   function testHead(): void {
-    // It should return the tag marking the position of an HTML head section.
-    assertThat((new Html)->head, equalTo(View::PH_HEAD));
+    it('should return the tag marking the position of an HTML head section', function() {
+      expect((new Html)->head)->to->equal(View::PH_HEAD);
+    });
   }
 
   /** @test Html->getMarkdown() */
   function testGetMarkdown(): void {
-    // It should convert Markdown code to HTML.
-    $closure = (new Html)->markdown;
-    assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n"));
+    it('should convert Markdown code to HTML', function() {
+      $closure = (new Html)->markdown;
+      expect($closure("# title", $this->helper))->to->equal("<h1>title</h1>\n");
+    });
   }
 
   /** @test Html->getMarkdownParagraph() */
   function testGetMarkdownParagraph(): void {
-    // It should convert Markdown code to HTML.
-    $closure = (new Html)->markdownParagraph;
-    assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>'));
+    it('should convert Markdown code to HTML', function() {
+      $closure = (new Html)->markdownParagraph;
+      expect($closure("*title*", $this->helper))->to->equal('<em>title</em>');
+    });
   }
 
   /** @test Html->getSpaceless() */
   function testGetSpaceless(): void {
-    // It should remove whitespace characters between HTML tags.
-    $closure = (new Html)->spaceless;
-    assertThat($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper), equalTo('<strong>label</strong><em>label</em>'));
-    assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>'));
+    it('should remove whitespace characters between HTML tags', function() {
+      $closure = (new Html)->spaceless;
+      expect($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper))->to->equal('<strong>label</strong><em>label</em>');
+      expect($closure('<strong> label </strong>  <em> label </em>', $this->helper))->to->equal('<strong> label </strong><em> label </em>');
+    });
   }
 
   /** @test Html->getViewTitle() */
   function testViewTitle(): void {
-    // It should set the view title.
-    assertThat(\Yii::$app->view->title, isNull());
+    it('should set the view title', function() {
+      expect(\Yii::$app->view->title)->to->be->null;
 
-    $closure = (new Html)->viewTitle;
-    $closure('Foo Bar', $this->helper);
-    assertThat(\Yii::$app->view->title, equalTo('Foo Bar'));
+      $closure = (new Html)->viewTitle;
+      $closure('Foo Bar', $this->helper);
+      expect(\Yii::$app->view->title)->to->equal('Foo Bar');
+    });
   }
 
   /** @before This method is called before each test. */

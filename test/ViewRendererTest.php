@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
@@ -12,8 +13,9 @@ class ViewRendererTest extends TestCase {
 
   /** @test ViewRenderer->getHelpers() */
   function testGetHelpers(): void {
-    // It should return a Mustache helper collection.
-    assertThat($this->model->helpers, isInstanceOf(\Mustache_HelperCollection::class));
+    it('should return a Mustache helper collection', function() {
+      expect($this->model->helpers)->to->be->an->instanceOf(\Mustache_HelperCollection::class);
+    });
   }
 
   /** @test ViewRenderer->render() */
@@ -21,30 +23,33 @@ class ViewRendererTest extends TestCase {
     $file = __DIR__.'/fixtures/data.mustache';
     $view = new View;
 
-    // It should remove placeholders when there is no corresponding binding.
-    $data = [];
-    $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
-    assertThat($output[0], equalTo('<test></test>'));
-    assertThat($output[1], equalTo('<test></test>'));
-    assertThat($output[2], equalTo('<test></test>'));
-    assertThat($output[3], equalTo('<test>hidden</test>'));
+    it('should remove placeholders when there is no corresponding binding', function() use ($file, $view) {
+      $data = [];
+      $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
+      expect($output[0])->to->equal('<test></test>');
+      expect($output[1])->to->equal('<test></test>');
+      expect($output[2])->to->equal('<test></test>');
+      expect($output[3])->to->equal('<test>hidden</test>');
+    });
 
-    // It should replace placeholders with the proper values when there is a corresponding binding.
-    $data = ['label' => '"Mustache"', 'show' => true];
-    $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
-    assertThat($output[0], equalTo('<test>&quot;Mustache&quot;</test>'));
-    assertThat($output[1], equalTo('<test>"Mustache"</test>'));
-    assertThat($output[2], equalTo('<test>visible</test>'));
-    assertThat($output[3], equalTo('<test></test>'));
+    it('should replace placeholders with the proper values when there is a corresponding binding', function() use ($file, $view) {
+      $data = ['label' => '"Mustache"', 'show' => true];
+      $output = preg_split('/\r?\n/', $this->model->render($view, $file, $data));
+      expect($output[0])->to->equal('<test>&quot;Mustache&quot;</test>');
+      expect($output[1])->to->equal('<test>"Mustache"</test>');
+      expect($output[2])->to->equal('<test>visible</test>');
+      expect($output[3])->to->equal('<test></test>');
+    });
   }
 
   /** @test ViewRenderer->setHelpers() */
   function testSetHelpers(): void {
-    // It should allow arrays as input.
-    $this->model->setHelpers(['var' => 'value']);
-    $helpers = $this->model->helpers;
-    assertThat($helpers->has('var'), isTrue());
-    assertThat($helpers->get('var'), equalTo('value'));
+    it('should allow arrays as input', function() {
+      $this->model->setHelpers(['var' => 'value']);
+      $helpers = $this->model->helpers;
+      expect($helpers->has('var'))->to->be->true;
+      expect($helpers->get('var'))->to->equal('value');
+    });
   }
 
   /** @before This method is called before each test. */

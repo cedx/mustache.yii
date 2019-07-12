@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
 /** Tests the features of the `yii\mustache\helpers\Helper` class. */
@@ -22,8 +23,9 @@ class HelperTest extends TestCase {
     $method = static::$reflection->getMethod('captureOutput');
     $method->setAccessible(true);
 
-    // It should return the content of the output buffer.
-    assertThat($method->invoke($this->model, function() { echo 'Hello World!'; }), equalTo('Hello World!'));
+    it('should return the content of the output buffer', function() use ($method) {
+      expect($method->invoke($this->model, function() { echo 'Hello World!'; }))->to->equal('Hello World!');
+    });
   }
 
   /** @test Helper->parseArguments() */
@@ -31,25 +33,27 @@ class HelperTest extends TestCase {
     $method = static::$reflection->getMethod('parseArguments');
     $method->setAccessible(true);
 
-    // It should transform a single value into an array.
-    $expected = ['foo' => 'FooBar'];
-    assertThat($method->invoke($this->model, 'FooBar', 'foo'), equalTo($expected));
+    it('should transform a single value into an array', function() use ($method) {
+      $expected = ['foo' => 'FooBar'];
+      expect($method->invoke($this->model, 'FooBar', 'foo'))->to->equal($expected);
 
-    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
-    assertThat($method->invoke($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]), equalTo($expected));
+      $expected = ['foo' => 'FooBar', 'bar' => ['baz' => false]];
+      expect($method->invoke($this->model, 'FooBar', 'foo', ['bar' => ['baz' => false]]))->to->equal($expected);
+    });
 
-    // It should transform a JSON string into an array.
-    $data = '{
-      "foo": "FooBar",
-      "bar": {"baz": true}
-    }';
+    it('should transform a JSON string into an array', function() use ($method) {
+      $data = '{
+        "foo": "FooBar",
+        "bar": {"baz": true}
+      }';
 
-    $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
-    assertThat($method->invoke($this->model, $data, 'foo', ['BarFoo' => [123, 456]]), equalTo($expected));
+      $expected = ['foo' => 'FooBar', 'bar' => ['baz' => true], 'BarFoo' => [123, 456]];
+      expect($method->invoke($this->model, $data, 'foo', ['BarFoo' => [123, 456]]))->to->equal($expected);
 
-    $data = '{"foo": [123, 456]}';
-    $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
-    assertThat($method->invoke($this->model, $data, 'foo', ['bar' => ['baz' => false]]), equalTo($expected));
+      $data = '{"foo": [123, 456]}';
+      $expected = ['foo' => [123, 456], 'bar' => ['baz' => false]];
+      expect($method->invoke($this->model, $data, 'foo', ['bar' => ['baz' => false]]))->to->equal($expected);
+    });
   }
 
   /** @before This method is called before each test. */
