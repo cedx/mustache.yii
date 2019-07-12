@@ -11,7 +11,6 @@
     "psr-4": {"yii\\mustache\\": "lib/"}
   },
   "autoload-dev": {
-    "files": ["vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"],
     "psr-4": {"yii\\mustache\\": "test/"}
   },
   "config": {
@@ -39,10 +38,10 @@
   },
   "require-dev": {
     "cedx/coveralls": "^10.1.0",
+    "cedx/phpunit-expect": "^0.7.0",
     "consolidation/robo": "^1.4.9",
     "henrikbjorn/lurker": "^1.2.0",
-    "phpstan/phpstan": "^0.11.12",
-    "phpunit/phpunit": "^8.2.4"
+    "phpstan/phpstan": "^0.11.12"
   },
   "scripts": {
     "coverage": "robo coverage",
