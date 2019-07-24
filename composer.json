@@ -38,7 +38,7 @@
   },
   "require-dev": {
     "cedx/coveralls": "^10.1.0",
-    "cedx/phpunit-expect": "^0.7.0",
+    "cedx/phpunit-expect": "^0.8.0",
     "consolidation/robo": "^1.4.9",
     "henrikbjorn/lurker": "^1.2.0",
     "phpstan/phpstan": "^0.11.12"
