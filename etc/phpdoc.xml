@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<phpdoc>
+<phpdocumentor>
   <title>Mustache for Yii</title>
 
   <parser>
@@ -15,4 +15,4 @@
   <files>
     <directory>../lib</directory>
   </files>
-</phpdoc>
+</phpdocumentor>
