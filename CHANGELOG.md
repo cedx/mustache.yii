@@ -116,7 +116,7 @@
 ## Version [0.1.1](https://github.com/cedx/yii2-mustache/compare/v0.1.0...v0.1.1)
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
-- Fixed [GitHub issue #1](https://github.com/cedx/yii2-mustache/issues/1)
+- Fixed the [issue #1](https://github.com/cedx/yii2-mustache/issues/1)
 - Lowered the required [PHP](https://secure.php.net) version.
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 
