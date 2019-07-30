@@ -15,12 +15,12 @@ class HelperTest extends TestCase {
 
   /** @beforeClass This method is called before the first test of this test class is run. */
   static function setUpBeforeClass(): void {
-    static::$reflection = new \ReflectionClass(Helper::class);
+    self::$reflection = new \ReflectionClass(Helper::class);
   }
 
   /** @test Helper->captureOutput() */
   function testCaptureOutput(): void {
-    $method = static::$reflection->getMethod('captureOutput');
+    $method = self::$reflection->getMethod('captureOutput');
     $method->setAccessible(true);
 
     it('should return the content of the output buffer', function() use ($method) {
@@ -30,7 +30,7 @@ class HelperTest extends TestCase {
 
   /** @test Helper->parseArguments() */
   function testParseArguments(): void {
-    $method = static::$reflection->getMethod('parseArguments');
+    $method = self::$reflection->getMethod('parseArguments');
     $method->setAccessible(true);
 
     it('should transform a single value into an array', function() use ($method) {
