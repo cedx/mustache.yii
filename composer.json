@@ -39,7 +39,7 @@
   "require-dev": {
     "cedx/coveralls": "^11.0.0",
     "cedx/phpunit-expect": "^0.8.0",
-    "consolidation/robo": "^1.4.9",
+    "consolidation/robo": "^1.4.10",
     "henrikbjorn/lurker": "^1.2.0",
     "phpstan/phpstan": "^0.11.12"
   },
