@@ -11,7 +11,7 @@ class RoboFile extends Tasks {
   function __construct() {
     $path = (string) getenv('PATH');
     $vendor = (string) realpath('vendor/bin');
-    if (strpos($path, $vendor) === false) putenv("PATH=$vendor".PATH_SEPARATOR.$path);
+    if (mb_strpos($path, $vendor) === false) putenv("PATH=$vendor".PATH_SEPARATOR.$path);
     $this->stopOnFail();
   }
 
