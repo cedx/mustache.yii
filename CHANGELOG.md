@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version [10.0.0](https://github.com/cedx/yii2-mustache/compare/v9.0.0...v10.0.0)
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: removed the view helpers.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
@@ -11,7 +11,7 @@
 
 ## Version [9.0.0](https://github.com/cedx/yii2-mustache/compare/v8.0.0...v9.0.0)
 - Breaking change: classes extending from `yii\base\Object` now extend from `BaseObject`.
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: using PHP 7.1 features, like nullable types and void functions.
 
 ## Version [8.0.0](https://github.com/cedx/yii2-mustache/compare/v7.0.0...v8.0.0)
@@ -85,7 +85,7 @@
 - Updated the package dependencies.
 
 ## Version [0.5.0](https://github.com/cedx/yii2-mustache/compare/v0.4.3...v0.5.0)
-- Breaking change: using [PHP 7](https://secure.php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
+- Breaking change: using [PHP 7](https://www.php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
 
 ## Version [0.4.3](https://github.com/cedx/yii2-mustache/compare/v0.4.2...v0.4.3)
 - Added support for a default message category in I18N helper.
@@ -111,13 +111,13 @@
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 ## Version [0.2.0](https://github.com/cedx/yii2-mustache/compare/v0.1.1...v0.2.0)
-- Breaking change: ported the library API to [namespaces](https://secure.php.net/manual/en/language.namespaces.php).
+- Breaking change: ported the library API to [namespaces](https://www.php.net/manual/en/language.namespaces.php).
 
 ## Version [0.1.1](https://github.com/cedx/yii2-mustache/compare/v0.1.0...v0.1.1)
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
 - Fixed the [issue #1](https://github.com/cedx/yii2-mustache/issues/1)
-- Lowered the required [PHP](https://secure.php.net) version.
+- Lowered the required [PHP](https://www.php.net) version.
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 
 ## Version 0.1.0

@@ -1,7 +1,7 @@
 # Installation
 
 ## Requirements
-Before installing **Mustache for Yii**, you need to make sure you have [PHP](https://secure.php.net)
+Before installing **Mustache for Yii**, you need to make sure you have [PHP](https://www.php.net)
 and [Composer](https://getcomposer.org), the PHP package manager, up and running.
 
 !!! warning
@@ -31,7 +31,7 @@ composer require cedx/yii2-mustache
 ```
 
 ### 2. Import it
-Now in your [PHP](https://secure.php.net) code, you can use:
+Now in your [PHP](https://www.php.net) code, you can use:
 
 ```php
 <?php
