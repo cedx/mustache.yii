@@ -29,7 +29,7 @@ class FormatTest extends TestCase {
   function testGetCurrency(): void {
     it('should format the specified value as a currency', function() {
       $closure = (new Format)->currency;
-      expect($closure('100', $this->helper))->to->equal('$100.00');
+      expect($closure('100', $this->helper))->to->be->oneOf(['$100.00', 'USD 100.00']);
       expect($closure('{"value": 1234.56, "currency": "EUR"}', $this->helper))->to->equal('€1,234.56');
     });
   }
