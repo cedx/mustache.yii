@@ -1,0 +1,23 @@
+name: Continuous integration
+on:
+  push:
+  schedule:
+    - cron: '0 0 1 * *'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch sources
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: |
+          composer config --global github-oauth.github.com ${{secrets.GITHUB_TOKEN}}
+          composer install --no-interaction
+      - name: Run tests
+        run: composer run-script test
+      - name: Collect code coverage
+        env:
+          CI: true
+          COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        if: success()
+        run: composer run-script coverage
