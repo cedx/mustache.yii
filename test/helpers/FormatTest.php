@@ -80,6 +80,7 @@ class FormatTest extends TestCase {
 
   /** @before This method is called before each test. */
   protected function setUp(): void {
+    \Yii::$app->formatter->locale = 'en-US';
     $this->helper = new \Mustache_LambdaHelper(new \Mustache_Engine, new \Mustache_Context);
   }
 }
