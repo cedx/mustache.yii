@@ -37,7 +37,7 @@
     "yiisoft/yii2": "^2.0.27"
   },
   "require-dev": {
-    "cedx/coveralls": "^11.1.0",
+    "cedx/coveralls": "^11.2.0",
     "cedx/phpunit-expect": "^0.8.0",
     "consolidation/robo": "^1.4.10",
     "henrikbjorn/lurker": "^1.2.0",
