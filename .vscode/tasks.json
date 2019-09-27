@@ -3,50 +3,50 @@
   "tasks": [
     {
       "command": "robo clean",
-      "label": "robo : clean",
+      "label": "robo: clean",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo coverage",
-      "label": "robo : coverage",
+      "label": "robo: coverage",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo doc",
-      "label": "robo : doc",
+      "label": "robo: doc",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo lint",
-      "label": "robo : lint",
+      "label": "robo: lint",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo test",
       "group": {"isDefault": true, "kind": "build"},
-      "label": "robo : test",
+      "label": "robo: test",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo upgrade",
-      "label": "robo : upgrade",
+      "label": "robo: upgrade",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo version",
-      "label": "robo : version",
+      "label": "robo: version",
       "problemMatcher": [],
       "type": "shell"
     },
     {
       "command": "robo watch",
-      "label": "robo : watch",
+      "label": "robo: watch",
       "problemMatcher": [],
       "type": "shell"
     }
