@@ -5,7 +5,7 @@
   "name": "cedx/yii2-mustache",
   "type": "yii2-extension",
   "authors": [
-    {"email": "cedric@belin.io", "name": "Cédric Belin", "homepage": "https://belin.io"}
+    {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
   ],
   "autoload": {
     "psr-4": {"yii\\mustache\\": "lib/"}
