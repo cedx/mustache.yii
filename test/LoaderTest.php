@@ -5,13 +5,13 @@ use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidCallException};
 
-/** Tests the features of the `yii\mustache\Loader` class. */
+/** @testdox yii\mustache\Loader */
 class LoaderTest extends TestCase {
 
   /** @var Loader The data context of the tests. */
   private $model;
 
-  /** @test Loader->findViewFile() */
+  /** @testdox ->findViewFile() */
   function testFindViewFile(): void {
     $method = (new \ReflectionClass(Loader::class))->getMethod('findViewFile');
     $method->setAccessible(true);
@@ -25,7 +25,7 @@ class LoaderTest extends TestCase {
     });
   }
 
-  /** @test Loader->load() */
+  /** @testdox ->load() */
   function testLoad(): void {
     it('should throw an exception if the view file is not found', function() {
       expect(function() {$this->model->load('view');  })->to->throw(InvalidCallException::class);

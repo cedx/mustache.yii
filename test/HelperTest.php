@@ -4,7 +4,7 @@ namespace yii\mustache;
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
-/** Tests the features of the `yii\mustache\helpers\Helper` class. */
+/** @testdox yii\mustache\Helper */
 class HelperTest extends TestCase {
 
   /** @var \ReflectionClass The object used to change the visibility of inaccessible class members. */
@@ -18,7 +18,7 @@ class HelperTest extends TestCase {
     self::$reflection = new \ReflectionClass(Helper::class);
   }
 
-  /** @test Helper->captureOutput() */
+  /** @testdox ->captureOutput() */
   function testCaptureOutput(): void {
     $method = self::$reflection->getMethod('captureOutput');
     $method->setAccessible(true);
@@ -28,7 +28,7 @@ class HelperTest extends TestCase {
     });
   }
 
-  /** @test Helper->parseArguments() */
+  /** @testdox ->parseArguments() */
   function testParseArguments(): void {
     $method = self::$reflection->getMethod('parseArguments');
     $method->setAccessible(true);

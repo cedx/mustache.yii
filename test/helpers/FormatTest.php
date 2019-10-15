@@ -4,13 +4,13 @@ namespace yii\mustache\helpers;
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
-/** Tests the features of the `yii\mustache\helpers\Format` class. */
+/** @testdox yii\mustache\helpers\Format */
 class FormatTest extends TestCase {
 
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
   private $helper;
 
-  /** @test Format->getBoolean() */
+  /** @testdox ->getBoolean() */
   function testGetBoolean(): void {
     it('should return "No" for a falsy value', function() {
       $closure = (new Format)->boolean;
@@ -25,7 +25,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getCurrency() */
+  /** @testdox ->getCurrency() */
   function testGetCurrency(): void {
     it('should format the specified value as a currency', function() {
       $closure = (new Format)->currency;
@@ -34,7 +34,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getDate() */
+  /** @testdox ->getDate() */
   function testGetDate(): void {
     it('should format the specified value as a date', function() {
       $closure = (new Format)->date;
@@ -42,7 +42,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getDecimal() */
+  /** @testdox ->getDecimal() */
   function testGetDecimal(): void {
     it('should format the specified value as a decimal number', function() {
       $closure = (new Format)->decimal;
@@ -51,7 +51,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getInteger() */
+  /** @testdox ->getInteger() */
   function testGetInteger(): void {
     it('should format the specified value as an integer number', function() {
       $closure = (new Format)->integer;
@@ -60,7 +60,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getNtext() */
+  /** @testdox ->getNtext() */
   function testGetNtext(): void {
     it('should replace new lines by "<br>" tags', function() {
       $closure = (new Format)->ntext;
@@ -69,7 +69,7 @@ class FormatTest extends TestCase {
     });
   }
 
-  /** @test Format->getPercent() */
+  /** @testdox ->getPercent() */
   function testGetPercent(): void {
     it('should format the specified value as a percentage', function() {
       $closure = (new Format)->percent;

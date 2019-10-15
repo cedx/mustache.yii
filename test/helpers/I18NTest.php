@@ -4,13 +4,13 @@ namespace yii\mustache\helpers;
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 
-/** Tests the features of the `yii\mustache\helpers\I18N` class. */
+/** @testdox yii\mustache\helpers\I18N */
 class I18NTest extends TestCase {
 
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
   private $helper;
 
-  /** @test I18N->getTranslate() */
+  /** @testdox ->getTranslate() */
   function testGetTranslate(): void {
     it('should return the specified string if no translation is matching', function() {
       $translation = \Yii::t('app', 'foo');

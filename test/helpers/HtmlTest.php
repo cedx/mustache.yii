@@ -5,7 +5,7 @@ use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
-/** Tests the features of the `yii\mustache\helpers\Html` class. */
+/** @testdox yii\mustache\helpers\Html */
 class HtmlTest extends TestCase {
 
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
@@ -16,28 +16,28 @@ class HtmlTest extends TestCase {
     \Yii::$app->set('view', View::class);
   }
 
-  /** @test Html->getBeginBody() */
+  /** @testdox ->getBeginBody() */
   function testGetBeginBody(): void {
     it('should return the tag marking the beginning of an HTML body section', function() {
       expect((new Html)->beginBody)->to->equal(View::PH_BODY_BEGIN);
     });
   }
 
-  /** @test Html->getEndBody() */
+  /** @testdox ->getEndBody() */
   function testGetEndBody(): void {
     it('should return the tag marking the ending of an HTML body section', function() {
       expect((new Html)->endBody)->to->equal(View::PH_BODY_END);
     });
   }
 
-  /** @test Html->getHead() */
+  /** @testdox ->getHead() */
   function testHead(): void {
     it('should return the tag marking the position of an HTML head section', function() {
       expect((new Html)->head)->to->equal(View::PH_HEAD);
     });
   }
 
-  /** @test Html->getMarkdown() */
+  /** @testdox ->getMarkdown() */
   function testGetMarkdown(): void {
     it('should convert Markdown code to HTML', function() {
       $closure = (new Html)->markdown;
@@ -45,7 +45,7 @@ class HtmlTest extends TestCase {
     });
   }
 
-  /** @test Html->getMarkdownParagraph() */
+  /** @testdox ->getMarkdownParagraph() */
   function testGetMarkdownParagraph(): void {
     it('should convert Markdown code to HTML', function() {
       $closure = (new Html)->markdownParagraph;
@@ -53,7 +53,7 @@ class HtmlTest extends TestCase {
     });
   }
 
-  /** @test Html->getSpaceless() */
+  /** @testdox ->getSpaceless() */
   function testGetSpaceless(): void {
     it('should remove whitespace characters between HTML tags', function() {
       $closure = (new Html)->spaceless;
@@ -62,7 +62,7 @@ class HtmlTest extends TestCase {
     });
   }
 
-  /** @test Html->getViewTitle() */
+  /** @testdox ->getViewTitle() */
   function testViewTitle(): void {
     it('should set the view title', function() {
       expect(\Yii::$app->view->title)->to->be->null;

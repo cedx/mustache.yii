@@ -5,20 +5,20 @@ use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\web\{View};
 
-/** Tests the features of the `yii\mustache\ViewRenderer` class. */
+/** @testdox yii\mustache\ViewRenderer */
 class ViewRendererTest extends TestCase {
 
   /** @var ViewRenderer The data context of the tests. */
   private $model;
 
-  /** @test ViewRenderer->getHelpers() */
+  /** @testdox ->getHelpers() */
   function testGetHelpers(): void {
     it('should return a Mustache helper collection', function() {
       expect($this->model->helpers)->to->be->an->instanceOf(\Mustache_HelperCollection::class);
     });
   }
 
-  /** @test ViewRenderer->render() */
+  /** @testdox ->render() */
   function testRender(): void {
     $file = __DIR__.'/fixtures/data.mustache';
     $view = new View;
@@ -42,7 +42,7 @@ class ViewRendererTest extends TestCase {
     });
   }
 
-  /** @test ViewRenderer->setHelpers() */
+  /** @testdox ->setHelpers() */
   function testSetHelpers(): void {
     it('should allow arrays as input', function() {
       $this->model->setHelpers(['var' => 'value']);
