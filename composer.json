@@ -41,7 +41,7 @@
     "cedx/phpunit-expect": "^0.8.0",
     "consolidation/robo": "^1.4.10",
     "henrikbjorn/lurker": "^1.2.0",
-    "phpstan/phpstan": "^0.11.16"
+    "phpstan/phpstan": "^0.11.17"
   },
   "scripts": {
     "coverage": "robo coverage",
