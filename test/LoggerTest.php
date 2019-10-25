@@ -11,7 +11,7 @@ class LoggerTest extends TestCase {
   /** @testdox ->log() */
   function testLog(): void {
     it('should throw an exception if the log level is invalid', function() {
-      expect(function() { (new Logger)->log(666, 'Hello World!'); })->to->throw(InvalidArgumentException::class);
+      expect(fn() => (new Logger)->log(666, 'Hello World!'))->to->throw(InvalidArgumentException::class);
     });
   }
 }

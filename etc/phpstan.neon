@@ -1,4 +1,6 @@
 parameters:
-  ignoreErrors: ['/on an unknown class Yii/']
   level: max
   paths: [lib, test]
+  ignoreErrors:
+    - '/on an unknown class Yii/'
+    - '/Result of method .* \(void\) is used/'

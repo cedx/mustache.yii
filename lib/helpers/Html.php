@@ -77,13 +77,11 @@ class Html extends Helper {
    * @return \Closure A function removing whitespaces between HTML tags.
    */
   function getSpaceless(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return $this->captureOutput(function() use ($helper, $value) {
-        Spaceless::begin();
-        echo $helper->render($value);
-        Spaceless::end();
-      });
-    };
+    return fn($value, \Mustache_LambdaHelper $helper) => $this->captureOutput(function() use ($helper, $value) {
+      Spaceless::begin();
+      echo $helper->render($value);
+      Spaceless::end();
+    });
   }
 
   /**

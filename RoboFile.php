@@ -96,6 +96,6 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function watch(): Result {
-    return $this->taskWatch()->monitor('test', function() { $this->test(); })->run();
+    return $this->taskWatch()->monitor('test', fn() => $this->test())->run();
   }
 }

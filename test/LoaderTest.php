@@ -21,14 +21,14 @@ class LoaderTest extends TestCase {
     });
 
     it('should throw an exception if the view file is not found', function() use ($method) {
-      expect(function() use ($method) { $method->invoke($this->model, '/view'); })->to->throw(InvalidCallException::class);
+      expect(fn() => $method->invoke($this->model, '/view'))->to->throw(InvalidCallException::class);
     });
   }
 
   /** @testdox ->load() */
   function testLoad(): void {
     it('should throw an exception if the view file is not found', function() {
-      expect(function() {$this->model->load('view');  })->to->throw(InvalidCallException::class);
+      expect(fn() => $this->model->load('view'))->to->throw(InvalidCallException::class);
     });
   }
 

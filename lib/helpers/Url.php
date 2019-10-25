@@ -21,9 +21,7 @@ class Url extends Helper {
    * @return \Closure A function returning the base URL of the current request.
    */
   function getBase(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::base($helper->render($value) ?: false);
-    };
+    return fn($value, \Mustache_LambdaHelper $helper) => UrlHelper::base($helper->render($value) ?: false);
   }
 
   /**
@@ -50,9 +48,7 @@ class Url extends Helper {
    * @return \Closure A function returning the home URL.
    */
   function getHome(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::home($helper->render($value) ?: false);
-    };
+    return fn($value, \Mustache_LambdaHelper $helper) => UrlHelper::home($helper->render($value) ?: false);
   }
 
   /**
@@ -60,9 +56,7 @@ class Url extends Helper {
    * @return \Closure A function returning the URL previously remembered.
    */
   function getPrevious(): \Closure {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return UrlHelper::previous($helper->render($value) ?: null);
-    };
+    return fn($value, \Mustache_LambdaHelper $helper) => UrlHelper::previous($helper->render($value) ?: null);
   }
 
   /**
