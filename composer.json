@@ -28,7 +28,7 @@
     {"type": "composer", "url": "https://asset-packagist.org"}
   ],
   "require": {
-    "php": ">=7.2.0",
+    "php": ">=7.4.0",
     "ext-json": "*",
     "ext-mbstring": "*",
     "ext-pcre": "*",
