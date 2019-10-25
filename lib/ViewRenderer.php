@@ -15,19 +15,19 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public $cache = 'cache';
 
   /** @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires. */
-  public $cachingDuration = 0;
+  public int $cachingDuration = 0;
 
   /** @var bool Value indicating whether to enable caching view templates. */
-  public $enableCaching = false;
+  public bool $enableCaching = false;
 
   /** @var bool Value indicating whether to enable logging engine messages. */
-  public $enableLogging = false;
+  public bool $enableLogging = false;
 
   /** @var \Mustache_Engine|null The underlying Mustache template engine. */
-  private $engine;
+  private ?\Mustache_Engine $engine;
 
   /** @var array The values prepended to the context stack. */
-  private $helpers = [];
+  private array $helpers = [];
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.

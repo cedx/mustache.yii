@@ -8,7 +8,7 @@ use PHPUnit\Framework\{TestCase};
 class CacheTest extends TestCase {
 
   /** @var Cache The data context of the tests. */
-  private $model;
+  private Cache $model;
 
   /** @testdox ->cache() */
   function testCache(): void {

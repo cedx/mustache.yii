@@ -9,7 +9,7 @@ use yii\web\{View};
 class ViewRendererTest extends TestCase {
 
   /** @var ViewRenderer The data context of the tests. */
-  private $model;
+  private ViewRenderer $model;
 
   /** @testdox ->getHelpers() */
   function testGetHelpers(): void {

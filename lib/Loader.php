@@ -8,10 +8,10 @@ use yii\helpers\{FileHelper};
 class Loader extends BaseObject implements \Mustache_Loader {
 
   /** @var ViewRenderer The instance used to render the views. */
-  public $viewRenderer;
+  public ViewRenderer $viewRenderer;
 
   /** @var string[] The loaded views. */
-  private $views = [];
+  private array $views = [];
 
   /**
    * Initializes this object.

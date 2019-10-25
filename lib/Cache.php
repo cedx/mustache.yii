@@ -7,7 +7,7 @@ use yii\base\{BaseObject, InvalidConfigException};
 class Cache extends BaseObject implements \Mustache_Cache {
 
   /** @var ViewRenderer The instance used to render the views. */
-  public $viewRenderer;
+  public ViewRenderer $viewRenderer;
 
   /**
    * Caches and loads a compiled view.

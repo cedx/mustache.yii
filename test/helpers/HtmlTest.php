@@ -9,7 +9,7 @@ use yii\web\{View};
 class HtmlTest extends TestCase {
 
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
-  private $helper;
+  private \Mustache_LambdaHelper $helper;
 
   /** @beforeClass This method is called before the first test of this test class is run. */
   static function setUpBeforeClass(): void {

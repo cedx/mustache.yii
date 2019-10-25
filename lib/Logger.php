@@ -10,7 +10,7 @@ class Logger extends BaseObject implements LoggerInterface {
   use LoggerTrait;
 
   /** @var int[] Mappings between Mustache levels and Yii ones. */
-  private static $levels = [
+  private static array $levels = [
     LogLevel::ALERT => YiiLogger::LEVEL_ERROR,
     LogLevel::CRITICAL => YiiLogger::LEVEL_ERROR,
     LogLevel::DEBUG => YiiLogger::LEVEL_TRACE,

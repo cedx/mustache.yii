@@ -3,15 +3,16 @@ namespace yii\mustache;
 
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
+use PHPUnit\Framework\MockObject\{MockObject};
 
 /** @testdox yii\mustache\Helper */
 class HelperTest extends TestCase {
 
   /** @var \ReflectionClass The object used to change the visibility of inaccessible class members. */
-  private static $reflection;
+  private static \ReflectionClass $reflection;
 
-  /** @var \PHPUnit\Framework\MockObject\MockObject The data context of the tests. */
-  private $model;
+  /** @var MockObject The data context of the tests. */
+  private MockObject $model;
 
   /** @beforeClass This method is called before the first test of this test class is run. */
   static function setUpBeforeClass(): void {

@@ -9,7 +9,7 @@ use yii\base\{InvalidCallException};
 class LoaderTest extends TestCase {
 
   /** @var Loader The data context of the tests. */
-  private $model;
+  private Loader $model;
 
   /** @testdox ->findViewFile() */
   function testFindViewFile(): void {

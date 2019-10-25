@@ -8,7 +8,7 @@ use PHPUnit\Framework\{TestCase};
 class I18NTest extends TestCase {
 
   /** @var \Mustache_LambdaHelper The engine used to render strings. */
-  private $helper;
+  private \Mustache_LambdaHelper $helper;
 
   /** @testdox ->getTranslate() */
   function testGetTranslate(): void {

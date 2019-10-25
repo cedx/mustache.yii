@@ -13,7 +13,7 @@ use yii\mustache\{Helper};
 class I18N extends Helper {
 
   /** @var string The default message category when no one is supplied. */
-  public $defaultCategory = 'app';
+  public string $defaultCategory = 'app';
 
   /**
    * Returns a function translating a message.
@@ -38,7 +38,6 @@ class I18N extends Helper {
 
       $output = trim($value);
       $isJSON = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output) - 1) == '}';
-
       if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
         /** @var string[] $parts */
