@@ -2,10 +2,9 @@
 
 ## Version [10.0.0](https://github.com/cedx/yii2-mustache/compare/v9.0.0...v10.0.0)
 - Breaking change: raised the required [PHP](https://www.php.net) version.
-- Breaking change: removed the view helpers.
+- Breaking change: using PHP 7.4 features, like arrow functions and typed properties.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
-- Dropped the dependency on [PHPUnit-Expect](https://dev.belin.io/phpunit-expect).
 - Replaced the [Phing](https://www.phing.info) build system by [Robo](https://robo.li).
 - Updated the package dependencies.
 

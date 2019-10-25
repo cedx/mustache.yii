@@ -5,7 +5,7 @@ Before installing **Mustache for Yii**, you need to make sure you have [PHP](htt
 and [Composer](https://getcomposer.org), the PHP package manager, up and running.
 
 !!! warning
-    Mustache for Yii requires PHP >= **7.2.0**.
+    Mustache for Yii requires PHP >= **7.4.0**.
 
 You can verify if you're already good to go with the following commands:
 
