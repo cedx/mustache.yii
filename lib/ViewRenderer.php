@@ -24,7 +24,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public bool $enableLogging = false;
 
   /** @var \Mustache_Engine|null The underlying Mustache template engine. */
-  private ?\Mustache_Engine $engine;
+  private ?\Mustache_Engine $engine = null;
 
   /** @var array The values prepended to the context stack. */
   private array $helpers = [];
