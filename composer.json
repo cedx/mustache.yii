@@ -33,7 +33,7 @@
     "ext-mbstring": "*",
     "ext-pcre": "*",
     "mustache/mustache": "^2.12.0",
-    "psr/log": "^1.1.0",
+    "psr/log": "^1.1.1",
     "yiisoft/yii2": "^2.0.29"
   },
   "require-dev": {
