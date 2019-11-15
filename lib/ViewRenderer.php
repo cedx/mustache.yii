@@ -96,7 +96,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     /** @var \Mustache_Engine $engine */
     $engine = $this->engine;
     $values = ArrayHelper::merge(['this' => $view], $params);
-    return $engine->render($output, $values);
+    return @$engine->render($output, $values);
   }
 
   /**
