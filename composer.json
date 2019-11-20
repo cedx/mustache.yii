@@ -34,7 +34,7 @@
     "ext-pcre": "*",
     "mustache/mustache": "^2.12.0",
     "psr/log": "^1.1.2",
-    "yiisoft/yii2": "^2.0.29"
+    "yiisoft/yii2": "^2.0.30"
   },
   "require-dev": {
     "cedx/coveralls": "^12.0.0",
