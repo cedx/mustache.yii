@@ -2,7 +2,7 @@
 namespace yii\mustache;
 
 use yii\base\{BaseObject, InvalidArgumentException, InvalidCallException, InvalidConfigException};
-use yii\helpers\{FileHelper};
+use yii\helpers\{FileHelper, StringHelper};
 
 /** Loads views from the file system. */
 class Loader extends BaseObject implements \Mustache_Loader {
@@ -61,9 +61,9 @@ class Loader extends BaseObject implements \Mustache_Loader {
     if (!mb_strlen($name)) throw new InvalidArgumentException('The view name is empty.');
 
     $controller = \Yii::$app->controller;
-    if (mb_substr($name, 0, 2) == '//')
+    if (StringHelper::startsWith($name, '//'))
       $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
-    else if (mb_substr($name, 0, 1) == '/') {
+    else if (StringHelper::startsWith($name, '/')) {
       if (!$controller) throw new InvalidCallException("Unable to locate the view '$name': no active controller.");
       $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
     }

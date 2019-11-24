@@ -2,7 +2,7 @@
 namespace yii\mustache\helpers;
 
 use yii\base\{InvalidCallException, InvalidConfigException};
-use yii\helpers\{ArrayHelper};
+use yii\helpers\{ArrayHelper, StringHelper};
 use yii\mustache\{Helper};
 
 /**
@@ -37,7 +37,7 @@ class I18N extends Helper {
       ];
 
       $output = trim($value);
-      $isJSON = mb_substr($output, 0, 1) == '{' && mb_substr($output, mb_strlen($output) - 1) == '}';
+      $isJSON = StringHelper::startsWith($output, '{') && StringHelper::endsWith($output, '}');
       if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
         /** @var string[] $parts */
