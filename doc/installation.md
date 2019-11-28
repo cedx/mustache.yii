@@ -11,7 +11,7 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 php --version
-# PHP 7.4.0RC6 (cli) (built: Nov 11 2019 10:43:20) ( NTS Visual C++ 2017 x64 )
+# PHP 7.4.0 (cli) (built: Nov 27 2019 10:13:59) ( NTS Visual C++ 2017 x64 )
 
 composer --version
 # Composer version 1.9.1 2019-11-01 17:20:17
