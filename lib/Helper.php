@@ -35,8 +35,8 @@ abstract class Helper extends BaseObject {
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @param string $text The section content specifying the helper arguments.
    * @param string $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
-   * @param array $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
-   * @return array The parsed arguments as an associative array.
+   * @param array<string, mixed> $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
+   * @return array<string, mixed> The parsed arguments as an associative array.
    */
   protected function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
     try {

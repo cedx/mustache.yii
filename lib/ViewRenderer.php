@@ -12,7 +12,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
-  /** @var array|string|\yii\caching\CacheInterface The cache object or the application component ID of the cache object. */
+  /** @var string|array<string, mixed>|\yii\caching\CacheInterface The cache object or the application component ID of the cache object. */
   public $cache = 'cache';
 
   /** @var int The time in seconds that the compiled views can remain valid in cache. If set to `0`, the cache never expires. */
@@ -30,7 +30,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /** @var \Mustache_Engine|null The underlying Mustache template engine. */
   private ?\Mustache_Engine $engine = null;
 
-  /** @var array The values prepended to the context stack. */
+  /** @var array<string, mixed> The values prepended to the context stack. */
   private array $helpers = [];
 
   /**
@@ -76,7 +76,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * Renders a view file.
    * @param View $view The view object used for rendering the file.
    * @param string $file The view file.
-   * @param array $params The parameters to be passed to the view file.
+   * @param array<string, mixed> $params The parameters to be passed to the view file.
    * @return string The rendering result.
    * @throws InvalidCallException The specified view file is not found.
    */
@@ -101,7 +101,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Sets the values to prepend to the context stack, so they will be available in any view loaded by this instance.
-   * @param array $value The list of the values to prepend to the context stack.
+   * @param array<string, mixed> $value The list of the values to prepend to the context stack.
    * @return $this This instance.
    */
   function setHelpers(array $value): self {

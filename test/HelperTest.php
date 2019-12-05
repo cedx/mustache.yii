@@ -8,7 +8,7 @@ use PHPUnit\Framework\MockObject\{MockObject};
 /** @testdox yii\mustache\Helper */
 class HelperTest extends TestCase {
 
-  /** @var \ReflectionClass The object used to change the visibility of inaccessible class members. */
+  /** @var \ReflectionClass<Helper> The object used to change the visibility of inaccessible class members. */
   private static \ReflectionClass $reflection;
 
   /** @var MockObject The data context of the tests. */

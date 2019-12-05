@@ -25,7 +25,7 @@ class Logger extends BaseObject implements LoggerInterface {
    * Logs a message.
    * @param int $level The logging level.
    * @param string $message The message to be logged.
-   * @param array $context The log context.
+   * @param array<string, mixed> $context The log context.
    * @throws InvalidArgumentException The specified logging level is unknown.
    */
   function log($level, $message, array $context = []): void {
