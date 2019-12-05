@@ -7,7 +7,7 @@ use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
  * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
- * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
+ * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack.
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
@@ -31,10 +31,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
-   * @return \Mustache_HelperCollection|null The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
+   * @return \Mustache_HelperCollection The list of the values prepended to the context stack.
    */
-  function getHelpers(): ?\Mustache_HelperCollection {
-    return $this->engine ? $this->engine->getHelpers() : null;
+  function getHelpers(): \Mustache_HelperCollection {
+    return $this->engine ? $this->engine->getHelpers() : new \Mustache_HelperCollection($this->helpers);
   }
 
   /** Initializes the application component.*/
@@ -65,9 +65,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     if ($this->enableLogging) $options['logger'] = new Logger;
     $this->engine = new \Mustache_Engine($options);
-
     parent::init();
-    $this->helpers = [];
   }
 
   /**
