@@ -3,8 +3,13 @@
 ## Version [10.0.0](https://github.com/cedx/yii2-mustache/compare/v9.0.0...v10.0.0)
 - Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: using PHP 7.4 features, like arrow functions and typed properties.
+- Breaking change: the `YII_DEBUG` and Yii environment constants are not exposed anymore.
+- Added the `ViewRenderer->view` property.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
+- Fixed the [issue #8](https://github.com/cedx/yii2-mustache/issues/8): partials don't support path aliases.
+- Fixed the [issue #9](https://github.com/cedx/yii2-mustache/issues/9): the `Loader` class does not take into account the view context.
+- Replaced the usage of `yii\base\InvalidParamException` class by `yii\base\InvalidArgumentException`.
 - Replaced the [Phing](https://www.phing.info) build system by [Robo](https://robo.li).
 - Updated the package dependencies.
 
@@ -115,7 +120,7 @@
 ## Version [0.1.1](https://github.com/cedx/yii2-mustache/compare/v0.1.0...v0.1.1)
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
-- Fixed the [issue #1](https://github.com/cedx/yii2-mustache/issues/1)
+- Fixed the [issue #1](https://github.com/cedx/yii2-mustache/issues/1).
 - Lowered the required [PHP](https://www.php.net) version.
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
 

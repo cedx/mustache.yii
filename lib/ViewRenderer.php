@@ -3,7 +3,7 @@ namespace yii\mustache;
 
 use yii\base\{InvalidCallException, View};
 use yii\di\{Instance};
-use yii\helpers\{ArrayHelper, FileHelper, Html};
+use yii\helpers\{ArrayHelper, Html};
 
 /**
  * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
