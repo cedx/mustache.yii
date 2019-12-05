@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{BaseObject, InvalidArgumentException, InvalidCallException, InvalidConfigException};
-use yii\helpers\{FileHelper, StringHelper};
+use yii\base\{BaseObject, InvalidCallException, InvalidConfigException, View, ViewNotFoundException};
+use yii\helpers\{FileHelper};
 
 /** Loads views from the file system. */
 class Loader extends BaseObject implements \Mustache_Loader {
@@ -29,52 +29,36 @@ class Loader extends BaseObject implements \Mustache_Loader {
    * @throws InvalidCallException Unable to locate the view file.
    */
   function load($name): string {
+    static $findViewFile;
+    if (!isset($findViewFile)) {
+      $findViewFile = (new \ReflectionClass(View::class))->getMethod('findViewFile');
+      $findViewFile->setAccessible(true);
+    }
+
     if (!isset($this->views[$name])) {
-      $cacheKey = [__CLASS__, $name];
-      $viewRenderer = $this->viewRenderer;
-
       /** @var \yii\caching\Cache $cache */
-      $cache = $viewRenderer->cache;
-      if ($viewRenderer->enableCaching && $cache->exists($cacheKey))
-        $output = $cache->get($cacheKey);
-      else {
-        $path = FileHelper::localize($this->findViewFile($name));
-        if (!is_file($path)) throw new InvalidCallException("The view file '$path' does not exist.");
+      $cache = $this->viewRenderer->cache;
+      $cacheKey = [__CLASS__, $name];
 
-        $output = @file_get_contents($path);
-        if ($viewRenderer->enableCaching) $cache->set($cacheKey, $output, $viewRenderer->cachingDuration);
+      if ($this->viewRenderer->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
+      else {
+        /** @var View $view */
+        $view = $this->viewRenderer->view;
+        $path = $findViewFile->invoke($view, $name, $view->context);
+        if ($view->theme) {
+          /** @var \yii\base\Theme $theme */
+          $theme = $view->theme;
+          $path = $theme->applyTo($path);
+        }
+
+        if (!is_file($path)) throw new ViewNotFoundException("The view file does not exist: $path");
+        $output = (string) @file_get_contents(FileHelper::localize($path));
+        if ($this->viewRenderer->enableCaching) $cache->set($cacheKey, $output, $this->viewRenderer->cachingDuration);
       }
 
       $this->views[$name] = $output;
     }
 
     return $this->views[$name];
-  }
-
-  /**
-   * Finds the view file based on the given view name.
-   * @param string $name The view name.
-   * @return string The view file path.
-   * @throws \BadMethodCallException Unable to locate the view file.
-   */
-  protected function findViewFile(string $name): string {
-    if (!mb_strlen($name)) throw new InvalidArgumentException('The view name is empty.');
-
-    $controller = \Yii::$app->controller;
-    if (StringHelper::startsWith($name, '//'))
-      $file = \Yii::$app->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
-    else if (StringHelper::startsWith($name, '/')) {
-      if (!$controller) throw new InvalidCallException("Unable to locate the view '$name': no active controller.");
-      $file = $controller->module->viewPath.DIRECTORY_SEPARATOR.ltrim($name, '/');
-    }
-    else {
-      $viewPath = $controller ? $controller->viewPath : \Yii::$app->viewPath;
-      $file = \Yii::getAlias("$viewPath/$name");
-    }
-
-    $view = \Yii::$app->view;
-    if ($view && $view->theme) $file = $view->theme->applyTo($file);
-    if (!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file .= '.'.($view ? $view->defaultExtension : 'mustache');
-    return $file;
   }
 }

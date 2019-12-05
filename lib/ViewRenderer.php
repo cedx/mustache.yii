@@ -1,13 +1,14 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{InvalidCallException};
+use yii\base\{InvalidCallException, View};
 use yii\di\{Instance};
 use yii\helpers\{ArrayHelper, FileHelper, Html};
 
 /**
  * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
  * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack.
+ * @property View|null $view The view object used to render views.
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
@@ -22,6 +23,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /** @var bool Value indicating whether to enable logging engine messages. */
   public bool $enableLogging = false;
+
+  /** @var View The view object used to render views. */
+  public ?View $view = null;
 
   /** @var \Mustache_Engine|null The underlying Mustache template engine. */
   private ?\Mustache_Engine $engine = null;
@@ -70,30 +74,28 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Renders a view file.
-   * @param \yii\base\View $view The view object used for rendering the file.
+   * @param View $view The view object used for rendering the file.
    * @param string $file The view file.
    * @param array $params The parameters to be passed to the view file.
    * @return string The rendering result.
    * @throws InvalidCallException The specified view file is not found.
    */
   function render($view, $file, $params = []): string {
+    $this->view = $view;
+
     /** @var \yii\caching\Cache $cache */
     $cache = $this->cache;
     $cacheKey = [__CLASS__, $file];
 
-    if ($this->enableCaching && $cache->exists($cacheKey))
-      $output = $cache->get($cacheKey);
+    if ($this->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
     else {
-      $path = FileHelper::localize($file);
-      if (!is_file($path)) throw new InvalidCallException("View file '$file' does not exist.");
-
-      $output = @file_get_contents($path);
+      $output = (string) @file_get_contents($file);
       if ($this->enableCaching) $cache->set($cacheKey, $output, $this->cachingDuration);
     }
 
     /** @var \Mustache_Engine $engine */
     $engine = $this->engine;
-    $values = ArrayHelper::merge(['this' => $view], $params);
+    $values = ArrayHelper::merge(['this' => $this->view], $params);
     return $engine->render($output, $values);
   }
 
