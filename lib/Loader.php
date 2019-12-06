@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{BaseObject, InvalidCallException, InvalidConfigException, View, ViewNotFoundException};
+use yii\base\{BaseObject, InvalidConfigException, View, ViewNotFoundException};
 use yii\helpers\{FileHelper};
 
 /** Loads views from the file system. */
