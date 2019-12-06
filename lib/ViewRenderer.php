@@ -8,7 +8,6 @@ use yii\helpers\{ArrayHelper, Html};
 /**
  * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
  * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack.
- * @property View|null $view The view object used to render views.
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
