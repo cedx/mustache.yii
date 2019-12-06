@@ -26,7 +26,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
    * Loads the view with the specified name.
    * @param string $name The view name.
    * @return string The view contents.
-   * @throws InvalidCallException Unable to locate the view file.
+   * @throws ViewNotFoundException Unable to locate the view file.
    */
   function load($name): string {
     static $findViewFile;

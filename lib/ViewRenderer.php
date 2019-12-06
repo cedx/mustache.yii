@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{InvalidCallException, View};
+use yii\base\{View};
 use yii\di\{Instance};
 use yii\helpers\{ArrayHelper, Html};
 
@@ -78,7 +78,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @param string $file The view file.
    * @param array<string, mixed> $params The parameters to be passed to the view file.
    * @return string The rendering result.
-   * @throws InvalidCallException The specified view file is not found.
    */
   function render($view, $file, $params = []): string {
     $this->view = $view;
