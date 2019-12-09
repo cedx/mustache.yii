@@ -61,6 +61,6 @@ class I18N extends Helper {
    */
   function init(): void {
     parent::init();
-    if (!mb_strlen($this->defaultCategory)) throw new InvalidConfigException('The argument separator is empty.');
+    if (!mb_strlen($this->defaultCategory)) throw new InvalidConfigException('The default message category is empty.');
   }
 }
