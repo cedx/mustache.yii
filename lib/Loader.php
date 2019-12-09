@@ -38,7 +38,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
     if (!isset($this->views[$name])) {
       /** @var \yii\caching\Cache $cache */
       $cache = $this->viewRenderer->cache;
-      $cacheKey = [__CLASS__, $name];
+      $cacheKey = [__METHOD__, $name];
 
       if ($this->viewRenderer->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
       else {

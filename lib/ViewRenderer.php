@@ -83,7 +83,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     /** @var \yii\caching\Cache $cache */
     $cache = $this->cache;
-    $cacheKey = [__CLASS__, $file];
+    $cacheKey = [__METHOD__, $file];
 
     if ($this->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
     else {
