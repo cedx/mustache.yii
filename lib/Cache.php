@@ -19,7 +19,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
     else {
       /** @var \yii\caching\Cache $cache */
       $cache = $this->viewRenderer->cache;
-      $cache->set([__METHOD__, $key], $value, $this->viewRenderer->cachingDuration);
+      $cache->set([__CLASS__, $key], $value, $this->viewRenderer->cachingDuration);
       $this->load($key);
     }
   }
@@ -39,7 +39,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   function load($key): bool {
-    $cacheKey = [__METHOD__, $key];
+    $cacheKey = [__CLASS__, $key];
 
     /** @var \yii\caching\Cache $cache */
     $cache = $this->viewRenderer->cache;
