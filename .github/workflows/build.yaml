@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@v1
         with:
           php-version: 7.4
           coverage: xdebug
@@ -18,7 +18,7 @@ jobs:
           php --version
           composer --version
       - name: Fetch sources
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           composer config --global github-oauth.github.com ${{secrets.GITHUB_TOKEN}}
