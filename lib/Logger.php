@@ -26,14 +26,9 @@ class Logger extends BaseObject implements LoggerInterface {
    * @param int $level The logging level.
    * @param string $message The message to be logged.
    * @param array<string, mixed> $context The log context.
-   * @throws InvalidArgumentException The specified logging level is unknown.
    */
   function log($level, $message, array $context = []): void {
-    if (!isset(self::$levels[$level])) {
-      $values = implode(', ', (new \ReflectionClass(LogLevel::class))->getConstants());
-      throw new InvalidArgumentException("Invalid enumerable value '$level'. Please make sure it is among ($values).");
-    }
-
+    assert(isset(self::$levels[$level]));
     \Yii::getLogger()->log($message, self::$levels[$level], __METHOD__);
   }
 }

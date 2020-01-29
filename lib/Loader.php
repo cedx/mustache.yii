@@ -29,6 +29,8 @@ class Loader extends BaseObject implements \Mustache_Loader {
    * @throws ViewNotFoundException Unable to locate the view file.
    */
   function load($name): string {
+    assert(is_string($name) && mb_strlen($name) > 0);
+
     static $findViewFile;
     if (!isset($findViewFile)) {
       $findViewFile = (new \ReflectionClass(View::class))->getMethod('findViewFile');

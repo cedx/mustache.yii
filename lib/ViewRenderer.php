@@ -79,6 +79,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @return string The rendering result.
    */
   function render($view, $file, $params = []): string {
+    assert($view instanceof View);
+    assert(is_string($file) && mb_strlen($file) > 0);
+
     $this->view = $view;
 
     /** @var \yii\caching\Cache $cache */

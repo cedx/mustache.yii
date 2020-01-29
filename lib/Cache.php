@@ -15,6 +15,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    * @param string $value The view to be cached.
    */
   function cache($key, $value): void {
+    assert(is_string($key) && mb_strlen($key) > 0);
     if (!$this->viewRenderer->enableCaching) eval("?>$value");
     else {
       /** @var \yii\caching\Cache $cache */
@@ -39,6 +40,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    * @return bool `true` if the view was successfully loaded, otherwise `false`.
    */
   function load($key): bool {
+    assert(is_string($key) && mb_strlen($key) > 0);
     $cacheKey = [__CLASS__, $key];
 
     /** @var \yii\caching\Cache $cache */

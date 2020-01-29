@@ -39,6 +39,8 @@ abstract class Helper extends BaseObject {
    * @return array<string, mixed> The parsed arguments as an associative array.
    */
   protected function parseArguments(string $text, string $defaultArgument, array $defaultValues = []): array {
+    assert(mb_strlen($defaultArgument) > 0);
+
     try {
       if (is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
       throw new InvalidArgumentException('The JSON string has an invalid format.');
