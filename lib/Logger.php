@@ -2,7 +2,7 @@
 namespace yii\mustache;
 
 use Psr\Log\{LoggerInterface, LoggerTrait, LogLevel};
-use yii\base\{BaseObject, InvalidArgumentException};
+use yii\base\{BaseObject};
 use yii\log\{Logger as YiiLogger};
 
 /** Component used to log messages from the view engine to the application logger. */
