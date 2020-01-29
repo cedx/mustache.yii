@@ -4,4 +4,3 @@ parameters:
   ignoreErrors:
     - '/on a separate line does not do anything/'
     - '/on an unknown class Yii/'
-    - '/Result of method .* \(void\) is used/'
