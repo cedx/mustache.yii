@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Tests",
+      "type": "php",
+      "request": "launch",
+      "program": "${workspaceFolder}/vendor/phpunit/phpunit/phpunit",
+      "cwd": "${workspaceFolder}",
+      "args": ["--configuration=etc/phpunit.xml"]
+    }
+  ]
+}
