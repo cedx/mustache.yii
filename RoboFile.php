@@ -88,6 +88,6 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function version(string $component = 'patch'): Result {
-    return $this->taskSemVer('.semver')->increment($component)->run();
+    return $this->taskSemVer()->increment($component)->run();
   }
 }
