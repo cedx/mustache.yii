@@ -20,10 +20,10 @@
 
 ## Version [8.0.0](https://github.com/cedx/yii2-mustache/compare/v7.0.0...v8.0.0)
 - Breaking change: removed the `CACHE_KEY_PREFIX` constants.
-- Breaking change: removed the `ViewRenderer::$cacheId` property.
+- Breaking change: removed the `ViewRenderer->cacheId` property.
 - Added new unit tests.
-- Added the `ViewRenderer::$cache` property.
-- Added the `ViewRenderer::$enableCaching` property.
+- Added the `ViewRenderer->cache` property.
+- Added the `ViewRenderer->enableCaching` property.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version [7.0.0](https://github.com/cedx/yii2-mustache/compare/v6.1.0...v7.0.0)
@@ -119,7 +119,7 @@
 
 ## Version [0.1.1](https://github.com/cedx/yii2-mustache/compare/v0.1.0...v0.1.1)
 - Added `CMustacheI18nHelper` helper for internationalization.
-- Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.
+- Breaking change: moved `CMustacheHtmlHelper->getTranslate()` method to `CMustacheI18nHelper` class.
 - Fixed the [issue #1](https://github.com/cedx/yii2-mustache/issues/1).
 - Lowered the required [PHP](https://www.php.net) version.
 - Updated [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.7.0.
