@@ -39,10 +39,12 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function doc(): Result {
+    $phpdoc = PHP_OS_FAMILY == 'Windows' ? 'php '.escapeshellarg('C:\Program Files\PHP\share\phpDocumentor.phar') : 'phpdoc';
     return $this->collectionBuilder()
       ->addTask($this->taskFilesystemStack()
         ->copy('CHANGELOG.md', 'doc/about/changelog.md')
         ->copy('LICENSE.md', 'doc/about/license.md'))
+      ->addTask($this->taskExec("$phpdoc --config=etc/phpdoc.xml"))
       ->addTask($this->taskExec('mkdocs build --config-file=doc/mkdocs.yaml'))
       ->addTask($this->taskFilesystemStack()
         ->remove(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yaml']))
@@ -88,6 +90,11 @@ class RoboFile extends Tasks {
    * @return Result The task result.
    */
   function version(string $component = 'patch'): Result {
-    return $this->taskSemVer()->increment($component)->run();
+    $semverTask = $this->taskSemVer()->increment($component);
+    $version = $semverTask->setFormat('%M.%m.%p')->__toString();
+    return $this->collectionBuilder()
+      ->addTask($semverTask)
+      ->addTask($this->taskReplaceInFile('etc/phpdoc.xml')->regex('/version number="\d+(\.\d+){2}"/')->to("version number=\"$version\""))
+      ->run();
   }
 }

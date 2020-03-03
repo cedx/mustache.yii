@@ -1,18 +1,23 @@
 <?xml version="1.0"?>
-<phpdocumentor>
+<phpdocumentor
+  configVersion="3"
+  xmlns="http://www.phpdoc.org"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://docs.phpdoc.org/latest/phpdoc.xsd">
+  
   <title>Mustache for Yii</title>
-
-  <parser>
-    <target>../var</target>
-  </parser>
-  <transformer>
-    <target>../doc/api</target>
-  </transformer>
-  <transformations>
-    <template name="responsive"/>
-  </transformations>
-
-  <files>
-    <directory>../lib</directory>
-  </files>
+  <paths>
+    <cache>../var/phpdoc</cache>
+    <output>../doc/api</output>
+  </paths>
+  <version number="10.0.0">
+    <api>
+      <markers>
+        <marker>TODO</marker>
+      </markers>
+      <source dsn="..">
+        <path>lib</path>
+      </source>
+    </api>
+  </version>
 </phpdocumentor>
