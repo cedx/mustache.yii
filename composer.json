@@ -17,6 +17,9 @@
     "fxp-asset": {"enabled": false},
     "optimize-autoloader": true
   },
+  "funding": [
+    {"type": "patreon", "url": "https://www.patreon.com/cedx"}
+  ],
   "keywords": [
     "mustache",
     "renderer",
