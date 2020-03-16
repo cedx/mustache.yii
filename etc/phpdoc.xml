@@ -18,6 +18,8 @@
       <source dsn="..">
         <path>lib</path>
       </source>
+      <visibility>protected</visibility>
+      <visibility>public</visibility>
     </api>
   </version>
 </phpdocumentor>
