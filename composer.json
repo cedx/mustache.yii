@@ -43,7 +43,7 @@
     "cedx/coveralls": "^12.0.0",
     "cedx/phpunit-expect": "^0.10.0",
     "consolidation/robo": "^2.0.3",
-    "phpstan/phpstan": "^0.12.14"
+    "phpstan/phpstan": "^0.12.15"
   },
   "scripts": {
     "coverage": "robo coverage",
