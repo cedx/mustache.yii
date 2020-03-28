@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
+use function PHPUnit\Framework\{assertThat, isFalse, isTrue};
 
 /** @testdox yii\mustache\Cache */
 class CacheTest extends TestCase {
@@ -12,17 +12,15 @@ class CacheTest extends TestCase {
 
   /** @testdox ->cache() */
   function testCache(): void {
-    it('should evaluate the PHP code put in cache', function() {
-      $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
-      expect(class_exists('YiiMustacheTemplateTestModel'))->to->be->true;
-    });
+    // It should evaluate the PHP code put in cache.
+    $this->model->cache('key', '<?php class YiiMustacheTemplateTestModel {}');
+    assertThat(class_exists('YiiMustacheTemplateTestModel'), isTrue());
   }
 
   /** @testdox ->load() */
   function testLoad(): void {
-    it('should return `false` for an unknown key', function() {
-      expect($this->model->load('key'))->to->be->false;
-    });
+    // It should return `false` for an unknown key.
+    assertThat($this->model->load('key'), isFalse());
   }
 
   /** @before This method is called before each test. */

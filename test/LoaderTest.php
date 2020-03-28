@@ -1,7 +1,6 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{View, ViewNotFoundException};
 
@@ -13,9 +12,9 @@ class LoaderTest extends TestCase {
 
   /** @testdox ->load() */
   function testLoad(): void {
-    it('should throw an exception if the view file is not found', function() {
-      expect(fn() => $this->model->load('//view'))->to->throw(ViewNotFoundException::class);
-    });
+    // It should throw an exception if the view file is not found.
+    $this->expectException(ViewNotFoundException::class);
+    $this->model->load('//view');
   }
 
   /** @before This method is called before each test. */
