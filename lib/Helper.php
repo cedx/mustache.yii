@@ -42,7 +42,7 @@ abstract class Helper extends BaseObject {
     assert(mb_strlen($defaultArgument) > 0);
 
     try {
-      if (is_array($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
+      if (ArrayHelper::isAssociative($json = Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
       throw new InvalidArgumentException('The JSON string has an invalid format.');
     }
 
