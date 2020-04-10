@@ -2,7 +2,7 @@
 <phpunit bootstrap="../test/index.php" cacheResult="false" testdox="true">
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">../lib</directory>
+      <directory suffix=".php">../src</directory>
     </whitelist>
   </filter>
 

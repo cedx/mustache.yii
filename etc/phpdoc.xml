@@ -16,7 +16,7 @@
         <marker>TODO</marker>
       </markers>
       <source dsn="..">
-        <path>lib</path>
+        <path>src</path>
       </source>
       <visibility>protected</visibility>
       <visibility>public</visibility>

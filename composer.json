@@ -8,7 +8,7 @@
     {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
   ],
   "autoload": {
-    "psr-4": {"yii\\mustache\\": "lib/"}
+    "psr-4": {"yii\\mustache\\": "src/"}
   },
   "autoload-dev": {
     "psr-4": {"yii\\mustache\\": "test/"}
