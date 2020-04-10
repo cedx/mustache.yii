@@ -6,7 +6,7 @@
 /doc/api/
 /var/
 /vendor/
-/web/
+/www/
 
 /*.code-workspace
 /*.iml

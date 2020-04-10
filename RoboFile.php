@@ -47,7 +47,7 @@ class RoboFile extends Tasks {
       ->addTask($this->taskExec("$phpdoc --config=etc/phpdoc.xml"))
       ->addTask($this->taskExec('mkdocs build --config-file=doc/mkdocs.yaml'))
       ->addTask($this->taskFilesystemStack()
-        ->remove(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yaml']))
+        ->remove(['doc/about/changelog.md', 'doc/about/license.md', 'www/mkdocs.yaml']))
       ->run();
   }
 
