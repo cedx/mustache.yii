@@ -19,39 +19,39 @@ class HtmlTest extends TestCase {
   /** @testdox ->getBeginBody() */
   function testGetBeginBody(): void {
     // It should return the tag marking the beginning of an HTML body section.
-    assertThat((new Html)->beginBody, equalTo(View::PH_BODY_BEGIN));
+    assertThat((new Html)->getBeginBody(), equalTo(View::PH_BODY_BEGIN));
   }
 
   /** @testdox ->getEndBody() */
   function testGetEndBody(): void {
     // It should return the tag marking the ending of an HTML body section.
-    assertThat((new Html)->endBody, equalTo(View::PH_BODY_END));
+    assertThat((new Html)->getEndBody(), equalTo(View::PH_BODY_END));
   }
 
   /** @testdox ->getHead() */
   function testHead(): void {
     // It should return the tag marking the position of an HTML head section.
-    assertThat((new Html)->head, equalTo(View::PH_HEAD));
+    assertThat((new Html)->getHead(), equalTo(View::PH_HEAD));
   }
 
   /** @testdox ->getMarkdown() */
   function testGetMarkdown(): void {
     // It should convert Markdown code to HTML.
-    $closure = (new Html)->markdown;
+    $closure = (new Html)->getMarkdown();
     assertThat($closure("# title", $this->helper), equalTo("<h1>title</h1>\n"));
   }
 
   /** @testdox ->getMarkdownParagraph() */
   function testGetMarkdownParagraph(): void {
     // It should convert Markdown code to HTML.
-    $closure = (new Html)->markdownParagraph;
+    $closure = (new Html)->getMarkdownParagraph();
     assertThat($closure("*title*", $this->helper), equalTo('<em>title</em>'));
   }
 
   /** @testdox ->getSpaceless() */
   function testGetSpaceless(): void {
     // It should remove whitespace characters between HTML tags.
-    $closure = (new Html)->spaceless;
+    $closure = (new Html)->getSpaceless();
     assertThat($closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper), equalTo('<strong>label</strong><em>label</em>'));
     assertThat($closure('<strong> label </strong>  <em> label </em>', $this->helper), equalTo('<strong> label </strong><em> label </em>'));
   }
@@ -59,12 +59,12 @@ class HtmlTest extends TestCase {
   /** @testdox ->getViewTitle() */
   function testViewTitle(): void {
     /** @var View $view */
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
 
     // It should set the view title.
     assertThat($view->title, isNull());
 
-    $closure = (new Html)->viewTitle;
+    $closure = (new Html)->getViewTitle();
     $closure('Foo Bar', $this->helper);
     assertThat($view->title, equalTo('Foo Bar'));
   }

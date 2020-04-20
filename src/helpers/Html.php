@@ -5,16 +5,7 @@ use yii\helpers\{Markdown};
 use yii\mustache\{Helper};
 use yii\widgets\{Spaceless};
 
-/**
- * Provides a set of methods for generating commonly used HTML tags.
- * @property string $beginBody The tag marking the beginning of an HTML body section.
- * @property string $endBody The tag marking the ending of an HTML body section.
- * @property string $head The tag marking the position of an HTML head section.
- * @property \Closure $markdown A function converting Markdown into HTML.
- * @property \Closure $markdownParagraph A function converting Markdown into HTML but only parsing inline elements.
- * @property \Closure $spaceless A function removing whitespaces between HTML tags.
- * @property \Closure $viewTitle A function setting the view title.
- */
+/** Provides a set of methods for generating commonly used HTML tags. */
 class Html extends Helper {
 
   /**
@@ -23,7 +14,7 @@ class Html extends Helper {
    */
   function getBeginBody(): string {
     /** @var \yii\web\View|null $view */
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('beginBody')) return '';
     return $this->captureOutput([$view, 'beginBody']);
   }
@@ -34,7 +25,7 @@ class Html extends Helper {
    */
   function getEndBody(): string {
     /** @var \yii\web\View|null $view */
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('endBody')) return '';
     return $this->captureOutput([$view, 'endBody']);
   }
@@ -45,7 +36,7 @@ class Html extends Helper {
    */
   function getHead(): string {
     /** @var \yii\web\View|null $view */
-    $view = \Yii::$app->view;
+    $view = \Yii::$app->getView();
     if (!$view || !$view->hasMethod('head')) return '';
     return $this->captureOutput([$view, 'head']);
   }
@@ -91,7 +82,7 @@ class Html extends Helper {
   function getViewTitle(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
       /** @var \yii\web\View|null $view */
-      $view = \Yii::$app->view;
+      $view = \Yii::$app->getView();
       if ($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };
   }

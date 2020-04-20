@@ -17,7 +17,7 @@ class I18NTest extends TestCase {
     assertThat($translation, equalTo('foo'));
 
     $i18n = new I18N;
-    foreach ([$i18n->t, $i18n->translate] as $closure) {
+    foreach ([$i18n->getT(), $i18n->getTranslate()] as $closure) {
       assertThat($closure('foo', $this->helper), equalTo($translation));
       assertThat($closure('app:foo', $this->helper), equalTo($translation));
       assertThat($closure('{"message": "foo"}', $this->helper), equalTo($translation));
@@ -32,7 +32,7 @@ class I18NTest extends TestCase {
     \Yii::$app->language = 'fr-FR';
 
     $i18n = new I18N(['defaultCategory' => 'yii']);
-    foreach ([$i18n->t, $i18n->translate] as $closure) {
+    foreach ([$i18n->getT(), $i18n->getTranslate()] as $closure) {
       assertThat($closure('Error', $this->helper), equalTo($translation));
       assertThat($closure('yii:Error', $this->helper), equalTo($translation));
       assertThat($closure('{"message": "Error"}', $this->helper), equalTo($translation));

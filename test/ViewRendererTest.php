@@ -14,7 +14,7 @@ class ViewRendererTest extends TestCase {
   /** @testdox ->getHelpers() */
   function testGetHelpers(): void {
     // It should return a Mustache helper collection.
-    assertThat($this->model->helpers, isInstanceOf(\Mustache_HelperCollection::class));
+    assertThat($this->model->getHelpers(), isInstanceOf(\Mustache_HelperCollection::class));
   }
 
   /** @testdox ->render() */
@@ -42,7 +42,7 @@ class ViewRendererTest extends TestCase {
   function testSetHelpers(): void {
     // It should allow arrays as input.
     $this->model->setHelpers(['var' => 'value']);
-    $helpers = $this->model->helpers;
+    $helpers = $this->model->getHelpers();
     assertThat($helpers->has('var'), isTrue());
     assertThat($helpers->get('var'), equalTo('value'));
   }
