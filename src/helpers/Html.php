@@ -90,6 +90,7 @@ class Html extends Helper {
    */
   function getViewTitle(): \Closure {
     return function($value, \Mustache_LambdaHelper $helper) {
+      /** @var \yii\web\View|null $view */
       $view = \Yii::$app->view;
       if ($view && $view->canSetProperty('title')) $view->title = trim($helper->render($value));
     };

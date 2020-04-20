@@ -58,12 +58,15 @@ class HtmlTest extends TestCase {
 
   /** @testdox ->getViewTitle() */
   function testViewTitle(): void {
+    /** @var View $view */
+    $view = \Yii::$app->view;
+
     // It should set the view title.
-    assertThat(\Yii::$app->view->title, isNull());
+    assertThat($view->title, isNull());
 
     $closure = (new Html)->viewTitle;
     $closure('Foo Bar', $this->helper);
-    assertThat(\Yii::$app->view->title, equalTo('Foo Bar'));
+    assertThat($view->title, equalTo('Foo Bar'));
   }
 
   /** @before This method is called before each test. */
