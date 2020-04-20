@@ -53,8 +53,9 @@ class Loader extends BaseObject implements \Mustache_Loader {
           $path = $theme->applyTo($path);
         }
 
-        if (!is_file($path)) throw new ViewNotFoundException("The view file does not exist: $path");
-        $output = (string) @file_get_contents(FileHelper::localize($path));
+        $file = new \SplFileInfo($path);
+        if (!$file->isFile()) throw new ViewNotFoundException("The view file does not exist: {$file->getPathname()}");
+        $output = (string) @file_get_contents(FileHelper::localize($file->getPathname()));
         if ($this->viewRenderer->enableCaching) $cache->set($cacheKey, $output, $this->viewRenderer->cachingDuration);
       }
 
