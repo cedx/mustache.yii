@@ -23,19 +23,19 @@ class ViewRendererTest extends TestCase {
 
     // It should remove placeholders when there is no corresponding binding.
     $data = [];
-    $output = preg_split('/\r?\n/', $this->model->render(new View, $file, $data)) ?: [];
-    assertThat($output[0], equalTo('<test></test>'));
-    assertThat($output[1], equalTo('<test></test>'));
-    assertThat($output[2], equalTo('<test></test>'));
-    assertThat($output[3], equalTo('<test>hidden</test>'));
+    [$line1, $line2, $line3, $line4] = preg_split('/\r?\n/', $this->model->render(new View, $file, $data)) ?: [];
+    assertThat($line1, equalTo('<test></test>'));
+    assertThat($line2, equalTo('<test></test>'));
+    assertThat($line3, equalTo('<test></test>'));
+    assertThat($line4, equalTo('<test>hidden</test>'));
 
     // It should replace placeholders with the proper values when there is a corresponding binding.
     $data = ['label' => '"Mustache"', 'show' => true];
-    $output = preg_split('/\r?\n/', $this->model->render(new View, $file, $data)) ?: [];
-    assertThat($output[0], equalTo('<test>&quot;Mustache&quot;</test>'));
-    assertThat($output[1], equalTo('<test>"Mustache"</test>'));
-    assertThat($output[2], equalTo('<test>visible</test>'));
-    assertThat($output[3], equalTo('<test></test>'));
+    [$line1, $line2, $line3, $line4] = preg_split('/\r?\n/', $this->model->render(new View, $file, $data)) ?: [];
+    assertThat($line1, equalTo('<test>&quot;Mustache&quot;</test>'));
+    assertThat($line2, equalTo('<test>"Mustache"</test>'));
+    assertThat($line3, equalTo('<test>visible</test>'));
+    assertThat($line4, equalTo('<test></test>'));
   }
 
   /** @testdox ->setHelpers() */
