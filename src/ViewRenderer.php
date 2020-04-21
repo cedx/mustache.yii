@@ -86,7 +86,8 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     if ($this->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
     else {
-      $output = (string) @file_get_contents($file);
+      $fileObject = new \SplFileObject($file);
+      $output = (string) $fileObject->fread($fileObject->getSize());
       if ($this->enableCaching) $cache->set($cacheKey, $output, $this->cachingDuration);
     }
 
