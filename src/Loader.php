@@ -8,7 +8,7 @@ use yii\helpers\{FileHelper};
 class Loader extends BaseObject implements \Mustache_Loader {
 
   /** @var ViewRenderer The instance used to render the views. */
-  public ViewRenderer $viewRenderer;
+  public ?ViewRenderer $viewRenderer = null;
 
   /** @var string[] The loaded views. */
   private array $views = [];
@@ -19,7 +19,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
    */
   function init(): void {
     parent::init();
-    if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
+    if (!$this->viewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
   }
 
   /**
@@ -38,14 +38,17 @@ class Loader extends BaseObject implements \Mustache_Loader {
     }
 
     if (!isset($this->views[$name])) {
+      /** @var ViewRenderer $viewRenderer */
+      $viewRenderer = $this->viewRenderer;
+
       /** @var \yii\caching\Cache $cache */
-      $cache = $this->viewRenderer->cache;
+      $cache = $viewRenderer->cache;
       $cacheKey = [__METHOD__, $name];
 
-      if ($this->viewRenderer->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
+      if ($viewRenderer->enableCaching && $cache->exists($cacheKey)) $output = $cache->get($cacheKey);
       else {
         /** @var View $view */
-        $view = $this->viewRenderer->view;
+        $view = $viewRenderer->view;
         $path = $findViewFile->invoke($view, $name, $view->context);
         if ($view->theme) {
           /** @var \yii\base\Theme $theme */
@@ -58,7 +61,7 @@ class Loader extends BaseObject implements \Mustache_Loader {
 
         $fileObject = new \SplFileObject(FileHelper::localize($fileInfo->getPathname()));
         $output = (string) $fileObject->fread($fileObject->getSize());
-        if ($this->viewRenderer->enableCaching) $cache->set($cacheKey, $output, $this->viewRenderer->cachingDuration);
+        if ($viewRenderer->enableCaching) $cache->set($cacheKey, $output, $viewRenderer->cachingDuration);
       }
 
       $this->views[$name] = $output;

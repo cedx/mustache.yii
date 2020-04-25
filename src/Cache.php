@@ -7,7 +7,7 @@ use yii\base\{BaseObject, InvalidConfigException};
 class Cache extends BaseObject implements \Mustache_Cache {
 
   /** @var ViewRenderer The instance used to render the views. */
-  public ViewRenderer $viewRenderer;
+  public ?ViewRenderer $viewRenderer = null;
 
   /**
    * Caches and loads a compiled view.
@@ -16,11 +16,14 @@ class Cache extends BaseObject implements \Mustache_Cache {
    */
   function cache($key, $value): void {
     assert(is_string($key) && mb_strlen($key) > 0);
-    if (!$this->viewRenderer->enableCaching) eval("?>$value");
+
+    /** @var ViewRenderer $viewRenderer */
+    $viewRenderer = $this->viewRenderer;
+    if (!$viewRenderer->enableCaching) eval("?>$value");
     else {
       /** @var \yii\caching\Cache $cache */
-      $cache = $this->viewRenderer->cache;
-      $cache->set([__CLASS__, $key], $value, $this->viewRenderer->cachingDuration);
+      $cache = $viewRenderer->cache;
+      $cache->set([__CLASS__, $key], $value, $viewRenderer->cachingDuration);
       $this->load($key);
     }
   }
@@ -31,7 +34,7 @@ class Cache extends BaseObject implements \Mustache_Cache {
    */
   function init(): void {
     parent::init();
-    if (!$this->viewRenderer instanceof ViewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
+    if (!$this->viewRenderer) throw new InvalidConfigException('The view renderer is not initialized.');
   }
 
   /**
@@ -41,11 +44,14 @@ class Cache extends BaseObject implements \Mustache_Cache {
    */
   function load($key): bool {
     assert(is_string($key) && mb_strlen($key) > 0);
-    $cacheKey = [__CLASS__, $key];
+
+    /** @var ViewRenderer $viewRenderer */
+    $viewRenderer = $this->viewRenderer;
 
     /** @var \yii\caching\Cache $cache */
-    $cache = $this->viewRenderer->cache;
-    if (!$this->viewRenderer->enableCaching || !$cache->exists($cacheKey)) return false;
+    $cache = $viewRenderer->cache;
+    $cacheKey = [__CLASS__, $key];
+    if (!$viewRenderer->enableCaching || !$cache->exists($cacheKey)) return false;
 
     eval("?>{$cache->get($cacheKey)}");
     return true;
