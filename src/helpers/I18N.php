@@ -41,8 +41,8 @@ class I18N extends Helper {
         if (!$length) throw new InvalidCallException('Invalid translation format.');
 
         $args = ArrayHelper::merge($defaultArgs, [
-          'category' => $length == 1 ? $this->defaultCategory : trim($parts[0]),
-          'message' => $helper->render(trim($parts[$length - 1]))
+          'category' => $length == 1 ? $this->defaultCategory : rtrim($parts[0]),
+          'message' => $helper->render(ltrim($parts[$length - 1]))
         ]);
       }
 

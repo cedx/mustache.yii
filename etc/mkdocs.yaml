@@ -38,11 +38,13 @@ nav:
       - See also: about/see_also.md
 
 theme:
+  favicon: img/favicon.ico
+  features:
+    - instant
   icon:
     logo: fontawesome/solid/book-reader
     repo: fontawesome/brands/git-alt
   name: material
-  favicon: img/favicon.ico
   palette:
     accent: indigo
     primary: indigo
