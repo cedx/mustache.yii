@@ -1,6 +1,6 @@
 {
   "description": "Mustache templating for the Yii Framework.",
-  "homepage": "https://dev.belin.io/yii2-mustache",
+  "homepage": "https://docs.belin.io/yii2-mustache",
   "license": "MIT",
   "name": "cedx/yii2-mustache",
   "type": "yii2-extension",
@@ -50,7 +50,7 @@
     "test": "robo test"
   },
   "support": {
-    "docs": "https://dev.belin.io/yii2-mustache/api",
-    "issues": "https://github.com/cedx/yii2-mustache/issues"
+    "docs": "https://api.belin.io/yii2-mustache",
+    "issues": "https://git.belin.io/cedx/yii2-mustache/issues"
   }
 }
