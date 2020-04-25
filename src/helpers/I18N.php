@@ -36,14 +36,13 @@ class I18N extends Helper {
       $isJSON = StringHelper::startsWith($output, '{') && StringHelper::endsWith($output, '}');
       if ($isJSON) $args = $this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        /** @var string[] $parts */
-        $parts = explode($this->argumentSeparator, $output, 2);
+        $parts = explode($this->argumentSeparator, $output, 2) ?: [];
         $length = count($parts);
         if (!$length) throw new InvalidCallException('Invalid translation format.');
 
         $args = ArrayHelper::merge($defaultArgs, [
-          'category' => $length == 1 ? $this->defaultCategory : rtrim($parts[0]),
-          'message' => ltrim($parts[$length - 1])
+          'category' => $length == 1 ? $this->defaultCategory : trim($parts[0]),
+          'message' => $helper->render(trim($parts[$length - 1]))
         ]);
       }
 
