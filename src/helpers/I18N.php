@@ -5,7 +5,11 @@ use yii\base\{InvalidCallException, InvalidConfigException};
 use yii\helpers\{ArrayHelper, StringHelper};
 use yii\mustache\{Helper};
 
-/** Provides features related with internationalization (I18N) and localization (L10N). */
+/**
+ * Provides features related with internationalization (I18N) and localization (L10N).
+ * @property \Closure $t A function translating a message.
+ * @property \Closure $translate A function translating a message.
+ */
 class I18N extends Helper {
 
   /** @var string The default message category when no one is supplied. */

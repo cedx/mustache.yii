@@ -5,7 +5,16 @@ use yii\helpers\{Markdown};
 use yii\mustache\{Helper};
 use yii\widgets\{Spaceless};
 
-/** Provides a set of methods for generating commonly used HTML tags. */
+/**
+ * Provides a set of methods for generating commonly used HTML tags.
+ * @property string $beginBody The tag marking the beginning of an HTML body section.
+ * @property string $endBody The tag marking the ending of an HTML body section.
+ * @property string $head The tag marking the position of an HTML head section.
+ * @property \Closure $markdown A function converting Markdown into HTML.
+ * @property \Closure $markdownParagraph A function converting Markdown into HTML but only parsing inline elements.
+ * @property \Closure $spaceless A function removing whitespaces between HTML tags.
+ * @property \Closure $viewTitle A function setting the view title.
+ */
 class Html extends Helper {
 
   /**

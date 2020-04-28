@@ -4,7 +4,18 @@ namespace yii\mustache\helpers;
 use yii\helpers\{Html};
 use yii\mustache\{Helper};
 
-/** Provides a set of commonly used data formatting methods. */
+/**
+ * Provides a set of commonly used data formatting methods.
+ * @property \Closure $boolean A function formatting a value as boolean.
+ * @property \Closure $currency A function formatting a value as currency number.
+ * @property \Closure $date A function formatting a value as date.
+ * @property \Closure $dateTime A function formatting a value as datetime.
+ * @property \Closure $decimal A function formatting a value as decimal number.
+ * @property \Closure $integer A function formatting a value as integer number without rounding.
+ * @property \Closure $ntext A function formatting a value as HTML-encoded text with newlines converted into breaks.
+ * @property \Closure $percent A function formatting a value as percent number.
+ * @property \Closure $time A function formatting a value as time.
+ */
 class Format extends Helper {
 
   /**

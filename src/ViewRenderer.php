@@ -5,7 +5,10 @@ use yii\base\{View};
 use yii\di\{Instance};
 use yii\helpers\{ArrayHelper, Html};
 
-/** View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax. */
+/**
+ * View renderer allowing to use the [Mustache](https://mustache.github.io) template syntax.
+ * @property \Mustache_HelperCollection $helpers The list of the values prepended to the context stack.
+ */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /** @var string|array<string, mixed>|\yii\caching\CacheInterface The cache object or the application component ID of the cache object. */
