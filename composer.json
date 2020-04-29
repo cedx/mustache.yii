@@ -40,7 +40,7 @@
     "yiisoft/yii2": "^2.0.34"
   },
   "require-dev": {
-    "cedx/coveralls": "^12.0.0",
+    "cedx/coveralls": "^13.0.0",
     "consolidation/robo": "^2.0.3",
     "phpstan/phpstan": "^0.12.19",
     "phpunit/phpunit": "^9.1.3"
