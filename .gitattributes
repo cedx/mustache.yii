@@ -1,12 +1,12 @@
 * text=auto
 .* text
 
-*.cmd text
 *.http text
 *.json text
 *.md text
 *.neon text
 *.php text diff=php
+*.ps1 text
 *.txt text
 *.xml text
 *.yaml text
