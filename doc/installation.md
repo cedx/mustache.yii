@@ -4,9 +4,6 @@
 Before installing **Mustache for Yii**, you need to make sure you have [PHP](https://www.php.net)
 and [Composer](https://getcomposer.org), the PHP package manager, up and running.
 
-!!! warning
-    Mustache for Yii requires PHP >= **7.4.0**.
-
 You can verify if you're already good to go with the following commands:
 
 ```shell
@@ -18,8 +15,8 @@ composer --version
 ```
 
 !!! info
-    If you plan to play with the package sources, you will also need
-    [Robo](https://robo.li) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
+    If you plan to play with the package sources, you will also need the latest versions of
+    [PowerShell](hhttps://docs.microsoft.com/en-us/powershell) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
 
 ## Installing with Composer package manager
 
