@@ -12,4 +12,3 @@
 /*.iml
 /**/.DS_Store
 /composer.lock
-/share/*.private.env.json
