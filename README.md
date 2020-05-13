@@ -1,5 +1,5 @@
 # Mustache for Yii
-![PHP](https://img.shields.io/packagist/php-v/cedx/yii2-mustache.svg) ![Yii Framework](https://img.shields.io/badge/yii-%3E%3D2.0-brightgreen.svg) ![Release](https://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Coverage](https://coveralls.io/repos/github/cedx/yii2-mustache/badge.svg) ![Build](https://github.com/cedx/yii2-mustache/workflows/build/badge.svg)
+![PHP](https://badgen.net/packagist/php/cedx/yii2-mustache) ![Yii Framework](https://badgen.net/badge/yii/%3E%3D2.0/green) ![Release](https://badgen.net/packagist/v/cedx/yii2-mustache) ![License](https://badgen.net/packagist/license/cedx/yii2-mustache) ![Downloads](https://badgen.net/packagist/dt/cedx/yii2-mustache) ![Coverage](https://badgen.net/coveralls/c/github/cedx/yii2-mustache) ![Build](https://badgen.net/github/checks/cedx/yii2-mustache)
 
 [Mustache](https://mustache.github.io) templating for the [Yii Framework](https://www.yiiframework.com).
 
