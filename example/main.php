@@ -2,5 +2,5 @@
 
 /** TODO */
 function main(): void {
-  // TODO
+	// TODO
 }

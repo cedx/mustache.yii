@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <phpunit bootstrap="../test/index.php" cacheResult="false" testdox="true">
-  <filter>
-    <whitelist processUncoveredFilesFromWhitelist="true">
-      <directory suffix=".php">../src</directory>
-    </whitelist>
-  </filter>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">../src</directory>
+		</whitelist>
+	</filter>
 
-  <logging>
-    <log type="coverage-clover" target="../var/coverage.xml"/>
-  </logging>
+	<logging>
+		<log type="coverage-clover" target="../var/coverage.xml"/>
+	</logging>
 
-  <testsuites>
-    <testsuite name="all">
-      <directory suffix="Test.php">../test</directory>
-    </testsuite>
-  </testsuites>
+	<testsuites>
+		<testsuite name="all">
+			<directory suffix="Test.php">../test</directory>
+		</testsuite>
+	</testsuites>
 </phpunit>

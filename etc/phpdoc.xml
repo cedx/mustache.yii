@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <phpdocumentor
-  configVersion="3"
-  xmlns="http://www.phpdoc.org"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="http://docs.phpdoc.org/latest/phpdoc.xsd">
-  
-  <title>Mustache for Yii</title>
-  <paths>
-    <cache>../var/phpdoc</cache>
-    <output>../doc/api</output>
-  </paths>
-  <version number="10.1.0">
-    <api>
-      <markers>
-        <marker>TODO</marker>
-      </markers>
-      <source dsn="..">
-        <path>src</path>
-      </source>
-      <visibility>protected</visibility>
-      <visibility>public</visibility>
-    </api>
-  </version>
+	configVersion="3"
+	xmlns="http://www.phpdoc.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://docs.phpdoc.org/latest/phpdoc.xsd">
+	
+	<title>Mustache for Yii</title>
+	<paths>
+		<cache>../var/phpdoc</cache>
+		<output>../doc/api</output>
+	</paths>
+	<version number="10.1.0">
+		<api>
+			<markers>
+				<marker>TODO</marker>
+			</markers>
+			<source dsn="..">
+				<path>src</path>
+			</source>
+			<visibility>protected</visibility>
+			<visibility>public</visibility>
+		</api>
+	</version>
 </phpdocumentor>

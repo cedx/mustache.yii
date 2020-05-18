@@ -5,14 +5,14 @@ In order to start using [Mustache](https://mustache.github.io) you need to confi
 
 ```php
 <?php return [
-  'components' => [
-    'view' => [
-      'class' => 'yii\web\View',
-      'renderers' => [
-        'mustache' => 'yii\mustache\ViewRenderer'
-      ]
-    ]
-  ]
+	"components" => [
+		"view" => [
+			"class" => "yii\\web\\View",
+			"renderers" => [
+				"mustache" => "yii\\mustache\\ViewRenderer"
+			]
+		]
+	]
 ];
 ```
 
@@ -23,9 +23,9 @@ After it's done you can create templates in files that have the `.mustache` exte
 use yii\web\{Controller, Response};
 
 class AppController extends Controller {
-  function actionIndex(): Response {
-    return $this->render('template.mustache', ['model' => 'The view model']); 
-  }
+	function actionIndex(): Response {
+		return $this->render("template.mustache", ["model" => "The view model"]); 
+	}
 }
 ```
 

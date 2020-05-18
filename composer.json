@@ -1,56 +1,56 @@
 {
-  "description": "Mustache templating for the Yii Framework.",
-  "homepage": "https://docs.belin.io/yii2-mustache",
-  "license": "MIT",
-  "name": "cedx/yii2-mustache",
-  "type": "yii2-extension",
-  "version": "10.1.0",
-  "authors": [
-    {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
-  ],
-  "autoload": {
-    "psr-4": {"yii\\mustache\\": "src/"}
-  },
-  "autoload-dev": {
-    "psr-4": {"yii\\mustache\\": "test/"}
-  },
-  "config": {
-    "fxp-asset": {"enabled": false},
-    "optimize-autoloader": true
-  },
-  "funding": [
-    {"type": "patreon", "url": "https://www.patreon.com/cedx"}
-  ],
-  "keywords": [
-    "mustache",
-    "renderer",
-    "templating",
-    "view",
-    "yii2"
-  ],
-  "repositories": [
-    {"type": "composer", "url": "https://asset-packagist.org"}
-  ],
-  "require": {
-    "php": ">=7.4.0",
-    "ext-json": "*",
-    "ext-mbstring": "*",
-    "ext-pcre": "*",
-    "mustache/mustache": "^2.13.0",
-    "psr/log": "^1.1.3",
-    "yiisoft/yii2": "^2.0.35"
-  },
-  "require-dev": {
-    "cedx/coveralls": "^13.0.0",
-    "phpstan/phpstan": "^0.12.25",
-    "phpunit/phpunit": "^9.1.4"
-  },
-  "scripts": {
-    "coverage": "coveralls var/coverage.xml",
-    "test": "phpunit --configuration=etc/phpunit.xml"
-  },
-  "support": {
-    "docs": "https://api.belin.io/yii2-mustache",
-    "issues": "https://git.belin.io/cedx/yii2-mustache/issues"
-  }
+	"description": "Mustache templating for the Yii Framework.",
+	"homepage": "https://docs.belin.io/yii2-mustache",
+	"license": "MIT",
+	"name": "cedx/yii2-mustache",
+	"type": "yii2-extension",
+	"version": "10.1.0",
+	"authors": [
+		{"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
+	],
+	"autoload": {
+		"psr-4": {"yii\\mustache\\": "src/"}
+	},
+	"autoload-dev": {
+		"psr-4": {"yii\\mustache\\": "test/"}
+	},
+	"config": {
+		"fxp-asset": {"enabled": false},
+		"optimize-autoloader": true
+	},
+	"funding": [
+		{"type": "patreon", "url": "https://www.patreon.com/cedx"}
+	],
+	"keywords": [
+		"mustache",
+		"renderer",
+		"templating",
+		"view",
+		"yii2"
+	],
+	"repositories": [
+		{"type": "composer", "url": "https://asset-packagist.org"}
+	],
+	"require": {
+		"php": ">=7.4.0",
+		"ext-json": "*",
+		"ext-mbstring": "*",
+		"ext-pcre": "*",
+		"mustache/mustache": "^2.13.0",
+		"psr/log": "^1.1.3",
+		"yiisoft/yii2": "^2.0.35"
+	},
+	"require-dev": {
+		"cedx/coveralls": "^13.0.0",
+		"phpstan/phpstan": "^0.12.25",
+		"phpunit/phpunit": "^9.1.4"
+	},
+	"scripts": {
+		"coverage": "coveralls var/coverage.xml",
+		"test": "phpunit --configuration=etc/phpunit.xml"
+	},
+	"support": {
+		"docs": "https://api.belin.io/yii2-mustache",
+		"issues": "https://git.belin.io/cedx/yii2-mustache/issues"
+	}
 }
