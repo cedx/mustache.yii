@@ -6,7 +6,7 @@ and [Composer](https://getcomposer.org), the PHP package manager, up and running
 
 You can verify if you're already good to go with the following commands:
 
-```shell
+``` shell
 php --version
 # PHP 7.4.5 (cli) (built: Apr 14 2020 16:17:19) ( NTS Visual C++ 2017 x64 )
 
@@ -23,14 +23,14 @@ composer --version
 ### 1. Install it
 From a command prompt, run:
 
-```shell
+``` shell
 composer require cedx/yii2-mustache
 ```
 
 ### 2. Import it
 Now in your [PHP](https://www.php.net) code, you can use:
 
-```php
+``` php
 <?php
 use yii\mustache\{ViewRenderer};
 ```

@@ -3,7 +3,7 @@
 ## Configuring application
 In order to start using [Mustache](https://mustache.github.io) you need to configure the `view` application component, like the following:
 
-```php
+``` php
 <?php return [
 	"components" => [
 		"view" => [
@@ -18,7 +18,7 @@ In order to start using [Mustache](https://mustache.github.io) you need to confi
 
 After it's done you can create templates in files that have the `.mustache` extension (or use another file extension but configure the component accordingly). Unlike standard view files, when using [Mustache](https://mustache.github.io) you must include the extension in your `$this->render()` controller call:
 
-```php
+``` php
 <?php
 use yii\web\{Controller, Response};
 
