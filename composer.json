@@ -43,7 +43,7 @@
 	"require-dev": {
 		"cedx/coveralls": "^13.1.0",
 		"phpstan/phpstan": "^0.12.25",
-		"phpunit/phpunit": "^9.1.4"
+		"phpunit/phpunit": "^9.1.5"
 	},
 	"scripts": {
 		"coverage": "coveralls var/coverage.xml",
