@@ -43,10 +43,11 @@
 	"require-dev": {
 		"cedx/coveralls": "^13.1.1",
 		"phpstan/phpstan": "^0.12.25",
-		"phpunit/phpunit": "^9.1.5"
+		"phpunit/phpunit": "^9.2.1"
 	},
 	"scripts": {
 		"coverage": "coveralls var/coverage.xml",
+		"lint": "phpstan analyse --configuration=etc/phpstan.neon",
 		"test": "phpunit --configuration=etc/phpunit.xml"
 	},
 	"support": {
