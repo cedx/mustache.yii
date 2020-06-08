@@ -46,9 +46,14 @@
 		"phpunit/phpunit": "^9.2.2"
 	},
 	"scripts": {
+		"clean": "pwsh tool/clean.ps1",
 		"coverage": "coveralls var/coverage.xml",
+		"doc": "pwsh tool/doc.ps1",
 		"lint": "phpstan analyse --configuration=etc/phpstan.neon",
-		"test": "phpunit --configuration=etc/phpunit.xml"
+		"publish": "pwsh tool/publish.ps1",
+		"test": "phpunit --configuration=etc/phpunit.xml",
+		"upgrade": "pwsh tool/upgrade.ps1",
+		"version": "pwsh tool/version.ps1"
 	},
 	"support": {
 		"docs": "https://api.belin.io/yii2-mustache",
