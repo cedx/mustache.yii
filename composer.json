@@ -52,7 +52,6 @@
 		"lint": "phpstan analyse --configuration=etc/phpstan.neon",
 		"publish": "pwsh tool/publish.ps1",
 		"test": "phpunit --configuration=etc/phpunit.xml",
-		"upgrade": "pwsh tool/upgrade.ps1",
 		"version": "pwsh tool/version.ps1"
 	},
 	"support": {
