@@ -25,9 +25,9 @@ jobs:
           composer config --global github-oauth.github.com ${{secrets.GITHUB_TOKEN}}
           composer install --no-interaction
       - name: Run tests
-        run: composer run-script test
+        run: composer run test
       - name: Collect code coverage
         env:
           COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
         if: success()
-        run: composer run-script coverage
+        run: composer run coverage
