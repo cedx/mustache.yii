@@ -25,7 +25,7 @@ class HelperTest extends TestCase {
 		$method->setAccessible(true);
 
 		// It should return the content of the output buffer.
-		assertThat($method->invoke($this->model, function() { echo "Hello World!"; }), equalTo("Hello World!"));
+		assertThat($method->invoke($this->model, fn() => print "Hello World!"), equalTo("Hello World!"));
 	}
 
 	/** @testdox ->parseArguments() */

@@ -79,7 +79,7 @@ class Html extends Helper {
 	function getSpaceless(): \Closure {
 		return fn($value, \Mustache_LambdaHelper $helper) => $this->captureOutput(function() use ($helper, $value) {
 			Spaceless::begin();
-			echo $helper->render($value);
+			print $helper->render($value);
 			Spaceless::end();
 		});
 	}
