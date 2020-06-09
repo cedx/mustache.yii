@@ -48,7 +48,7 @@
 	"scripts": {
 		"clean": "pwsh tool/clean.ps1",
 		"coverage": "coveralls var/coverage.xml",
-		"doc": "pwsh tool/doc.ps1",
+		"doc": ["@version", "pwsh tool/doc.ps1"],
 		"lint": "phpstan analyse --configuration=etc/phpstan.neon",
 		"publish": ["@clean", "@version", "pwsh tool/publish.ps1"],
 		"test": "phpunit --configuration=etc/phpunit.xml",
