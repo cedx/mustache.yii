@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use yii\helpers\{Url as UrlHelper};
-use yii\mustache\{Helper};
+use yii\helpers\Url as UrlHelper;
+use yii\mustache\Helper;
 
 /**
  * Provides a set of methods for managing URLs.

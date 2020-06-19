@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use yii\helpers\{Markdown};
-use yii\mustache\{Helper};
-use yii\widgets\{Spaceless};
+use yii\helpers\Markdown;
+use yii\mustache\Helper;
+use yii\widgets\Spaceless;
 
 /**
  * Provides a set of methods for generating commonly used HTML tags.

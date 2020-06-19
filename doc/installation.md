@@ -32,5 +32,5 @@ Now in your [PHP](https://www.php.net) code, you can use:
 
 ``` php
 <?php
-use yii\mustache\{ViewRenderer};
+use yii\mustache\ViewRenderer;
 ```

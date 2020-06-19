@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use PHPUnit\Framework\{TestCase};
-use yii\web\{View};
+use PHPUnit\Framework\TestCase;
+use yii\web\View;
 use function PHPUnit\Framework\{assertThat, equalTo, isInstanceOf, isTrue};
 
 /** @testdox yii\mustache\ViewRenderer */

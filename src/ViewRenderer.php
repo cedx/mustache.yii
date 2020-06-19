@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use yii\base\{View};
-use yii\di\{Instance};
+use yii\base\View;
+use yii\di\Instance;
 use yii\helpers\{ArrayHelper, Html};
 
 /**

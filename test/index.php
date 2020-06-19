@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-use yii\console\{Application};
+use yii\console\Application;
 
 // Set the environment.
 define("YII_DEBUG", true);

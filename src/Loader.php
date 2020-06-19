@@ -2,7 +2,7 @@
 namespace yii\mustache;
 
 use yii\base\{BaseObject, InvalidConfigException, View, ViewNotFoundException};
-use yii\helpers\{FileHelper};
+use yii\helpers\FileHelper;
 
 /** Loads views from the file system. */
 class Loader extends BaseObject implements \Mustache_Loader {

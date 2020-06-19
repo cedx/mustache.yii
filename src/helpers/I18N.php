@@ -3,7 +3,7 @@ namespace yii\mustache\helpers;
 
 use yii\base\{InvalidCallException, InvalidConfigException};
 use yii\helpers\{ArrayHelper, StringHelper};
-use yii\mustache\{Helper};
+use yii\mustache\Helper;
 
 /**
  * Provides features related with internationalization (I18N) and localization (L10N).

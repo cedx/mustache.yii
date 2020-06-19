@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use yii\helpers\{Html};
-use yii\mustache\{Helper};
+use yii\helpers\Html;
+use yii\mustache\Helper;
 
 /**
  * Provides a set of commonly used data formatting methods.

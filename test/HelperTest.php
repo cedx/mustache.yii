@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\mustache;
 
-use PHPUnit\Framework\{TestCase};
-use PHPUnit\Framework\MockObject\{MockObject};
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use function PHPUnit\Framework\{assertThat, equalTo};
 
 /** @testdox yii\mustache\Helper */

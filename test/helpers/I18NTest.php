@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\mustache\helpers;
 
-use PHPUnit\Framework\{TestCase};
+use PHPUnit\Framework\TestCase;
 use function PHPUnit\Framework\{assertThat, equalTo};
 
 /** @testdox yii\mustache\helpers\I18N */
