@@ -3,7 +3,7 @@ Set-StrictMode -Version Latest
 Set-Location (Split-Path $PSScriptRoot)
 
 foreach ($item in "build", "doc/api", "www") {
-	if (Test-Path $item) { Remove-Item $item -Recurse }
+	if (Test-Path $item) { Remove-Item $item -Force -Recurse }
 }
 
-Get-ChildItem var -Exclude .gitkeep | Remove-Item -Recurse
+Remove-Item var/* -Exclude .gitkeep -Force -Recurse
