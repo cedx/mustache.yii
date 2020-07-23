@@ -8,10 +8,10 @@ You can verify if you're already good to go with the following commands:
 
 ``` shell
 php --version
-# PHP 7.4.7 (cli) (built: Jun  9 2020 13:34:30) ( NTS Visual C++ 2017 x64 )
+# PHP 7.4.8 (cli) (built: Jul  9 2020 11:30:33) ( NTS Visual C++ 2017 x64 )
 
 composer --version
-# Composer version 1.10.7 2020-06-03 10:03:56
+# Composer version 1.10.9 2020-07-16 12:57:00
 ```
 
 !!! info
