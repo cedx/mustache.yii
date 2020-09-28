@@ -42,7 +42,7 @@
 	},
 	"require-dev": {
 		"cedx/coveralls": "^13.2.0",
-		"phpstan/phpstan": "^0.12.44",
+		"phpstan/phpstan": "^0.12.46",
 		"phpunit/phpunit": "^9.3.11"
 	},
 	"scripts": {
