@@ -43,7 +43,7 @@
 	"require-dev": {
 		"cedx/coveralls": "^13.2.0",
 		"phpstan/phpstan": "^0.12.48",
-		"phpunit/phpunit": "^9.4.0"
+		"phpunit/phpunit": "^9.4.1"
 	},
 	"scripts": {
 		"clean": "pwsh tool/clean.ps1",
