@@ -38,12 +38,12 @@
 		"ext-pcre": "*",
 		"mustache/mustache": "^2.13.0",
 		"psr/log": "^1.1.3",
-		"yiisoft/yii2": "^2.0.38"
+		"yiisoft/yii2": "^2.0.39"
 	},
 	"require-dev": {
 		"cedx/coveralls": "^13.2.0",
-		"phpstan/phpstan": "^0.12.53",
-		"phpunit/phpunit": "^9.4.2"
+		"phpstan/phpstan": "^0.12.55",
+		"phpunit/phpunit": "^9.4.3"
 	},
 	"scripts": {
 		"clean": "pwsh tool/clean.ps1",
