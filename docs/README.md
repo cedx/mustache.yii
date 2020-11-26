@@ -7,7 +7,7 @@ This renderer allows to use [Mustache syntax](https://mustache.github.io/mustach
 ## Quick start
 Install the latest version of **Mustache for Yii** with [Composer](https://getcomposer.org):
 
-``` shell
+```shell
 composer require cedx/yii2-mustache
 ```
 

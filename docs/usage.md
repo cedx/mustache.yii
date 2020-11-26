@@ -3,8 +3,8 @@
 ## Configuring application
 In order to start using [Mustache](https://mustache.github.io) you need to configure the `view` application component, like the following:
 
-``` php
-<?php return [
+```php
+return [
 	"components" => [
 		"view" => [
 			"class" => "yii\\web\\View",
@@ -18,8 +18,7 @@ In order to start using [Mustache](https://mustache.github.io) you need to confi
 
 After it's done you can create templates in files that have the `.mustache` extension (or use another file extension but configure the component accordingly). Unlike standard view files, when using [Mustache](https://mustache.github.io) you must include the extension in your `$this->render()` controller call:
 
-``` php
-<?php
+```php
 use yii\web\{Controller, Response};
 
 class AppController extends Controller {
@@ -35,8 +34,8 @@ The best resource to learn Mustache basics is its official documentation you can
 ### Variables
 Within Mustache templates the following variables are always defined:
 
-- `app`: the [`Yii::$app`](https://www.yiiframework.com/doc/api/2.0/yii-baseyii#$app-detail) instance.
-- `this`: the current [`View`](https://www.yiiframework.com/doc/api/2.0/yii-base-view) object.
+- `app`: the `\Yii::$app` instance.
+- `this`: the current `\yii\base\View` object.
 
 ### Lambdas
 - `format`: provides a set of commonly used data formatting methods.
