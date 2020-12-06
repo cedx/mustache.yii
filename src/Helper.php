@@ -46,7 +46,7 @@ abstract class Helper extends BaseObject {
 			throw new InvalidArgumentException("The JSON string has an invalid format.");
 		}
 
-		catch (InvalidArgumentException $e) {
+		catch (InvalidArgumentException) {
 			$defaultValues[$defaultArgument] = $text;
 			return $defaultValues;
 		}
