@@ -41,8 +41,8 @@
 		"yiisoft/yii2": "^2.0.39"
 	},
 	"require-dev": {
-		"cedx/coveralls": "^13.2.0",
-		"phpstan/phpstan": "^0.12.58",
+		"cedx/coveralls": "^14.0.0",
+		"phpstan/phpstan": "^0.12.64",
 		"phpunit/phpunit": "^9.5.0"
 	},
 	"scripts": {
